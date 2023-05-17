@@ -1,0 +1,446 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>git手册 | Pale Bule Dot</title><meta name="author" content="PBD"><meta name="copyright" content="PBD"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="版本控制用来记录文件变化，以便查阅特定版本修订情况； 把手工管理文件版本的方式，改为由软件管理文件的版本；而负责管理文件版本的软件就叫做版本控制软件 优点：  操作简便 易于对比 易于回溯 不易丢失 协作方便  分类：  本地版本控制系统 集中化的版本控制系统：如SVN；服务器保存文件的所有记录，客户端只保留最新的文件版本 分布式版本控制系统：如git；服务器保存文件所有最新版本，客户端上保存了服">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git手册">
+<meta property="og:url" content="https://youxt-njnu.github.io/2023/05/17/git%E6%89%8B%E5%86%8C/index.html">
+<meta property="og:site_name" content="Pale Bule Dot">
+<meta property="og:description" content="版本控制用来记录文件变化，以便查阅特定版本修订情况； 把手工管理文件版本的方式，改为由软件管理文件的版本；而负责管理文件版本的软件就叫做版本控制软件 优点：  操作简便 易于对比 易于回溯 不易丢失 协作方便  分类：  本地版本控制系统 集中化的版本控制系统：如SVN；服务器保存文件的所有记录，客户端只保留最新的文件版本 分布式版本控制系统：如git；服务器保存文件所有最新版本，客户端上保存了服">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://youxt-njnu.github.io/img/tit.png">
+<meta property="article:published_time" content="2023-05-17T02:50:16.000Z">
+<meta property="article:modified_time" content="2023-05-17T02:52:30.670Z">
+<meta property="article:author" content="PBD">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="github">
+<meta property="article:tag" content="版本控制">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://youxt-njnu.github.io/img/tit.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://youxt-njnu.github.io/2023/05/17/git%E6%89%8B%E5%86%8C/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'git手册',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-17 10:52:30'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/index_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Pale Bule Dot"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/favicon.png"/><span class="site-name">Pale Bule Dot</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">git手册</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-17T02:50:16.000Z" title="发表于 2023-05-17 10:50:16">2023-05-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-17T02:52:30.670Z" title="更新于 2023-05-17 10:52:30">2023-05-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="git手册"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h1><p>用来记录文件变化，以便查阅特定版本修订情况；</p>
+<p>把手工管理文件版本的方式，改为由软件管理文件的版本；而负责管理文件版本的软件就叫做版本控制软件</p>
+<p>优点：</p>
+<blockquote>
+<p>操作简便</p>
+<p>易于对比</p>
+<p>易于回溯</p>
+<p>不易丢失</p>
+<p>协作方便</p>
+</blockquote>
+<p>分类：</p>
+<ul>
+<li>本地版本控制系统</li>
+<li>集中化的版本控制系统：如SVN；服务器保存文件的所有记录，客户端只保留最新的文件版本</li>
+<li>分布式版本控制系统：如git；服务器保存文件所有最新版本，客户端上保存了服务器的完整备份</li>
+</ul>
+<p>git特性：</p>
+<ul>
+<li>直接记录快照（类似备份），而非差异比较</li>
+<li>近乎所有操作都是本地执行</li>
+</ul>
+<p>git管理项目的三个区域</p>
+<ul>
+<li>工作区</li>
+<li>暂存区</li>
+<li>git仓库</li>
+</ul>
+<p>git中的三种状态：</p>
+<ul>
+<li>modified，已修改</li>
+<li>staged，已暂存</li>
+<li>committed，已提交</li>
+</ul>
+<p>基本git工作流：</p>
+<ol>
+<li>在工作区中修改文件</li>
+<li>将想要下次提交的更改进行暂存</li>
+<li>提交更新，将快照永久存储到git仓库中</li>
+</ol>
+<p>开源许可协议open source license：</p>
+<ul>
+<li>BSD(berkeley software distribution)</li>
+<li>Apache Licence 2.0</li>
+<li>GPL(GNU general public license)<ul>
+<li>具有传染性，不允许修改后和衍生的代码作为闭源的商业软件发布和销售</li>
+<li>如LInux</li>
+</ul>
+</li>
+<li>LGPL(GNU lesser general public license)</li>
+<li>MIT(massachesetts institute of technology, MIT)<ul>
+<li>在修改的代码或者发行包中，必须包含原作者的许可信息，对商业友好</li>
+<li>JQuery, Node.js, 多前端协议</li>
+</ul>
+</li>
+</ul>
+<p>开源项目托管平台，专门用于免费存放开源项目源代码的网站，三个用git管理的平台：</p>
+<ul>
+<li>github, 全球最牛</li>
+<li>gitlab, 对代码私有性支持较好，企业用户较多</li>
+<li>gitee, 码云，国产</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/git%E6%89%8B%E5%86%8C-1.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/git%E6%89%8B%E5%86%8C-4.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/git%E6%89%8B%E5%86%8C-5.png"></p>
+<h1 id="具体内容"><a href="#具体内容" class="headerlink" title="具体内容"></a>具体内容</h1><p><strong>设置用户名和邮件地址，区分操作人的信息</strong></p>
+<blockquote>
+<p>–global 该命令一次使用，永久生效</p>
+</blockquote>
+<p>git config –global user.name 用户名 设置用户签名<br>git config –global user.email 邮箱 设置用户签名 </p>
+<blockquote>
+<p>这些信息会更新到c:&#x2F;users&#x2F;用户文件夹&#x2F;.gitconfig文件（配置文件）中</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ git config --<span class="keyword">global</span> user.name Layne </span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ git config --<span class="keyword">global</span> user.email Layne@atguigu.com </span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ cat ~/.gitconfig </span><br><span class="line">[user] </span><br><span class="line"> name = Layne </span><br><span class="line"> email = Layne@atguigu.com</span><br><span class="line"></span><br><span class="line"><span class="comment">#  查看所有的全局配置项</span></span><br><span class="line">$ git config --<span class="built_in">list</span> --<span class="keyword">global</span></span><br><span class="line"><span class="comment"># 查看指定的全局配置项</span></span><br><span class="line">$ git config user.name</span><br><span class="line">$ git config user.email</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取帮助信息 git help &lt;verb&gt;, git &lt;verb&gt; -h</span></span><br><span class="line">$ git <span class="built_in">help</span> config</span><br><span class="line">$ git config -h</span><br></pre></td></tr></table></figure>
+
+<p><strong>将本地未进行版本控制的目录转换为git仓库</strong></p>
+<p>git init 初始化本地库 </p>
+<blockquote>
+<p>会创建一个名为.git的隐藏目录，包含了初始的必要文件</p>
+</blockquote>
+<p><strong>查看本地库状态</strong></p>
+<p>git status</p>
+<blockquote>
+<p>工作区的4中状态：</p>
+<p>untracked(不被git管理), unmodified(工作区和git仓库的文件内容一致), modified(不一致), staged(工作区中修改内容已放在暂存区，准备将修改后的文件保存到git仓库)</p>
+<p>以精简状态显示文件状态报告：(–short)</p>
+<p>git status -s</p>
+<p>此时未跟踪的文件前面有红色的??标记，修改了的文件前面有红色的M</p>
+</blockquote>
+<p><strong>添加到暂存区</strong></p>
+<p>git add 文件名 </p>
+<blockquote>
+<p>此时文件已被跟踪，添加到了暂存区，git status -s下这个文件前面有绿色A的标记</p>
+<p>若提交的是修改的已有文件，会显示绿色的M</p>
+</blockquote>
+<p><strong>对所有文件暂存</strong></p>
+<blockquote>
+<p><code>git add xx</code>命令可以将xx文件添加到暂存区，如果有很多改动可以通过 <code>git add -A .</code>来一次添加所有改变的文件。</p>
+<p>注意 <code>-A</code> 选项后面还有一个句点。 <code>git add -A</code>表示添加所有内容， <code>git add .</code> 表示添加新文件和编辑过的文件不包括删除的文件; <code>git add -u</code> 表示添加编辑或者删除的文件，不包括新添加的文件</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git add hello.txt </span><br><span class="line">warning: LF will be replaced by CRLF <span class="keyword">in</span> hello.txt. </span><br><span class="line">The file will have its original line endings <span class="keyword">in</span> your working </span><br><span class="line">directory. </span><br></pre></td></tr></table></figure>
+
+<p><strong>提交到本地库</strong></p>
+<p>git commit -m “日志信息” 文件名 </p>
+<p>或者不加文件名，表示全部提交</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m <span class="string">&quot;my first commit&quot;</span> hello.txt </span><br><span class="line">warning: LF will be replaced by CRLF <span class="keyword">in</span> hello.txt. </span><br><span class="line">The file will have its original line endings <span class="keyword">in</span> your working </span><br><span class="line">directory. </span><br><span class="line">[master (root-commit) 86366fa] my first commit </span><br><span class="line"> <span class="number">1</span> file changed, <span class="number">16</span> insertions(+) </span><br><span class="line"> create mode <span class="number">100644</span> hello.txt</span><br></pre></td></tr></table></figure>
+
+<p><strong>跳过暂存区直接将工作区内容提交到git仓库</strong></p>
+<p>git commit -a -m “日志信息”</p>
+<p><strong>查看提交历史</strong></p>
+<p>git reflog  查看版本信息 </p>
+<p>git log  查看版本详细信息，按照提交历史，最近的提交显示在最上面</p>
+<blockquote>
+<p>:表示下面还有内容，可以点击enter继续查看；</p>
+<p>也可以点击q然后退出查看</p>
+<p>git log -2可以查看最近两次的提交历史</p>
+<p>git log -2 –pretty&#x3D;oneline，在一行上显示最近两条消息</p>
+<p>git log -2 –pretty&#x3D;format:”%h | %an | % ar | %s”，自定义输出格式，%h表示提交的简写哈希值，%an表示作者名字，%ar表示作者修订日期，%s表示提交说明</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog </span><br><span class="line">087a1a7 (HEAD -&gt; master) HEAD@&#123;<span class="number">0</span>&#125;: commit: my third commit </span><br><span class="line">ca8ded6 HEAD@&#123;<span class="number">1</span>&#125;: commit: my second commit </span><br><span class="line">86366fa HEAD@&#123;<span class="number">2</span>&#125;: commit (initial): my first commit</span><br></pre></td></tr></table></figure>
+
+<p><strong>从暂存区中移除对应的文件</strong></p>
+<p>git reset –hard 文件名</p>
+<p><strong>从暂存区中移除所有文件</strong></p>
+<p>git reset –hard .</p>
+<p><strong>版本穿梭</strong></p>
+<p>git reset –hard 版本号</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 首先查看当前的历史记录，可以看到当前是在 087a1a7这个版本 </span></span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ git reflog </span><br><span class="line">087a1a7 (HEAD -&gt; master) HEAD@&#123;<span class="number">0</span>&#125;: commit: my third commit </span><br><span class="line">ca8ded6 HEAD@&#123;<span class="number">1</span>&#125;: commit: my second commit </span><br><span class="line">86366fa HEAD@&#123;<span class="number">2</span>&#125;: commit (initial): my first commit </span><br><span class="line"> </span><br><span class="line"><span class="comment"># 切换到 86366fa版本，也就是我们第一次提交的版本 </span></span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ git reset --hard 86366fa </span><br><span class="line">HEAD <span class="keyword">is</span> now at 86366fa my first commit </span><br><span class="line"> </span><br><span class="line"><span class="comment"># 切换完毕之后再查看历史记录，当前成功切换到了 86366fa版本 </span></span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ git reflog </span><br><span class="line">86366fa (HEAD -&gt; master) HEAD@&#123;<span class="number">0</span>&#125;: reset: moving to 86366fa </span><br><span class="line">087a1a7 HEAD@&#123;<span class="number">1</span>&#125;: commit: my third commit </span><br><span class="line">ca8ded6 HEAD@&#123;<span class="number">2</span>&#125;: commit: my second commit </span><br><span class="line">86366fa (HEAD -&gt; master) HEAD@&#123;<span class="number">3</span>&#125;: commit (initial): my first commit </span><br><span class="line"> </span><br><span class="line"><span class="comment"># 然后查看文件 hello.txt，发现文件内容已经变化 </span></span><br><span class="line">$ cat hello.txt  </span><br><span class="line">hello git! hello atguigu! </span><br><span class="line">hello git! hello atguigu! </span><br><span class="line">hello git! hello atguigu! </span><br><span class="line">hello git! hello atguigu! </span><br><span class="line">hello git! hello atguigu! </span><br><span class="line">hello git! hello atguigu! </span><br><span class="line">hello git! hello atguigu!</span><br></pre></td></tr></table></figure>
+
+<p>输入 git push -f命令，将当前的版本的本地仓库推送至远程代码仓库，即可完成远程代码仓库版本回退到第一次提交的版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ git push -f </span><br></pre></td></tr></table></figure>
+
+<p><strong>撤销修改（这次操作危险性高）</strong></p>
+<p>git chckout – 文件名称</p>
+<p><strong>远程地址设置</strong></p>
+<p>git remote -v 查看当前所有远程地址别名 </p>
+<p>git remote add 别名 远程地址 起别名 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v </span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ git remote add ori https://github.com/atguiguyueyue/git-shTest.git </span><br><span class="line"> </span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ git remote -v </span><br><span class="line">ori     https://github.com/atguiguyueyue/git-shTest.git (fetch) </span><br><span class="line">ori     https://github.com/atguiguyueyue/git-shTest.git (push)</span><br></pre></td></tr></table></figure>
+
+<p>也可以通过下面的命令，查看远程仓库中所有的分支列表信息：</p>
+<p>git remote show 远程仓库名称（默认都叫origin）</p>
+<p><strong>分支</strong></p>
+<blockquote>
+<p>一般程序开发中，是不允许在主分支上进行代码修改和操作的，风险太高；</p>
+<p>程序员在功能分支上进行开发，新功能开发且测试完毕后，再合并到主分支上；</p>
+</blockquote>
+<p><strong>创建分支</strong></p>
+<p>git branch 分支名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$  git branch hot-fix </span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ git branch -v </span><br><span class="line">  hot-fix 087a1a7 my third commit  （刚创建的新的分支，并将主分支 master</span><br><span class="line">的内容复制了一份） </span><br><span class="line">* master  087a1a7 my third commit</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看分支</strong></p>
+<p>git branch</p>
+<p>git branch -v</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -v </span><br><span class="line">* master 087a1a7 my third commit  （*代表当前所在的分区）</span><br></pre></td></tr></table></figure>
+
+<p><strong>切换分支</strong></p>
+<p>git checkout 分支名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout hot-fix </span><br><span class="line">Switched to branch <span class="string">&#x27;hot-fix&#x27;</span> </span><br><span class="line">--发现当先分支已由 master改为 hot-fix </span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (hot-fix) </span><br><span class="line">$ </span><br><span class="line">--查看 hot-fix分支上的文件内容发现与 master分支上的内容不同 </span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (hot-fix) </span><br><span class="line">$ cat hello.txt </span><br><span class="line">hello git! hello atguigu! <span class="number">2222222222222</span> </span><br><span class="line">hello git! hello atguigu! <span class="number">3333333333333</span> </span><br><span class="line">hello git! hello atguigu! </span><br><span class="line">hello git! hello atguigu! </span><br><span class="line">hello git! hello atguigu!</span><br></pre></td></tr></table></figure>
+
+<p>可以创建指定名称的新分支，并立即切换到新分支上，但要注意再master的基础上创建新分支</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -b 表示创建一个新分支，checkout表示切换到刚新建的分支上</span></span><br><span class="line">git checkout -b 分支名称</span><br></pre></td></tr></table></figure>
+
+<p><strong>推送本地分支上的内容到远程仓库</strong></p>
+<p><code>git push -u 别名 本地分支名称</code> # 第一次，-u表示把本地分支和远程分支进行关联，如果push的时候想要修改分支名称，可以<code>git push -u 别名 本地分支名称:远程分支名称</code></p>
+<p>git push 别名 分支 # 之后的，可以写上别名和分支，也可以就直接写git push</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git push ori master </span><br><span class="line">Logon failed, use ctrl+c to cancel basic credential prompt. </span><br><span class="line">Username <span class="keyword">for</span> <span class="string">&#x27;https://github.com&#x27;</span>: atguiguyueyue </span><br><span class="line">Counting objects: <span class="number">3</span>, done. </span><br><span class="line">Delta compression using up to <span class="number">12</span> threads. </span><br><span class="line">Compressing objects: <span class="number">100</span>% (<span class="number">2</span>/<span class="number">2</span>), done. </span><br><span class="line">Writing objects: <span class="number">100</span>% (<span class="number">3</span>/<span class="number">3</span>), <span class="number">276</span> <span class="built_in">bytes</span> | <span class="number">276.00</span> KiB/s, done. </span><br><span class="line">Total <span class="number">3</span> (delta <span class="number">0</span>), reused <span class="number">0</span> (delta <span class="number">0</span>) </span><br><span class="line">To https://github.com/atguiguyueyue/git-shTest.git </span><br><span class="line"> * [new branch]      master -&gt; master </span><br></pre></td></tr></table></figure>
+
+<p><strong>跟踪分支</strong></p>
+<p>从远程仓库中，把远程分支下载到本地仓库中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># git checkout 远程分支名称</span></span><br><span class="line">$ git checkout pay</span><br><span class="line"><span class="comment"># 从远程仓库中，把对应的远程分支下载到本地仓库，并对其重命名</span></span><br><span class="line"><span class="comment"># git checkout -b 本地分支名称 远程仓库名称/远程分支名称</span></span><br><span class="line">$ git checkout -b payment origin/pay</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>把指定的分支合并到当前分支上</strong></p>
+<p>git merge 分支名 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line"><span class="comment"># 先切换到主分支，然后将功能分支合并到主分支</span></span><br><span class="line">$ git merge hot-fix </span><br><span class="line">Auto-merging hello.txt </span><br><span class="line">CONFLICT (content): Merge conflict <span class="keyword">in</span> hello.txt </span><br><span class="line">Automatic merge failed; fix conflicts <span class="keyword">and</span> then commit the result.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$ git status </span><br><span class="line">On branch master </span><br><span class="line">You have unmerged paths. </span><br><span class="line">  (fix conflicts <span class="keyword">and</span> run <span class="string">&quot;git commit&quot;</span>) </span><br><span class="line">  (use <span class="string">&quot;git merge --abort&quot;</span> to abort the merge) </span><br><span class="line"> </span><br><span class="line">Unmerged paths: </span><br><span class="line">  (use <span class="string">&quot;git add &lt;file&gt;...&quot;</span> to mark resolution) </span><br><span class="line"> </span><br><span class="line">        both modified:   hello.txt </span><br><span class="line"> </span><br><span class="line">no changes added to commit (use <span class="string">&quot;git add&quot;</span> <span class="keyword">and</span>/<span class="keyword">or</span> <span class="string">&quot;git commit -a&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑有冲突的文件，删除特殊符号，决定要使用的内容 </span></span><br><span class="line"><span class="comment"># 特殊符号：&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD 当前分支的代码 =======  合并过来的代码  &gt;&gt;&gt;&gt;&gt;&gt;&gt; hot-fix </span></span><br><span class="line"></span><br><span class="line">$ git commit -m <span class="string">&quot;merge hot-fix&quot;</span> </span><br><span class="line">[master 69ff88d] merge hot-fix </span><br><span class="line">--发现后面 MERGING消失，变为正常 </span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 也可以打开包含冲突的文件，手动解决冲突之后，再执行如下命令</span></span><br><span class="line">$ git chechout master</span><br><span class="line">$ git merge reg</span><br><span class="line"><span class="comment"># 手动解决冲突文件,vscode会智能地提醒你如何进行修改</span></span><br><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">&quot;解决了分支合并冲突的问题&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>删除分支</strong></p>
+<p>当把功能分支合并到master分支之后，可以删除对应的功能分支：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># git branch</span></span><br><span class="line">git branch -d 功能分支 <span class="comment">#要保证现阶段不是在要删除的分支上</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>移除文件</strong></p>
+<p>从git仓库和工作区中同时移除对应文件：git rm -f 文件名</p>
+<p>从git仓库中移除指定文件，但保留工作区中对应的文件：git rm –cached 文件名</p>
+<p><strong>忽略文件</strong></p>
+<p>可以创建一个名为.gitignore的配置文件，列出要忽略的文件的匹配模式</p>
+<blockquote>
+<p>#开头，注释</p>
+<p>&#x2F;结尾，目录</p>
+<p>&#x2F;开头，递归</p>
+<p>!开头，取反</p>
+<p>可以用glob模式进行文件和文件夹的匹配，glob指简化了的正则表达式</p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/git%E6%89%8B%E5%86%8C-2.png"></p>
+<p>可以直接写到git项目中，与.git同级目录，内容示例如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/git%E6%89%8B%E5%86%8C-3.png"></p>
+</blockquote>
+<p><strong>从其他服务器克隆一个已存在的git仓库</strong></p>
+<p>git clone 远程地址 将远程仓库的内容克隆到本地 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/atguiguyueyue/git-shTest.git </span><br><span class="line">Cloning into <span class="string">&#x27;git-shTest&#x27;</span>... </span><br><span class="line">remote: Enumerating objects: <span class="number">3</span>, done. </span><br><span class="line">remote: Counting objects: <span class="number">100</span>% (<span class="number">3</span>/<span class="number">3</span>), done. </span><br><span class="line">remote: Compressing objects: <span class="number">100</span>% (<span class="number">2</span>/<span class="number">2</span>), done. </span><br><span class="line">remote: Total <span class="number">3</span> (delta <span class="number">0</span>), reused <span class="number">3</span> (delta <span class="number">0</span>), pack-reused <span class="number">0</span> </span><br><span class="line">Unpacking objects: <span class="number">100</span>% (<span class="number">3</span>/<span class="number">3</span>), done.</span><br></pre></td></tr></table></figure>
+
+<p><strong>拉取远程分支的最新代码</strong></p>
+<p>git pull # 从远程仓库，把最新的代码下载导本地，保持当前分支代码和远程分支一致</p>
+<p>git pull 远程库地址别名 远程分支名 将远程仓库对于分支最新内容拉下来后与当前本地分支直接合并</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ git pull ori master </span><br><span class="line">remote: Enumerating objects: <span class="number">5</span>, done. </span><br><span class="line">remote: Counting objects: <span class="number">100</span>% (<span class="number">5</span>/<span class="number">5</span>), done. </span><br><span class="line">remote: Compressing objects: <span class="number">100</span>% (<span class="number">1</span>/<span class="number">1</span>), done. </span><br><span class="line">remote: Total <span class="number">3</span> (delta <span class="number">1</span>), reused <span class="number">3</span> (delta <span class="number">1</span>), pack-reused <span class="number">0</span> </span><br><span class="line">Unpacking objects: <span class="number">100</span>% (<span class="number">3</span>/<span class="number">3</span>), done. </span><br><span class="line">From https://github.com/atguiguyueyue/git-shTest </span><br><span class="line"> * branch            master     -&gt; FETCH_HEAD </span><br><span class="line">   7cb4d02.<span class="number">.5</span>dabe6b  master     -&gt; ori/master </span><br><span class="line">Updating 7cb4d02.<span class="number">.5</span>dabe6b </span><br><span class="line">Fast-forward </span><br><span class="line"> hello.txt | <span class="number">2</span> +- </span><br><span class="line"> <span class="number">1</span> file changed, <span class="number">1</span> insertion(+), <span class="number">1</span> deletion(-) </span><br></pre></td></tr></table></figure>
+
+<p><strong>删除远程分支</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除远程仓库中，指定名称的远程分支</span></span><br><span class="line">git push 远程仓库名称 --delete 远程分支名称</span><br><span class="line">$ git push origin --delete pay</span><br><span class="line"><span class="comment"># 删除本地分支,如果pay分支还未被合并，-d命令会报错，-D命令不会报错</span></span><br><span class="line">$ git push origin -d pay</span><br><span class="line">$ git push origin -D pay</span><br></pre></td></tr></table></figure>
+
+<h1 id="报错处理"><a href="#报错处理" class="headerlink" title="报错处理"></a>报错处理</h1><p><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15740728/5805813">提醒多用户拥有：<strong>fatal: detected dubious ownership in repository at ‘E:&#x2F;workspace&#x2F;CSMarket</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40908748/article/details/122367878">解决git报错10054</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io">PBD</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io/2023/05/17/git%E6%89%8B%E5%86%8C/">https://youxt-njnu.github.io/2023/05/17/git%E6%89%8B%E5%86%8C/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://youxt-njnu.github.io" target="_blank">Pale Bule Dot</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/git/">git</a><a class="post-meta__tags" href="/tags/github/">github</a><a class="post-meta__tags" href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a></div><div class="post_share"><div class="social-share" data-image="/img/tit.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/05/10/Cpp%E5%B0%8F%E8%AE%A1/" title="Cpp小计"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Cpp小计</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">PBD</div><div class="author-info__description">Be brave, and know yourself</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/youxt-njnu" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:10190208@njnu.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://www.zhihu.com/people/paleYYY" target="_blank" title="zhihu"><i class="fa-brands fa-zhihu" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text">版本控制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E5%86%85%E5%AE%B9"><span class="toc-number">2.</span> <span class="toc-text">具体内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">报错处理</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/17/git%E6%89%8B%E5%86%8C/" title="git手册">git手册</a><time datetime="2023-05-17T02:50:16.000Z" title="发表于 2023-05-17 10:50:16">2023-05-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/10/Cpp%E5%B0%8F%E8%AE%A1/" title="Cpp小计">Cpp小计</a><time datetime="2023-05-10T11:45:36.000Z" title="发表于 2023-05-10 19:45:36">2023-05-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/10/%E7%BB%98%E5%88%B6%E5%9C%B0%E5%9B%BEgeopandas/" title="基于geopandas绘制地图及图面整饰">基于geopandas绘制地图及图面整饰</a><time datetime="2023-05-10T07:49:36.000Z" title="发表于 2023-05-10 15:49:36">2023-05-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/05/Post-Rock/" title="歌单(多后摇)"><img src="https://cdn.jsdelivr.net/gh/radium-bit/res@latest/Music.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="歌单(多后摇)"/></a><div class="content"><a class="title" href="/2023/05/05/Post-Rock/" title="歌单(多后摇)">歌单(多后摇)</a><time datetime="2023-05-05T10:24:00.000Z" title="发表于 2023-05-05 18:24:00">2023-05-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/03/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/" title="高德地图的二三事">高德地图的二三事</a><time datetime="2023-05-03T13:28:31.000Z" title="发表于 2023-05-03 21:28:31">2023-05-03</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/index_img.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 By PBD</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="002bXW6T0LCG90" data-server="tencent" data-type="song" data-fixed="true" data-autoplay="true" data-lrcType="-1"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
