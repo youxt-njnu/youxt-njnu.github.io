@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Pale Bule Dot</title>
+  
+  
+  <link href="https://youxt-njnu.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://youxt-njnu.github.io/"/>
+  <updated>2023-09-03T08:06:22.259Z</updated>
+  <id>https://youxt-njnu.github.io/</id>
+  
+  <author>
+    <name>Shealin You</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>空间编码和索引</title>
+    <link href="https://youxt-njnu.github.io/2023/09/03/%E7%A9%BA%E9%97%B4%E7%BC%96%E7%A0%81%E5%92%8C%E7%B4%A2%E5%BC%95/"/>
+    <id>https://youxt-njnu.github.io/2023/09/03/%E7%A9%BA%E9%97%B4%E7%BC%96%E7%A0%81%E5%92%8C%E7%B4%A2%E5%BC%95/</id>
+    <published>2023-09-03T08:01:24.000Z</published>
+    <updated>2023-09-03T08:06:22.259Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>第三篇论文开始，先看了些相关知识点</p></blockquote><p><a href="https://blog.51cto.com/u_15428122/4569829">地理空间索引实现：z 曲线、希尔伯特曲线、四叉树, 最邻近几何特征查询、范围查询</a></p><blockquote><p>空间索引是对存储在介质上的数据位置信息的描述，用来提高系统对数据获取的效率。<br>依据空间对象的位置和形状，或对象之间的空间关系，按一定顺序排列的数据结构，用于<strong>快速定位到控件对象</strong>。</p><ul><li>对象范围索引<ul><li>格网空间索引</li><li>四叉树空间索引</li><li>R树、R+树空间索引</li><li>Z曲线、希尔伯特曲线降维的索引</li></ul></li></ul></blockquote><p><a href="https://www.cnblogs.com/KillerAery/p/10878367.html">空间数据结构</a>，用于提高数据的检索和查询的效率。</p><p><a href="https://www.cnblogs.com/tgzhu/p/6204173.html">Geohash基本原理</a></p><blockquote><p>注重隐私，方便缓存</p></blockquote><p><a href="https://www.cnblogs.com/tgzhu/p/8286616.html">空间填充曲线和降维对比</a></p><p><a href="https://akaedu.github.io/book/ch14s04.html">浮点数数据类型的解释</a></p><blockquote><p>有一个符号位，然后还规定了小数位的标准化，所以可以省去一个位（这个是一定为1的）；偏移量也是有用的</p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;第三篇论文开始，先看了些相关知识点&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.51cto.com/u_15428122/4569829&quot;&gt;地理空间索引实现：z 曲线、希尔伯特曲线、四叉树, 最邻近几何特征</summary>
+      
+    
+    
+    
+    <category term="研究生" scheme="https://youxt-njnu.github.io/categories/%E7%A0%94%E7%A9%B6%E7%94%9F/"/>
+    
+    <category term="第三篇" scheme="https://youxt-njnu.github.io/categories/%E7%A0%94%E7%A9%B6%E7%94%9F/%E7%AC%AC%E4%B8%89%E7%AF%87/"/>
+    
+    
+    <category term="空间编码" scheme="https://youxt-njnu.github.io/tags/%E7%A9%BA%E9%97%B4%E7%BC%96%E7%A0%81/"/>
+    
+    <category term="空间索引" scheme="https://youxt-njnu.github.io/tags/%E7%A9%BA%E9%97%B4%E7%B4%A2%E5%BC%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>论文英文化</title>
+    <link href="https://youxt-njnu.github.io/2023/09/03/%E8%AE%BA%E6%96%87%E8%8B%B1%E6%96%87%E5%8C%96/"/>
+    <id>https://youxt-njnu.github.io/2023/09/03/%E8%AE%BA%E6%96%87%E8%8B%B1%E6%96%87%E5%8C%96/</id>
+    <published>2023-09-03T07:51:41.000Z</published>
+    <updated>2023-09-03T08:05:04.649Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="结构表达"><a href="#结构表达" class="headerlink" title="结构表达"></a>结构表达</h1><p><a href="https://mp.weixin.qq.com/s/MoFRsYS6aG1u0EYPjGii3g">如何写好英文科学论文？</a></p><p><a href="https://www.phrasebank.manchester.ac.uk/introducing-work/">Academic Phrasebank</a></p><blockquote><p><a href="https://zhuanlan.zhihu.com/p/237582629">教程参考</a> 直接针对论文里的不同章节，给出参考的句式；</p></blockquote><h1 id="直接翻译"><a href="#直接翻译" class="headerlink" title="直接翻译"></a>直接翻译</h1><p><a href="https://www.deepl.com/translator">DeepL</a> <a href="https://dict.eudic.net/">欧路词典</a> <a href="https://translate.google.com/?hl=en&sl=auto&tl=en&op=translate">Google Translate</a></p><h1 id="语言细节"><a href="#语言细节" class="headerlink" title="语言细节"></a>语言细节</h1><p><a href="https://app.ludwig.guru/s/traffic+planning+network">ludwig.guru</a></p><blockquote><p><a href="https://zhuanlan.zhihu.com/p/142658414">教程参考</a></p></blockquote><p><a href="https://netspeak.org/">Netspeak</a></p><blockquote><p><a href="https://www.funglish.com.tw/%E5%9B%9B%E5%80%8B%E5%85%A7%E8%A1%8C%E4%BA%BA%E6%89%8D%E7%9F%A5%E9%81%93%E7%9A%84%E5%AF%AB%E4%BD%9C%E7%A5%9E%E5%99%A8%EF%BC%8C%E8%AE%93%E4%BD%A0%E4%BA%8B%E5%8D%8A%E5%8A%9F%E5%80%8D%E5%AF%AB%E5%87%BA/">教程参考</a></p></blockquote><p><a href="https://www.linguee.com/">Linguee</a></p><blockquote><p><a href="https://www.funglish.com.tw/%E5%9B%9B%E5%80%8B%E5%85%A7%E8%A1%8C%E4%BA%BA%E6%89%8D%E7%9F%A5%E9%81%93%E7%9A%84%E5%AF%AB%E4%BD%9C%E7%A5%9E%E5%99%A8%EF%BC%8C%E8%AE%93%E4%BD%A0%E4%BA%8B%E5%8D%8A%E5%8A%9F%E5%80%8D%E5%AF%AB%E5%87%BA/">教程参考</a></p></blockquote><p><a href="https://linggle.com/">Linggle</a></p><blockquote><p><a href="https://zhuanlan.zhihu.com/p/87499946">教程参考</a></p></blockquote><p><a href="https://www.english-corpora.org/coca/">Corpus of Contemporary American English</a></p><blockquote><p><a href="https://zhuanlan.zhihu.com/p/128683003">教程参考</a></p></blockquote><p>Grammarly</p><blockquote><p>语法校对工具，能检测并纠正拼写、语法、标点符号等错误，同时进行建议和改进<br>类似的：<a href="https://www.gingersoftware.com/">GINGER</a>、</p></blockquote><p><a href="https://hemingwayapp.com/">Hemingway Editor</a></p><blockquote><p>检测并标记句子结构、逻辑和表达等方面的问题，并提供修改建议，使文章更加清晰、流畅。此外，该工具还提供了一系列的写作指南和资源，帮助作者提高写作<a href="https://www.sohu.com/a/702887796_121679860">技巧</a>。</p></blockquote><p><a href="https://wordvice.ai/cn">wordvice语法检查</a></p><h1 id="润色机构"><a href="#润色机构" class="headerlink" title="润色机构"></a>润色机构</h1><p>AJE<br>Editage易得辑</p><p>提供的服务随着不同的方案而不同，专业性高，而且可以全流程进行润色、按照期刊要求进行格式调整，比较省心省力；</p><h1 id="AI润色"><a href="#AI润色" class="headerlink" title="AI润色"></a>AI润色</h1><p>以ChatGPT为代表的生成式AI类工具，对学术写作、翻译和润色方面提供便捷，但也存在词不达意问题，需要注意审查数据安全问题和伦理<a href="https://cn.scientific-publishing.webshop.elsevier.com/research-process-cn/the-dangers-of-ai-assisted-academic-writing/">问题</a>。</p><p>各大润色机构推出的润色工具，如AJE AI润色</p><p><a href="https://www.qbitai.com/2023/04/43347.html">学术版chatpgt</a></p><p><a href="https://www.wordtune.com/plans">wordtune</a></p><p>找期刊缩写： <a href="https://blog.csdn.net/sdbyp/article/details/121413155">部分期刊的缩写（计算机方向）、期刊缩写及其影响因子的查询方法_计算机类期刊缩写查询网站_大白很火的博客-CSDN博客</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;结构表达&quot;&gt;&lt;a href=&quot;#结构表达&quot; class=&quot;headerlink&quot; title=&quot;结构表达&quot;&gt;&lt;/a&gt;结构表达&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/MoFRsYS6aG1u0EYPjGii3g&quot;&gt;如何</summary>
+      
+    
+    
+    
+    <category term="研究生" scheme="https://youxt-njnu.github.io/categories/%E7%A0%94%E7%A9%B6%E7%94%9F/"/>
+    
+    <category term="第二篇" scheme="https://youxt-njnu.github.io/categories/%E7%A0%94%E7%A9%B6%E7%94%9F/%E7%AC%AC%E4%BA%8C%E7%AF%87/"/>
+    
+    
+    <category term="Hexo" scheme="https://youxt-njnu.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>绘图微调👉Adobe Illustrator👍</title>
+    <link href="https://youxt-njnu.github.io/2023/09/01/%E7%BB%98%E5%9B%BE%E5%BE%AE%E8%B0%83-Adobe-Illustrator/"/>
+    <id>https://youxt-njnu.github.io/2023/09/01/%E7%BB%98%E5%9B%BE%E5%BE%AE%E8%B0%83-Adobe-Illustrator/</id>
+    <published>2023-09-01T01:35:08.000Z</published>
+    <updated>2023-09-01T01:51:47.555Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="支持正版"><a href="#支持正版" class="headerlink" title="支持正版"></a>支持正版</h1><h1 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h1><h1 id="轻微强迫症"><a href="#轻微强迫症" class="headerlink" title="轻微强迫症"></a>轻微强迫症</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;支持正版&quot;&gt;&lt;a href=&quot;#支持正版&quot; class=&quot;headerlink&quot; title=&quot;支持正版&quot;&gt;&lt;/a&gt;支持正版&lt;/h1&gt;&lt;h1 id=&quot;常用快捷键&quot;&gt;&lt;a href=&quot;#常用快捷键&quot; class=&quot;headerlink&quot; title=&quot;常用快捷键&quot;&gt;</summary>
+      
+    
+    
+    
+    <category term="研究生的日子" scheme="https://youxt-njnu.github.io/categories/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%9A%84%E6%97%A5%E5%AD%90/"/>
+    
+    <category term="科研绘图" scheme="https://youxt-njnu.github.io/categories/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%9A%84%E6%97%A5%E5%AD%90/%E7%A7%91%E7%A0%94%E7%BB%98%E5%9B%BE/"/>
+    
+    
+    <category term="绘图细节" scheme="https://youxt-njnu.github.io/tags/%E7%BB%98%E5%9B%BE%E7%BB%86%E8%8A%82/"/>
+    
+    <category term="Adobe" scheme="https://youxt-njnu.github.io/tags/Adobe/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>论文如何对照着期刊要求修整</title>
+    <link href="https://youxt-njnu.github.io/2023/09/01/%E8%AE%BA%E6%96%87%E5%A6%82%E4%BD%95%E5%AF%B9%E7%85%A7%E7%9D%80%E6%9C%9F%E5%88%8A%E8%A6%81%E6%B1%82%E4%BF%AE%E6%95%B4/"/>
+    <id>https://youxt-njnu.github.io/2023/09/01/%E8%AE%BA%E6%96%87%E5%A6%82%E4%BD%95%E5%AF%B9%E7%85%A7%E7%9D%80%E6%9C%9F%E5%88%8A%E8%A6%81%E6%B1%82%E4%BF%AE%E6%95%B4/</id>
+    <published>2023-09-01T01:34:46.000Z</published>
+    <updated>2023-09-03T08:04:21.517Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>需要发表一篇英文论文，于是官网上苦读发表须知，于是进行了相应的记录。。。</p></blockquote><h1 id="模板？"><a href="#模板？" class="headerlink" title="模板？"></a>模板？</h1><p>word模板</p><p>LaTex模板</p><h1 id="细节要求？"><a href="#细节要求？" class="headerlink" title="细节要求？"></a>细节要求？</h1><p>8 points是啥意思？</p><blockquote><p><a href="https://www.runoob.com/w3cnote/px-pt-em-convert-table.html">px,pt,em换算表</a></p></blockquote><p>PDF格式的图片要求”all fonts are embedded”？</p><blockquote><p><a href="https://blog.csdn.net/qq_34823218/article/details/120883050">如何给PDF嵌入相关字体</a></p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;需要发表一篇英文论文，于是官网上苦读发表须知，于是进行了相应的记录。。。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;模板？&quot;&gt;&lt;a href=&quot;#模板？&quot; class=&quot;headerlink&quot; title=&quot;模板？&quot;&gt;&lt;/a&gt;模板？&lt;/h</summary>
+      
+    
+    
+    
+    <category term="研究生" scheme="https://youxt-njnu.github.io/categories/%E7%A0%94%E7%A9%B6%E7%94%9F/"/>
+    
+    <category term="第二篇" scheme="https://youxt-njnu.github.io/categories/%E7%A0%94%E7%A9%B6%E7%94%9F/%E7%AC%AC%E4%BA%8C%E7%AF%87/"/>
+    
+    
+    <category term="论文修改" scheme="https://youxt-njnu.github.io/tags/%E8%AE%BA%E6%96%87%E4%BF%AE%E6%94%B9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unity安装配置</title>
+    <link href="https://youxt-njnu.github.io/2023/09/01/Unity%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/"/>
+    <id>https://youxt-njnu.github.io/2023/09/01/Unity%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</id>
+    <published>2023-09-01T01:34:15.000Z</published>
+    <updated>2023-09-03T07:55:56.613Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Unity安装"><a href="#Unity安装" class="headerlink" title="Unity安装"></a>Unity安装</h1><p><a href="https://gitee.com/chutianshu1981/AwesomeUnityTutorial/blob/main/%E9%98%B2%E6%AD%A2%20unity%20%E5%90%83%E6%8E%89%E4%BD%A0%E7%9A%84%E7%B3%BB%E7%BB%9F%E7%A1%AC%E7%9B%98.md">unity内容从c盘迁移到d盘</a></p><h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><p><a href="https://zhuanlan.zhihu.com/p/618158094">JDK安装教程（保姆式详解） - 知乎</a></p><p><a href="https://blog.csdn.net/sinat_62012394/article/details/130491386">(76条消息) 下载安装Android SDK及环境配置（超详细）_android sdk下载安装及配置教程_兔子耳朵toy的博客-CSDN博客</a></p><p><a href="https://www.cnblogs.com/auguse/p/13807169.html">Android SDK的下载与安装 - 酒剑仙* - 博客园</a></p><p><a href="https://blog.csdn.net/zhanghow/article/details/115014303">(76条消息) Unity Hub安装Android环境 (Unity2019及以上支持)_unityhub安装2019版本_zhanghow的博客-CSDN博客</a></p><p><a href="https://blog.csdn.net/PangPangPig123/article/details/113547693">(76条消息) Unity-Android常见的那些骚操作_PangPangPig123的博客-CSDN博客</a></p><p><a href="https://blog.csdn.net/weixin_44733991/article/details/127134147">Unity配置安卓环境（详细、简单）_unity怎么配置安卓环境_小叶学习塔的博客-CSDN博客</a></p><h1 id="打包配置"><a href="#打包配置" class="headerlink" title="打包配置"></a>打包配置</h1><p><a href="https://zhuanlan.zhihu.com/p/113007406">Unity打包Android最全攻略（含完整流程及常见问题） - 知乎</a></p><p><a href="https://zhuanlan.zhihu.com/p/113007406">Unity打包Android最全攻略（含完整流程及常见问题） - 知乎</a></p><p><a href="https://www.cnblogs.com/purpleraintear/p/6403036.html">Unity编译Android的原理解析和apk打包分析 - 偶素浅小浅 - 博客园</a></p><blockquote><p>Written with <a href="https://stackedit.cn/">StackEdit中文版</a>.</p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Unity安装&quot;&gt;&lt;a href=&quot;#Unity安装&quot; class=&quot;headerlink&quot; title=&quot;Unity安装&quot;&gt;&lt;/a&gt;Unity安装&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://gitee.com/chutianshu1981/AwesomeU</summary>
+      
+    
+    
+    
+    <category term="Unity" scheme="https://youxt-njnu.github.io/categories/Unity/"/>
+    
+    
+    <category term="U3D" scheme="https://youxt-njnu.github.io/tags/U3D/"/>
+    
+    <category term="AR" scheme="https://youxt-njnu.github.io/tags/AR/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VSCode配置使用</title>
+    <link href="https://youxt-njnu.github.io/2023/09/01/VSCode%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8/"/>
+    <id>https://youxt-njnu.github.io/2023/09/01/VSCode%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8/</id>
+    <published>2023-09-01T01:32:29.000Z</published>
+    <updated>2023-09-03T07:59:39.331Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="配置使用"><a href="#配置使用" class="headerlink" title="配置使用"></a>配置使用</h1><p><a href="https://blog.csdn.net/weixin_43031092/article/details/109214231">VS code修改插件安装位置的简易办法</a></p><p><a href="https://zhuanlan.zhihu.com/p/71110525">vs基本使用</a></p><p><a href="https://blog.csdn.net/qq_51485453/article/details/123214455">vs快捷键设置</a></p><p><a href="https://blog.csdn.net/a358763471/article/details/115856513">vs瘦身</a></p><p><a href="https://blog.csdn.net/Tisfy/article/details/126082324">查看和给vscode从c盘瘦身</a></p><h1 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h1><p>Python工作流：jupyter</p><p>前端工作流</p><p><a href="https://www.cnblogs.com/gigabit/p/16102097.html">copilot</a>的AI辅助流、<a href="https://github.com/features/copilot">官网</a></p><h1 id="联动"><a href="#联动" class="headerlink" title="联动"></a>联动</h1><p>drawio<br>markdown<br>Office <a href="https://blog.csdn.net/qq_45436706/article/details/106957473">联动Leetcode</a>；<a href="https://juejin.cn/post/6844904105782018055">联动2</a>；<a href="https://github.com/LeetCode-OpenSource/vscode-leetcode/blob/master/docs/README_zh-CN.md">联动3</a>；</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;配置使用&quot;&gt;&lt;a href=&quot;#配置使用&quot; class=&quot;headerlink&quot; title=&quot;配置使用&quot;&gt;&lt;/a&gt;配置使用&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/weixin_43031092/article/details</summary>
+      
+    
+    
+    
+    <category term="开发工具" scheme="https://youxt-njnu.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="软件配置" scheme="https://youxt-njnu.github.io/tags/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE/"/>
+    
+    <category term="VSCode" scheme="https://youxt-njnu.github.io/tags/VSCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL配置使用</title>
+    <link href="https://youxt-njnu.github.io/2023/09/01/MySQL%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8/"/>
+    <id>https://youxt-njnu.github.io/2023/09/01/MySQL%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8/</id>
+    <published>2023-09-01T01:32:18.000Z</published>
+    <updated>2023-09-01T01:46:52.445Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h1><p><a href="https://blog.csdn.net/SoloVersion/article/details/123760428">MySQL安装配置教程</a></p><p><a href="https://blog.csdn.net/xl132598798/article/details/106342240">完美解决MySQL ERROR:Access denied for user <code>root</code>@<code>localhost</code> (using password:YES)_xl132598798的博客-CSDN博客</a></p><p><a href="https://blog.csdn.net/weixin_45523183/article/details/116358192">Can‘t connect to MySQL server on ‘localhost:3306‘ (10061)_Where-to-go的博客-CSDN博客</a></p><p><a href="https://blog.csdn.net/OCEAN_C/article/details/89719578">MySql错误 1251 - Client does not support authentication protocol requested by server 解决方案_1251 client does not support authentication_阿燃i的博客-CSDN博客</a></p><p><a href="https://blog.csdn.net/weixin_45523183/article/details/116358192">Can‘t connect to MySQL server on ‘localhost:3306‘ (10061)_Where-to-go的博客-CSDN博客</a></p><h1 id="联动"><a href="#联动" class="headerlink" title="联动"></a>联动</h1><p><a href="https://blog.csdn.net/pstj123456/article/details/105999672">Unity连接MySql，The given key was not present in the dictionary 错误原因及解决办法_ 木头的博客-CSDN博客</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;安装配置&quot;&gt;&lt;a href=&quot;#安装配置&quot; class=&quot;headerlink&quot; title=&quot;安装配置&quot;&gt;&lt;/a&gt;安装配置&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/SoloVersion/article/details/123</summary>
+      
+    
+    
+    
+    <category term="开发工具" scheme="https://youxt-njnu.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="MySQL" scheme="https://youxt-njnu.github.io/tags/MySQL/"/>
+    
+    <category term="软件配置" scheme="https://youxt-njnu.github.io/tags/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>罗技产品使用技巧</title>
+    <link href="https://youxt-njnu.github.io/2023/09/01/%E7%BD%97%E6%8A%80%E4%BA%A7%E5%93%81%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
+    <id>https://youxt-njnu.github.io/2023/09/01/%E7%BD%97%E6%8A%80%E4%BA%A7%E5%93%81%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</id>
+    <published>2023-09-01T01:31:13.000Z</published>
+    <updated>2023-09-01T01:50:16.278Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Logi-Pepple"><a href="#Logi-Pepple" class="headerlink" title="Logi Pepple"></a>Logi Pepple</h1><h3 id="设备设置技巧"><a href="#设备设置技巧" class="headerlink" title="设备设置技巧"></a>设备设置技巧</h3><h3 id="延寿注意点"><a href="#延寿注意点" class="headerlink" title="延寿注意点"></a>延寿注意点</h3><p>抗摔，但还是少摔！！<br>本人的鼠标已经是服役暮年了，鼠标右键不灵，蓝牙不灵。<br>为了延寿常用点，右键不灵在windows系统上的替代方案就是转战触控板&#x2F;(ㄒoㄒ)&#x2F;~~</p><h1 id="Logi-Pop-Mouse"><a href="#Logi-Pop-Mouse" class="headerlink" title="Logi Pop Mouse"></a>Logi Pop Mouse</h1><h3 id="设备设置技巧-1"><a href="#设备设置技巧-1" class="headerlink" title="设备设置技巧"></a>设备设置技巧</h3><p>跨设备Flow<br>鼠标中键</p><h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><h1 id="Logi-K380"><a href="#Logi-K380" class="headerlink" title="Logi K380"></a>Logi K380</h1><h3 id="设备设置技巧-2"><a href="#设备设置技巧-2" class="headerlink" title="设备设置技巧"></a>设备设置技巧</h3><h3 id="快捷键-1"><a href="#快捷键-1" class="headerlink" title="快捷键"></a>快捷键</h3><h1 id="Logi-K580"><a href="#Logi-K580" class="headerlink" title="Logi K580"></a>Logi K580</h1><h3 id="设备设置技巧-3"><a href="#设备设置技巧-3" class="headerlink" title="设备设置技巧"></a>设备设置技巧</h3><p>通道1：pad or phone<br>通道2：电脑，usb<br>Chrome OS,默认的操作系统布局，FN+8下3秒钟<br>Android，切换该布局FN+9下3秒钟；<br>数字键点击小锁键，未启用按住5秒钟； <a href="https://manuals.plus/zh-CN/logitech/logitech-k580-multi-device-wireless-keyboard-chrome-os-user-manual">指南</a> fn+esc切换功能键</p><h3 id="快捷键-2"><a href="#快捷键-2" class="headerlink" title="快捷键"></a>快捷键</h3><blockquote><p>Written with <a href="https://stackedit.cn/">StackEdit中文版</a>.</p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Logi-Pepple&quot;&gt;&lt;a href=&quot;#Logi-Pepple&quot; class=&quot;headerlink&quot; title=&quot;Logi Pepple&quot;&gt;&lt;/a&gt;Logi Pepple&lt;/h1&gt;&lt;h3 id=&quot;设备设置技巧&quot;&gt;&lt;a href=&quot;#设备设置技巧&quot; cla</summary>
+      
+    
+    
+    
+    <category term="周边扩展" scheme="https://youxt-njnu.github.io/categories/%E5%91%A8%E8%BE%B9%E6%89%A9%E5%B1%95/"/>
+    
+    
+    <category term="键鼠设备" scheme="https://youxt-njnu.github.io/tags/%E9%94%AE%E9%BC%A0%E8%AE%BE%E5%A4%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C盘瘦身</title>
+    <link href="https://youxt-njnu.github.io/2023/09/01/C%E7%9B%98%E7%98%A6%E8%BA%AB/"/>
+    <id>https://youxt-njnu.github.io/2023/09/01/C%E7%9B%98%E7%98%A6%E8%BA%AB/</id>
+    <published>2023-09-01T01:30:23.000Z</published>
+    <updated>2023-09-03T08:09:12.031Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/notback/article/details/73604292">mklink的&#x2F;D &#x2F;J 区别</a> <a href="https://zhuanlan.zhihu.com/p/604764869">解决mklink &#x2F;d 提示“当文件已存在时，无法创建该文件</a></p><blockquote><p>Written with <a href="https://stackedit.cn/">StackEdit中文版</a>.</p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/notback/article/details/73604292&quot;&gt;mklink的&amp;#x2F;D &amp;#x2F;J 区别&lt;/a&gt; &lt;a href=&quot;https://zhuanlan.zhihu.com/p/6047</summary>
+      
+    
+    
+    
+    <category term="周边扩展" scheme="https://youxt-njnu.github.io/categories/%E5%91%A8%E8%BE%B9%E6%89%A9%E5%B1%95/"/>
+    
+    
+    <category term="windows系统" scheme="https://youxt-njnu.github.io/tags/windows%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>U3D入门</title>
+    <link href="https://youxt-njnu.github.io/2023/08/29/U3D%E5%85%A5%E9%97%A8/"/>
+    <id>https://youxt-njnu.github.io/2023/08/29/U3D%E5%85%A5%E9%97%A8/</id>
+    <published>2023-08-29T12:42:50.000Z</published>
+    <updated>2023-08-29T14:13:11.756Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>因为实习要求，便买了一本《Unity 3D 从入门到实践》的书，提前了解下Unity。作为一本工具书和入门书，这本也算差强人意。所谓师傅领进门，修行靠个人&#96;&#96;&#96;🐧</p><h2 id="学习重心"><a href="#学习重心" class="headerlink" title="学习重心"></a>学习重心</h2><table><thead><tr><th>篇目</th><th align="center">技能点</th><th align="center">更新状态</th></tr></thead><tbody><tr><td>框架建立</td><td align="center">Unity Hub下载安装、安卓和IOS环境配置</td><td align="center">❌</td></tr><tr><td></td><td align="center">Unity Hub授权和激活</td><td align="center">❌</td></tr><tr><td></td><td align="center">U3D项目的新建、打开、运行</td><td align="center">❌</td></tr><tr><td></td><td align="center">C#脚本的新建、编辑、运行</td><td align="center">❌</td></tr><tr><td></td><td align="center">U3D基本API</td><td align="center">❌</td></tr><tr><td>软件界面</td><td align="center">窗口和视图</td><td align="center">❌</td></tr><tr><td></td><td align="center">菜单</td><td align="center">❌</td></tr><tr><td></td><td align="center">工具栏</td><td align="center">❌</td></tr><tr><td></td><td align="center">重要概念</td><td align="center">❌</td></tr><tr><td>U3D应用</td><td align="center">场景</td><td align="center">❌</td></tr><tr><td></td><td align="center">模型</td><td align="center">❌</td></tr><tr><td></td><td align="center">游戏对象</td><td align="center">❌</td></tr><tr><td></td><td align="center">预制体</td><td align="center">❌</td></tr><tr><td></td><td align="center">灯光</td><td align="center">❌</td></tr><tr><td></td><td align="center">动画</td><td align="center">❌</td></tr><tr><td>C#</td><td align="center">U3D中的常见类型</td><td align="center">❌</td></tr><tr><td></td><td align="center">命名与规范</td><td align="center">❌</td></tr><tr><td></td><td align="center">其他。。。</td><td align="center">❌</td></tr><tr><td>Lua</td><td align="center">XLua</td><td align="center">❌</td></tr><tr><td></td><td align="center">其他。。。</td><td align="center">❌</td></tr><tr><td>UGUI</td><td align="center">Canvas</td><td align="center">❌</td></tr><tr><td></td><td align="center">Buttons</td><td align="center">❌</td></tr><tr><td></td><td align="center">Image</td><td align="center">❌</td></tr><tr><td></td><td align="center">其他。。。</td><td align="center">❌</td></tr><tr><td>插件</td><td align="center">打包AssetBundle</td><td align="center">❌</td></tr><tr><td></td><td align="center">DOTween</td><td align="center">❌</td></tr><tr><td></td><td align="center">Haste</td><td align="center">❌</td></tr><tr><td></td><td align="center"></td><td align="center">❌</td></tr><tr><td></td><td align="center">其他。。。</td><td align="center">❌</td></tr><tr><td>案例</td><td align="center">愤怒的小鸟</td><td align="center">❌</td></tr><tr><td></td><td align="center">跑酷小子</td><td align="center">❌</td></tr><tr><td></td><td align="center">Easy AR</td><td align="center">❌</td></tr><tr><td></td><td align="center">flappy bird</td><td align="center">❌</td></tr><tr><td>产品平台</td><td align="center">视网么</td><td align="center">❌</td></tr></tbody></table><h1 id="划重点"><a href="#划重点" class="headerlink" title="划重点"></a>划重点</h1><p>以后分环节细说之。。。</p><h1 id="易-已-错点"><a href="#易-已-错点" class="headerlink" title="易(已)错点"></a>易(<del>已</del>)错点</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;因为实习要求，便买了一本《Unity 3D 从入门到实践》的书，提前了解下Unity。作为一本工具书和入门书，这本也算差强人意。所谓师傅领进</summary>
+      
+    
+    
+    
+    <category term="Unity" scheme="https://youxt-njnu.github.io/categories/Unity/"/>
+    
+    
+    <category term="U3D" scheme="https://youxt-njnu.github.io/tags/U3D/"/>
+    
+    <category term="AR" scheme="https://youxt-njnu.github.io/tags/AR/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>README`markdown怎么写的好看又规范</title>
+    <link href="https://youxt-njnu.github.io/2023/08/28/README-markdown%E6%80%8E%E4%B9%88%E5%86%99%E7%9A%84%E5%A5%BD%E7%9C%8B%E5%8F%88%E8%A7%84%E8%8C%83/"/>
+    <id>https://youxt-njnu.github.io/2023/08/28/README-markdown%E6%80%8E%E4%B9%88%E5%86%99%E7%9A%84%E5%A5%BD%E7%9C%8B%E5%8F%88%E8%A7%84%E8%8C%83/</id>
+    <published>2023-08-28T08:19:04.000Z</published>
+    <updated>2023-08-28T08:21:49.964Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>PS: 因为我写的不好看、不规范，所以搜罗了一下相关资料，留着有空学学~~~</p></blockquote><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>既然今天冠冕堂皇的写了规划，那就了解下GitHub中markdown如何写的规范些吧，找了几个链接：<br><a href="https://docs.github.com/zh/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">基本撰写和格式语法</a><br><a href="https://www.cnblogs.com/wj-1314/p/8547763.html">如何为开发项目编写规范的README文件（windows）</a><br><a href="https://juejin.cn/post/6844904057191170055">[译] 如何写出优雅且有意义的 README.md</a><br><a href="https://www.zhihu.com/question/29100816">知乎：如何写好Github中的readme？</a></p><h1 id="可以速查的"><a href="#可以速查的" class="headerlink" title="可以速查的"></a>可以速查的</h1><p><a href="https://github.com/guodongxiaren/README">介绍了常用的类型的md形式</a><br><a href="https://github.com/guodongxiaren/README/blob/master/emoji.md">给出了常用的表情符号码</a></p><h1 id="内容结构"><a href="#内容结构" class="headerlink" title="内容结构"></a>内容结构</h1><p>[功能描述]：主要描述一下这个项目的主要功能列表。<br>[开发环境]：罗列使用本工程项目所需要安装的开发环境及配置，以及所需软件的版本说明和对应的下载链接。<br>[项目结构简介]：简单介绍项目模块结构目录树，对用户可以修改的文件做重点说明。<br>[测试DEMO]：此处可以简单介绍一下DEMO程序的思路，具体实现代码放在example文件夹中。<br>[作者列表]：对于多人合作的项目，可以在这里简单介绍并感谢所有参与开发的研发人员。<br>[更新链接]：提供后续更新的代码链接。<br>[历史版本]：对历史版本更改 记录做个简单的罗列，让用户直观的了解到哪些版本解决了哪些问题。<br>[联系方式]：可以提供微信、邮箱等联系方式，其他人对这个工程不明白的地方可以通过该联系方式与你联系。<br><a href="https://www.jianshu.com/p/b535abbfb792">source url</a></p><p><a href="https://www.jianshu.com/p/0b257de21eb5">进阶学习</a></p><h1 id="相关插件"><a href="#相关插件" class="headerlink" title="相关插件"></a>相关插件</h1><p><a href="https://zhuanlan.zhihu.com/p/355997933">Mermaid</a></p><p><a href="https://zhuanlan.zhihu.com/p/442554652">typora迁移到VScode</a></p><h1 id="一些讲究"><a href="#一些讲究" class="headerlink" title="一些讲究"></a>一些讲究</h1><p><a href="https://blog.csdn.net/li1669852599/article/details/113336076">Git提交时的emoji表情使用指南_git表情_码农架构的博客-CSDN博客</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;PS: 因为我写的不好看、不规范，所以搜罗了一下相关资料，留着有空学学~~~&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;</summary>
+      
+    
+    
+    
+    <category term="周边扩展" scheme="https://youxt-njnu.github.io/categories/%E5%91%A8%E8%BE%B9%E6%89%A9%E5%B1%95/"/>
+    
+    
+    <category term="Hexo" scheme="https://youxt-njnu.github.io/tags/Hexo/"/>
+    
+    <category term="个人博客" scheme="https://youxt-njnu.github.io/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>跨电脑迁移VSCode</title>
+    <link href="https://youxt-njnu.github.io/2023/08/28/%E8%B7%A8%E7%94%B5%E8%84%91%E8%BF%81%E7%A7%BBVSCode/"/>
+    <id>https://youxt-njnu.github.io/2023/08/28/%E8%B7%A8%E7%94%B5%E8%84%91%E8%BF%81%E7%A7%BBVSCode/</id>
+    <published>2023-08-28T07:01:36.000Z</published>
+    <updated>2023-08-28T07:59:05.414Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="直接上记录😎"><a href="#直接上记录😎" class="headerlink" title="直接上记录😎"></a>直接上记录😎</h1><p>参考<a href="%5Bhttps://juejin.cn/post/7066622158184644621">教程</a>，打开了设置同步，手工调整冲突的设置；</p><p>调整完了之后提示<a href="https://github.com/microsoft/vscode/issues/113439">VSCode版本兼容性问题</a>：<code>Settings sync cannot be turned on because the current version is not compatible with the sync service. · Issue #113439 · microsoft/vscode (github.com)</code></p><p>想着升级下不就没事了，先看看现在是啥版本的(三个点→Help→About)</p><p><img src="https://s2.loli.net/2023/08/28/bAJhLxSsPtTD7GZ.png"></p><p>然后Settings里输入Update，我这里修改成了手动更新manual，重启下</p><p><img src="https://s2.loli.net/2023/08/28/M65KYtDHA3OWBar.png"></p><p>左下角就能找到最后一项check for updates…，然后等待更新完。</p><p><img src="F:\marktextImg\2023-08-28-15-44-04-image.png"></p><p>之后同步就打开了（我已经开了，在上图里面最下角第三项：Settings Sync is On）</p><p>问题解决✌️</p><h1 id="补充-Git协同的恢复"><a href="#补充-Git协同的恢复" class="headerlink" title="补充|Git协同的恢复"></a>补充|Git协同的恢复</h1><p>迁移完了后，我旧环境和新环境夹杂下，准备测试下Git还能用不，一测就报错了<a href="https://blog.csdn.net/qq_41271930/article/details/117514127">Visual Studio Code提交代码提示“Make sure you configure your ‘user.name‘ and ‘user.email‘ in git.”_Sun_小杰杰哇的博客-CSDN博客</a></p><p>更完整的操作见这里：<a href="https://zhuanlan.zhihu.com/p/165646665">查看或者修改本地 Git 用户名和邮箱地址 - 知乎 (zhihu.com)</a></p><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//修改用户名，xxx 处填写你的用户名</span></span><br><span class="line">git config --global user.name <span class="string">&quot;xxx&quot;</span></span><br><span class="line"><span class="comment">//修改邮箱地址，xxx 处填写你的邮箱地址</span></span><br><span class="line">git config --global user.email <span class="string">&quot;xxx&quot;</span></span><br><span class="line"><span class="comment">//查看用户名</span></span><br><span class="line">git config user.name</span><br><span class="line"><span class="comment">//查看邮箱地址</span></span><br><span class="line">git config user.email </span><br></pre></td></tr></table></figure><p>剩下的测试，我参考了<a href="https://blog.csdn.net/EvelynHouseba/article/details/105426477">这篇</a>，以及我的记忆，最后push成功😉</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;直接上记录😎&quot;&gt;&lt;a href=&quot;#直接上记录😎&quot; class=&quot;headerlink&quot; title=&quot;直接上记录😎&quot;&gt;&lt;/a&gt;直接上记录😎&lt;/h1&gt;&lt;p&gt;参考&lt;a href=&quot;%5Bhttps://juejin.cn/post/7066622158184</summary>
+      
+    
+    
+    
+    <category term="开发工具" scheme="https://youxt-njnu.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="VSCode" scheme="https://youxt-njnu.github.io/tags/VSCode/"/>
+    
+    <category term="应用迁移" scheme="https://youxt-njnu.github.io/tags/%E5%BA%94%E7%94%A8%E8%BF%81%E7%A7%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>跨电脑迁移Hexo</title>
+    <link href="https://youxt-njnu.github.io/2023/08/28/%E8%B7%A8%E7%94%B5%E8%84%91%E8%BF%81%E7%A7%BBHexo/"/>
+    <id>https://youxt-njnu.github.io/2023/08/28/%E8%B7%A8%E7%94%B5%E8%84%91%E8%BF%81%E7%A7%BBHexo/</id>
+    <published>2023-08-28T07:00:38.000Z</published>
+    <updated>2023-08-28T07:45:38.093Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="直接上记录😎"><a href="#直接上记录😎" class="headerlink" title="直接上记录😎"></a>直接上记录😎</h1><p>之前换新的电脑，然后给电脑安装和配置好了nodejs；</p><p>直接把旧电脑里的博客文件夹拷到了新电脑里；</p><p>参考这位作者的做法，探了探环境：<a href="https://blog.csdn.net/littlehaes/article/details/81503455">hexo博客迁移到另一台电脑_littlehaes的博客-CSDN博客</a></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git version</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure><p>发现我没装hexo，找了一开始的<a href="https://juejin.cn/post/7111237168168697886">入门教程</a>，需要注意的是npm安装需要管理员权限(详情想了解的，参考我另一篇：从win10到win11|右键菜单)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><p>随后验证了下能不能用：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure><p>很好！一切照常，后续有问题后续再说&lt;(￣︶￣)↗[GO!]</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;直接上记录😎&quot;&gt;&lt;a href=&quot;#直接上记录😎&quot; class=&quot;headerlink&quot; title=&quot;直接上记录😎&quot;&gt;&lt;/a&gt;直接上记录😎&lt;/h1&gt;&lt;p&gt;之前换新的电脑，然后给电脑安装和配置好了nodejs；&lt;/p&gt;
+&lt;p&gt;直接把旧电脑里的博客文件夹拷到</summary>
+      
+    
+    
+    
+    <category term="周边扩展" scheme="https://youxt-njnu.github.io/categories/%E5%91%A8%E8%BE%B9%E6%89%A9%E5%B1%95/"/>
+    
+    
+    <category term="Hexo" scheme="https://youxt-njnu.github.io/tags/Hexo/"/>
+    
+    <category term="个人博客" scheme="https://youxt-njnu.github.io/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="应用迁移" scheme="https://youxt-njnu.github.io/tags/%E5%BA%94%E7%94%A8%E8%BF%81%E7%A7%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>win11右键菜单</title>
+    <link href="https://youxt-njnu.github.io/2023/08/28/%E4%BB%8Ewin10%E5%88%B0win11_%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/"/>
+    <id>https://youxt-njnu.github.io/2023/08/28/%E4%BB%8Ewin10%E5%88%B0win11_%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/</id>
+    <published>2023-08-28T06:59:30.000Z</published>
+    <updated>2023-09-01T01:48:53.801Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="浓缩的右键菜单😒"><a href="#浓缩的右键菜单😒" class="headerlink" title="浓缩的右键菜单😒"></a>浓缩的右键菜单😒</h1><p>改回win10右键菜单</p><blockquote><p>1.Win+R输入cmd，回车</p><p>2.在命令行窗口中输入：reg add HKCU\Software\Classes\CLSID{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32 &#x2F;f &#x2F;ve</p><p>3.在任务管理器中，重启资源管理器（或者重启电脑）</p><p>————————————————<br>版权声明：本文为CSDN博主「C+J+PP」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/qq_39682204/article/details/123506660">https://blog.csdn.net/qq_39682204/article/details/123506660</a></p></blockquote><h1 id="打开命令窗口设置"><a href="#打开命令窗口设置" class="headerlink" title="打开命令窗口设置"></a>打开命令窗口设置</h1><p><a href="https://blog.csdn.net/qq_39682204/article/details/123506660">win11添加右键在此处打开命令窗口_C+J+PP的博客-CSDN博客</a></p><h1 id="以管理员方式运行"><a href="#以管理员方式运行" class="headerlink" title="以管理员方式运行"></a>以管理员方式运行</h1><p>npm install 报错 ‘The operation was rejected by your operating system‘解决方案参考：</p><p><a href="https://blog.csdn.net/Run_youngman/article/details/113987836">解决： npm install 报错 ‘The operation was rejected by your operating system‘_Run_youngman的博客-CSDN博客</a></p><p> <a href="https://www.cnblogs.com/lixin-nobody/p/14051905.html">npm下载权限不足问题解决 - nobody阿欣 - 博客园 (cnblogs.com)</a></p><p><a href="https://blog.csdn.net/Jone_hui/article/details/110956830">npm 报错 The operation was rejected by your operating system_葬我以时光的博客-CSDN博客</a></p><p>当然，本人没花时间研究，就突然发现我既然右键菜单上都有了打开命令窗口，点击的时候加个ctrl，然后导航到特定目录😀</p><p><img src="https://s2.loli.net/2023/08/28/r6qaZ98DFQTtSYc.png"></p><p><img src="https://s2.loli.net/2023/08/28/SR7iEYLdwrMf25n.png"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;浓缩的右键菜单😒&quot;&gt;&lt;a href=&quot;#浓缩的右键菜单😒&quot; class=&quot;headerlink&quot; title=&quot;浓缩的右键菜单😒&quot;&gt;&lt;/a&gt;浓缩的右键菜单😒&lt;/h1&gt;&lt;p&gt;改回win10右键菜单&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.Win+R输入c</summary>
+      
+    
+    
+    
+    <category term="周边扩展" scheme="https://youxt-njnu.github.io/categories/%E5%91%A8%E8%BE%B9%E6%89%A9%E5%B1%95/"/>
+    
+    
+    <category term="windows系统" scheme="https://youxt-njnu.github.io/tags/windows%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>geopandas怎么给特定的值分配颜色，并设置好图例</title>
+    <link href="https://youxt-njnu.github.io/2023/07/23/geopandas%E6%80%8E%E4%B9%88%E7%BB%99%E7%89%B9%E5%AE%9A%E7%9A%84%E5%80%BC%E5%88%86%E9%85%8D%E9%A2%9C%E8%89%B2%EF%BC%8C%E5%B9%B6%E8%AE%BE%E7%BD%AE%E5%A5%BD%E5%9B%BE%E4%BE%8B/"/>
+    <id>https://youxt-njnu.github.io/2023/07/23/geopandas%E6%80%8E%E4%B9%88%E7%BB%99%E7%89%B9%E5%AE%9A%E7%9A%84%E5%80%BC%E5%88%86%E9%85%8D%E9%A2%9C%E8%89%B2%EF%BC%8C%E5%B9%B6%E8%AE%BE%E7%BD%AE%E5%A5%BD%E5%9B%BE%E4%BE%8B/</id>
+    <published>2023-07-23T06:49:12.000Z</published>
+    <updated>2023-08-29T12:50:12.539Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.legend.html">https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.legend.html</a></p><p><a href="https://kanoki.org/2020/08/30/matplotlib-scatter-plot-color-by-category-in-python/">https://kanoki.org/2020/08/30/matplotlib-scatter-plot-color-by-category-in-python/</a></p><p><a href="https://github.com/geopandas/geopandas/issues/2279">https://github.com/geopandas/geopandas/issues/2279</a></p><p><a href="https://www.sioe.cn/yingyong/yanse-rgb-16/">https://www.sioe.cn/yingyong/yanse-rgb-16/</a></p><h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>坑比较多：</p><ul><li>构建颜色表</li><li>指南针、比例尺</li><li>对应颜色到属性</li><li>自绘制图例</li><li>图例的属性排版</li></ul><p>效果</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/geopandas%E7%BB%98%E5%9B%BE1.png"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;参考链接&quot;&gt;&lt;a href=&quot;#参考链接&quot; class=&quot;headerlink&quot; title=&quot;参考链接&quot;&gt;&lt;/a&gt;参考链接&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://matplotlib.org/stable/api/_as_gen/matplotlib.</summary>
+      
+    
+    
+    
+    <category term="科研绘图" scheme="https://youxt-njnu.github.io/categories/%E7%A7%91%E7%A0%94%E7%BB%98%E5%9B%BE/"/>
+    
+    
+    <category term="绘图细节" scheme="https://youxt-njnu.github.io/tags/%E7%BB%98%E5%9B%BE%E7%BB%86%E8%8A%82/"/>
+    
+    <category term="geopandas" scheme="https://youxt-njnu.github.io/tags/geopandas/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>设计结构化</title>
+    <link href="https://youxt-njnu.github.io/2023/05/21/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96/"/>
+    <id>https://youxt-njnu.github.io/2023/05/21/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96/</id>
+    <published>2023-05-21T11:18:53.000Z</published>
+    <updated>2023-08-29T14:12:10.027Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="设计结构化实践手册整理"><a href="#设计结构化实践手册整理" class="headerlink" title="设计结构化实践手册整理"></a>设计结构化实践手册整理</h1><blockquote><p>整理自公众号《腾讯ISUX》，感觉挺有用的，参考链接如下：</p><p><a href="https://mp.weixin.qq.com/s/QJHxGFA8B3xw6N_Fi39tSg">https://mp.weixin.qq.com/s/QJHxGFA8B3xw6N_Fi39tSg</a></p><p><a href="https://mp.weixin.qq.com/s/-RHvy8LO5isb3ypH6KII3Q">https://mp.weixin.qq.com/s/-RHvy8LO5isb3ypH6KII3Q</a></p></blockquote><p>无论是设计师、产品还是开发，都是需要培养“结构化”这种抽象化的思维模式。</p><h1 id="为什么需要结构化思维"><a href="#为什么需要结构化思维" class="headerlink" title="为什么需要结构化思维"></a>为什么需要结构化思维</h1><h2 id="结构化实践的优势"><a href="#结构化实践的优势" class="headerlink" title="结构化实践的优势"></a>结构化实践的优势</h2><p>生涯三阶段：</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-1.png"></p><p>校招或实习的同学：学校和职场相差巨大，信息太多很难消化、啥都想学啥都没学透，说方案时同事和老大都没搞懂我想表达什么。发现同届新人蹭蹭蹭地成长，自己感觉成为了团队的孤儿。</p><p>社招的同学：能力上没有突出最能打的强项以及体现持续发展的学习方向；表达上没有办法组织化地突出自己做过事情的核心价值，更多是在表达点状细节。日常执行上，大家也会担心平常只是在做需求单可视化工具人。而且随着我们的职级和业务压力增加，面临的人和事会无序增长，多线程到应接不暇。</p><p>这些问题总结起来，就是<strong>事多、活赶、人杂，也就是信息、时间、和主体的碎片化</strong>。不是说碎片化一定是个坏事，碎片化能让我们快速地判断一个事情能不能做，甚至是我们解决表面问题的常态。</p><p>比起解决单点问题，其实<strong>发现核心问题和统筹问题</strong>才是体现和提升工作能力的关键所在，这都要求我们需要有结构化的实践能力。<strong>而结构化实践无非就是在各种碎片中发现核心真相，解决问题的方法和能力。</strong></p><p>人的精力有限，有效的选择和资源投入比盲目努力更重要，而结构化实践某种意义上也是一种捷径。</p><p>结构化实践的优势：</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-2.png"></p><h2 id="结构化思维"><a href="#结构化思维" class="headerlink" title="结构化思维"></a>结构化思维</h2><p>信息处理过程：</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-3.png"></p><p><strong>1. 输入：</strong>首先我们会从外界吸收各类数据。</p><p><strong>2. 降噪-归纳：</strong>然后大脑对其进行降噪和归纳，将这些数据分辨成有用或没有用的信息。</p><p><strong>3. 推演-归因：</strong>接着我们对信息进行分析和推演，发现它们之间的关系和规律，这就成为了有效的知识。</p><p><strong>4. 决策：</strong>然后我们根据这些关系和规律进行决策，这个过程体现的就是人脑的智慧，这也是为什么我们常常强调学的东西一定要用，因为如果知识不经过真实的决策，它是没有办法内化成我们自己的经验和智慧的。</p><p><strong>5. 输出：</strong>最后我们根据决策对信息进行多次或多元重组，激发出了创造的可能性，并推动了新事物的边界，而这也是设计师非常关键的高光能力。</p><blockquote><p>感想：</p><p>对于地理信息系统，所作的其实也是这些内容，科研及工作方向也聚焦于其中</p></blockquote><p>&#x3D;&#x3D;结构化思维&#x3D;&#x3D;：数据和信息收集充分后，先不去抠他们的细节，反而先<strong>以他们之间的结构和逻辑关系作为对象，然后进行归纳和推演的思考方法</strong>。这种方式能更好地帮助我们归纳出事物的本质关联。我们输入的数据和信息需要进行结构化地处理，来更好地吸收和利用；而输出的结论需要体现结构化分析的过程，增加它的说服力和落地性。</p><p>结构化实践案例 -设计组件化：</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-4.png"></p><blockquote><p>感想：</p><p>在开发过程中，需求分析、模块设计、前端页面绘制，也是结构化的过程；</p><p>在科研中，如何查找资料、对资料进行整合筛选、归纳观点，形成一篇文章；以及开展实验这些；</p><p>都需要结构化，理清楚脉络和流程</p></blockquote><h2 id="金字塔结构"><a href="#金字塔结构" class="headerlink" title="金字塔结构"></a>金字塔结构</h2><p>主要作用：信息输出，如表达和写作</p><p>关键原则：</p><ul><li>结论先行，以上统下：透过对背景和冲突的分析，明确核心的问题。</li><li>纵向逻辑递进、横向归类分组：为了解决核心问题，我们需要遍历出造成问题的因素，这里就涉及到第二个原则：即纵向对问题进行递进挖掘，洞穿问题的深度。而横向对问题进行归类、分组、排序，全面顾及问题的广度。</li></ul><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-5.png"></p><p>MECE原则：CE则是指不遗漏，所有的部分完全穷尽，也就是我们常说的全集遍历。ME的意思是指不重复，各个部分间相互没有重叠和交集。</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-7.png"></p><h2 id="优化金字塔"><a href="#优化金字塔" class="headerlink" title="优化金字塔"></a>优化金字塔</h2><p>项目发展往往是环环相扣的，而金字塔模型更多的是聚焦在单次叙事上，作者根据日常设计项目的情况重新将金字塔细化成七个流程：</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E6%9C%BA%E6%9E%84%E5%8C%96-6.png"></p><p>首先定义现状与目标，根据前者定义出核心问题；然后进行问题因素的全盘拆解，接着验证因素的真伪以及它的优先级；再接着根据优先级细化解决问题，最后进行回归复盘，指导下一次的设计实践。</p><p>在拆解因素或步骤时尽可能不要超过7个，是因为人的意识能记忆和处理的信息数量并不多，平均为7±2个，有的人多些，有的人少些，7个以下也能让我们更好的聚焦。</p><h3 id="定义现状与目标"><a href="#定义现状与目标" class="headerlink" title="定义现状与目标"></a>定义现状与目标</h3><p>现状很好理解，我们往往是因为发现了某些现象或者当下的结果不符合预期才希望进行改变，有可能是数据表现较弱，不能满足用户需求等等。那对应的，目标就是我们的预期结果。</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-8.png"></p><p><strong>如何看待一句话需求？</strong></p><p>造成一句话需求可能有很多原因，甚至在一些MVP，也就是最小可行产品的DEMO场景底下是有效的。但我们遇到的大部分一句话需求可能都是为了快速解决表面问题。</p><p>这种现象导向做法确实可以很快速地体现执行力，但它的局限性也非常明显，<strong>设计很可能会陷入盲目对齐竞品的境地，或者只是解决单点、当下且浅层的缺陷，却忽略了根本痛点。</strong></p><p>举个生活化的例子吧，小帅和小美因为异地恋太久吵架了，小帅以为小美只是闹闹小情绪，秉承着对齐男朋友竞品以及包治百病的做法，给女朋友买了个包或发了个大红包，以为能够平息一切，结果只回收了小美一句“我不是要这些东西，分手吧”。</p><p>这对怨种CP的现状是由于异地太久而导致亲密关系出现矛盾，所以这对情侣的目标和深层需求其实是<strong>“如何在异地的情况下保持良好的亲密关系，或者早日结束异地的状态”</strong>，但小帅的做法是很表面地处理成了单次情绪安抚的问题，而没有去挖掘为了完成这个双人目标，有哪些路径，而只是偷懒地买了个包或者发了个红包。</p><p>用户体验也是一样，我们有时候自以为给了一个很合理的设计解法，但用户不一定会买账。<strong>男女朋友还有渠道直抒胸臆，设计师要回收用户真实的想法，实际上周期很长而成本也很高，所以更加需要我们基于目标先走一步把深层次的需求和触点盘清楚，再去投入设计资源。</strong></p><blockquote><p>感想：</p><p>要善于挖掘一句话需求背后的深层次需求，治标也治本；</p><p>在科研中，针对现阶段的研究现状，能不能看到这些是基于什么深层次的缺陷，然后提出改进，而不是浮于表面</p></blockquote><h3 id="界定核心问题"><a href="#界定核心问题" class="headerlink" title="界定核心问题"></a>界定核心问题</h3><p>核心问题的本质其实就是预期结果和目前结果的差距，定义核心问题可以用<strong>“目标减去现状”</strong>这个简单的减法来帮助聚焦。而解决问题的本质就是缩小目标和现状的差距。</p><h3 id="建模遍历分析因素"><a href="#建模遍历分析因素" class="headerlink" title="建模遍历分析因素"></a>建模遍历分析因素</h3><p>借助一些现有的结构化的思维模型来帮助我们拆解和盘点造成问题的所有因素，可以分为时间架、空间架、程度架等等的分析结构。</p><p>回归到刚刚异地恋的那个案例，如果核心问题是“如何在异地的情况下保持良好的亲密关系状态？”。从时间上我们可以考虑短期和长期的因素；在空间上，也就是整体和部分关系上，可以拆解成物质因素、情感因素、人际关系因素等。那么在程度上，也可以划分哪些是高优解决的因素，哪些是不紧急不重要的。</p><h3 id="验证因素真伪及优先级"><a href="#验证因素真伪及优先级" class="headerlink" title="验证因素真伪及优先级"></a>验证因素真伪及优先级</h3><p>验证成立性基本上要依赖两种数据，定量数据和定性数据；定量数据可以透过产品埋点、数据看板又或者例会报告等等来获取；定性数据的来源更多就是用研、行业报告等各种渠道的反馈。为什么要验证成立性，是因为造成问题的因素很多，但是我们可以投入的资源是有限的。</p><p>设计师和产品同学经常会纠结某个功能的排序会对其数据转化有很大的影响，如果可以低成本地AB Test一下，又或者引入CE观察一下可用性，大致就能知道我们这个拍脑袋的预设是否成立，而且也可以为后续的决策提供经验。而优先级的话更多是Case by Case，基于当前产品周期OKR和优化这个因素的ROI来平衡。</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-9.png"></p><h3 id="回归复盘"><a href="#回归复盘" class="headerlink" title="回归复盘"></a>回归复盘</h3><p>最后我们要对整个事件的结果、思维路径和处理方式进行一次复盘，来提升下一次处理类似问题的效率和效益，实现真正的成长。内卷会用来戏谑工作中没有意义的重复和比较。内卷与否关键还是在于每次复用中是否存在一定程度的跃迁，也就是自己或者产品有一定程度的成长和向好发展，哪怕他是比较微小而曲折的，这也是为什么建议在金字塔最后增加复盘的环节，其实还是为了更全面透彻地吸取经验，来实现自身和事物的螺旋式进化。</p><p>刚刚在第六步有提到，每个细分问题的执行过程中又再次形成了一个小金字塔，而造成内卷其中部分原因就是我们在这些小金字塔里<strong>进行了太多不必要的重复和精细化，把资源耗费在了不该耗的地方，也就是投入产出比极低的情况下，自己和产品本身都没有得到对应的成长</strong>。</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-10.png"></p><h1 id="如何系统化地进行学习"><a href="#如何系统化地进行学习" class="headerlink" title="如何系统化地进行学习"></a>如何系统化地进行学习</h1><h2 id="点亮技能树：体系化输入"><a href="#点亮技能树：体系化输入" class="headerlink" title="点亮技能树：体系化输入"></a>点亮技能树：体系化输入</h2><p>首先是学习。从进厂那一天开始，无论是主动还是被动，我们都<strong>不仅要学，还要大量地学</strong>，尤其近期AIGC的井喷式涌现，一定也让大家从睡醒到睡前都被新知识全方位包围与轰炸。二是体系化的学习不仅是一个必经的过程，而且也是<strong>结构比较完整闭环过程</strong>，无论学习的内容是什么，学习其实就是将前人结构化的思维和经验为我所用的过程，所以路径是相对清晰。</p><p>其次，玩过游戏的同学都知道，<strong>技能树也就是一个技能细分方向的集合，它其实就是一个通俗的知识体系模型</strong>。我们进到一个新的游戏，会选择一个种族或职业，在游戏里打怪完成任务攒点数，然后根据自己的偏好和职业的优势给对应的技能分配技能点，<strong>打通这条技能链路，从而成为该职业某个方向的佼佼者</strong>。开局我们选了<strong>角色</strong>，后面就<strong>需要根据行业需求以及自身的职业规划来点亮自己的技能树</strong>，成为我们想成为的设计扛把子。</p><p>利用技能树这个系统，能让我们更好地从自下而上的散装学习，转换为<strong>自上而下的能力规划和拓展</strong>。（对应下图的从左向右，从上往下）</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-%E5%89%8D%E7%AB%AF.jpg"></p><h2 id="为什么要种技能树"><a href="#为什么要种技能树" class="headerlink" title="为什么要种技能树"></a>为什么要种技能树</h2><blockquote><p>感想</p><p>教我们如何学习的一个很好的例子，主要感触就是把我平常的学习路线能够进行总结，还能够进一步优化我的学习过程</p></blockquote><h3 id="定义学习现状与目标"><a href="#定义学习现状与目标" class="headerlink" title="定义学习现状与目标"></a>定义学习现状与目标</h3><p>为什么要学习，以及为什么要体系化地学习，为什么要种这棵技能树？</p><p>根据设计师的实际情况，学习目标从时间维度来讲可以分为短期目标和长期目标。短期目标很简单，大多是<strong>为了解决特定的问题</strong>，这个稿子我得学会画出来，这个图我得渲出来，这个问题我要学会讲清楚等等。而长期来说，对<strong>外是希望能够追平同事之间的差距，甚至超越平均水平来形成你的职场优势。对内则是马斯洛第五层</strong>啦，得到自我成长、发挥潜能，实现创造。</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-11.png"></p><h3 id="界定问题"><a href="#界定问题" class="headerlink" title="界定问题"></a>界定问题</h3><p><strong>● 学什么：现有水平和预期水平的差距是什么？</strong></p><p><strong>● 学到哪：这个知识点的关键点和范围是什么？坑有多深？</strong></p><p><strong>● 怎么学：达到学习目标的最优路径是什么？</strong></p><p>光凭借脑子想是搞不明白这些问题的，<strong>在预期水平、学习范围、学习路径都不明确的情况下，我们就需要借助已有的前人的知识参照系，也就是技能树来进行定位和拆解。</strong>为了解答这三个问题，我们就得先弄清楚要如何构建起一棵技能树？</p><p>自然界没有一颗树是自己从石头里爆出来的，都是透过前一棵树的种子种出来或者分支嫁接出来的，技能树也一样。</p><h3 id="因素拆解：如何建立技能树"><a href="#因素拆解：如何建立技能树" class="headerlink" title="因素拆解：如何建立技能树"></a>因素拆解：如何建立技能树</h3><p>到了第三步因素拆解，我们可以从哪些维度进行技能树的构建呢？建议可以分为三个部分，首先我们要在巨头肩上选树苗，根据知识的类型去寻找合适的材料，然后筛选并借用高质量的知识结构，之后再结合自己诉求和阶段动态地调整知识体系。</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-12.png"></p><p>&#x3D;&#x3D;理论类的知识体系&#x3D;&#x3D;，建议大家可以选择一些经典的读物开始。那么痛点又来了，通读熟读一本书或一套理论是非常花时间的，此外不是每个人都能真正的享受阅读，达到有效转化的。更加建议大家先去认真品品<strong>这些经典大部头的目录</strong>，主要也有三个好处：</p><p>● 概括性强：几乎所有的优秀的大部头都是有智慧的人看待事物、做决策的过程，他们在写目录的时候，本身就有着非常强的概括性并且能体现章节间的逻辑，所以我们可以站在巨人的肩膀上先获取高度提炼的全局框架。</p><p>● 光速索引：先不要纠结我们要学多满，而是快速搭建起知识体系和索引，只要知道当自己不懂的时候可以去哪里找参考就可以了。</p><p>● 知行合一：也是顺着刚刚说的这一点来的，带着理论去实践，学一条用一条，反复练习和验证，从而内化成自己真正吸收的养分。千万不要一股脑地囫囵吞枣，也不要用大量阅读来感动自己。</p><p>&#x3D;&#x3D;实践类的技能&#x3D;&#x3D;，大家在学新技能的时候，安装和用的时候从来不看说明书，来一个不会的问题就下意识去某站找找关键字，然后收藏或者转发给文件传输助手，跟着教程步骤的快速模仿，调节一些参数，实现要想要的结果，但问题就在于我们很可能从来不会知道它的原理是什么。</p><p><strong>不要忘记所有实践类的知识都是有理论支撑的，尤其是当我们在某个领域钻研到一定深度的时候，是无法回避去了解它的原理的，就像Protopie做深了其实也是要了解代码原理一样</strong>。技能类知识体系构建还是比较推荐大家去看看<strong>官方文档、入门教程以及工具对应的一级菜单</strong>，人家写得很辛苦也写得很清楚，毕竟那是人家亲生的工具和平台哈。</p><p>举个例子，我们常常发现3D工具里面有一些中文拆开每个字都懂，合起来不知道啥意思的概念和翻译。笔者之所以发现这个事情，也是有一次为了研究一个贴图参数叫“纹素密度”，不同工具平台的翻译不尽相同，翻了超多论坛和野生教程都没有找到令人满意的定义，最后发现在官方文档里写得明明白白。而且官方文档和教程同样也和理论大部头一样，他们的目录也是一个高度凝练的知识架构，并且结合工具场景给到很多实用的案例。</p><p>这里分UI、3D、引擎、开发、AIGC给大家盘点了一些常用官方文档的入口，大家可以“<strong>工具平台名+Guidelines、Manual、Docs或Documentation</strong>”的关键字进行检索，失眠多梦可以多围观，往往会可以新梳理我们对整套实践工具的认知。尤其是Adobe《Start 3D》流程指引，虽然它自己的3D工具还在蹒跚阶段，但我很后悔在学习3D三年后才遇这套入门的概念讲解，它把我很多细碎的概念从上层重新串联了起来。</p><ul><li>UI：Figma、Protopie、Material Design、Apple Human Interface Guidelines</li><li>3D：Adobe Start 3D、C4D User Guide、Octane User Manual、Substance Painter、Blender Reference Manual</li><li>开发：Apple UIKit、Android开发者文档、Harmony OS 开发者文档、three.js docs</li><li>引擎：Unreal Engine 5 Documentation、Unity Documentation</li><li>AIGC：Midjourney Documentation、Stable Diffusion Web UI wiki</li></ul><p>除了参考工具现有的官方Wiki文档外，在AI平台涌现的当下，我们也可以利用集成GPT4能力的脑图工具，如Superus等，快速透过问答引导来逐步构建起初级的知识图谱。</p><p>当然无论是理论类的还是实践技能类的知识体系构建，都建议大家能尽可能地去找<strong>拥有两个特征的高质量材料</strong>：</p><ul><li><p><strong>一手信息</strong>：尽可能接近原生环境、原生语言且是不断更新的官方信息。知识的传播和理解是有营养级的，我们难以确定在几度易手后，信息是否会产生偏差；或者我们真正需要的信息在传播过程已经被人为筛掉。</p></li><li><p><strong>结构提纯，普适性强</strong>：这样我们借用架构时学习路径会更加明确，而且后面可以基于这个主结构不断补充分支。现在很多媒体形态为了吸引我们去消费阅读，往往会加入很多很有意思但是过于细分的角度。要记得我们现在的目标是为了构建技能树，有时候细分太多，反而会影响判断和精力投入。</p></li></ul><p>借用知识结构只是敲门砖，要借用过程中我们还是要保持辩证态度，不要照抄，也不要把信息的权威性当做正确性和唯一性来看待。虽然大家都习惯了直给的快乐，<strong>但直给的结论往往容易省略思维构建的过程和纠错的细节，而这两个环节对于锻炼自己独立思考的能力是非常关键的。</strong></p><p>其次我们还是的要根据自己的阶段和动态认知，<strong>随时增删改技能树的内容</strong>。大家都知道罗振宇老师，他有一个学习习惯是颇挺值得我们参考的。每天罗老师要写五篇阅读心得，有时候只记录关键字，是为了像缝扣子一样，强迫自己把新的知识缝合到原来的知识结构当中。设计师有时候出于行业焦虑会疯狂去获取或者收藏技巧点，但是<strong>却忽略动态缝合技能树的过程，从而错失了找到最佳学习路径</strong>。</p><h3 id="因素验证-主次评估：如何点亮技能树"><a href="#因素验证-主次评估：如何点亮技能树" class="headerlink" title="因素验证+主次评估：如何点亮技能树"></a>因素验证+主次评估：如何点亮技能树</h3><p>我们团队接到一个设计任务，两周之内要用UE做一个完整的、可交互的、3D的开放世界概念游戏Demo，满足我们当时诉求的UE基础技能树大概有九个模块，80几个学习节点。但是时间和精力有限，我们不可能在两周内全部点亮，且能完成执行输出。</p><p>● 客观限制：知识分支太多，要选择当下最有价值的学习路径；在刚刚的案例里，如果我们选择去学UE的AI行为树，也许可以收获一堆Demo里走来走去的NPC，但是对整个产品概念的呈现其实没有核心的帮助。</p><p>● 主观限制：人的精力是有限的，在这种巨量知识焦虑下，可能更容易引起反抗情绪。</p><p>● 团队构成：术业有专攻，团战更高效，要记得我们在职场里永远不是一个人在战斗，一个人学不完那就分布式多个人去学，每个人根据自己的优势去学，再联合起来打团战，往往能发挥1+1＞2的作用。</p><p>● 阶段差异：每个人学习阶段和学习诉求不一样，在不同的阶段我们也要重新看待学习曲线和权重分配。</p><p>基于技能点分配这个案例，结合个人自身的经验，技能点分配有三个要素是可以参考的：</p><p>● 贴合刚需：贴合现实需求的技能点不仅实用优先级很高，往往也能提供一个持续训练和得到外界反馈的场景。</p><p>● 学习阶段明确：我们能够知道进阶能怎么做，退阶又能怎么做，根据不同的应用场景有一定的学习弹性，这样子我们也能相对知道投入的学习成本大概能有多少的收效转化。</p><p>● 自身主观能动性：选你所爱，热爱的自驱力和需求Deadline都是第一生产力。</p><p>最终我们采取了一种游击学法，也就是如果我们要完成一开始定下的呈现目标，我们团队需要掌握“最小必要知识”是什么？接着我们就将原来的学习节点从80个缩减成了20个，然后我们再分配两个人的学习任务，大概每个人学10个点，快速地把这个Demo拼合出来。</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-13.png"></p><h3 id="细化解决问题-具体高效学习"><a href="#细化解决问题-具体高效学习" class="headerlink" title="细化解决问题 具体高效学习"></a>细化解决问题 具体高效学习</h3><p>正如我们一开始说的，细化的问题其实也需要进行二次的结构化拆解，但因为学习这个行为本身比较灵活，跟我们要学的东西是强关联，所以这里就借用4W1H模型提取了一些通用的方法，给大家参考参考。</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-14.png"></p><p>what: 首先学习的内容刚刚在分配技能点的环节有提到过，尽量做到“知行合一”，选择可以在实际实践中应用的知识。而且也要选择能够创造持续反馈场景的知识，因为只有不断地输出，且不断地获取反馈，我们才能不断地进行校正和训练来验证自己是否在进步。</p><p>其次，我们要选择刚好位于“拉伸区”的学习内容，就是我们舒适区外围边缘的那个范围，这样我们不会因为学习内容太难而感到焦虑，也不会因为学习内容太容易而厌倦。</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-15.png"></p><p>除此之外，日常的学习内容和练习最好能<strong>结合当前业务形态沉淀成作品</strong>，这对职业发展来说还是比较有效的材料。一是能锻炼设计师对于产品规划和落地性的综合思考，二是围绕产品实际命题去进行研究学习，学习路径会更加聚焦而且更加延展，不会东学一个西学一个毫无关联。</p><blockquote><p>在做QQ打卡视觉设计的时候，产品的基本需求是希望在每天出一张好看的卡片，后面我们就进一步思考，在策略上是不是可以结合品牌或者用户属性去做日期的精准投放，在技术上是不是可以结合3D的贴图技法输出一些有趣的小品场景，于是就有了中间这两个结合品牌节庆和用户生日的静态设计。</p><p>再进阶又继续推导，每天都是静态的小卡片有点单薄，是不是可以做成3D的H5互动模块呢？然后笔者再去研究Web引擎下的3D的材质实现，从而掌握了一种新的专业能力。</p><p>上面每一步都是和产品思维关联，但又没有和设计专业能力脱节，都能产生新的设计沉淀。这样的学习内容其实对于个人或者产品的成长来说都是相对有益处的。</p></blockquote><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-16.png"></p><p>WHEN：</p><p>欺骗大脑 渐入佳境：一是去做比学习更难受的事情，这样比较起来学习就显得更轻松了。</p><p>把握一切断网的机会，制造心流：有次4-5个小时的长途飞机，本人恐飞怕死又睡不着，打开电脑看到《PBR基于物理渲染手册》的原文书，想说就学学，反正学不进去横竖也能催个眠，不亏。然后想了想，这英文书后面自己也不好索引啊，那要不直接翻译了得了。因为没有外物的干扰，所以超快进入心流，几个小时嗖一下过去了。一是提升了我对PBR概念的中英文映射能力，而且中文重新组织表达其实可以验证自己是否真正内化了原生逻辑；二是透过对自身纰漏和矛盾点的反复的查错和钻研，其实也能加深我对深难概念的认知。</p><p>where：在环境上，推荐大家尽可能选择原文的材料和操作环境，也就是英文为主的操作环境。使用原文环境能让我们对专业术语的理解更加充分，另外延伸物料也更为完备，包括设计资产和业界论坛讨论等等，毕竟世界范围内很多工具的英语使用者实在比中文使用者多太多了。</p><h1 id="如何有效组织设计输出"><a href="#如何有效组织设计输出" class="headerlink" title="如何有效组织设计输出"></a>如何有效组织设计输出</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;设计结构化实践手册整理&quot;&gt;&lt;a href=&quot;#设计结构化实践手册整理&quot; class=&quot;headerlink&quot; title=&quot;设计结构化实践手册整理&quot;&gt;&lt;/a&gt;设计结构化实践手册整理&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;整理自公众号《腾讯ISUX》，感觉挺有用的</summary>
+      
+    
+    
+    
+    <category term="大前端" scheme="https://youxt-njnu.github.io/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="设计" scheme="https://youxt-njnu.github.io/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+    <category term="设计" scheme="https://youxt-njnu.github.io/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+    <category term="系统性思维" scheme="https://youxt-njnu.github.io/tags/%E7%B3%BB%E7%BB%9F%E6%80%A7%E6%80%9D%E7%BB%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>宽带新装经验集</title>
+    <link href="https://youxt-njnu.github.io/2023/05/18/%E5%AE%BD%E5%B8%A6%E6%96%B0%E8%A3%85%E7%BB%8F%E9%AA%8C%E9%9B%86/"/>
+    <id>https://youxt-njnu.github.io/2023/05/18/%E5%AE%BD%E5%B8%A6%E6%96%B0%E8%A3%85%E7%BB%8F%E9%AA%8C%E9%9B%86/</id>
+    <published>2023-05-18T08:59:51.000Z</published>
+    <updated>2023-08-29T12:54:31.033Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="宽带新装"><a href="#宽带新装" class="headerlink" title="宽带新装"></a>宽带新装</h1><h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><p>两种方式</p><ul><li><strong>按年缴费</strong>（1-3年，年限越长越优惠）</li><li><strong>按月缴费</strong>（就是常说的手机卡与宽带绑一起，专业一点叫融合）</li></ul><p>价格</p><ul><li>按年交宽带的费用是固定的，一般无优惠或自己加100-200块钱拿一个路由器给你</li><li>如果对营业厅说的费用感到质疑，拨打10010号电信客服，去咨询就可以，价格省内统一</li><li>看自己需要安装宽带的地方是常住还是租一年半载（三年宽带没用够就算剩下一个月几天也可以去退费，很多人不知道，营业厅不给退，就可以投诉了</li><li>在这里，注意一个套路（<strong>合约</strong>），营业员说送什么东西，手机，家电，话费，电子产品，<strong>这些全部是要求你的套餐不变，用两三年的，中间更改套餐有巨额违约金</strong>（少了200块，多了几千块，套餐越高，送的东西越高，违约金越高）合约期中途更改资费，相当于花钱买了当初送你的东西</li><li>不需要IPTV服务</li><li></li></ul><p><strong>购买路由器</strong></p><p>选购好的路由器我就不做介绍了，B站上有好多推荐的视频，这里只提几个关键词：WiFi6,干兆，250块左右，不要根据天线数量、品牌、外形来判断路由器的性能。推荐品牌：TP-link,水星。</p><h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p>电话咨询：给电信客服10000咨询最低套餐或你的需求，让客服推荐（客服与营业厅不同，客服与用户没有直接利益关系，而营业厅一定会推荐佣金最高的套餐给用户）；</p><p>手机APP里办理套餐：可以直接这个页面预约上门安装。还有，如果想改套餐，也可以直接参考上面的套餐，去营业厅或打客服电话改</p><p>签合约，如果不需要，一定要拒绝。问清楚套餐内容，送的语音流量送多久，号码的流量超出去怎么收费，还送其他什么东西，签合约的时候，看清楚合约内容（<strong>领取大额礼品几乎都会上征信，可以了解我的另一篇文章</strong></p><p>在选给你办理的人员上，有3种，1是外面跑业务的，2是代理商（xxx通讯 xxx科技 xxx代理点）3是自营厅。外面跑业务的办理完就找不到人了，代理商各种薅羊毛，自营厅人太多排队排不上。<strong>但投诉可以解决任何业务上的问题</strong></p><p>进行测速：</p><h2 id="运营商"><a href="#运营商" class="headerlink" title="运营商"></a>运营商</h2><p>拼多多上有收藏的套餐；此外，618期间可能会搞活动，这样可以便宜办理两年这种</p><p>联通：已经有了一个手机号，同时带着一个副卡；</p><p>所在地区是江苏省镇江市；</p><ol><li><p>先讲基本情况，问有啥套餐推荐，以及相关的资费和售后情况，是否需要上门安装费</p></li><li><p>以及所在地区是否符合安装条件</p></li><li><p>按照年交的，之前看需要收取预存款，那如果期间出现了故障，售后能保证吗，如果不能保证那能否退款</p></li><li><p>在官网上看到了有”<a href="https://m.10010.com/queen/new-broadband-web/new-broadband-web.html?activeId=8818100954349604">江苏宽带200M-30元&#x2F;月基本产品</a>“，这个一年的套餐用完之后，后续还有不，价格怎么变化</p></li><li><p>是派周围营业厅来进行安装嘛，售后的话是网上营业厅沟通，那么周围营业厅会来处理吗</p></li><li><p>提供什么售后服务</p></li><li><p>包年的话，如果用不到一年，是不是可以退，我看之前有没有退然后客户投诉成功的案例</p></li><li><p>有没有手机卡和宽带的融合套餐，比较实惠的，因为家里用量少</p><blockquote><p>国内流量32G，联通旗下APP免流。600分钟国内语音通话。绑定家庭宽带200Mbps。每月费用44元。</p><p>在网上看到过这个套餐:arrow_double_up:</p><p>另外现在联通线上营业厅有个活动还算是比较划算的，适合有联通电话卡的客户，如果承若月资费78元以上第一年是可以享受300M宽带一元购的。第二年的话，则是按照20元每月收费。整体来说也还是比较划算的，但不知道有无线下划算，大家可以拿这个作为参考指标去线下砍价呀！</p><p>还有这个:arrow_double_up:</p></blockquote></li><li><p>是主要安装宽带服务的吗，那光猫、路由器这些，是用户这边自己安装吗</p><blockquote><p>光猫，不同地区、不同运营商、不同的宽带速率，运营商提供给你的设备参数配置各有不一，有百兆网口、干兆网口、带WF或不带WF功能等，一般越高宽带速率，光猫配置越高。</p><p>&#x3D;&#x3D;所以是我自己根据需求进行光猫的选择吗，你们会提供吗，相应的参数是多少，用到期之后你们回回收吗，如果中途出故障那你们怎么售后&#x3D;&#x3D;</p></blockquote></li><li><p>是否会提供网线，网线是几芯的，<strong>如果是四芯网线，那么最高速率也就只有100M，</strong>因此，选择一条CAT5E或CAT6的网线非常有必要</p></li></ol><p>此外，因为营业厅的话周边有电信的，所以考虑要不要也打电话问问典型10000</p><h2 id="后续注意点"><a href="#后续注意点" class="headerlink" title="后续注意点"></a>后续注意点</h2><p>要宽带账号和密码：</p><p>要wifi账号和密码：</p><p>互联网电视是什么原理，怎么收费？</p><p><a href="https://post.smzdm.com/p/a5o0qdzx/"><strong>以后下单续费，千万不要去网上，一定要去线下多问问，营业厅的活动真的远比线上便宜太多！</strong></a></p><p><a href="https://www.sohu.com/a/343160628_470081">IPTV相关的</a></p><p><a href="https://www.zhihu.com/question/446999607">宽带、光猫、路由器、wifi等的解释</a></p><p><a href="https://zhuanlan.zhihu.com/p/260763421">路由器购买，选149的水星</a></p><p><a href="https://zhuanlan.zhihu.com/p/622517791">用手机就能解除宽带限速，网速立马翻倍</a></p><p><a href="https://www.zhihu.com/question/419826228/answer/2433042058">提高家用网速</a></p><p><a href="https://www.zhihu.com/question/561237180/answer/2759598993">网络卡顿排查</a></p><p><a href="https://www.zhihu.com/question/381435437/answer/2898432007">测速相关</a></p><p>宽带测速软件：speedtext、china unicom</p><p>100M-20M-100M</p><p>200M-30M-200M</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;宽带新装&quot;&gt;&lt;a href=&quot;#宽带新装&quot; class=&quot;headerlink&quot; title=&quot;宽带新装&quot;&gt;&lt;/a&gt;宽带新装&lt;/h1&gt;&lt;h2 id=&quot;基本知识&quot;&gt;&lt;a href=&quot;#基本知识&quot; class=&quot;headerlink&quot; title=&quot;基本知识&quot;&gt;&lt;/a</summary>
+      
+    
+    
+    
+    <category term="生活一角" scheme="https://youxt-njnu.github.io/categories/%E7%94%9F%E6%B4%BB%E4%B8%80%E8%A7%92/"/>
+    
+    
+    <category term="宽带新装" scheme="https://youxt-njnu.github.io/tags/%E5%AE%BD%E5%B8%A6%E6%96%B0%E8%A3%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>地图服务及应用</title>
+    <link href="https://youxt-njnu.github.io/2023/05/18/%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
+    <id>https://youxt-njnu.github.io/2023/05/18/%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1%E5%8F%8A%E5%BA%94%E7%94%A8/</id>
+    <published>2023-05-18T08:27:55.000Z</published>
+    <updated>2023-08-29T12:48:24.321Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="地图服务及应用现状"><a href="#地图服务及应用现状" class="headerlink" title="地图服务及应用现状"></a>地图服务及应用现状</h1><blockquote><p>摘录自相关报导、微信公众号和论文的一些素材，感谢！</p><p>收集了些许素材，但并未继续调研下去，也算创业未半，戛然而止</p></blockquote><h2 id="地图视角"><a href="#地图视角" class="headerlink" title="地图视角"></a>地图视角</h2><p>任福：现代社会对地图的倚重程度是与日俱增的，在这种情况下地图扮演的角色，我们可以从五个视角去观察：<a href="https://mp.weixin.qq.com/s/RcoSmqypiKBHeb1sxBz2ow">https://mp.weixin.qq.com/s/RcoSmqypiKBHeb1sxBz2ow</a></p><ul><li>全空间视角：在现代社会，地上下、室内外、陆海、“主客体”认知空间等都是地图表达的对象，其功能体现在：定位（我在哪里）、寻址（我要去哪里）、导航（我怎么过去）。</li><li>全信息视角：通过空间位置全景式地串起这个位置上曾经发生的、正在发生的以及将来可能发生的各种信息，我们称之为位置智能，地图则成为组织这些信息的“主链条”。</li><li>全媒体视角：现代社会的地图需要通过大中小等各种不同尺寸的电子屏幕进行跨媒体表达，满足感知大数据实时制图要求，具备静态的、动态的、多模态的以及交互等多种形式和功能。</li><li>全周期视角：新型基础测绘能够实现对地理空间进行实体化测绘，便于将来实体的全生命周期管理，进而对城市实现精细化管控，这就要求地图和CIM、BIM等结合，把各种设施集成到地图中去。</li><li>全业务视角：整合行业领域的多个业务线条，通过地图承载全部业务流，构建出各类“一张图”系统，如自然资源一张图、环境生态一张图、灾害应急一张图等。这五个视角对地图提出了很多功能创新的要求，但是也恰恰说明了地图在今天的重要性。</li></ul><h2 id="发展历程"><a href="#发展历程" class="headerlink" title="发展历程"></a>发展历程</h2><p>晋代地图学家裴秀，在绘制了《禹贡地域图》这种高水平地图的基础上，总结提出了“制图六体”的制图原则：分率、准望、道里、高下、方邪、迂直，形成了我国古代传统地图学的数学基础与制图原理，打下了地图学制图发展的基础。在国外，古希腊托勒密创造了球面投影和普通圆锥投影，并以普通圆锥投影绘制了世界地图，是西方地图学史上的浓重一笔。随后，地图投影、经纬度测制技术提高了地图的实用性。而17世纪后的高精度罗盘、象限仪、水银气压计、经纬仪、平板仪等仪器的发明，使大范围、高精度大比例尺地形测图成为可能。</p><p>改革开放后，遥感制图、计算机制图、多媒体电子地图、移动通讯地图与互联网地图等方面取得巨大成就，满足了国家经济建设、社会发展、国防军事与科研教育等各方面的需要，制图技术发展不断增速。20世纪70年代后期以来，遥感技术应用试验研究逐渐在全国范围展开。现阶段，遥感技术已在地质、地貌、土壤、林业、土地利用、土地资源、气象、海洋、农业、水利等各项专题制图以及区域综合系列制图中广泛应用。计算机制图技术从70年代中期开始兴起，并完成了一大批地图集的编制如《中国人口地图集》，推动统计制图专家系统、地图设计专家系统等的建设和研制。随着90年代IT技术和信息产业的飞速发展，地理信息系统技术的发展，为制图提供了一批优秀的地理信息系统软件，也推动着地图与3S技术结合成空间信息技术支撑体系。</p><h2 id="智能时代的地图"><a href="#智能时代的地图" class="headerlink" title="智能时代的地图"></a>智能时代的地图</h2><blockquote><p><a href="https://mp.weixin.qq.com/s/RcoSmqypiKBHeb1sxBz2ow">链接</a></p></blockquote><p>数字化和智能化时代都强调了机器的重要性，数字化是机器代替人劳动，智能化是机器代替人决策，地图在这个时代，慢慢呈现出不同演化方向。首先是位置服务类的地图，这类地图的特点是靠感知驱动的，如卫星导航、手机定位、无人驾驶等，通过这样的传感器来驱动地图应用，目前占据了我们这个产业产值的大半壁江山，例如高精地图、点云地图等。</p><p>其次就是像《世界航海地图集》这样的知识服务类地图，它们是靠认知驱动，即编图人员对表达对象的认知。知识服务类的地图使用范围也非常广泛，如中小学生的地理课本中，或者现在很多人家里都会有的一两本地图集。地图出版业产值不大不小，但对人们认识地理环境十分重要。</p><p>最后是文创服务类的地图，顾名思义，就是把地图元素与丝绸、剪纸、旗袍、瓷器、雨伞、日历等文创产品结合起来，它们是靠设计者的觉知和个人体验来驱动的，这类地图非常有特色，但是产业产值体量会比较小。三类地图所遵循的理论方法和技术路线差异比较大。</p><p>所以，未来发展趋势正如郭仁忠院士所提“我们将进入泛地图时代”。推动地图泛化的力量也将日益的多元化，既有测绘、地信、计算机等主打行业，还有志愿者制图、机器制图、人文制图、赛博制图等系列新兴领域。我相信未来地图将与时俱进且活力满满。</p><p>人工智能“三要素”的时空大数据、算法和计算能力，特别是自主算法尤其是智能算法的研究，必将快速推进多源异构时空大数据集成融合同化处理、全要素全过程智能化多尺度时空数据库的自动生成、时空大数据挖掘与知识发现等的深入研究，全面推进当代地图学向更高水平发展。</p><h2 id="地图制图综合"><a href="#地图制图综合" class="headerlink" title="地图制图综合"></a>地图制图综合</h2><p>地图制图综合这个概念由德国地图学家艾克尔特于1921年提出，至今经历了4个发展阶段：一是由认为地图制图综合是“主观过程”到认为地图制图综合是“客观的科学方法”；二是由地图制图综合的“定性描述”到地图制图综合的“定量描述”；三是由“基于模型的地图制图综合”到“基于模型、算法、规则、知识的数字地图制图综合”；四是由基于“单要素、单一过程的地图制图综合”到“基于‘综合链’的全要素、全过程的过程与质量控制的地图制图综合”。最终解决了由手工模拟地图制图综合到计算机数字地图制图综合的转变，进而解决了由地图制图综合的数字化到智能化的优化升级。</p><p>地图制图综合难题突破的瓶颈是智能化。主要表现在４个方面 ：①空间目标及其空间结构、空间分布的智能识别；②智能化地图制图综合算法设计；③自动制图综合过程的智能化控制；④制图综合结果的智能化和自动化评价。</p><p>王家耀总结说，在人工智能时代，我们要抓住大数据时代机器学习的新浪潮，开展地图学领域深度学习等算法的研究和应用，实现“由基于统计方法的神经网络到基于时空大数据方法的神经网络”的转变，充分利用时空大数据教会计算机自己学习，解决地图学中地图设计、制图综合方面的“知识工程”瓶颈问题，其中特征提取和表示是难点。</p><p>要抓住类脑智能研究这个人工智能领域的新方向，开展面向智能地图制图的基础研究，涉及“人脑地图”与人类大脑皮层成像和重组的机理、地图学专家基于脑机理研究的制图信息处理的途径、类脑计算模型和算法及计算架构，需要地图学家和类脑智能专家的结合。</p><p>要抓住人工智能“三要素”，使之成为大规模智能化地图制图生产的核心驱动力。其中，<strong>算法</strong>是机器学习的核心、是引擎；<strong>时空大数据</strong>是人工智能的动力，没有时空大数据，算法就不起作用；<strong>云计算</strong>支撑的计算能力是一种新的计算模式，具有时间弹性和空间弹性，支撑“地图制图综合”处理的分布式、协同化和智能化，采用分布、并行、协同模式，最终给出“地图制图综合”的解。</p><p>地图制图综合“百年国际难题”得到重大突破就是地图科学领域应用人工智能技术的典型例子。王家耀总结了这个“百年国际难题”演进的四个阶段，即：</p><blockquote><p>由“主观过程”到“客观的科学方法”的演变。</p><p>由“定性描述”到“定量描述”的演变。</p><p>由“基于模型”到“基于模型、算法、规则、知识的数字地图制图综合”的演变。</p><p>由“基于单要素研究”到“把制图综合作为一个全要素、全过程的过程控制和质量控制”。</p></blockquote><p>经过近十年来的集中攻关，终于使这个“百年国际难题”获得了重大突破，取得了四个方面的创新成果：</p><blockquote><p>一是，首创多尺度地图目标空间定量计算的基础理论与描述模式，解决了如何保持各比例尺地图与现实世界的适应性及多尺度地图之间的相似性问题；</p><p>二是，创建了地图信息度量准则，发展了空间分布模式识别方法，提出了地图信息变化发现系列算法，解决了地图要素空间形态特征以及变化要素的检测和提取问题；</p><p>三是，首创了地图自动“综合链”理论、质量评价体系和可视可编辑的过程控制模型，解决了地图综合过程控制策略方法及综合质量评判问题；</p><p>四是，研制了自主可控的全要素、全过程、多尺度地图自动综合与更新软件平台及应用系统，解决了多尺度地图数据库建设及地图生产资源耗费巨大、周期长等问题。</p></blockquote><p>地图制图的‘数字化—网络化—智能化’必将进一步提质增效</p><h2 id="地图服务市场"><a href="#地图服务市场" class="headerlink" title="地图服务市场"></a>地图服务市场</h2><ol><li><p>搭载于互联网上的网络地图市场。自谷歌起，国外和国内的互联网巨头均推出了自己的在线地图产品，开展网络地图搜索服务和基于地理位置的增值服务。免费地图服务模式对网络地图的普及应用起到了引领作用，也极大地拓展了地图的使用群体，带来了空间信息的全面社会化。这一市场的需求将伴随着公众日常活动中位置服务的兴起持续上升。</p></li><li><p>搭载于导航终端上的导航地图市场。不同于网络地图满足综合性服务的需求，导航地图投放市场之初就专注于满足导航服务的需求。全球导航地图市场从20世纪90 年代末开始，目前仍处于快速发展阶段。我国导航地图市场发展尤为迅速，已成为继日本、欧盟和北美之后的又一大导航产品市场。但随着移动智能终端和网络通信的快速发展，导航地图的搭载终端已从车载导航仪、手持导航仪(PND)扩大到手机，服务模式也从单一的导航过渡到综合信息服务和社交服务。</p></li><li><p>搭载于移动智能终端上的移动地图市场。这一市场是网络地图市场在移动互联网上的延伸，也是导航地图市场在移动智能终端上的拓展。随着智能手机终端的不断成熟和发展，以及3G和4G网络的逐渐普及，移动手机端正成为互联网最重要的入口，移动地图的应用领域也在不断扩张。但我们也要看到这一市场与其他生活、社交等信息服务市场之间的边界正日益模糊，单纯的移动地图服务正向移动位置服务、移动生活服务发展。</p></li></ol><p>移动通讯地图的发展基于GPS等全球定位系统、车载导航系统，能够为公众提供导航定位服务，满足了军事和民用的需要。20世纪90年代互联网的发展，也推动着互联网地图的发展，形成了高德地图、百度地图、天地图等知名地图网站。进入大数据时代，地图制图和应用的发展需要从数据驱动、技术驱动转向用户驱动，考虑不同用户的不同需求，形式不断多样化。目前地图互联网已经不局限地图查询检索，而是提供还原虚拟的真实世界、自定义的样式定制化(根据自身需要定制各种地图)、数据可视化(3D、全景、动画等多种形式)、媒介多样化(PC、手机、智能手表等)等多种服务。</p><p>专题制图的服务内容涉及灾害预测预警、生态保护、环境治理、城镇和区域发展规划。</p><p>比如我们目前使用的导航地图，相当于是与公共服务的结合，以大数据的服务模式为大众的生活提供了很多便利。至于行业应用的地图，同样存在很多结合点，比如像公安、交通、电力、环保、水利等，都在追求大数据与地图的整合。另一方面，地图发展与专业模型的整合越来越多，专业模型里面的分析方法必须依靠大数据思维。地图要真正实现它的价值，必须应用到工作，甚至科研中。例如地图与环保行业，就需要结合实际行业的数据，并依靠相应的专业模型，分析整个区域空气质量的变化情况，并作出预测、预报、预警等。以前，这些专业模型与空间结合不是很强，但是在引入地图之后，这些模型会运用得越来越好，预测的结果也会越来越科学。</p><p>在地图编绘方式上将大数据与地理信息系统相结合，为各机关、团体和企业及大众提供在线地图制图平台[6][7]，可以直接在网上获取信息，利用网络服务工具制作地图，在网上发布。或在网络上获取数据，网下脱机制图，再网上发布。</p><p>从而地图更加大众化、个性化、智能化、实用化，提高了地图的使用效益。例如地图慧在互联网平台上为广大用户提供大众制图、商业分析与企业服务。它以丰富的地图模块让用户自己根据表格数据生成各种统计地图；帮助企业分析潜在客户和物流网点选址；帮助企业进行网点管理、区划管理、分单管理、路线规划和车辆监控等。又如百度地图拥有全球轨迹追踪、存储、查询、纠偏、分析等功能的鹰眼Web，能帮助每位开发者实时追踪多达1000多万终端，已广泛应用于物流、共享出行、车载硬件、外勤管理和可穿戴设备服务，已为多家快递公司提供轨迹追踪与管理服务（图21，图22，图23）。</p><h2 id="地图应用方案"><a href="#地图应用方案" class="headerlink" title="地图应用方案"></a>地图应用方案</h2><p>在美国，几乎每个联邦政府部门都采用GIS技术来处理各种各样的工作和事务，如资产管理、人口就业、公共政策、规划分析等等。在政府的信息周活动中，Esri公司的政府服务部总监Christopher Thomas表示：“GIS具有动态显示地图以及地图交互的功能，能够帮助政府实现公众参与，更其更具公开、透明性。”</p><p>Esri公司提供的GIS产品以及地理数据库整体解决方案能够充分满足政府的各种工作和要求。早些年，Esri发布的在线地图产品和技术，能够帮助政府轻松分享地图数据。随着这些年Esri在ArcGIS Online产品技术的不断提升，目前，这种在线地理空间的平台能够让使用者在网络上轻松使用地图，并个性定制多种Apps。</p><p>美国基于ArcGIS Online地图服务的政府数据与地图相结合的<a href="file:///D:/a_extention/zotero_store/storage/CXWGWPS5/nh4k2fba_p9i2v5Bb8UzCw.html">十大经典案例</a>。政府使用地理数据来促进不同行业的政务信息公开化——如洪涝灾害管理、森林虫灾监测等方面。还包括一些GIS结合政府内部数据来推进决策的工作，如为退伍军人提供医疗服务等。</p><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>地图与抗疫</p><p>高维地图</p><p>高精地图、地图感知、自动驾驶</p><blockquote><p>《自主导航地图的昨天、今天和明天》孟立秋</p></blockquote><p>位置智能：风险评估、交付优化、价格配置及收购或扩张的战略开发</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;地图服务及应用现状&quot;&gt;&lt;a href=&quot;#地图服务及应用现状&quot; class=&quot;headerlink&quot; title=&quot;地图服务及应用现状&quot;&gt;&lt;/a&gt;地图服务及应用现状&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;摘录自相关报导、微信公众号和论文的一些素材，感谢！&lt;/p&gt;</summary>
+      
+    
+    
+    
+    <category term="知识碎片" scheme="https://youxt-njnu.github.io/categories/%E7%9F%A5%E8%AF%86%E7%A2%8E%E7%89%87/"/>
+    
+    
+    <category term="地图应用" scheme="https://youxt-njnu.github.io/tags/%E5%9C%B0%E5%9B%BE%E5%BA%94%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git手册</title>
+    <link href="https://youxt-njnu.github.io/2023/05/17/git%E6%89%8B%E5%86%8C/"/>
+    <id>https://youxt-njnu.github.io/2023/05/17/git%E6%89%8B%E5%86%8C/</id>
+    <published>2023-05-17T02:50:16.000Z</published>
+    <updated>2023-09-01T01:28:29.738Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h1><p>用来记录文件变化，以便查阅特定版本修订情况；</p><p>把手工管理文件版本的方式，改为由软件管理文件的版本；而负责管理文件版本的软件就叫做版本控制软件</p><p>优点：</p><blockquote><p>操作简便</p><p>易于对比</p><p>易于回溯</p><p>不易丢失</p><p>协作方便</p></blockquote><p>分类：</p><ul><li>本地版本控制系统</li><li>集中化的版本控制系统：如SVN；服务器保存文件的所有记录，客户端只保留最新的文件版本</li><li>分布式版本控制系统：如git；服务器保存文件所有最新版本，客户端上保存了服务器的完整备份</li></ul><p>git特性：</p><ul><li>直接记录快照（类似备份），而非差异比较</li><li>近乎所有操作都是本地执行</li></ul><p>git管理项目的三个区域</p><ul><li>工作区</li><li>暂存区</li><li>git仓库</li></ul><p>git中的三种状态：</p><ul><li>modified，已修改</li><li>staged，已暂存</li><li>committed，已提交</li></ul><p>基本git工作流：</p><ol><li>在工作区中修改文件</li><li>将想要下次提交的更改进行暂存</li><li>提交更新，将快照永久存储到git仓库中</li></ol><p>开源许可协议open source license：</p><ul><li>BSD(berkeley software distribution)</li><li>Apache Licence 2.0</li><li>GPL(GNU general public license)<ul><li>具有传染性，不允许修改后和衍生的代码作为闭源的商业软件发布和销售</li><li>如LInux</li></ul></li><li>LGPL(GNU lesser general public license)</li><li>MIT(massachesetts institute of technology, MIT)<ul><li>在修改的代码或者发行包中，必须包含原作者的许可信息，对商业友好</li><li>JQuery, Node.js, 多前端协议</li></ul></li></ul><p>开源项目托管平台，专门用于免费存放开源项目源代码的网站，三个用git管理的平台：</p><ul><li>github, 全球最牛</li><li>gitlab, 对代码私有性支持较好，企业用户较多</li><li>gitee, 码云，国产</li></ul><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/git%E6%89%8B%E5%86%8C-1.png"></p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/git%E6%89%8B%E5%86%8C-4.png"></p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/git%E6%89%8B%E5%86%8C-5.png"></p><h1 id="具体内容"><a href="#具体内容" class="headerlink" title="具体内容"></a>具体内容</h1><p><strong>设置用户名和邮件地址，区分操作人的信息</strong></p><blockquote><p>–global 该命令一次使用，永久生效</p></blockquote><p>git config –global user.name 用户名 设置用户签名<br>git config –global user.email 邮箱 设置用户签名 </p><blockquote><p>这些信息会更新到c:&#x2F;users&#x2F;用户文件夹&#x2F;.gitconfig文件（配置文件）中</p></blockquote><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ git config --<span class="keyword">global</span> user.name Layne </span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ git config --<span class="keyword">global</span> user.email Layne@atguigu.com </span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ cat ~/.gitconfig </span><br><span class="line">[user] </span><br><span class="line"> name = Layne </span><br><span class="line"> email = Layne@atguigu.com</span><br><span class="line"></span><br><span class="line"><span class="comment">#  查看所有的全局配置项</span></span><br><span class="line">$ git config --<span class="built_in">list</span> --<span class="keyword">global</span></span><br><span class="line"><span class="comment"># 查看指定的全局配置项</span></span><br><span class="line">$ git config user.name</span><br><span class="line">$ git config user.email</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取帮助信息 git help &lt;verb&gt;, git &lt;verb&gt; -h</span></span><br><span class="line">$ git <span class="built_in">help</span> config</span><br><span class="line">$ git config -h</span><br></pre></td></tr></table></figure><p><strong>将本地未进行版本控制的目录转换为git仓库</strong></p><p>git init 初始化本地库 </p><blockquote><p>会创建一个名为.git的隐藏目录，包含了初始的必要文件</p></blockquote><p><strong>查看本地库状态</strong></p><p>git status</p><blockquote><p>工作区的4中状态：</p><p>untracked(不被git管理), unmodified(工作区和git仓库的文件内容一致), modified(不一致), staged(工作区中修改内容已放在暂存区，准备将修改后的文件保存到git仓库)</p><p>以精简状态显示文件状态报告：(–short)</p><p>git status -s</p><p>此时未跟踪的文件前面有红色的??标记，修改了的文件前面有红色的M</p></blockquote><p><strong>添加到暂存区</strong></p><p>git add 文件名 </p><blockquote><p>此时文件已被跟踪，添加到了暂存区，git status -s下这个文件前面有绿色A的标记</p><p>若提交的是修改的已有文件，会显示绿色的M</p></blockquote><p><strong>对所有文件暂存</strong></p><blockquote><p><code>git add xx</code>命令可以将xx文件添加到暂存区，如果有很多改动可以通过 <code>git add -A .</code>来一次添加所有改变的文件。</p><p>注意 <code>-A</code> 选项后面还有一个句点。 <code>git add -A</code>表示添加所有内容， <code>git add .</code> 表示添加新文件和编辑过的文件不包括删除的文件; <code>git add -u</code> 表示添加编辑或者删除的文件，不包括新添加的文件</p></blockquote><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ git add hello.txt </span><br><span class="line">warning: LF will be replaced by CRLF <span class="keyword">in</span> hello.txt. </span><br><span class="line">The file will have its original line endings <span class="keyword">in</span> your working </span><br><span class="line">directory. </span><br></pre></td></tr></table></figure><p><strong>提交到本地库</strong></p><p>git commit -m “日志信息” 文件名 </p><p>或者不加文件名，表示全部提交</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ git commit -m <span class="string">&quot;my first commit&quot;</span> hello.txt </span><br><span class="line">warning: LF will be replaced by CRLF <span class="keyword">in</span> hello.txt. </span><br><span class="line">The file will have its original line endings <span class="keyword">in</span> your working </span><br><span class="line">directory. </span><br><span class="line">[master (root-commit) 86366fa] my first commit </span><br><span class="line"> <span class="number">1</span> file changed, <span class="number">16</span> insertions(+) </span><br><span class="line"> create mode <span class="number">100644</span> hello.txt</span><br></pre></td></tr></table></figure><p><strong>跳过暂存区直接将工作区内容提交到git仓库</strong></p><p>git commit -a -m “日志信息”</p><p><strong>查看提交历史</strong></p><p>git reflog  查看版本信息 </p><p>git log  查看版本详细信息，按照提交历史，最近的提交显示在最上面</p><blockquote><p>:表示下面还有内容，可以点击enter继续查看；</p><p>也可以点击q然后退出查看</p><p>git log -2可以查看最近两次的提交历史</p><p>git log -2 –pretty&#x3D;oneline，在一行上显示最近两条消息</p><p>git log -2 –pretty&#x3D;format:”%h | %an | % ar | %s”，自定义输出格式，%h表示提交的简写哈希值，%an表示作者名字，%ar表示作者修订日期，%s表示提交说明</p></blockquote><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ git reflog </span><br><span class="line">087a1a7 (HEAD -&gt; master) HEAD@&#123;<span class="number">0</span>&#125;: commit: my third commit </span><br><span class="line">ca8ded6 HEAD@&#123;<span class="number">1</span>&#125;: commit: my second commit </span><br><span class="line">86366fa HEAD@&#123;<span class="number">2</span>&#125;: commit (initial): my first commit</span><br></pre></td></tr></table></figure><p><strong>从暂存区中移除对应的文件</strong></p><p>git reset –hard 文件名</p><p><strong>从暂存区中移除所有文件</strong></p><p>git reset –hard .</p><p><strong>版本穿梭</strong></p><p>git reset –hard 版本号</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 首先查看当前的历史记录，可以看到当前是在 087a1a7这个版本 </span></span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ git reflog </span><br><span class="line">087a1a7 (HEAD -&gt; master) HEAD@&#123;<span class="number">0</span>&#125;: commit: my third commit </span><br><span class="line">ca8ded6 HEAD@&#123;<span class="number">1</span>&#125;: commit: my second commit </span><br><span class="line">86366fa HEAD@&#123;<span class="number">2</span>&#125;: commit (initial): my first commit </span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到 86366fa版本，也就是我们第一次提交的版本 </span></span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ git reset --hard 86366fa </span><br><span class="line">HEAD <span class="keyword">is</span> now at 86366fa my first commit </span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换完毕之后再查看历史记录，当前成功切换到了 86366fa版本 </span></span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ git reflog </span><br><span class="line">86366fa (HEAD -&gt; master) HEAD@&#123;<span class="number">0</span>&#125;: reset: moving to 86366fa </span><br><span class="line">087a1a7 HEAD@&#123;<span class="number">1</span>&#125;: commit: my third commit </span><br><span class="line">ca8ded6 HEAD@&#123;<span class="number">2</span>&#125;: commit: my second commit </span><br><span class="line">86366fa (HEAD -&gt; master) HEAD@&#123;<span class="number">3</span>&#125;: commit (initial): my first commit </span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后查看文件 hello.txt，发现文件内容已经变化 </span></span><br><span class="line">$ cat hello.txt  </span><br><span class="line">hello git! hello atguigu! </span><br><span class="line">hello git! hello atguigu! </span><br><span class="line">hello git! hello atguigu! </span><br><span class="line">hello git! hello atguigu! </span><br><span class="line">hello git! hello atguigu! </span><br><span class="line">hello git! hello atguigu! </span><br><span class="line">hello git! hello atguigu!</span><br></pre></td></tr></table></figure><p>输入 git push -f命令，将当前的版本的本地仓库推送至远程代码仓库，即可完成远程代码仓库版本回退到第一次提交的版本</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ git push -f </span><br></pre></td></tr></table></figure><p><strong>撤销修改（这次操作危险性高）</strong></p><p>git chckout – 文件名称</p><p><strong>远程地址设置</strong></p><p>git remote -v 查看当前所有远程地址别名 </p><p>git remote add 别名 远程地址 起别名 </p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ git remote -v </span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ git remote add ori https://github.com/atguiguyueyue/git-shTest.git </span><br><span class="line"></span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ git remote -v </span><br><span class="line">ori     https://github.com/atguiguyueyue/git-shTest.git (fetch) </span><br><span class="line">ori     https://github.com/atguiguyueyue/git-shTest.git (push)</span><br></pre></td></tr></table></figure><p>也可以通过下面的命令，查看远程仓库中所有的分支列表信息：</p><p>git remote show 远程仓库名称（默认都叫origin）</p><p><strong>分支</strong></p><blockquote><p>一般程序开发中，是不允许在主分支上进行代码修改和操作的，风险太高；</p><p>程序员在功能分支上进行开发，新功能开发且测试完毕后，再合并到主分支上；</p></blockquote><p><strong>创建分支</strong></p><p>git branch 分支名</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$  git branch hot-fix </span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br><span class="line">$ git branch -v </span><br><span class="line">  hot-fix 087a1a7 my third commit  （刚创建的新的分支，并将主分支 master</span><br><span class="line">的内容复制了一份） </span><br><span class="line">* master  087a1a7 my third commit</span><br></pre></td></tr></table></figure><p><strong>查看分支</strong></p><p>git branch</p><p>git branch -v</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git branch -v </span><br><span class="line">* master 087a1a7 my third commit  （*代表当前所在的分区）</span><br></pre></td></tr></table></figure><p><strong>切换分支</strong></p><p>git checkout 分支名</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ git checkout hot-fix </span><br><span class="line">Switched to branch <span class="string">&#x27;hot-fix&#x27;</span> </span><br><span class="line">--发现当先分支已由 master改为 hot-fix </span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (hot-fix) </span><br><span class="line">$ </span><br><span class="line">--查看 hot-fix分支上的文件内容发现与 master分支上的内容不同 </span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (hot-fix) </span><br><span class="line">$ cat hello.txt </span><br><span class="line">hello git! hello atguigu! <span class="number">2222222222222</span> </span><br><span class="line">hello git! hello atguigu! <span class="number">3333333333333</span> </span><br><span class="line">hello git! hello atguigu! </span><br><span class="line">hello git! hello atguigu! </span><br><span class="line">hello git! hello atguigu!</span><br></pre></td></tr></table></figure><p>可以创建指定名称的新分支，并立即切换到新分支上，但要注意再master的基础上创建新分支</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -b 表示创建一个新分支，checkout表示切换到刚新建的分支上</span></span><br><span class="line">git checkout -b 分支名称</span><br></pre></td></tr></table></figure><p><strong>推送本地分支上的内容到远程仓库</strong></p><p><code>git push -u 别名 本地分支名称</code> # 第一次，-u表示把本地分支和远程分支进行关联，如果push的时候想要修改分支名称，可以<code>git push -u 别名 本地分支名称:远程分支名称</code></p><p>git push 别名 分支 # 之后的，可以写上别名和分支，也可以就直接写git push</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ git push ori master </span><br><span class="line">Logon failed, use ctrl+c to cancel basic credential prompt. </span><br><span class="line">Username <span class="keyword">for</span> <span class="string">&#x27;https://github.com&#x27;</span>: atguiguyueyue </span><br><span class="line">Counting objects: <span class="number">3</span>, done. </span><br><span class="line">Delta compression using up to <span class="number">12</span> threads. </span><br><span class="line">Compressing objects: <span class="number">100</span>% (<span class="number">2</span>/<span class="number">2</span>), done. </span><br><span class="line">Writing objects: <span class="number">100</span>% (<span class="number">3</span>/<span class="number">3</span>), <span class="number">276</span> <span class="built_in">bytes</span> | <span class="number">276.00</span> KiB/s, done. </span><br><span class="line">Total <span class="number">3</span> (delta <span class="number">0</span>), reused <span class="number">0</span> (delta <span class="number">0</span>) </span><br><span class="line">To https://github.com/atguiguyueyue/git-shTest.git </span><br><span class="line"> * [new branch]      master -&gt; master </span><br></pre></td></tr></table></figure><p><strong>跟踪分支</strong></p><p>从远程仓库中，把远程分支下载到本地仓库中</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># git checkout 远程分支名称</span></span><br><span class="line">$ git checkout pay</span><br><span class="line"><span class="comment"># 从远程仓库中，把对应的远程分支下载到本地仓库，并对其重命名</span></span><br><span class="line"><span class="comment"># git checkout -b 本地分支名称 远程仓库名称/远程分支名称</span></span><br><span class="line">$ git checkout -b payment origin/pay</span><br></pre></td></tr></table></figure><p><strong>把指定的分支合并到当前分支上</strong></p><p>git merge 分支名 </p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line"><span class="comment"># 先切换到主分支，然后将功能分支合并到主分支</span></span><br><span class="line">$ git merge hot-fix </span><br><span class="line">Auto-merging hello.txt </span><br><span class="line">CONFLICT (content): Merge conflict <span class="keyword">in</span> hello.txt </span><br><span class="line">Automatic merge failed; fix conflicts <span class="keyword">and</span> then commit the result.</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ git status </span><br><span class="line">On branch master </span><br><span class="line">You have unmerged paths. </span><br><span class="line">  (fix conflicts <span class="keyword">and</span> run <span class="string">&quot;git commit&quot;</span>) </span><br><span class="line">  (use <span class="string">&quot;git merge --abort&quot;</span> to abort the merge) </span><br><span class="line"></span><br><span class="line">Unmerged paths: </span><br><span class="line">  (use <span class="string">&quot;git add &lt;file&gt;...&quot;</span> to mark resolution) </span><br><span class="line"></span><br><span class="line">        both modified:   hello.txt </span><br><span class="line"></span><br><span class="line">no changes added to commit (use <span class="string">&quot;git add&quot;</span> <span class="keyword">and</span>/<span class="keyword">or</span> <span class="string">&quot;git commit -a&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑有冲突的文件，删除特殊符号，决定要使用的内容 </span></span><br><span class="line"><span class="comment"># 特殊符号：&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD 当前分支的代码 =======  合并过来的代码  &gt;&gt;&gt;&gt;&gt;&gt;&gt; hot-fix </span></span><br><span class="line"></span><br><span class="line">$ git commit -m <span class="string">&quot;merge hot-fix&quot;</span> </span><br><span class="line">[master 69ff88d] merge hot-fix </span><br><span class="line">--发现后面 MERGING消失，变为正常 </span><br><span class="line">Layne@LAPTOP-Layne MINGW64 /d/Git-Space/SH0720 (master) </span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 也可以打开包含冲突的文件，手动解决冲突之后，再执行如下命令</span></span><br><span class="line">$ git chechout master</span><br><span class="line">$ git merge reg</span><br><span class="line"><span class="comment"># 手动解决冲突文件,vscode会智能地提醒你如何进行修改</span></span><br><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">&quot;解决了分支合并冲突的问题&quot;</span></span><br></pre></td></tr></table></figure><p><strong>删除分支</strong></p><p>当把功能分支合并到master分支之后，可以删除对应的功能分支：</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># git branch</span></span><br><span class="line">git branch -d 功能分支 <span class="comment">#要保证现阶段不是在要删除的分支上</span></span><br></pre></td></tr></table></figure><p><strong>移除文件</strong></p><p>从git仓库和工作区中同时移除对应文件：git rm -f 文件名</p><p>从git仓库中移除指定文件，但保留工作区中对应的文件：git rm –cached 文件名</p><p><strong>忽略文件</strong></p><p>可以创建一个名为.gitignore的配置文件，列出要忽略的文件的匹配模式</p><blockquote><p>#开头，注释</p><p>&#x2F;结尾，目录</p><p>&#x2F;开头，递归</p><p>!开头，取反</p><p>可以用glob模式进行文件和文件夹的匹配，glob指简化了的正则表达式</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/git%E6%89%8B%E5%86%8C-2.png"></p><p>可以直接写到git项目中，与.git同级目录，内容示例如下：</p><p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/git%E6%89%8B%E5%86%8C-3.png"></p></blockquote><p><strong>从其他服务器克隆一个已存在的git仓库</strong></p><p>git clone 远程地址 将远程仓库的内容克隆到本地 </p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ git clone https://github.com/atguiguyueyue/git-shTest.git </span><br><span class="line">Cloning into <span class="string">&#x27;git-shTest&#x27;</span>... </span><br><span class="line">remote: Enumerating objects: <span class="number">3</span>, done. </span><br><span class="line">remote: Counting objects: <span class="number">100</span>% (<span class="number">3</span>/<span class="number">3</span>), done. </span><br><span class="line">remote: Compressing objects: <span class="number">100</span>% (<span class="number">2</span>/<span class="number">2</span>), done. </span><br><span class="line">remote: Total <span class="number">3</span> (delta <span class="number">0</span>), reused <span class="number">3</span> (delta <span class="number">0</span>), pack-reused <span class="number">0</span> </span><br><span class="line">Unpacking objects: <span class="number">100</span>% (<span class="number">3</span>/<span class="number">3</span>), done.</span><br></pre></td></tr></table></figure><p><strong>拉取远程分支的最新代码</strong></p><p>git pull # 从远程仓库，把最新的代码下载导本地，保持当前分支代码和远程分支一致</p><p>git pull 远程库地址别名 远程分支名 将远程仓库对于分支最新内容拉下来后与当前本地分支直接合并</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ git pull ori master </span><br><span class="line">remote: Enumerating objects: <span class="number">5</span>, done. </span><br><span class="line">remote: Counting objects: <span class="number">100</span>% (<span class="number">5</span>/<span class="number">5</span>), done. </span><br><span class="line">remote: Compressing objects: <span class="number">100</span>% (<span class="number">1</span>/<span class="number">1</span>), done. </span><br><span class="line">remote: Total <span class="number">3</span> (delta <span class="number">1</span>), reused <span class="number">3</span> (delta <span class="number">1</span>), pack-reused <span class="number">0</span> </span><br><span class="line">Unpacking objects: <span class="number">100</span>% (<span class="number">3</span>/<span class="number">3</span>), done. </span><br><span class="line">From https://github.com/atguiguyueyue/git-shTest </span><br><span class="line"> * branch            master     -&gt; FETCH_HEAD </span><br><span class="line">   7cb4d02.<span class="number">.5</span>dabe6b  master     -&gt; ori/master </span><br><span class="line">Updating 7cb4d02.<span class="number">.5</span>dabe6b </span><br><span class="line">Fast-forward </span><br><span class="line"> hello.txt | <span class="number">2</span> +- </span><br><span class="line"> <span class="number">1</span> file changed, <span class="number">1</span> insertion(+), <span class="number">1</span> deletion(-) </span><br></pre></td></tr></table></figure><p><strong>删除远程分支</strong></p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 删除远程仓库中，指定名称的远程分支</span></span><br><span class="line">git push 远程仓库名称 --delete 远程分支名称</span><br><span class="line">$ git push origin --delete pay</span><br><span class="line"><span class="comment"># 删除本地分支,如果pay分支还未被合并，-d命令会报错，-D命令不会报错</span></span><br><span class="line">$ git push origin -d pay</span><br><span class="line">$ git push origin -D pay</span><br></pre></td></tr></table></figure><h1 id="报错处理"><a href="#报错处理" class="headerlink" title="报错处理"></a>报错处理</h1><p><a href="https://blog.51cto.com/u_15740728/5805813">提醒多用户拥有：<strong>fatal: detected dubious ownership in repository at ‘E:&#x2F;workspace&#x2F;CSMarket</strong></a></p><p><a href="https://blog.csdn.net/weixin_40908748/article/details/122367878">解决git报错10054</a></p><p><a href="https://www.jianshu.com/p/7d8003ba2324">破除大文件限制</a></p><p><a href="https://marcosantonocito.medium.com/fixing-the-gh001-large-files-detected-you-may-want-to-try-git-large-file-storage-43336b983272">大文件检测删除</a></p><p><a href="https://blog.csdn.net/DDD4V/article/details/118896307">Git冲突：Please commit your changes or stash them before you merge_1024_Byte的博客-CSDN博客</a></p><h1 id="跨设备迁移"><a href="#跨设备迁移" class="headerlink" title="跨设备迁移"></a>跨设备迁移</h1><p>用everything全局搜索了下，以前的我还没给新电脑的git搞个ssh key，于是参考这个<a href="https://www.cnblogs.com/Ye-zixiao/p/12233193.html">教程</a>的第一步生成了一个；</p><p>随后参考这个教程复制旧电脑的.ssh文件，替换到新电脑的.ssh文件：<a href="https://blog.csdn.net/weixin_44227858/article/details/108317689">在不同的电脑上使用同一个git账号_一个git账号可以两个人用吗_你在桥头我在火星的博客-CSDN博客</a></p><p>还有个这个教程：<a href="https://zhuanlan.zhihu.com/p/352824096">自己有两台电脑,如何使用git同步文件 - 知乎 (zhihu.com)</a>，留个记录</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;版本控制&quot;&gt;&lt;a href=&quot;#版本控制&quot; class=&quot;headerlink&quot; title=&quot;版本控制&quot;&gt;&lt;/a&gt;版本控制&lt;/h1&gt;&lt;p&gt;用来记录文件变化，以便查阅特定版本修订情况；&lt;/p&gt;
+&lt;p&gt;把手工管理文件版本的方式，改为由软件管理文件的版本；而负责管理文</summary>
+      
+    
+    
+    
+    <category term="版本控制" scheme="https://youxt-njnu.github.io/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
+    
+    
+    <category term="git" scheme="https://youxt-njnu.github.io/tags/git/"/>
+    
+    <category term="设备迁移" scheme="https://youxt-njnu.github.io/tags/%E8%AE%BE%E5%A4%87%E8%BF%81%E7%A7%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cpp小计</title>
+    <link href="https://youxt-njnu.github.io/2023/05/10/Cpp%E5%B0%8F%E8%AE%A1/"/>
+    <id>https://youxt-njnu.github.io/2023/05/10/Cpp%E5%B0%8F%E8%AE%A1/</id>
+    <published>2023-05-10T11:45:36.000Z</published>
+    <updated>2023-05-14T10:23:08.330Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>课程目的：</p><blockquote><p>训练软件开发的系统思维；</p><p>让程序更有设计感；</p><p>了解GIS软件的内核结构；</p><p>掌握C++编程的技巧和思维模式；</p></blockquote><p>问题核心：</p><blockquote><p>不是语言、算法、数据结构；</p><p>是架构、模式、方法论</p></blockquote><p>GIS内核的模块组成：</p><blockquote><p>数据模块：矢量、栅格、索引，数据库系统、文件系统、网络</p><p>投影模块</p><p>空间分析模块</p><p>制图模块，图形API</p></blockquote><p>Cpp</p><blockquote><p>特点：编译、静态、大小写敏感、多编程范式</p><p>组成：核心语言、标准库、标准模板库</p></blockquote><p>Cpp与C的区别</p><h1 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h1><p>面向对象，UML</p><p>构造函数、析构函数、引用计数、内存管理</p><p>控制成员变量可访问性：public private protected</p><p>函数重载</p><p>浅拷贝深拷贝</p><p>静态成员</p><p>友元</p><p>内联函数inline</p><p>继承：多重继承</p><p>类型转换</p><p>多态</p><p>虚函数</p><p>函数重载和运算符重载</p><p>命名空间</p><p>标准C++流库iostream</p><p>字符串与string类</p><h1 id="模板与STL"><a href="#模板与STL" class="headerlink" title="模板与STL"></a>模板与STL</h1><p>函数模板、类模板</p><p>template, typename, class</p><p>STL:</p><blockquote><p>vector, map, list, queue, set</p><p>algorithm, numeric</p><p>iterator</p><p>functional</p><p>stack, deque</p><p>memory</p><p>utility</p></blockquote><h1 id="项目组织"><a href="#项目组织" class="headerlink" title="项目组织"></a>项目组织</h1><p>c++开发：多文件、多工程、多编译目标、引用第三方库</p><p>代码复用：源代码级别、库复用Nuget，包复用vcpkg，组件复用COM</p><p>工程</p><p>构建系统、元构建系统cmake、IDE如visual studio</p><p>静态库.lib、动态库.dll</p><p>通用宏、预处理器、链接器、活动配置</p><h1 id="GUI程序"><a href="#GUI程序" class="headerlink" title="GUI程序"></a>GUI程序</h1><p>图形用户界面</p><p>面向对象开发，MFC、QT</p><p>图形API：GDI+, OpenGL, Direct3D</p><p>句柄</p><p>MFC应用程序</p><h1 id="GDI"><a href="#GDI" class="headerlink" title="GDI+"></a>GDI+</h1><p>图形设备接口</p><p>通过C++类实现</p><p>组成：二维矢量图形（几何、画笔、画刷）、图像、文字与布局</p><p>常用的类&#x2F;对象：</p><blockquote><p>Pen</p><p>Color</p><p>Brush</p><p>HashBrush</p><p>LinearGradientBrush</p><p>PathGraidentBrush</p><p>TextureBrush</p><p>……</p></blockquote><p>坐标、矩阵</p><h1 id="GIS内核结构和基础环境"><a href="#GIS内核结构和基础环境" class="headerlink" title="GIS内核结构和基础环境"></a>GIS内核结构和基础环境</h1><p>UML统一建模语言</p><blockquote><p>类图class diagram</p><p>object diagram</p><p>use case diagram</p><p>sequence diagram</p><p>collaboration diagram</p><p>state chart diagram</p><p>acitivity diagram</p><p>component diagram</p><p>deployment diagram</p></blockquote><p>设计模式</p><p>面向对象的设计模式：接口编程、优先使用对象组合而非继承</p><p>常用模式</p><blockquote><p>组合模式</p><p>迭代器模式</p><p>观察者模式</p></blockquote><p>OGC Simple Feature规范</p><h1 id="地图渲染与符号模型"><a href="#地图渲染与符号模型" class="headerlink" title="地图渲染与符号模型"></a>地图渲染与符号模型</h1><p>绘图环境</p><blockquote><p>绘图句柄</p><p>坐标变换</p><p>绘图范围</p></blockquote><p>简单符号系统的实现</p><blockquote><p>管理符号</p><p>GDI+原生绘图能力进行绘制</p><p>重载和继承进行扩展</p><p>支持序列化</p><p>符号的编辑和预览</p></blockquote><h1 id="交互式绘图"><a href="#交互式绘图" class="headerlink" title="交互式绘图"></a>交互式绘图</h1><p>变换模型</p><blockquote><p>平面映射</p><p>矩阵旋转</p></blockquote><p>用户交互响应：鼠标事件、坐标事件</p><p>用户编辑</p><h1 id="序列化技术"><a href="#序列化技术" class="headerlink" title="序列化技术"></a>序列化技术</h1><p>把对象转变为字节序列（文件、网络流、内存数据块）</p><p>文本（JSON、XML、Yaml）、二进制</p><h1 id="组件技术基础"><a href="#组件技术基础" class="headerlink" title="组件技术基础"></a>组件技术基础</h1><p>COM: 组件对象模型，component object model</p><p>COM核心概念：系统注册表、COM组件库、COM运行库</p><p>COM线程套间</p><p>接口定义语言interface define language</p><p>类型库typelib</p><p>全局统一标识符global unique identifier</p><p>COM接口</p><p>ATL，activeX template library</p><p>#import</p><p>MSXML</p><h1 id="矢量数据存储"><a href="#矢量数据存储" class="headerlink" title="矢量数据存储"></a>矢量数据存储</h1><p>基于ACCESS</p><p>元数据表、图层数据表、</p><p>ADO: activeX data object. 数据访问技术</p><ul><li>connection</li><li>command</li><li>recordset</li></ul><p>OGR，最通用的矢量数据访问开源库</p><ul><li>wkb(well known binary), wkt(well know text)</li><li>spatial reference</li><li>feature</li><li>feature definition</li><li>layer</li><li>data source</li><li>drivers</li><li>ogrsfdriverregister</li></ul><h1 id="坐标系统"><a href="#坐标系统" class="headerlink" title="坐标系统"></a>坐标系统</h1><p>分离查询与渲染职责</p><p>经纬度坐标与笛卡尔坐标系之间的变换</p><p>地图投影：PROJ算法库</p><p>栅格渲染与显示、逆向重采样</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h1&gt;&lt;p&gt;课程目的：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;训练软件开发的系统思维；&lt;/p&gt;
+&lt;p&gt;让程序更有设计感；&lt;/p&gt;
+&lt;p&gt;了解GIS软件</summary>
+      
+    
+    
+    
+    <category term="Cpp" scheme="https://youxt-njnu.github.io/categories/Cpp/"/>
+    
+    
+    <category term="知识框架" scheme="https://youxt-njnu.github.io/tags/%E7%9F%A5%E8%AF%86%E6%A1%86%E6%9E%B6/"/>
+    
+    <category term="专业课" scheme="https://youxt-njnu.github.io/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/"/>
+    
+  </entry>
+  
+</feed>
