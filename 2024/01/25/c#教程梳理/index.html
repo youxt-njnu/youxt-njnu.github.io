@@ -1,0 +1,433 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>C#入门梳理Ⅰ|基本知识和方法 | Pale Bule Dot</title><meta name="author" content="Shealin You"><meta name="copyright" content="Shealin You"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基本知识solution: 解决方案；针对需求的总方案； project: 项目；针对具体问题； c#的各类应用程序：  console: WPF(windows presentation foundation): Windows Forms: ASP.NET Web Forms: ASP.NET MVC(Model-View-Controller): WCF(Windows Communicat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#入门梳理Ⅰ|基本知识和方法">
+<meta property="og:url" content="https://youxt-njnu.github.io/2024/01/25/c#%E6%95%99%E7%A8%8B%E6%A2%B3%E7%90%86/index.html">
+<meta property="og:site_name" content="Pale Bule Dot">
+<meta property="og:description" content="基本知识solution: 解决方案；针对需求的总方案； project: 项目；针对具体问题； c#的各类应用程序：  console: WPF(windows presentation foundation): Windows Forms: ASP.NET Web Forms: ASP.NET MVC(Model-View-Controller): WCF(Windows Communicat">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wallroom.io/img/1920x1080/bg-de569c3.jpg">
+<meta property="article:published_time" content="2024-01-25T02:15:05.000Z">
+<meta property="article:modified_time" content="2024-01-25T02:26:50.368Z">
+<meta property="article:author" content="Shealin You">
+<meta property="article:tag" content="知识框架">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wallroom.io/img/1920x1080/bg-de569c3.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://youxt-njnu.github.io/2024/01/25/c#%E6%95%99%E7%A8%8B%E6%A2%B3%E7%90%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C#入门梳理Ⅰ|基本知识和方法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-25 10:26:50'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Pale Bule Dot" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://wallroom.io/img/1920x1080/bg-de569c3.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Pale Bule Dot"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/favicon.png"/><span class="site-name">Pale Bule Dot</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">C#入门梳理Ⅰ|基本知识和方法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-25T02:15:05.000Z" title="发表于 2024-01-25 10:15:05">2024-01-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-25T02:26:50.368Z" title="更新于 2024-01-25 10:26:50">2024-01-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/c/">c#</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/c/AR%E5%BC%80%E5%8F%91/">AR开发</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="C#入门梳理Ⅰ|基本知识和方法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h1><p>solution: 解决方案；针对需求的总方案；</p>
+<p>project: 项目；针对具体问题；</p>
+<p><strong>c#的各类应用程序：</strong></p>
+<blockquote>
+<p>console:</p>
+<p>WPF(windows presentation foundation):</p>
+<p>Windows Forms:</p>
+<p>ASP.NET Web Forms:</p>
+<p>ASP.NET MVC(Model-View-Controller):</p>
+<p>WCF(Windows Communication Foundation):</p>
+<p>Windows Store Application</p>
+<p>Windows Phone Application</p>
+<p>Cloud(Windows AZure)</p>
+<p>WF(Workflow Foundation)</p>
+</blockquote>
+<p>类（方块加树形结构）和命名空间（花括号）<br>using 可以把命名空间引入到程序中来，然后程序就能使用命名空空间里的类。</p>
+<blockquote>
+<p>可以通过 help 来搜索查看对应的类，会给出对应的 namespace 和 assembly。<br>ctrl .可以快速弹出修复建议，然后可以根据这个来添加类。<br>多个命名空间下的类有冲突的话，需要加上些所属的类或命名空间<br>类和命名空间放在了类库里面，assembly。在项目管理器的 references 分支里可以查看。点击后就可以打开 object browser，查看对应的类库下面包括了那些类。<br>添加别人的类库<br>别人已经编译好的 dll，没有源码，但需要给说明文档，说明里面包括了哪些命名空间，哪些类和方法。右键 references 选择 add ，添加到项目中。此时也需要减少对于这个类库的依赖性，在工作中依赖性小的话，如果底层的类库出现了问题，可以用一个替代库来暂时代替。<br>此外，这个时候的引用没有源代码，一些底层的库没办法一起引进来，就会造成大型项目的未知错误。这个时候可以使用 nuget 技术，形成一个包来给我们用，这个时候右键选择 manage nuget…，选择 online 然后搜索需要的库，会安装包。<br>针对有源码的类库，需要把所在地的项目一起添加到我自己的解决方案中，然后我添加reference 里选择 solution 里的添加进来的人 project，就可以把类库的源码加进来了。<br>在 debug 的时候，需要找到 root cause，不要在表象的上面加补丁，不然后续就是补丁加补丁。<br>构建自己的类库，就 add project 的时候，选择 class project，这个时候编译出来的就是 dll ，命名空间名字默认就是添加类库的时候起的项目名称，<br>类（或对象）之间的耦合&#x2F;依赖关系<br>高内聚，低耦合<br>UML 类图<br>排除错误<br>阅读编辑器的错误<br>搜索</p>
+</blockquote>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>对现实世界的抽象，通过光标位于类名上，F1 即可打开帮助文档，会定位到对应的内容。先看一句话描述，然后看 remark，再看 examples，看不懂的话再去网上搜更好的例子。用到什么属性方法啥的对应着类的里面内容再看。</p>
+<p>类 ➡️ 对象&#x2F;实例（instance，object）<br>通过 new 来对类进行实例化。 new Form() 加上括号，是用来传入参数进行初始化。<br>通过引用变量来获取实例。</p>
+<p><strong>类的三大成员</strong></p>
+<blockquote>
+<p>属性 property（🔧） :lighting: ，存储数据，表示类或对象当前的状态（如模型类或对象，entity framework<br>方法 method（紫色多边形），表示能做什么，由 function 进化而来(如工具类或对象，Math<br>事件 event（⚡），类或对象通知其他类或对象的机制如通知类或对象，如 timer<br>静态成员（在文档里会标记红色 S)，实例成员，绑定 binding</p>
+</blockquote>
+<p><strong>基本元素：（c# references）</strong></p>
+<ul>
+<li>keyword 关键字，</li>
+<li>operator 操作符，</li>
+<li>identifier 标识符，给…取得名字，尽量让比别人读懂</li>
+<li>标点符号，</li>
+<li>文本，</li>
+<li>注释和空白，<br>类型（type，data type），var, x.GetType()，强类型和弱类型语言，C#里 dynamic和 JS 里 var 是类似地位。<br>变量<br>方法&#x2F;函数&#x2F;算法</li>
+</ul>
+<p>程序的静态阶段：编辑和编译，这个时候观察它的类和结构<br>程序的动态阶段：运行阶段，这个时候动态地进行调试</p>
+<h2 id="type"><a href="#type" class="headerlink" title="type"></a>type</h2><p>类型的作用（Type）：<br>估算变量存储所需要的空间大小，得知该变量可存储的最大最小范围，获取该类型包含的成员如方法、属性和事件等。也可以知道该类型由什么基类获取而来，该类型允许的运算。此外，也可以知道该类型变量在分配在内存的位置，栈或堆。</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">Type myType = <span class="keyword">typeof</span>(Form);</span><br><span class="line">PropertyInfo[] pintos = myType.GetProperties();</span><br><span class="line">MethodInfo[] mInfos = myType.GetMethods[];</span><br></pre></td></tr></table></figure>
+
+<p>可以用上面的来做反射，也就是 type 的作用。</p>
+<p>栈 stack 用来函数调用方法，会有栈溢出；<br>堆 heap 用来存储对象，会有内存泄漏。可以在运行的时候，win+r 之后输入 perfmon ，可以打开性能监视器，选择 private bytes 来监视运行的程序的内存耗量。</p>
+<p><strong>C#的数据类型：</strong></p>
+<blockquote>
+<p>类 class，结构体 struct，枚举 enum, 接口 interface，委托 delegate<br><img src="https://s2.loli.net/2023/12/24/Yfb13EJRDSexmF9.jpg"></p>
+</blockquote>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>存储数据，其实是存储位置。<br><strong>变量类型：</strong></p>
+<blockquote>
+<p>静态变量（静态字段，直接类.变量，就能调用），实例变量（成员变量，字段，要实例化之后调用），数组元素，值参数，引用参数 ref，输出形参 out，<strong>局部变量</strong></p>
+<p>值变量和引用变量：</p>
+<blockquote>
+<p>值类型的变量和实例合二为一<br>引用类型默认栈里面四个字节，指向堆里面的实际的值存储空间；默认值为 0.</p>
+</blockquote>
+</blockquote>
+<p>装箱和拆箱（用得少，但面试会考）</p>
+<blockquote>
+<p>装箱：把数值隐式转换为 object——》把值类型的数值拷贝到堆上，记录对应的内存地址，在 obj 的四字节栈上里存储这个地址。<br>拆箱：从堆上把 obj内容搬过来，存储到 目标数据类型的栈上<br>会损失程序的性能。</p>
+</blockquote>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>method，c 里面的 function<br>方法永远是类或结构体的成员；<br>方法的作用：隐藏复杂的逻辑、大算法分解为小算法、算法复用、<br>c#里方法的声明和定义不分家；<br>方法的命名规范：大小写规范 pascal，以动词或动词短语为名字；<br>调用方法：实参 argument，形参 parameter</p>
+<p><strong>构造器 constructor：</strong></p>
+<ul>
+<li>狭义：实例构造器，instance constructor</li>
+<li>无返回值类型，用于构造好自己的内存块， public class_name(parameter) { body }，快捷键 ctor 加两次 tab 键。</li>
+<li>调用带构造参数的函数的时候，构造参数的类型如果上引用类型，那么这一块对应的堆内存存储的仍然是这个引用类型值所在的堆堆地址。</li>
+<li>构造器也可以进行重载。</li>
+</ul>
+<p>方法的构造函数，不包括对于返回值的差异。</p>
+<p><strong>对方法进行debug</strong></p>
+<blockquote>
+<p>设置断点 breakpoint。观察方法调用的 call stack。 step in, step over, step out.。观察局部变量的变化。</p>
+</blockquote>
+<p>方法调用中调用栈和内存栈里的实际分配，最后结果是存储在 CPU 的寄存器里，如果存不下会存在栈里。</p>
+<h2 id="操作符-x2F-运算符，操作数"><a href="#操作符-x2F-运算符，操作数" class="headerlink" title="操作符&#x2F;运算符，操作数"></a>操作符&#x2F;运算符，操作数</h2><p>操作符的优先级</p>
+<p><img src="https://s2.loli.net/2023/12/24/3JPxSh6EvfwOCn1.png"></p>
+<p>操作符是一种简记法，与数据类型关联，且也可以进行自定义（把方法名换成类似：operator+）。</p>
+<p><strong>. 成员访问操作符</strong>: 访问外层空间的子集命名空间，访问命名空间里的类，访问类的静态成员，访问对象中的实例成员。</p>
+<p><strong>f() 方法调用操作符</strong>，就是方法后跟的圆括号。但对于委托 delegate（小提包符号，如 action），</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Action myAction= new Action(传入方法名即可，无需这个方法执行，不需要圆括号);</span><br><span class="line">myAction(); // 执行传入的所有方法</span><br></pre></td></tr></table></figure>
+
+<p><strong>[] 元素访问操作符</strong></p>
+<blockquote>
+<p>泛型类，&lt;&gt;, 需要和其他类型结合。</p>
+<p>里面存放的是索引，不一定就是整型</p>
+</blockquote>
+<p><strong>{} 初始化器，初始化元素</strong></p>
+<p><strong>后置和前置的++，–</strong></p>
+<p><strong>typeof,</strong> 获取到类型所属的类型，处于哪个命名空间，</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Type t=typeof(int);</span><br><span class="line">t.Namespace, tFullName,t.Name, t.GetMethods(),</span><br></pre></td></tr></table></figure>
+
+<p><strong>default,</strong> 获取类型的默认值</p>
+<blockquote>
+<p>struct: 0</p>
+<p>enum: 声明的第一个，如果有显式赋值，则返回显式赋值为0的数据，如果没有显式赋值为0的，则返回0</p>
+<p>引用类型：null</p>
+</blockquote>
+<p><strong>new操作符</strong></p>
+<blockquote>
+<p>var关键词，用于声明隐式类型变量； x.GetType().Name</p>
+<p>new: 创建一个类型的实例，然后立即调用这个实例的构造器（用圆括号）；</p>
+<p>后面还可以进一步调用实例的初始化器（大括号，再大括号里初始化成员变量这些）</p>
+<p>并不是所有的类类型在初始化的时候都要new，针对一些常用的如string,c#有语法糖衣，可以直接进行初始化 <code>string name=&quot;tim&quot;;</code></p>
+<p>此外，还有int[] arr&#x3D;new int[10]; int[] arr&#x3D;{1,2,3,4};  都是语法糖衣</p>
+<p><strong>new也可以为匿名类型创建实例,也就是后面不一定要跟着类型名。可以直接进行初始化。</strong></p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> &#123;Name=<span class="string">&quot;time&quot;</span>, Age=<span class="number">34</span>&#125;;</span><br><span class="line">Console.WriteLine(person.Name, person.GetType().Name);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>new操作符使用的时候要小心，因为里面存在着紧耦合。此时，有一种设计模式“依赖注入depency injection”可以用来让这种紧耦合变得略微松一些</p>
+<p>new关键字的多用性：</p>
+<blockquote>
+<p>作为修饰符，在子类对父类方法的修改中；</p>
+</blockquote>
+</blockquote>
+<p><strong>checked，unchecked，用于检查值是否溢出。</strong></p>
+<blockquote>
+<p>操作符用法：check(变量)</p>
+<p>上下文用法：checked { }</p>
+</blockquote>
+<p><strong>delegate操作符：</strong></p>
+<blockquote>
+<p>使用较少，已被Lambert表达式取代，用于声明匿名方法。</p>
+<p>delegate() { }</p>
+<p>已过时</p>
+<p>lambert表达式：(形参，且不需要类型) &#x3D;&gt; {}</p>
+</blockquote>
+<p><strong>sizeof():</strong></p>
+<blockquote>
+<p>获取系统已有的数据类型；</p>
+<p>更精确的数据类型decimal，相对于double, int, 这些，是16位的；</p>
+<p>在获取自定义数据类型的大小的时候，需要在外面套上unsafe{ int x &#x3D; sizeof(Student)} 还要设置项目属性里的build里的allow unsafe code,才能运行。</p>
+</blockquote>
+<p>****-&gt;, <em>, &amp; c#里面的指针的使用</em>***</p>
+<p><strong>+,-,~ ！</strong></p>
+<blockquote>
+<p>if(!string.IsNullOrEmpty(initName)) 如果字符串initName不是null也不是空</p>
+</blockquote>
+<p><strong>强制类型转换运算符(T)x</strong></p>
+<blockquote>
+<p>类型转换<br>隐式转换</p>
+</blockquote>
+<ul>
+<li>不丢失精度的转换</li>
+<li>子类向父类的转换</li>
+<li>装箱</li>
+<li>隐式类型转换操作符    -类里面，public static implicit operator 转换类名() {} 除了修饰符，其他都类似一个构造器<br>显示转换</li>
+<li>可能丢失精度的转换，cast ，y&#x3D; (unit)x, （针对一些差距太大的如 string 到数值类型，不能用 cast 来转换）</li>
+<li>拆箱</li>
+<li>Convert 类，.ToInt32, 类似，也有 ToString</li>
+<li>实例的ToString 方法, 目标数据类型的Parse,和TryParse</li>
+<li>显示类型转换操作符    -类里面，public static explicit operator 转换类名() {} 除了修饰符，其他都类似一个构造器</li>
+</ul>
+<p><strong>左移和右移，乘二和除以二，要注意正负数的补位，以及溢出的问题，可以使用 check。</strong><br>字符串只能进行相等不相等比较，比较大小需要使用 string.Compare 方法，或者自己写。<br><strong>类型检验操作符</strong></p>
+<ul>
+<li>is，检验一个对象是不是某个类型的变量</li>
+<li>as，<br>逻辑与、异或、或：&amp; ^ |<br>条件与、或： &amp;&amp; ||<br>可空类型，null 合并：</li>
+</ul>
+<blockquote>
+<p>针对一些无法复制为 null 的数据，c#设置了可空类型，简化为？</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span>? X = <span class="literal">null</span>; <span class="comment">//直接 int x = null;  编译器会报错</span></span><br><span class="line"><span class="comment">//不然得写成： nullable&lt;int&gt; x = null; </span></span><br><span class="line"><span class="built_in">int</span> y = x ?? <span class="number">1</span>; <span class="comment">//如果 X 是 null，那就输出 1，否则输出 X</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>条件操作符：?:</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io">Shealin You</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io/2024/01/25/c#%E6%95%99%E7%A8%8B%E6%A2%B3%E7%90%86/">https://youxt-njnu.github.io/2024/01/25/c#%E6%95%99%E7%A8%8B%E6%A2%B3%E7%90%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://youxt-njnu.github.io" target="_blank">Pale Bule Dot</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%9F%A5%E8%AF%86%E6%A1%86%E6%9E%B6/">知识框架</a></div><div class="post_share"><div class="social-share" data-image="https://wallroom.io/img/1920x1080/bg-de569c3.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/01/10/%E8%8B%B1%E6%96%87%E9%9D%A2%E8%AF%95/" title="英文面试|to sell yourself"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">英文面试|to sell yourself</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/05/10/Cpp%E5%B0%8F%E8%AE%A1/" title="Cpp小计"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-10</div><div class="title">Cpp小计</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Shealin You</div><div class="author-info__description">Be brave, and know yourself</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/youxt-njnu"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:10190208@njnu.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://www.zhihu.com/people/paleYYY" target="_blank" title="zhihu"><i class="fa-brands fa-zhihu" style="color: #24292e;"></i></a><a class="social-icon" href="https://dclef.icu/atom.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">基本知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB"><span class="toc-number">1.1.</span> <span class="toc-text">类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#type"><span class="toc-number">1.2.</span> <span class="toc-text">type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">1.3.</span> <span class="toc-text">变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6-x2F-%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%8C%E6%93%8D%E4%BD%9C%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">操作符&#x2F;运算符，操作数</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/01/25/c#%E6%95%99%E7%A8%8B%E6%A2%B3%E7%90%86/" title="C#入门梳理Ⅰ|基本知识和方法"><img src="https://wallroom.io/img/1920x1080/bg-de569c3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C#入门梳理Ⅰ|基本知识和方法"/></a><div class="content"><a class="title" href="/2024/01/25/c#%E6%95%99%E7%A8%8B%E6%A2%B3%E7%90%86/" title="C#入门梳理Ⅰ|基本知识和方法">C#入门梳理Ⅰ|基本知识和方法</a><time datetime="2024-01-25T02:15:05.000Z" title="发表于 2024-01-25 10:15:05">2024-01-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/10/%E8%8B%B1%E6%96%87%E9%9D%A2%E8%AF%95/" title="英文面试|to sell yourself">英文面试|to sell yourself</a><time datetime="2024-01-10T13:03:05.000Z" title="发表于 2024-01-10 21:03:05">2024-01-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/09/%E6%9C%AC%E7%A7%91%E5%9B%9E%E9%A1%BE/" title="浅看下“冷门专业”？"><img src="https://s2.loli.net/2024/01/09/6NvImKuLSB8P9lJ.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浅看下“冷门专业”？"/></a><div class="content"><a class="title" href="/2024/01/09/%E6%9C%AC%E7%A7%91%E5%9B%9E%E9%A1%BE/" title="浅看下“冷门专业”？">浅看下“冷门专业”？</a><time datetime="2024-01-09T12:39:53.000Z" title="发表于 2024-01-09 20:39:53">2024-01-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/09/%E6%AF%95%E8%AE%BE%E9%80%89%E9%A2%98/" title="毕设选题的一个月"><img src="https://s2.loli.net/2024/01/09/6JcZ4klb1DTMtdv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="毕设选题的一个月"/></a><div class="content"><a class="title" href="/2024/01/09/%E6%AF%95%E8%AE%BE%E9%80%89%E9%A2%98/" title="毕设选题的一个月">毕设选题的一个月</a><time datetime="2024-01-09T12:26:53.000Z" title="发表于 2024-01-09 20:26:53">2024-01-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/07/Notes_3d_portfolio_primary/" title="threejs实战笔记"><img src="https://wallroom.io/img/1920x1080/bg-e67cc24.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="threejs实战笔记"/></a><div class="content"><a class="title" href="/2024/01/07/Notes_3d_portfolio_primary/" title="threejs实战笔记">threejs实战笔记</a><time datetime="2024-01-07T08:52:05.000Z" title="发表于 2024-01-07 16:52:05">2024-01-07</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/index_img.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By Shealin You</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Training the faculty of mindfulness is like breathing oxygen continuously to remain alive.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'StmwBdb4aXO6LMYWRxjVnufr-gzGzoHsz',
+      appKey: 'V7WavrdJsNE6xxx5YGiygidl',
+      avatar: 'monsterid',
+      serverURLs: 'https://stmwbdb4.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="000EDNt20L3sUT" data-server="tencent" data-type="song" data-fixed="true" data-autoplay="true" data-lrcType="-1"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
