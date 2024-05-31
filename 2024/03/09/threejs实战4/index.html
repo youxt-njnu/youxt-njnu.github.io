@@ -1,0 +1,344 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>three+react|个人主页实战Ⅳ | Pale Bule Dot</title><meta name="author" content="Shealin You"><meta name="copyright" content="Shealin You"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="说明模仿项目地址，参考的视频教程出处，react入门 react three fiber 本文是对Island.jsx及其相关文件的学习解读，内容中含ChatGPT辅助生成❗自辨❗❗❗ 相关案例补充Bird案例const &#x3D; useGLTF(birdScene)&lt;primitive &#x2F;&gt; is a component from React Three Fiber that a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="three+react|个人主页实战Ⅳ">
+<meta property="og:url" content="https://youxt-njnu.github.io/2024/03/09/threejs%E5%AE%9E%E6%88%984/index.html">
+<meta property="og:site_name" content="Pale Bule Dot">
+<meta property="og:description" content="说明模仿项目地址，参考的视频教程出处，react入门 react three fiber 本文是对Island.jsx及其相关文件的学习解读，内容中含ChatGPT辅助生成❗自辨❗❗❗ 相关案例补充Bird案例const &#x3D; useGLTF(birdScene)&lt;primitive &#x2F;&gt; is a component from React Three Fiber that a">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg">
+<meta property="article:published_time" content="2024-03-09T03:26:05.000Z">
+<meta property="article:modified_time" content="2024-03-09T03:34:44.995Z">
+<meta property="article:author" content="Shealin You">
+<meta property="article:tag" content="WebGL">
+<meta property="article:tag" content="3DGIS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://youxt-njnu.github.io/2024/03/09/threejs%E5%AE%9E%E6%88%984/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'three+react|个人主页实战Ⅳ',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-09 11:34:44'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Pale Bule Dot" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://wallroom.io/img/3840x2160/bg-81f2d39.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Pale Bule Dot"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/favicon.png"/><span class="site-name">Pale Bule Dot</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">three+react|个人主页实战Ⅳ</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-09T03:26:05.000Z" title="发表于 2024-03-09 11:26:05">2024-03-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-09T03:34:44.995Z" title="更新于 2024-03-09 11:34:44">2024-03-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/3DGIS/">3DGIS</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="three+react|个人主页实战Ⅳ"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p><a target="_blank" rel="noopener" href="https://github.com/youxt-njnu/3d_portfolio_primary">模仿项目地址</a>，<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=FkowOdMjvYo">参考的视频教程出处</a>，<a target="_blank" rel="noopener" href="https://juejin.cn/post/6960262593265025031">react入门</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.pmnd.rs/react-three-fiber/getting-started/your-first-scene#adding-lights">react three fiber</a></p>
+<p>本文是对Island.jsx及其相关文件的学习解读，内容中含ChatGPT辅助生成❗自辨❗❗❗</p>
+<h1 id="相关案例补充"><a href="#相关案例补充" class="headerlink" title="相关案例补充"></a>相关案例补充</h1><h2 id="Bird案例"><a href="#Bird案例" class="headerlink" title="Bird案例"></a>Bird案例</h2><h3 id="const-x3D-useGLTF-birdScene"><a href="#const-x3D-useGLTF-birdScene" class="headerlink" title="const &#x3D; useGLTF(birdScene)"></a>const &#x3D; useGLTF(birdScene)</h3><p><code>&lt;primitive /&gt;</code> is a component from React Three Fiber that allows you to directly include three.js objects into the React component tree. By setting the <code>object</code> prop to <code>scene</code>, you’re telling React Three Fiber to render the entire GLTF scene, which <code>useGLTF</code> hook returns, without having to manually construct the scene with React components. This is a straightforward way to include complex 3D models and their associated hierarchies into your 3D scene.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//这种形式</span><br><span class="line">&lt;mesh</span><br><span class="line">   geometry=&#123;nodes.pCube11_rocks1_0.geometry&#125;</span><br><span class="line">   material=&#123;materials.PaletteMaterial001&#125;</span><br><span class="line">/&gt;</span><br><span class="line">//和这种形式</span><br><span class="line">&lt;mesh</span><br><span class="line">   ref=&#123;birdRef&#125;</span><br><span class="line">   position=&#123;[-5, 2, 1]&#125;</span><br><span class="line">   scale=&#123;[0.003, 0.003, 0.003]&#125;</span><br><span class="line">&gt;</span><br><span class="line">   &lt;primitive object=&#123;scene&#125; /&gt;</span><br><span class="line">&lt;/mesh&gt;</span><br></pre></td></tr></table></figure>
+
+<p>**第一种形式直接使用了GLTF模型中的具体节点（如 **<code>pCube11_rocks1_0</code>）和材质（如 <code>PaletteMaterial001</code>）来创建一个 <code>&lt;mesh&gt;</code>。这种方式允许你精细控制模型的每个部分，例如指定使用模型中的哪个节点和哪种材质。</p>
+<p>**第二种形式使用了 **<code>&lt;primitive object=&#123;scene&#125; /&gt;</code>来直接渲染整个场景（<code>scene</code>），这里的 <code>scene</code>是 <code>useGLTF</code>钩子返回的整个GLTF场景对象。通过这种方式，你可以简单快捷地在React Three Fiber中渲染整个3D模型，而不需要逐个指定模型的每个部分。这种方法适用于当你想要原封不动地渲染整个模型，而不需要对模型的单独部分进行精细控制。</p>
+<h3 id="Unity中导入glb-x2F-gltf"><a href="#Unity中导入glb-x2F-gltf" class="headerlink" title="Unity中导入glb&#x2F;gltf"></a>Unity中导入glb&#x2F;gltf</h3><p><strong>在Unity中导入GLB模型，可以使用Unity的GLTFUtility插件，支持导入GLB和GLTF格式的3D模型。首先需要从</strong><a target="_blank" rel="noopener" href="https://github.com/Siccity/GLTFUtility">GitHub获取URL</a>，然后在Unity中使用package manager来进行安装。导入插件后，你可以直接将GLB模型拖拽到Unity的Assets文件夹中，插件会自动处理模型的导入过程。这个过程简单快速，不需要复杂的配置。</p>
+<h3 id="useFrame"><a href="#useFrame" class="headerlink" title="useFrame()"></a>useFrame()</h3><p>**在 **<code>useFrame</code>回调函数中，<code>&#123; clock, camera &#125;</code>是从React Three Fiber的渲染循环中解构出来的对象。<code>clock</code>是一个 <code>THREE.Clock</code>实例，用于追踪时间；<code>camera</code>是当前场景中的相机对象。这种写法允许你直接访问这些对象而不需要从外部传入，因为 <code>useFrame</code>已经为你提供了对它们的引用，这是React Three Fiber框架的一部分，旨在简化动画和渲染逻辑的实现。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">useFrame((&#123; clock, camera &#125;) =&gt; &#123; // 这里需要给clock, camera外面加上&#123;&#125;，不然会报错</span><br><span class="line">    // Update the Y position simulate the flight moving in a sin wave </span><br><span class="line">    birdRef.current.position.y = Math.sin(clock.elapsedTime) * 0.2 + 2;</span><br><span class="line"></span><br><span class="line">    // 控制鸟在island的范围内（相机位置的前后10个单位）</span><br><span class="line">    if (birdRef.current.position.x &gt; camera.position.x + 10) &#123;</span><br><span class="line">      birdRef.current.rotation.y = Math.PI;</span><br><span class="line">    &#125; else if (birdRef.current.position.x &lt; camera.position.x - 10) &#123;</span><br><span class="line">      birdRef.current.rotation.y = 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>**在 **<code>useFrame</code>中，除了 <code>clock</code>和 <code>camera</code>，你还可以接收到一个 <code>state</code>对象作为参数，它包含了React Three Fiber渲染循环中的当前状态和一些实用的属性和方法。这些包括场景（<code>scene</code>）、渲染器（<code>gl</code>）、大小（<code>size</code>）、鼠标位置（<code>mouse</code>）等。<code>useFrame</code>函数提供了一个强大的接口，让你可以在每一帧中访问和修改这些对象，从而创建动画和交互。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  useFrame((_, delta) =&gt; &#123;</span><br><span class="line">    if (isRotating) &#123;</span><br><span class="line">      skyRef.current.rotation.y += 0.15 * delta;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>**In the **<code>useFrame</code> hook, the first parameter (<code>_</code> in this case) is the state object provided by React Three Fiber, which contains information about the current render state, such as the scene, camera, etc. The underscore <code>_</code> is often used to indicate that the parameter is not being used in the function. The second parameter, <code>delta</code>, represents the time in seconds since the last frame was rendered. This is useful for creating time-dependent animations or simulations, ensuring smooth and consistent motion regardless of the frame rate.</p>
+<h2 id="Home"><a href="#Home" class="headerlink" title="Home"></a>Home</h2><h3 id="Audio的使用"><a href="#Audio的使用" class="headerlink" title="Audio的使用"></a>Audio的使用</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const audioRef = useRef(new Audio(sakura));</span><br></pre></td></tr></table></figure>
+
+<p>**The **<code>Audio</code> in refers to the HTML Audio element, which is a standard part of the Web APIs provided by browsers for playing sound. It does not need to be imported from a module because it’s globally available in the browser environment, similar to <code>document</code> or <code>window</code>. This API allows you to programmatically control audio playback, such as play, pause, and volume control directly from your React components.</p>
+<p>**To use the **<code>Audio</code> interface in JavaScript, you simply create a new <code>Audio</code> object, optionally passing the URL of the audio file you wish to play as a parameter. You can then use methods like <code>play()</code>, <code>pause()</code>, and properties such as <code>volume</code> to control playback.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const audio = new Audio(&#x27;path/to/your/audio/file.mp3&#x27;);</span><br><span class="line">audio.play(); // To start playing the audio</span><br><span class="line">audio.pause(); // To pause the audio</span><br><span class="line">audio.volume = 0.5; // To set the volume to 50%</span><br></pre></td></tr></table></figure>
+
+<p>**In a React component, you might use it with **<code>useRef</code> to keep a reference to the audio object.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const [isPlayingMusic, setIsPlayingMusic] = useState(false);</span><br><span class="line"></span><br><span class="line">useEffect(() =&gt; &#123;</span><br><span class="line">    if (isPlayingMusic) &#123; audioRef.current.play(); &#125;</span><br><span class="line"></span><br><span class="line">    return () =&gt; &#123;</span><br><span class="line">      audioRef.current.pause();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, [isPlayingMusic]);</span><br><span class="line"></span><br><span class="line">// return里面：</span><br><span class="line">&lt;div className=&#x27;absolute bottom-2 left-2&#x27;&gt;</span><br><span class="line">        &lt;img</span><br><span class="line">          src=&#123;!isPlayingMusic ? soundoff : soundon&#125;</span><br><span class="line">          alt=&quot;sound&quot;</span><br><span class="line">          className=&#x27;w-10 h-10 cursor-pointer object-contain&#x27;</span><br><span class="line">          onClick=&#123;() =&gt; setIsPlayingMusic(!isPlayingMusic)&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>**This component plays the audio when it mounts and pauses when it unmounts, with the **<code>src</code> prop specifying the audio file’s path.</p>
+<h3 id="currentStage的切换"><a href="#currentStage的切换" class="headerlink" title="currentStage的切换"></a>currentStage的切换</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div className=&quot;absolute top-28 left-0 right-0 z-10 flex items-center justify-center&quot;&gt;</span><br><span class="line">        &#123;currentStage &amp;&amp; &lt;HomeInfo currentStage=&#123;currentStage&#125; /&gt;&#125; &lt;/div&gt;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>HomeInfo中</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const HomeInfo = (&#123; currentStage &#125;) =&gt; &#123;</span><br><span class="line">  return renderContent[currentStage] || null;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Island中</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">switch (true) &#123;</span><br><span class="line">        case normalizeRotation &gt;= 5.45 &amp;&amp; normalizeRotation &lt;= 5.85:</span><br><span class="line">          setCurrentStage(4);</span><br><span class="line">          break;</span><br><span class="line">        case normalizeRotation &gt;= 0.85 &amp;&amp; normalizeRotation &lt;= 1.3:</span><br><span class="line">          setCurrentStage(3);</span><br><span class="line">          break;</span><br><span class="line">        case normalizeRotation &gt;= 2.4 &amp;&amp; normalizeRotation &lt;= 2.6:</span><br><span class="line">          setCurrentStage(2);</span><br><span class="line">          break;</span><br><span class="line">        case normalizeRotation &gt;= 4.25 &amp;&amp; normalizeRotation &lt;= 4.75:</span><br><span class="line">          setCurrentStage(1);</span><br><span class="line">          break;</span><br><span class="line">        default:</span><br><span class="line">          setCurrentStage(null); // 当不在特定角度下，currentStage为null，所以Home.jsx里要对currentStage进行判断</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>所以需要先判断currentStage，不是null之后再渲染HomeInfo</strong></p>
+<h2 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h2><h3 id="Loader"><a href="#Loader" class="headerlink" title="Loader"></a>Loader</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div className=&#x27;flex justify-center items-center&#x27;&gt;</span><br><span class="line">        &lt;div className=&quot;w-20 h-20 border-4 border-opacity-20 border-purple-500 border-t-purple-800 rounded-full animate-spin&quot;&gt;&lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>这段代码是一个使用Tailwind CSS实现的简单旋转动画示例。它创建了一个居中的圆形div，该div具有旋转动画。下面是详细解析：</strong></p>
+<ul>
+<li><code>className=&#39;flex justify-center items-center&#39;</code>：这三个类一起使用，创建了一个flex容器，其中的内容水平（<code>justify-center</code>）和垂直（<code>items-center</code>）居中。这确保了内部的div（旋转元素）在父容器中居中。</li>
+<li>**<code>w-20 h-20</code>**：设置div的宽度和高度为5rem（根据Tailwind CSS的默认配置，<code>20</code>单位等于5rem，如果没有自定义配置的话）。</li>
+<li>**<code>border-4</code>**：设置边框宽度为4像素。</li>
+<li>**<code>border-opacity-20</code>**：设置边框透明度为20%，使边框颜色较浅。</li>
+<li>**<code>border-purple-500</code>**：设置边框的默认颜色为紫色，透明度由 <code>border-opacity-20</code>控制。</li>
+<li>**<code>border-t-purple-800</code>**：特别为上边框设置了较深的紫色（<code>purple-800</code>），这在旋转时会产生视觉效果，使得看起来像是在旋转。</li>
+<li>**<code>rounded-full</code>**：使div变为圆形。</li>
+<li>**<code>animate-spin</code>**：应用Tailwind CSS内置的旋转动画，使div无限期旋转。这个动画是通过CSS的 <code>@keyframes</code>实现的，定义了从0%到100%的转动，实现了连续旋转的效果。Tailwind CSS内部定义了这个动画关键帧，实现了元素的360度旋转。动画是循环播放的，因此旋转动画会一直持续，直到被另外的CSS规则覆盖或者从DOM中移除。</li>
+</ul>
+<h3 id="匿名函数的-和"><a href="#匿名函数的-和" class="headerlink" title="匿名函数的()和{}"></a>匿名函数的()和{}</h3><ul>
+<li>**使用 **<code>()=&gt;()</code>时，箭头函数会直接返回圆括号 <code>()</code>中的表达式结果。这适用于返回单个表达式或JSX元素的简短函数。</li>
+<li>**使用 **<code>()=&gt;&#123;&#125;</code>时，你可以在花括号 <code>&#123;&#125;</code>中执行多个语句，但如果想要返回值，需要显式使用 <code>return</code>语句。这适用于更复杂的函数，其中包含了多条语句。</li>
+</ul>
+<h2 id="Contact"><a href="#Contact" class="headerlink" title="Contact"></a>Contact</h2><h3 id="useAnimations"><a href="#useAnimations" class="headerlink" title="useAnimations"></a>useAnimations</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const group = useRef();</span><br><span class="line">  const &#123; nodes, materials, animations &#125; = useGLTF(scene);</span><br><span class="line">  const &#123; actions &#125; = useAnimations(animations, group);</span><br><span class="line"></span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    console.log(actions);// 可以查看模型有哪些动画</span><br><span class="line">    Object.values(actions).forEach((action) =&gt; &#123; action.stop() &#125;);</span><br><span class="line">    if (actions[currentAnimation]) actions[currentAnimation].play();</span><br><span class="line"></span><br><span class="line">  &#125;, [actions, currentAnimation]);</span><br></pre></td></tr></table></figure>
+
+<p><code>Object.values()</code> 是一个JavaScript方法，它从一个对象中提取出所有可枚举的属性值，并以数组的形式返回这些值。这个方法让你能够更方便地遍历对象的值。</p>
+<p><strong>使用方法:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const object = &#123; a: 1, b: &#x27;text&#x27;, c: true &#125;;</span><br><span class="line">const values = Object.values(object);</span><br><span class="line">console.log(values); // 输出: [1, &#x27;text&#x27;, true]</span><br></pre></td></tr></table></figure>
+
+<p><strong>案例:</strong><br><strong>假设你有一个对象，存储了不同动画的状态，你想要停止所有正在播放的动画，可以这样做:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const animations = &#123;</span><br><span class="line">  walk: &#123; /* 动画对象 */ &#125;,</span><br><span class="line">  run: &#123; /* 动画对象 */ &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 停止所有动画</span><br><span class="line">Object.values(animations).forEach(animation =&gt; &#123;</span><br><span class="line">  animation.stop(); // 假设每个动画对象都有一个stop方法</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>这样，</strong><code>Object.values()</code>帮助你获取了 <code>animations</code>对象中所有动画的集合，然后你可以使用 <code>forEach</code>遍历这个集合，并对每个动画调用 <code>stop</code>方法。</p>
+<h3 id="useAlert"><a href="#useAlert" class="headerlink" title="useAlert"></a>useAlert</h3><p><strong>新建的一个自定义Hook;</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import React from &#x27;react&#x27;</span><br><span class="line"></span><br><span class="line">const useAlert = () =&gt; &#123;</span><br><span class="line">  const [alert, setAlert] = React.useState(&#123;</span><br><span class="line">    show: false,</span><br><span class="line">    text: &#x27;&#x27;,</span><br><span class="line">    type: &#x27;danger&#x27;,</span><br><span class="line">  &#125;)</span><br><span class="line">  const showAlert = (&#123; text, type = &#x27;danger&#x27; &#125;) =&gt;</span><br><span class="line">    setAlert(&#123; show: true, text, type &#125;)</span><br><span class="line">  const hideAlert = () =&gt; setAlert(&#123; show: false, text: &#x27;&#x27;, type: &#x27;danger&#x27; &#125;)</span><br><span class="line">  return &#123; alert, showAlert, hideAlert &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default useAlert</span><br></pre></td></tr></table></figure>
+
+<p><strong>在useState的基础上，新建了两个函数，这两个函数都是传入参数+setAlert进行组合；最后返回alert，升级的setAlert(也就是这两个函数)</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io">Shealin You</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io/2024/03/09/threejs%E5%AE%9E%E6%88%984/">https://youxt-njnu.github.io/2024/03/09/threejs%E5%AE%9E%E6%88%984/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://youxt-njnu.github.io" target="_blank">Pale Bule Dot</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/WebGL/">WebGL</a><a class="post-meta__tags" href="/tags/3DGIS/">3DGIS</a></div><div class="post_share"><div class="social-share" data-image="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/03/09/threejs%E5%AE%9E%E6%88%9821/" title="three+react|个人主页实战Ⅱ(补)"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">three+react|个人主页实战Ⅱ(补)</div></div></a></div><div class="next-post pull-right"><a href="/2024/02/25/threejs%E5%AE%9E%E6%88%983/" title="three+react|个人主页实战Ⅲ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">three+react|个人主页实战Ⅲ</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/12/08/threejs%E4%B8%8A/" title="threejs API学习 Ⅰ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-08</div><div class="title">threejs API学习 Ⅰ</div></div></a></div><div><a href="/2024/01/07/threejs%E4%B8%8B/" title="threejs API学习 Ⅲ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-07</div><div class="title">threejs API学习 Ⅲ</div></div></a></div><div><a href="/2024/01/07/threejs%E4%B8%AD/" title="threejs API学习 Ⅱ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-07</div><div class="title">threejs API学习 Ⅱ</div></div></a></div><div><a href="/2024/01/07/threejs%E5%AE%8C/" title="threejs API学习 Ⅳ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-07</div><div class="title">threejs API学习 Ⅳ</div></div></a></div><div><a href="/2024/02/25/three%E5%AE%9E%E6%88%982/" title="three+react|个人主页实战Ⅱ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-25</div><div class="title">three+react|个人主页实战Ⅱ</div></div></a></div><div><a href="/2024/02/25/threejs%E5%AE%9E%E6%88%983/" title="three+react|个人主页实战Ⅲ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-25</div><div class="title">three+react|个人主页实战Ⅲ</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Shealin You</div><div class="author-info__description">Be brave, and know yourself</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/youxt-njnu"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:10190208@njnu.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://www.zhihu.com/people/paleYYY" target="_blank" title="zhihu"><i class="fa-brands fa-zhihu" style="color: #24292e;"></i></a><a class="social-icon" href="https://dclef.icu/atom.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">人生苦旅，踽踽独行之</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%A1%88%E4%BE%8B%E8%A1%A5%E5%85%85"><span class="toc-number">2.</span> <span class="toc-text">相关案例补充</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Bird%E6%A1%88%E4%BE%8B"><span class="toc-number">2.1.</span> <span class="toc-text">Bird案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#const-x3D-useGLTF-birdScene"><span class="toc-number">2.1.1.</span> <span class="toc-text">const &#x3D; useGLTF(birdScene)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unity%E4%B8%AD%E5%AF%BC%E5%85%A5glb-x2F-gltf"><span class="toc-number">2.1.2.</span> <span class="toc-text">Unity中导入glb&#x2F;gltf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useFrame"><span class="toc-number">2.1.3.</span> <span class="toc-text">useFrame()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Home"><span class="toc-number">2.2.</span> <span class="toc-text">Home</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Audio%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.2.1.</span> <span class="toc-text">Audio的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#currentStage%E7%9A%84%E5%88%87%E6%8D%A2"><span class="toc-number">2.2.2.</span> <span class="toc-text">currentStage的切换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Components"><span class="toc-number">2.3.</span> <span class="toc-text">Components</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Loader"><span class="toc-number">2.3.1.</span> <span class="toc-text">Loader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E7%9A%84-%E5%92%8C"><span class="toc-number">2.3.2.</span> <span class="toc-text">匿名函数的()和{}</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Contact"><span class="toc-number">2.4.</span> <span class="toc-text">Contact</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#useAnimations"><span class="toc-number">2.4.1.</span> <span class="toc-text">useAnimations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useAlert"><span class="toc-number">2.4.2.</span> <span class="toc-text">useAlert</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/05/31/%E8%AF%BE%E7%A8%8B%E6%B1%87%E6%8A%A5-GIS/" title="GIS集成案例汇报"><img src="https://wallroom.io/img/3840x2160/bg-20bb43a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GIS集成案例汇报"/></a><div class="content"><a class="title" href="/2024/05/31/%E8%AF%BE%E7%A8%8B%E6%B1%87%E6%8A%A5-GIS/" title="GIS集成案例汇报">GIS集成案例汇报</a><time datetime="2024-05-31T01:33:26.000Z" title="发表于 2024-05-31 09:33:26">2024-05-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A2/" title="JavaScript基础知识Ⅲ"><img src="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript基础知识Ⅲ"/></a><div class="content"><a class="title" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A2/" title="JavaScript基础知识Ⅲ">JavaScript基础知识Ⅲ</a><time datetime="2024-03-17T01:33:26.000Z" title="发表于 2024-03-17 09:33:26">2024-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/" title="JavaScript基础知识Ⅱ"><img src="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript基础知识Ⅱ"/></a><div class="content"><a class="title" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/" title="JavaScript基础知识Ⅱ">JavaScript基础知识Ⅱ</a><time datetime="2024-03-17T01:27:26.000Z" title="发表于 2024-03-17 09:27:26">2024-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/10/react+vite%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/" title="react+vite+hexo|项目呈现"><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/15A21438BD46CC6CF21998480FDA2C83.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="react+vite+hexo|项目呈现"/></a><div class="content"><a class="title" href="/2024/03/10/react+vite%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/" title="react+vite+hexo|项目呈现">react+vite+hexo|项目呈现</a><time datetime="2024-03-10T03:51:26.000Z" title="发表于 2024-03-10 11:51:26">2024-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/09/threejs%E5%AE%9E%E6%88%9821/" title="three+react|个人主页实战Ⅱ(补)"><img src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="three+react|个人主页实战Ⅱ(补)"/></a><div class="content"><a class="title" href="/2024/03/09/threejs%E5%AE%9E%E6%88%9821/" title="three+react|个人主页实战Ⅱ(补)">three+react|个人主页实战Ⅱ(补)</a><time datetime="2024-03-09T03:34:05.000Z" title="发表于 2024-03-09 11:34:05">2024-03-09</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/index_img.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By Shealin You</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Training the faculty of mindfulness is like breathing oxygen continuously to remain alive.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'StmwBdb4aXO6LMYWRxjVnufr-gzGzoHsz',
+      appKey: 'V7WavrdJsNE6xxx5YGiygidl',
+      avatar: 'monsterid',
+      serverURLs: 'https://stmwbdb4.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="000EDNt20L3sUT" data-server="tencent" data-type="song" data-fixed="true" data-autoplay="true" data-lrcType="-1"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

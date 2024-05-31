@@ -1,0 +1,445 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>JavaScript基础知识Ⅱ | Pale Bule Dot</title><meta name="author" content="Shealin You"><meta name="copyright" content="Shealin You"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="JS基础 整理自黑马Pink前端的课程资料；算是入门第一步；后续有时间的话，再看看书，多了解了解  7. 运算符（操作符）浮点数的精度问题 浮点数值的最高精度是 17 位小数，但在进行算术计算时其精确度远远不如整数。 var result &#x3D; 0.1 + 0.2;    &#x2F;&#x2F; 结果不是 0.3，而是：0.30000000000000004console.log(0.07 * 100);   &#x2F;&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript基础知识Ⅱ">
+<meta property="og:url" content="https://youxt-njnu.github.io/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/index.html">
+<meta property="og:site_name" content="Pale Bule Dot">
+<meta property="og:description" content="JS基础 整理自黑马Pink前端的课程资料；算是入门第一步；后续有时间的话，再看看书，多了解了解  7. 运算符（操作符）浮点数的精度问题 浮点数值的最高精度是 17 位小数，但在进行算术计算时其精确度远远不如整数。 var result &#x3D; 0.1 + 0.2;    &#x2F;&#x2F; 结果不是 0.3，而是：0.30000000000000004console.log(0.07 * 100);   &#x2F;&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wallroom.io/img/2560x1600/bg-6d49cc2.png">
+<meta property="article:published_time" content="2024-03-17T01:27:26.000Z">
+<meta property="article:modified_time" content="2024-03-17T01:32:58.272Z">
+<meta property="article:author" content="Shealin You">
+<meta property="article:tag" content="JS">
+<meta property="article:tag" content="基础知识">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wallroom.io/img/2560x1600/bg-6d49cc2.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://youxt-njnu.github.io/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JavaScript基础知识Ⅱ',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-17 09:32:58'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Pale Bule Dot" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://wallroom.io/img/2560x1600/bg-6d49cc2.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Pale Bule Dot"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/favicon.png"/><span class="site-name">Pale Bule Dot</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JavaScript基础知识Ⅱ</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-17T01:27:26.000Z" title="发表于 2024-03-17 09:27:26">2024-03-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-17T01:32:58.272Z" title="更新于 2024-03-17 09:32:58">2024-03-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JavaScript基础知识Ⅱ"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="JS基础"><a href="#JS基础" class="headerlink" title="JS基础"></a>JS基础</h1><blockquote>
+<p>整理自黑马Pink前端的课程资料；<br>算是入门第一步；<br>后续有时间的话，再看看书，多了解了解</p>
+</blockquote>
+<h2 id="7-运算符（操作符）"><a href="#7-运算符（操作符）" class="headerlink" title="7. 运算符（操作符）"></a>7. 运算符（操作符）</h2><p><strong>浮点数的精度问题</strong></p>
+<p><strong>浮点数值的最高精度是 17 位小数，但在进行算术计算时其精确度远远不如整数。</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="number">0.1</span> + <span class="number">0.2</span>;    <span class="comment">// 结果不是 0.3，而是：0.30000000000000004</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0.07</span> * <span class="number">100</span>);   <span class="comment">// 结果不是 7，  而是：7.000000000000001</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>所以：不要直接判断两个浮点数是否相等 !</strong></p>
+<h2 id="8-断点调试"><a href="#8-断点调试" class="headerlink" title="8. 断点调试"></a>8. 断点调试</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">断点调试是指自己在程序的某一行设置一个断点，调试时，程序运行到这一行就会停住，然后你可以一步一步往下调试，调试过程中可以看各个变量当前的值，出错的话，调试到出错的代码行即显示错误，停下。断点调试可以帮助观察程序的运行过程</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">断点调试的流程：</span><br><span class="line">1、浏览器中按 F12--&gt; sources --&gt;找到需要调试的文件--&gt;在程序的某一行设置断点</span><br><span class="line">2、Watch: 监视，通过watch可以监视变量的值的变化，非常的常用。</span><br><span class="line">3、摁下F11，程序单步执行，让程序一行一行的执行，这个时候，观察watch中变量的值的变化。</span><br></pre></td></tr></table></figure>
+
+<p><strong>标识符命名规范</strong></p>
+<ul>
+<li><strong>变量、函数的命名必须要有意义</strong></li>
+<li><strong>变量的名称一般用名词</strong></li>
+<li><strong>函数的名称一般用动词</strong></li>
+</ul>
+<h2 id="9-数组"><a href="#9-数组" class="headerlink" title="9. 数组"></a>9. 数组</h2><p><strong>JS 中创建数组有两种方式：</strong></p>
+<ul>
+<li><p><strong>利用  new 创建数组</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> 数组名 = <span class="keyword">new</span> <span class="title class_">Array</span>() ；</span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="title class_">Array</span>();   <span class="comment">// 创建一个新的空数组</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意 Array () ，A 要大写</strong></p>
+</li>
+<li><p><strong>利用数组字面量创建数组</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1. 使用数组字面量方式创建空的数组</span></span><br><span class="line"><span class="keyword">var</span>  数组名 = []；</span><br><span class="line"><span class="comment">//2. 使用数组字面量方式创建带初始值的数组</span></span><br><span class="line"><span class="keyword">var</span>  数组名 = [<span class="string">&#x27;小白&#x27;</span>,<span class="string">&#x27;小黑&#x27;</span>,<span class="string">&#x27;大黄&#x27;</span>,<span class="string">&#x27;瑞奇&#x27;</span>];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>**数组的字面量是方括号 [ ] **</li>
+<li><strong>声明数组并赋值称为数组的初始化</strong></li>
+<li><strong>这种字面量方式也是我们以后最多使用的方式</strong></li>
+</ul>
+</li>
+<li><p><strong>数组元素的类型</strong><br><strong>数组中可以存放任意类型的数据，例如字符串，数字，布尔值等。</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arrStus = [<span class="string">&#x27;小白&#x27;</span>,<span class="number">12</span>,<span class="literal">true</span>,<span class="number">28.9</span>];</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义数组</span></span><br><span class="line"><span class="keyword">var</span> arrStus = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="comment">// 获取数组中的第2个元素</span></span><br><span class="line"><span class="title function_">alert</span>(arrStus[<span class="number">1</span>]);    </span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：如果访问时数组没有和索引值对应的元素，则得到的值是undefined</strong></p>
+<ul>
+<li><p><strong>数组的长度</strong><br><strong>数组的长度：默认情况下表示数组中元素的个数</strong><br><strong>使用“数组名.length”可以访问数组元素的数量（数组长度）。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var arrStus = [1,2,3];</span><br><span class="line">alert(arrStus.length);  // 3</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：</p>
+</li>
+<li><p><strong>此处数组的长度是数组元素的个数 ，不要和数组的索引号混淆。</strong></p>
+</li>
+<li><p><strong>当我们数组里面的元素个数发生了变化，这个 length 属性跟着一起变化</strong></p>
+</li>
+<li><p><strong>数组的length属性可以被修改：</strong></p>
+</li>
+<li><p><strong>如果设置的length属性值大于数组的元素个数，则会在数组末尾出现空白元素；</strong></p>
+</li>
+<li><p><strong>如果设置的length属性值小于数组的元素个数，则会把超过该值的数组元素删除</strong></p>
+</li>
+</ul>
+<h2 id="10-函数"><a href="#10-函数" class="headerlink" title="10. 函数"></a>10. 函数</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 声明函数</span><br><span class="line">function 函数名() &#123;</span><br><span class="line">    //函数体代码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>function 是声明函数的关键字,必须小写</strong></p>
+</li>
+<li><p><strong>由于函数一般是为了实现某个功能才定义的， 所以通常我们将函数名命名为动词，比如 getSum</strong></p>
+<h3 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 调用函数</span><br><span class="line">函数名();  // 通过调用函数名来执行函数体代码</span><br></pre></td></tr></table></figure>
+
+<h3 id="arguments的使用"><a href="#arguments的使用" class="headerlink" title="arguments的使用"></a>arguments的使用</h3><p><strong>当不确定有多少个参数传递的时候，可以用 arguments 来获取。JavaScript 中，arguments实际上它是当前函数的一个内置对象。所有函数都内置了一个 arguments 对象，arguments 对象中存储了传递的所有实参。arguments展示形式是一个伪数组，因此可以进行遍历。伪数组具有以下特点：</strong></p>
+</li>
+<li><p><strong>具有 length 属性</strong></p>
+</li>
+<li><p><strong>按索引方式储存数据</strong></p>
+</li>
+<li><p><strong>不具有数组的 push , pop 等方法</strong><br><strong>注意：在函数内部使用该对象，用此对象获取函数调用时传的实参。</strong></p>
+</li>
+</ul>
+<h3 id="函数案例"><a href="#函数案例" class="headerlink" title="函数案例"></a>函数案例</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">函数内部可以调用另一个函数，在同一作用域代码中，函数名即代表封装的操作，使用函数名加括号即可以将封装的操作执行。</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数的两种声明方式"><a href="#函数的两种声明方式" class="headerlink" title="函数的两种声明方式"></a>函数的两种声明方式</h3><ul>
+<li><p><strong>自定义函数方式(命名函数)</strong><br><strong>利用函数关键字 function 自定义函数方式</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 声明定义方式</span><br><span class="line">function fn() &#123;...&#125;</span><br><span class="line">// 调用  </span><br><span class="line">fn();  </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>因为有名字，所以也被称为命名函数</strong></li>
+<li><strong>调用函数的代码既可以放到声明函数的前面，也可以放在声明函数的后面</strong></li>
+</ul>
+</li>
+<li><p><strong>函数表达式方式(匿名函数）</strong><br>**利用函数表达式方式的写法如下： **</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 这是函数表达式写法，匿名函数后面跟分号结束</span><br><span class="line">var fn = function()&#123;...&#125;；</span><br><span class="line">// 调用的方式，函数调用必须写到函数体下面</span><br><span class="line">fn();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>因为函数没有名字，所以也被称为匿名函数</strong></li>
+<li>**这个fn 里面存储的是一个函数  **</li>
+<li><strong>函数表达式方式原理跟声明变量方式是一致的</strong></li>
+<li><strong>函数调用的代码必须写到函数体后面</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="10-作用域"><a href="#10-作用域" class="headerlink" title="10 - 作用域"></a>10 - 作用域</h2><h3 id="1-1-作用域概述"><a href="#1-1-作用域概述" class="headerlink" title="1.1 作用域概述"></a>1.1 作用域概述</h3><p><strong>通常来说，一段程序代码中所用到的名字并不总是有效和可用的，而限定这个名字的可用性的代码范围就是这个名字的作用域。作用域的使用提高了程序逻辑的局部性，增强了程序的可靠性，减少了名字冲突。</strong></p>
+<p><strong>JavaScript（es6前）中的作用域有两种：</strong></p>
+<ul>
+<li><strong>全局作用域</strong></li>
+<li><strong>局部作用域（函数作用域）</strong></li>
+</ul>
+<h3 id="1-2-全局作用域"><a href="#1-2-全局作用域" class="headerlink" title="1.2 全局作用域"></a>1.2 全局作用域</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用于所有代码执行的环境(整个script标签内部)或独立的js文件。</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-局部作用域"><a href="#1-3-局部作用域" class="headerlink" title="1.3 局部作用域"></a>1.3 局部作用域</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用于函数内的代码环境，就是局部作用域。 </span><br><span class="line">因为跟函数有关系，所以也称为函数作用域。</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-jS没有块级作用域"><a href="#1-4-jS没有块级作用域" class="headerlink" title="1.4 jS没有块级作用域"></a>1.4 jS没有块级作用域</h3><ul>
+<li><strong>块作用域由 { } 包括。</strong></li>
+<li><strong>在其他编程语言中（如 java、c#等），在 if 语句、循环语句中创建的变量，仅仅只能在本 if 语句、本循环语句中使用；</strong><br><strong>js中没有块级作用域（在ES6之前）</strong><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if(true)&#123;</span><br><span class="line">  var num = 123;</span><br><span class="line">  //console.log(num); //123</span><br><span class="line">&#125;</span><br><span class="line">console.log(num);   //123</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="1-5-变量的作用域"><a href="#1-5-变量的作用域" class="headerlink" title="1.5 变量的作用域"></a>1.5 变量的作用域</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在JavaScript中，根据作用域的不同，变量可以分为两种：</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>全局变量</strong></li>
+<li><strong>局部变量</strong></li>
+</ul>
+<p><strong>2.1 全局变量</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在全局作用域下声明的变量叫做全局变量（在函数外部定义的变量）。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>全局变量在代码的任何位置都可以使用</strong></li>
+<li><strong>在全局作用域下 var 声明的变量 是全局变量</strong></li>
+<li><strong>特殊情况下，在函数内不使用 var 声明的变量也是全局变量（不建议使用）</strong></li>
+</ul>
+<p><strong>2.2 局部变量</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在局部作用域下声明的变量叫做局部变量（在函数内部定义的变量）</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>局部变量只能在该函数内部使用</strong></li>
+<li><strong>在函数内部 var 声明的变量是局部变量</strong></li>
+<li><strong>函数的形参实际上就是局部变量</strong></li>
+</ul>
+<p><strong>2.3 全局变量和局部变量的区别</strong></p>
+<ul>
+<li><strong>全局变量：在任何一个地方都可以使用，只有在浏览器关闭时才会被销毁，因此比较占内存</strong></li>
+<li><strong>局部变量：只在函数内部使用，当其所在的代码块被执行时，会被初始化；当代码块运行结束后，就会被销毁，因此更节省内存空间</strong></li>
+</ul>
+<h3 id="1-6-作用域链"><a href="#1-6-作用域链" class="headerlink" title="1.6 - 作用域链"></a>1.6 - 作用域链</h3><p><strong>只要是代码都一个作用域中，写在函数内部的局部作用域，未写在任何函数内部即在全局作用域中；如果函数中还有函数，那么在这个作用域中就又可以诞生一个作用域；根据在</strong>**[内部函数可以访问外部函数变量]**的这种机制，用链式查找决定哪些数据能被内部函数访问，就称作作用域链。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">案例分析1：</span><br><span class="line">function f1() &#123;</span><br><span class="line">    var num = 123;</span><br><span class="line">    function f2() &#123;</span><br><span class="line">        console.log( num );//123</span><br><span class="line">    &#125;</span><br><span class="line">    f2();</span><br><span class="line">&#125;</span><br><span class="line">var num = 456;</span><br><span class="line">f1();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用域链：采取就近原则的方式来查找变量最终的值</span><br><span class="line">var a = 1;</span><br><span class="line">function fn1() &#123;</span><br><span class="line">    var a = 2;</span><br><span class="line">    var b = &#x27;22&#x27;;</span><br><span class="line">    fn2();</span><br><span class="line">    function fn2() &#123;</span><br><span class="line">        var a = 3;</span><br><span class="line">        fn3();</span><br><span class="line">        function fn3() &#123;</span><br><span class="line">            var a = 4;</span><br><span class="line">            console.log(a); //a的值 4</span><br><span class="line">            console.log(b); //b的值 22</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">fn1();</span><br></pre></td></tr></table></figure>
+
+<p><img src="file://F:/20-%E6%B1%82%E8%81%8C/02-%E5%89%8D%E7%AB%AF/images/js/%E5%9B%BE%E7%89%872-16779152458061.png?lastModify=1710638944"></p>
+<h3 id="1-7-预解析"><a href="#1-7-预解析" class="headerlink" title="1.7 - 预解析"></a>1.7 - 预解析</h3><p><strong>JavaScript 代码是由浏览器中的 JavaScript 解析器来执行的。</strong></p>
+<p><strong>JavaScript 解析器在运行 JavaScript 代码的时候分为两步：</strong></p>
+<p><strong>预解析和代码执行。</strong></p>
+<ul>
+<li><strong>预解析：在当前作用域下, JS 代码执行之前，浏览器会默认把带有 var 和 function 声明的变量在内存中进行提前声明或者定义</strong>，预解析也叫做变量、函数提升。</li>
+<li><strong>代码执行： 从上到下执行JS语句。</strong><br><strong>注意：****预解析会把变量和函数的声明在代码执行之前执行完成。</strong></li>
+</ul>
+<p><strong>变量预解析：</strong></p>
+<p><strong>变量的声明会被提升到当前作用域的最上面，变量的赋值不会提升。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">console.log(num);  // undefined</span><br><span class="line">var num = 10;</span><br><span class="line">//注意：变量提升只提升声明，不提升赋值</span><br></pre></td></tr></table></figure>
+
+<p><strong>函数预解析：</strong></p>
+<p><strong>函数的声明会被提升到当前作用域的最上面，但是不会调用函数。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fn();</span><br><span class="line">function fn() &#123;</span><br><span class="line">    console.log(&#x27;打印&#x27;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>结果：控制台打印字符串 — ”打印“</strong></p>
+<p><strong>注意：函数声明代表函数整体，所以函数提升后，函数名代表整个函数，但是函数并没有被调用！</strong></p>
+<p><strong>函数表达式声明函数问题：</strong></p>
+<p><strong>函数表达式创建函数，会执行变量提升</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fn();</span><br><span class="line">var  fn = function() &#123;</span><br><span class="line">    console.log(&#x27;想不到吧&#x27;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>结果：报错提示 ”fn is not a function”</strong></p>
+<blockquote>
+<p><strong>解释：该段代码执行之前，会做变量声明提升，fn在提升之后的值是undefined；而fn调用是在fn被赋值为函数体之前，此时fn的值是undefined，所以无法正确调用</strong></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io">Shealin You</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/">https://youxt-njnu.github.io/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://youxt-njnu.github.io" target="_blank">Pale Bule Dot</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JS/">JS</a><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a></div><div class="post_share"><div class="social-share" data-image="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A2/" title="JavaScript基础知识Ⅲ"><img class="cover" src="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JavaScript基础知识Ⅲ</div></div></a></div><div class="next-post pull-right"><a href="/2024/03/10/react+vite%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/" title="react+vite+hexo|项目呈现"><img class="cover" src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/15A21438BD46CC6CF21998480FDA2C83.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">react+vite+hexo|项目呈现</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/05/03/JS%E5%9F%BA%E7%A1%80I/" title="JavaScript基础知识Ⅰ"><img class="cover" src="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-03</div><div class="title">JavaScript基础知识Ⅰ</div></div></a></div><div><a href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A2/" title="JavaScript基础知识Ⅲ"><img class="cover" src="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-17</div><div class="title">JavaScript基础知识Ⅲ</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Shealin You</div><div class="author-info__description">Be brave, and know yourself</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/youxt-njnu"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:10190208@njnu.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://www.zhihu.com/people/paleYYY" target="_blank" title="zhihu"><i class="fa-brands fa-zhihu" style="color: #24292e;"></i></a><a class="social-icon" href="https://dclef.icu/atom.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">人生苦旅，踽踽独行之</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JS%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">JS基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88%E6%93%8D%E4%BD%9C%E7%AC%A6%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">7. 运算符（操作符）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95"><span class="toc-number">1.2.</span> <span class="toc-text">8. 断点调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E6%95%B0%E7%BB%84"><span class="toc-number">1.3.</span> <span class="toc-text">9. 数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E5%87%BD%E6%95%B0"><span class="toc-number">1.4.</span> <span class="toc-text">10. 函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-number">1.4.1.</span> <span class="toc-text">调用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#arguments%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.4.2.</span> <span class="toc-text">arguments的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E6%A1%88%E4%BE%8B"><span class="toc-number">1.4.3.</span> <span class="toc-text">函数案例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%A4%E7%A7%8D%E5%A3%B0%E6%98%8E%E6%96%B9%E5%BC%8F"><span class="toc-number">1.4.4.</span> <span class="toc-text">函数的两种声明方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.5.</span> <span class="toc-text">10 - 作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%A6%82%E8%BF%B0"><span class="toc-number">1.5.1.</span> <span class="toc-text">1.1 作用域概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%85%A8%E5%B1%80%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.5.2.</span> <span class="toc-text">1.2 全局作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%B1%80%E9%83%A8%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.5.3.</span> <span class="toc-text">1.3 局部作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-jS%E6%B2%A1%E6%9C%89%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.5.4.</span> <span class="toc-text">1.4 jS没有块级作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.5.5.</span> <span class="toc-text">1.5 变量的作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE"><span class="toc-number">1.5.6.</span> <span class="toc-text">1.6 - 作用域链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E9%A2%84%E8%A7%A3%E6%9E%90"><span class="toc-number">1.5.7.</span> <span class="toc-text">1.7 - 预解析</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/05/31/%E8%AF%BE%E7%A8%8B%E6%B1%87%E6%8A%A5-GIS/" title="GIS集成案例汇报"><img src="https://wallroom.io/img/3840x2160/bg-20bb43a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GIS集成案例汇报"/></a><div class="content"><a class="title" href="/2024/05/31/%E8%AF%BE%E7%A8%8B%E6%B1%87%E6%8A%A5-GIS/" title="GIS集成案例汇报">GIS集成案例汇报</a><time datetime="2024-05-31T01:33:26.000Z" title="发表于 2024-05-31 09:33:26">2024-05-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A2/" title="JavaScript基础知识Ⅲ"><img src="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript基础知识Ⅲ"/></a><div class="content"><a class="title" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A2/" title="JavaScript基础知识Ⅲ">JavaScript基础知识Ⅲ</a><time datetime="2024-03-17T01:33:26.000Z" title="发表于 2024-03-17 09:33:26">2024-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/" title="JavaScript基础知识Ⅱ"><img src="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript基础知识Ⅱ"/></a><div class="content"><a class="title" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/" title="JavaScript基础知识Ⅱ">JavaScript基础知识Ⅱ</a><time datetime="2024-03-17T01:27:26.000Z" title="发表于 2024-03-17 09:27:26">2024-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/10/react+vite%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/" title="react+vite+hexo|项目呈现"><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/15A21438BD46CC6CF21998480FDA2C83.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="react+vite+hexo|项目呈现"/></a><div class="content"><a class="title" href="/2024/03/10/react+vite%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/" title="react+vite+hexo|项目呈现">react+vite+hexo|项目呈现</a><time datetime="2024-03-10T03:51:26.000Z" title="发表于 2024-03-10 11:51:26">2024-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/09/threejs%E5%AE%9E%E6%88%9821/" title="three+react|个人主页实战Ⅱ(补)"><img src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="three+react|个人主页实战Ⅱ(补)"/></a><div class="content"><a class="title" href="/2024/03/09/threejs%E5%AE%9E%E6%88%9821/" title="three+react|个人主页实战Ⅱ(补)">three+react|个人主页实战Ⅱ(补)</a><time datetime="2024-03-09T03:34:05.000Z" title="发表于 2024-03-09 11:34:05">2024-03-09</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/index_img.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By Shealin You</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Training the faculty of mindfulness is like breathing oxygen continuously to remain alive.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'StmwBdb4aXO6LMYWRxjVnufr-gzGzoHsz',
+      appKey: 'V7WavrdJsNE6xxx5YGiygidl',
+      avatar: 'monsterid',
+      serverURLs: 'https://stmwbdb4.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="000EDNt20L3sUT" data-server="tencent" data-type="song" data-fixed="true" data-autoplay="true" data-lrcType="-1"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

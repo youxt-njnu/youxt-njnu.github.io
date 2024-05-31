@@ -1,0 +1,417 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>设计结构化 | Pale Bule Dot</title><meta name="author" content="Shealin You"><meta name="copyright" content="Shealin You"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="设计结构化实践手册整理 整理自公众号《腾讯ISUX》，感觉挺有用的，参考链接如下： https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;QJHxGFA8B3xw6N_Fi39tSg https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;-RHvy8LO5isb3ypH6KII3Q  无论是设计师、产品还是开发，都是需要培养“结构化”这种抽象化的思维模式。 为什么需要结构化思维结构化实践的优势生涯">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计结构化">
+<meta property="og:url" content="https://youxt-njnu.github.io/2023/05/21/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96/index.html">
+<meta property="og:site_name" content="Pale Bule Dot">
+<meta property="og:description" content="设计结构化实践手册整理 整理自公众号《腾讯ISUX》，感觉挺有用的，参考链接如下： https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;QJHxGFA8B3xw6N_Fi39tSg https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;-RHvy8LO5isb3ypH6KII3Q  无论是设计师、产品还是开发，都是需要培养“结构化”这种抽象化的思维模式。 为什么需要结构化思维结构化实践的优势生涯">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/08/29/f9Si5RmLaIo6c8Y.png">
+<meta property="article:published_time" content="2023-05-21T11:18:53.000Z">
+<meta property="article:modified_time" content="2023-08-29T14:12:10.027Z">
+<meta property="article:author" content="Shealin You">
+<meta property="article:tag" content="设计">
+<meta property="article:tag" content="系统性思维">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/08/29/f9Si5RmLaIo6c8Y.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://youxt-njnu.github.io/2023/05/21/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '设计结构化',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-29 22:12:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Pale Bule Dot" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://s2.loli.net/2023/08/29/f9Si5RmLaIo6c8Y.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Pale Bule Dot"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/favicon.png"/><span class="site-name">Pale Bule Dot</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">设计结构化</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-21T11:18:53.000Z" title="发表于 2023-05-21 19:18:53">2023-05-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-29T14:12:10.027Z" title="更新于 2023-08-29 22:12:10">2023-08-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/%E8%AE%BE%E8%AE%A1/">设计</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="设计结构化"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="设计结构化实践手册整理"><a href="#设计结构化实践手册整理" class="headerlink" title="设计结构化实践手册整理"></a>设计结构化实践手册整理</h1><blockquote>
+<p>整理自公众号《腾讯ISUX》，感觉挺有用的，参考链接如下：</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/QJHxGFA8B3xw6N_Fi39tSg">https://mp.weixin.qq.com/s/QJHxGFA8B3xw6N_Fi39tSg</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/-RHvy8LO5isb3ypH6KII3Q">https://mp.weixin.qq.com/s/-RHvy8LO5isb3ypH6KII3Q</a></p>
+</blockquote>
+<p>无论是设计师、产品还是开发，都是需要培养“结构化”这种抽象化的思维模式。</p>
+<h1 id="为什么需要结构化思维"><a href="#为什么需要结构化思维" class="headerlink" title="为什么需要结构化思维"></a>为什么需要结构化思维</h1><h2 id="结构化实践的优势"><a href="#结构化实践的优势" class="headerlink" title="结构化实践的优势"></a>结构化实践的优势</h2><p>生涯三阶段：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-1.png"></p>
+<p>校招或实习的同学：学校和职场相差巨大，信息太多很难消化、啥都想学啥都没学透，说方案时同事和老大都没搞懂我想表达什么。发现同届新人蹭蹭蹭地成长，自己感觉成为了团队的孤儿。</p>
+<p>社招的同学：能力上没有突出最能打的强项以及体现持续发展的学习方向；表达上没有办法组织化地突出自己做过事情的核心价值，更多是在表达点状细节。日常执行上，大家也会担心平常只是在做需求单可视化工具人。而且随着我们的职级和业务压力增加，面临的人和事会无序增长，多线程到应接不暇。</p>
+<p>这些问题总结起来，就是<strong>事多、活赶、人杂，也就是信息、时间、和主体的碎片化</strong>。不是说碎片化一定是个坏事，碎片化能让我们快速地判断一个事情能不能做，甚至是我们解决表面问题的常态。</p>
+<p>比起解决单点问题，其实<strong>发现核心问题和统筹问题</strong>才是体现和提升工作能力的关键所在，这都要求我们需要有结构化的实践能力。<strong>而结构化实践无非就是在各种碎片中发现核心真相，解决问题的方法和能力。</strong></p>
+<p>人的精力有限，有效的选择和资源投入比盲目努力更重要，而结构化实践某种意义上也是一种捷径。</p>
+<p>结构化实践的优势：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-2.png"></p>
+<h2 id="结构化思维"><a href="#结构化思维" class="headerlink" title="结构化思维"></a>结构化思维</h2><p>信息处理过程：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-3.png"></p>
+<p><strong>1. 输入：</strong>首先我们会从外界吸收各类数据。</p>
+<p><strong>2. 降噪-归纳：</strong>然后大脑对其进行降噪和归纳，将这些数据分辨成有用或没有用的信息。</p>
+<p><strong>3. 推演-归因：</strong>接着我们对信息进行分析和推演，发现它们之间的关系和规律，这就成为了有效的知识。</p>
+<p><strong>4. 决策：</strong>然后我们根据这些关系和规律进行决策，这个过程体现的就是人脑的智慧，这也是为什么我们常常强调学的东西一定要用，因为如果知识不经过真实的决策，它是没有办法内化成我们自己的经验和智慧的。</p>
+<p><strong>5. 输出：</strong>最后我们根据决策对信息进行多次或多元重组，激发出了创造的可能性，并推动了新事物的边界，而这也是设计师非常关键的高光能力。</p>
+<blockquote>
+<p>感想：</p>
+<p>对于地理信息系统，所作的其实也是这些内容，科研及工作方向也聚焦于其中</p>
+</blockquote>
+<p>&#x3D;&#x3D;结构化思维&#x3D;&#x3D;：数据和信息收集充分后，先不去抠他们的细节，反而先<strong>以他们之间的结构和逻辑关系作为对象，然后进行归纳和推演的思考方法</strong>。这种方式能更好地帮助我们归纳出事物的本质关联。我们输入的数据和信息需要进行结构化地处理，来更好地吸收和利用；而输出的结论需要体现结构化分析的过程，增加它的说服力和落地性。</p>
+<p>结构化实践案例 -设计组件化：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-4.png"></p>
+<blockquote>
+<p>感想：</p>
+<p>在开发过程中，需求分析、模块设计、前端页面绘制，也是结构化的过程；</p>
+<p>在科研中，如何查找资料、对资料进行整合筛选、归纳观点，形成一篇文章；以及开展实验这些；</p>
+<p>都需要结构化，理清楚脉络和流程</p>
+</blockquote>
+<h2 id="金字塔结构"><a href="#金字塔结构" class="headerlink" title="金字塔结构"></a>金字塔结构</h2><p>主要作用：信息输出，如表达和写作</p>
+<p>关键原则：</p>
+<ul>
+<li>结论先行，以上统下：透过对背景和冲突的分析，明确核心的问题。</li>
+<li>纵向逻辑递进、横向归类分组：为了解决核心问题，我们需要遍历出造成问题的因素，这里就涉及到第二个原则：即纵向对问题进行递进挖掘，洞穿问题的深度。而横向对问题进行归类、分组、排序，全面顾及问题的广度。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-5.png"></p>
+<p>MECE原则：CE则是指不遗漏，所有的部分完全穷尽，也就是我们常说的全集遍历。ME的意思是指不重复，各个部分间相互没有重叠和交集。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-7.png"></p>
+<h2 id="优化金字塔"><a href="#优化金字塔" class="headerlink" title="优化金字塔"></a>优化金字塔</h2><p>项目发展往往是环环相扣的，而金字塔模型更多的是聚焦在单次叙事上，作者根据日常设计项目的情况重新将金字塔细化成七个流程：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E6%9C%BA%E6%9E%84%E5%8C%96-6.png"></p>
+<p>首先定义现状与目标，根据前者定义出核心问题；然后进行问题因素的全盘拆解，接着验证因素的真伪以及它的优先级；再接着根据优先级细化解决问题，最后进行回归复盘，指导下一次的设计实践。</p>
+<p>在拆解因素或步骤时尽可能不要超过7个，是因为人的意识能记忆和处理的信息数量并不多，平均为7±2个，有的人多些，有的人少些，7个以下也能让我们更好的聚焦。</p>
+<h3 id="定义现状与目标"><a href="#定义现状与目标" class="headerlink" title="定义现状与目标"></a>定义现状与目标</h3><p>现状很好理解，我们往往是因为发现了某些现象或者当下的结果不符合预期才希望进行改变，有可能是数据表现较弱，不能满足用户需求等等。那对应的，目标就是我们的预期结果。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-8.png"></p>
+<p><strong>如何看待一句话需求？</strong></p>
+<p>造成一句话需求可能有很多原因，甚至在一些MVP，也就是最小可行产品的DEMO场景底下是有效的。但我们遇到的大部分一句话需求可能都是为了快速解决表面问题。</p>
+<p>这种现象导向做法确实可以很快速地体现执行力，但它的局限性也非常明显，<strong>设计很可能会陷入盲目对齐竞品的境地，或者只是解决单点、当下且浅层的缺陷，却忽略了根本痛点。</strong></p>
+<p>举个生活化的例子吧，小帅和小美因为异地恋太久吵架了，小帅以为小美只是闹闹小情绪，秉承着对齐男朋友竞品以及包治百病的做法，给女朋友买了个包或发了个大红包，以为能够平息一切，结果只回收了小美一句“我不是要这些东西，分手吧”。</p>
+<p>这对怨种CP的现状是由于异地太久而导致亲密关系出现矛盾，所以这对情侣的目标和深层需求其实是<strong>“如何在异地的情况下保持良好的亲密关系，或者早日结束异地的状态”</strong>，但小帅的做法是很表面地处理成了单次情绪安抚的问题，而没有去挖掘为了完成这个双人目标，有哪些路径，而只是偷懒地买了个包或者发了个红包。</p>
+<p>用户体验也是一样，我们有时候自以为给了一个很合理的设计解法，但用户不一定会买账。<strong>男女朋友还有渠道直抒胸臆，设计师要回收用户真实的想法，实际上周期很长而成本也很高，所以更加需要我们基于目标先走一步把深层次的需求和触点盘清楚，再去投入设计资源。</strong></p>
+<blockquote>
+<p>感想：</p>
+<p>要善于挖掘一句话需求背后的深层次需求，治标也治本；</p>
+<p>在科研中，针对现阶段的研究现状，能不能看到这些是基于什么深层次的缺陷，然后提出改进，而不是浮于表面</p>
+</blockquote>
+<h3 id="界定核心问题"><a href="#界定核心问题" class="headerlink" title="界定核心问题"></a>界定核心问题</h3><p>核心问题的本质其实就是预期结果和目前结果的差距，定义核心问题可以用<strong>“目标减去现状”</strong>这个简单的减法来帮助聚焦。而解决问题的本质就是缩小目标和现状的差距。</p>
+<h3 id="建模遍历分析因素"><a href="#建模遍历分析因素" class="headerlink" title="建模遍历分析因素"></a>建模遍历分析因素</h3><p>借助一些现有的结构化的思维模型来帮助我们拆解和盘点造成问题的所有因素，可以分为时间架、空间架、程度架等等的分析结构。</p>
+<p>回归到刚刚异地恋的那个案例，如果核心问题是“如何在异地的情况下保持良好的亲密关系状态？”。从时间上我们可以考虑短期和长期的因素；在空间上，也就是整体和部分关系上，可以拆解成物质因素、情感因素、人际关系因素等。那么在程度上，也可以划分哪些是高优解决的因素，哪些是不紧急不重要的。</p>
+<h3 id="验证因素真伪及优先级"><a href="#验证因素真伪及优先级" class="headerlink" title="验证因素真伪及优先级"></a>验证因素真伪及优先级</h3><p>验证成立性基本上要依赖两种数据，定量数据和定性数据；定量数据可以透过产品埋点、数据看板又或者例会报告等等来获取；定性数据的来源更多就是用研、行业报告等各种渠道的反馈。为什么要验证成立性，是因为造成问题的因素很多，但是我们可以投入的资源是有限的。</p>
+<p>设计师和产品同学经常会纠结某个功能的排序会对其数据转化有很大的影响，如果可以低成本地AB Test一下，又或者引入CE观察一下可用性，大致就能知道我们这个拍脑袋的预设是否成立，而且也可以为后续的决策提供经验。而优先级的话更多是Case by Case，基于当前产品周期OKR和优化这个因素的ROI来平衡。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-9.png"></p>
+<h3 id="回归复盘"><a href="#回归复盘" class="headerlink" title="回归复盘"></a>回归复盘</h3><p>最后我们要对整个事件的结果、思维路径和处理方式进行一次复盘，来提升下一次处理类似问题的效率和效益，实现真正的成长。内卷会用来戏谑工作中没有意义的重复和比较。内卷与否关键还是在于每次复用中是否存在一定程度的跃迁，也就是自己或者产品有一定程度的成长和向好发展，哪怕他是比较微小而曲折的，这也是为什么建议在金字塔最后增加复盘的环节，其实还是为了更全面透彻地吸取经验，来实现自身和事物的螺旋式进化。</p>
+<p>刚刚在第六步有提到，每个细分问题的执行过程中又再次形成了一个小金字塔，而造成内卷其中部分原因就是我们在这些小金字塔里<strong>进行了太多不必要的重复和精细化，把资源耗费在了不该耗的地方，也就是投入产出比极低的情况下，自己和产品本身都没有得到对应的成长</strong>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-10.png"></p>
+<h1 id="如何系统化地进行学习"><a href="#如何系统化地进行学习" class="headerlink" title="如何系统化地进行学习"></a>如何系统化地进行学习</h1><h2 id="点亮技能树：体系化输入"><a href="#点亮技能树：体系化输入" class="headerlink" title="点亮技能树：体系化输入"></a>点亮技能树：体系化输入</h2><p>首先是学习。从进厂那一天开始，无论是主动还是被动，我们都<strong>不仅要学，还要大量地学</strong>，尤其近期AIGC的井喷式涌现，一定也让大家从睡醒到睡前都被新知识全方位包围与轰炸。二是体系化的学习不仅是一个必经的过程，而且也是<strong>结构比较完整闭环过程</strong>，无论学习的内容是什么，学习其实就是将前人结构化的思维和经验为我所用的过程，所以路径是相对清晰。</p>
+<p>其次，玩过游戏的同学都知道，<strong>技能树也就是一个技能细分方向的集合，它其实就是一个通俗的知识体系模型</strong>。我们进到一个新的游戏，会选择一个种族或职业，在游戏里打怪完成任务攒点数，然后根据自己的偏好和职业的优势给对应的技能分配技能点，<strong>打通这条技能链路，从而成为该职业某个方向的佼佼者</strong>。开局我们选了<strong>角色</strong>，后面就<strong>需要根据行业需求以及自身的职业规划来点亮自己的技能树</strong>，成为我们想成为的设计扛把子。</p>
+<p>利用技能树这个系统，能让我们更好地从自下而上的散装学习，转换为<strong>自上而下的能力规划和拓展</strong>。（对应下图的从左向右，从上往下）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-%E5%89%8D%E7%AB%AF.jpg"></p>
+<h2 id="为什么要种技能树"><a href="#为什么要种技能树" class="headerlink" title="为什么要种技能树"></a>为什么要种技能树</h2><blockquote>
+<p>感想</p>
+<p>教我们如何学习的一个很好的例子，主要感触就是把我平常的学习路线能够进行总结，还能够进一步优化我的学习过程</p>
+</blockquote>
+<h3 id="定义学习现状与目标"><a href="#定义学习现状与目标" class="headerlink" title="定义学习现状与目标"></a>定义学习现状与目标</h3><p>为什么要学习，以及为什么要体系化地学习，为什么要种这棵技能树？</p>
+<p>根据设计师的实际情况，学习目标从时间维度来讲可以分为短期目标和长期目标。短期目标很简单，大多是<strong>为了解决特定的问题</strong>，这个稿子我得学会画出来，这个图我得渲出来，这个问题我要学会讲清楚等等。而长期来说，对<strong>外是希望能够追平同事之间的差距，甚至超越平均水平来形成你的职场优势。对内则是马斯洛第五层</strong>啦，得到自我成长、发挥潜能，实现创造。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-11.png"></p>
+<h3 id="界定问题"><a href="#界定问题" class="headerlink" title="界定问题"></a>界定问题</h3><p><strong>● 学什么：现有水平和预期水平的差距是什么？</strong></p>
+<p><strong>● 学到哪：这个知识点的关键点和范围是什么？坑有多深？</strong></p>
+<p><strong>● 怎么学：达到学习目标的最优路径是什么？</strong></p>
+<p>光凭借脑子想是搞不明白这些问题的，<strong>在预期水平、学习范围、学习路径都不明确的情况下，我们就需要借助已有的前人的知识参照系，也就是技能树来进行定位和拆解。</strong>为了解答这三个问题，我们就得先弄清楚要如何构建起一棵技能树？</p>
+<p>自然界没有一颗树是自己从石头里爆出来的，都是透过前一棵树的种子种出来或者分支嫁接出来的，技能树也一样。</p>
+<h3 id="因素拆解：如何建立技能树"><a href="#因素拆解：如何建立技能树" class="headerlink" title="因素拆解：如何建立技能树"></a>因素拆解：如何建立技能树</h3><p>到了第三步因素拆解，我们可以从哪些维度进行技能树的构建呢？建议可以分为三个部分，首先我们要在巨头肩上选树苗，根据知识的类型去寻找合适的材料，然后筛选并借用高质量的知识结构，之后再结合自己诉求和阶段动态地调整知识体系。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-12.png"></p>
+<p>&#x3D;&#x3D;理论类的知识体系&#x3D;&#x3D;，建议大家可以选择一些经典的读物开始。那么痛点又来了，通读熟读一本书或一套理论是非常花时间的，此外不是每个人都能真正的享受阅读，达到有效转化的。更加建议大家先去认真品品<strong>这些经典大部头的目录</strong>，主要也有三个好处：</p>
+<p>● 概括性强：几乎所有的优秀的大部头都是有智慧的人看待事物、做决策的过程，他们在写目录的时候，本身就有着非常强的概括性并且能体现章节间的逻辑，所以我们可以站在巨人的肩膀上先获取高度提炼的全局框架。</p>
+<p>● 光速索引：先不要纠结我们要学多满，而是快速搭建起知识体系和索引，只要知道当自己不懂的时候可以去哪里找参考就可以了。</p>
+<p>● 知行合一：也是顺着刚刚说的这一点来的，带着理论去实践，学一条用一条，反复练习和验证，从而内化成自己真正吸收的养分。千万不要一股脑地囫囵吞枣，也不要用大量阅读来感动自己。</p>
+<p>&#x3D;&#x3D;实践类的技能&#x3D;&#x3D;，大家在学新技能的时候，安装和用的时候从来不看说明书，来一个不会的问题就下意识去某站找找关键字，然后收藏或者转发给文件传输助手，跟着教程步骤的快速模仿，调节一些参数，实现要想要的结果，但问题就在于我们很可能从来不会知道它的原理是什么。</p>
+<p><strong>不要忘记所有实践类的知识都是有理论支撑的，尤其是当我们在某个领域钻研到一定深度的时候，是无法回避去了解它的原理的，就像Protopie做深了其实也是要了解代码原理一样</strong>。技能类知识体系构建还是比较推荐大家去看看<strong>官方文档、入门教程以及工具对应的一级菜单</strong>，人家写得很辛苦也写得很清楚，毕竟那是人家亲生的工具和平台哈。</p>
+<p>举个例子，我们常常发现3D工具里面有一些中文拆开每个字都懂，合起来不知道啥意思的概念和翻译。笔者之所以发现这个事情，也是有一次为了研究一个贴图参数叫“纹素密度”，不同工具平台的翻译不尽相同，翻了超多论坛和野生教程都没有找到令人满意的定义，最后发现在官方文档里写得明明白白。而且官方文档和教程同样也和理论大部头一样，他们的目录也是一个高度凝练的知识架构，并且结合工具场景给到很多实用的案例。</p>
+<p>这里分UI、3D、引擎、开发、AIGC给大家盘点了一些常用官方文档的入口，大家可以“<strong>工具平台名+Guidelines、Manual、Docs或Documentation</strong>”的关键字进行检索，失眠多梦可以多围观，往往会可以新梳理我们对整套实践工具的认知。尤其是Adobe《Start 3D》流程指引，虽然它自己的3D工具还在蹒跚阶段，但我很后悔在学习3D三年后才遇这套入门的概念讲解，它把我很多细碎的概念从上层重新串联了起来。</p>
+<ul>
+<li>UI：Figma、Protopie、Material Design、Apple Human Interface Guidelines</li>
+<li>3D：Adobe Start 3D、C4D User Guide、Octane User Manual、Substance Painter、Blender Reference Manual</li>
+<li>开发：Apple UIKit、Android开发者文档、Harmony OS 开发者文档、three.js docs</li>
+<li>引擎：Unreal Engine 5 Documentation、Unity Documentation</li>
+<li>AIGC：Midjourney Documentation、Stable Diffusion Web UI wiki</li>
+</ul>
+<p>除了参考工具现有的官方Wiki文档外，在AI平台涌现的当下，我们也可以利用集成GPT4能力的脑图工具，如Superus等，快速透过问答引导来逐步构建起初级的知识图谱。</p>
+<p>当然无论是理论类的还是实践技能类的知识体系构建，都建议大家能尽可能地去找<strong>拥有两个特征的高质量材料</strong>：</p>
+<ul>
+<li><p><strong>一手信息</strong>：尽可能接近原生环境、原生语言且是不断更新的官方信息。知识的传播和理解是有营养级的，我们难以确定在几度易手后，信息是否会产生偏差；或者我们真正需要的信息在传播过程已经被人为筛掉。</p>
+</li>
+<li><p><strong>结构提纯，普适性强</strong>：这样我们借用架构时学习路径会更加明确，而且后面可以基于这个主结构不断补充分支。现在很多媒体形态为了吸引我们去消费阅读，往往会加入很多很有意思但是过于细分的角度。要记得我们现在的目标是为了构建技能树，有时候细分太多，反而会影响判断和精力投入。</p>
+</li>
+</ul>
+<p>借用知识结构只是敲门砖，要借用过程中我们还是要保持辩证态度，不要照抄，也不要把信息的权威性当做正确性和唯一性来看待。虽然大家都习惯了直给的快乐，<strong>但直给的结论往往容易省略思维构建的过程和纠错的细节，而这两个环节对于锻炼自己独立思考的能力是非常关键的。</strong></p>
+<p>其次我们还是的要根据自己的阶段和动态认知，<strong>随时增删改技能树的内容</strong>。大家都知道罗振宇老师，他有一个学习习惯是颇挺值得我们参考的。每天罗老师要写五篇阅读心得，有时候只记录关键字，是为了像缝扣子一样，强迫自己把新的知识缝合到原来的知识结构当中。设计师有时候出于行业焦虑会疯狂去获取或者收藏技巧点，但是<strong>却忽略动态缝合技能树的过程，从而错失了找到最佳学习路径</strong>。</p>
+<h3 id="因素验证-主次评估：如何点亮技能树"><a href="#因素验证-主次评估：如何点亮技能树" class="headerlink" title="因素验证+主次评估：如何点亮技能树"></a>因素验证+主次评估：如何点亮技能树</h3><p>我们团队接到一个设计任务，两周之内要用UE做一个完整的、可交互的、3D的开放世界概念游戏Demo，满足我们当时诉求的UE基础技能树大概有九个模块，80几个学习节点。但是时间和精力有限，我们不可能在两周内全部点亮，且能完成执行输出。</p>
+<p>● 客观限制：知识分支太多，要选择当下最有价值的学习路径；在刚刚的案例里，如果我们选择去学UE的AI行为树，也许可以收获一堆Demo里走来走去的NPC，但是对整个产品概念的呈现其实没有核心的帮助。</p>
+<p>● 主观限制：人的精力是有限的，在这种巨量知识焦虑下，可能更容易引起反抗情绪。</p>
+<p>● 团队构成：术业有专攻，团战更高效，要记得我们在职场里永远不是一个人在战斗，一个人学不完那就分布式多个人去学，每个人根据自己的优势去学，再联合起来打团战，往往能发挥1+1＞2的作用。</p>
+<p>● 阶段差异：每个人学习阶段和学习诉求不一样，在不同的阶段我们也要重新看待学习曲线和权重分配。</p>
+<p>基于技能点分配这个案例，结合个人自身的经验，技能点分配有三个要素是可以参考的：</p>
+<p>● 贴合刚需：贴合现实需求的技能点不仅实用优先级很高，往往也能提供一个持续训练和得到外界反馈的场景。</p>
+<p>● 学习阶段明确：我们能够知道进阶能怎么做，退阶又能怎么做，根据不同的应用场景有一定的学习弹性，这样子我们也能相对知道投入的学习成本大概能有多少的收效转化。</p>
+<p>● 自身主观能动性：选你所爱，热爱的自驱力和需求Deadline都是第一生产力。</p>
+<p>最终我们采取了一种游击学法，也就是如果我们要完成一开始定下的呈现目标，我们团队需要掌握“最小必要知识”是什么？接着我们就将原来的学习节点从80个缩减成了20个，然后我们再分配两个人的学习任务，大概每个人学10个点，快速地把这个Demo拼合出来。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-13.png"></p>
+<h3 id="细化解决问题-具体高效学习"><a href="#细化解决问题-具体高效学习" class="headerlink" title="细化解决问题 具体高效学习"></a>细化解决问题 具体高效学习</h3><p>正如我们一开始说的，细化的问题其实也需要进行二次的结构化拆解，但因为学习这个行为本身比较灵活，跟我们要学的东西是强关联，所以这里就借用4W1H模型提取了一些通用的方法，给大家参考参考。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-14.png"></p>
+<p>what: 首先学习的内容刚刚在分配技能点的环节有提到过，尽量做到“知行合一”，选择可以在实际实践中应用的知识。而且也要选择能够创造持续反馈场景的知识，因为只有不断地输出，且不断地获取反馈，我们才能不断地进行校正和训练来验证自己是否在进步。</p>
+<p>其次，我们要选择刚好位于“拉伸区”的学习内容，就是我们舒适区外围边缘的那个范围，这样我们不会因为学习内容太难而感到焦虑，也不会因为学习内容太容易而厌倦。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-15.png"></p>
+<p>除此之外，日常的学习内容和练习最好能<strong>结合当前业务形态沉淀成作品</strong>，这对职业发展来说还是比较有效的材料。一是能锻炼设计师对于产品规划和落地性的综合思考，二是围绕产品实际命题去进行研究学习，学习路径会更加聚焦而且更加延展，不会东学一个西学一个毫无关联。</p>
+<blockquote>
+<p>在做QQ打卡视觉设计的时候，产品的基本需求是希望在每天出一张好看的卡片，后面我们就进一步思考，在策略上是不是可以结合品牌或者用户属性去做日期的精准投放，在技术上是不是可以结合3D的贴图技法输出一些有趣的小品场景，于是就有了中间这两个结合品牌节庆和用户生日的静态设计。</p>
+<p>再进阶又继续推导，每天都是静态的小卡片有点单薄，是不是可以做成3D的H5互动模块呢？然后笔者再去研究Web引擎下的3D的材质实现，从而掌握了一种新的专业能力。</p>
+<p>上面每一步都是和产品思维关联，但又没有和设计专业能力脱节，都能产生新的设计沉淀。这样的学习内容其实对于个人或者产品的成长来说都是相对有益处的。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96-16.png"></p>
+<p>WHEN：</p>
+<p>欺骗大脑 渐入佳境：一是去做比学习更难受的事情，这样比较起来学习就显得更轻松了。</p>
+<p>把握一切断网的机会，制造心流：有次4-5个小时的长途飞机，本人恐飞怕死又睡不着，打开电脑看到《PBR基于物理渲染手册》的原文书，想说就学学，反正学不进去横竖也能催个眠，不亏。然后想了想，这英文书后面自己也不好索引啊，那要不直接翻译了得了。因为没有外物的干扰，所以超快进入心流，几个小时嗖一下过去了。一是提升了我对PBR概念的中英文映射能力，而且中文重新组织表达其实可以验证自己是否真正内化了原生逻辑；二是透过对自身纰漏和矛盾点的反复的查错和钻研，其实也能加深我对深难概念的认知。</p>
+<p>where：在环境上，推荐大家尽可能选择原文的材料和操作环境，也就是英文为主的操作环境。使用原文环境能让我们对专业术语的理解更加充分，另外延伸物料也更为完备，包括设计资产和业界论坛讨论等等，毕竟世界范围内很多工具的英语使用者实在比中文使用者多太多了。</p>
+<h1 id="如何有效组织设计输出"><a href="#如何有效组织设计输出" class="headerlink" title="如何有效组织设计输出"></a>如何有效组织设计输出</h1></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io">Shealin You</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io/2023/05/21/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96/">https://youxt-njnu.github.io/2023/05/21/%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://youxt-njnu.github.io" target="_blank">Pale Bule Dot</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%BE%E8%AE%A1/">设计</a><a class="post-meta__tags" href="/tags/%E7%B3%BB%E7%BB%9F%E6%80%A7%E6%80%9D%E7%BB%B4/">系统性思维</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2023/08/29/f9Si5RmLaIo6c8Y.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/07/23/geopandas%E6%80%8E%E4%B9%88%E7%BB%99%E7%89%B9%E5%AE%9A%E7%9A%84%E5%80%BC%E5%88%86%E9%85%8D%E9%A2%9C%E8%89%B2%EF%BC%8C%E5%B9%B6%E8%AE%BE%E7%BD%AE%E5%A5%BD%E5%9B%BE%E4%BE%8B/" title="geopandas怎么给特定的值分配颜色，并设置好图例"><img class="cover" src="https://wallroom.io/img/1920x1080/bg-614ea13.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">geopandas怎么给特定的值分配颜色，并设置好图例</div></div></a></div><div class="next-post pull-right"><a href="/2023/05/18/%E5%AE%BD%E5%B8%A6%E6%96%B0%E8%A3%85%E7%BB%8F%E9%AA%8C%E9%9B%86/" title="宽带新装经验集"><img class="cover" src="https://wallroom.io/img/1920x1080/bg-6eb7712.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">宽带新装经验集</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Shealin You</div><div class="author-info__description">Be brave, and know yourself</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/youxt-njnu"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:10190208@njnu.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://www.zhihu.com/people/paleYYY" target="_blank" title="zhihu"><i class="fa-brands fa-zhihu" style="color: #24292e;"></i></a><a class="social-icon" href="https://dclef.icu/atom.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">人生苦旅，踽踽独行之</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84%E5%8C%96%E5%AE%9E%E8%B7%B5%E6%89%8B%E5%86%8C%E6%95%B4%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">设计结构化实践手册整理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E7%BB%93%E6%9E%84%E5%8C%96%E6%80%9D%E7%BB%B4"><span class="toc-number">2.</span> <span class="toc-text">为什么需要结构化思维</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E5%AE%9E%E8%B7%B5%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">2.1.</span> <span class="toc-text">结构化实践的优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E6%80%9D%E7%BB%B4"><span class="toc-number">2.2.</span> <span class="toc-text">结构化思维</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%91%E5%AD%97%E5%A1%94%E7%BB%93%E6%9E%84"><span class="toc-number">2.3.</span> <span class="toc-text">金字塔结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E9%87%91%E5%AD%97%E5%A1%94"><span class="toc-number">2.4.</span> <span class="toc-text">优化金字塔</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E7%8E%B0%E7%8A%B6%E4%B8%8E%E7%9B%AE%E6%A0%87"><span class="toc-number">2.4.1.</span> <span class="toc-text">定义现状与目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%95%8C%E5%AE%9A%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98"><span class="toc-number">2.4.2.</span> <span class="toc-text">界定核心问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E6%A8%A1%E9%81%8D%E5%8E%86%E5%88%86%E6%9E%90%E5%9B%A0%E7%B4%A0"><span class="toc-number">2.4.3.</span> <span class="toc-text">建模遍历分析因素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E5%9B%A0%E7%B4%A0%E7%9C%9F%E4%BC%AA%E5%8F%8A%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">2.4.4.</span> <span class="toc-text">验证因素真伪及优先级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E5%A4%8D%E7%9B%98"><span class="toc-number">2.4.5.</span> <span class="toc-text">回归复盘</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%B3%BB%E7%BB%9F%E5%8C%96%E5%9C%B0%E8%BF%9B%E8%A1%8C%E5%AD%A6%E4%B9%A0"><span class="toc-number">3.</span> <span class="toc-text">如何系统化地进行学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%B9%E4%BA%AE%E6%8A%80%E8%83%BD%E6%A0%91%EF%BC%9A%E4%BD%93%E7%B3%BB%E5%8C%96%E8%BE%93%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text">点亮技能树：体系化输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%A7%8D%E6%8A%80%E8%83%BD%E6%A0%91"><span class="toc-number">3.2.</span> <span class="toc-text">为什么要种技能树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%AD%A6%E4%B9%A0%E7%8E%B0%E7%8A%B6%E4%B8%8E%E7%9B%AE%E6%A0%87"><span class="toc-number">3.2.1.</span> <span class="toc-text">定义学习现状与目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%95%8C%E5%AE%9A%E9%97%AE%E9%A2%98"><span class="toc-number">3.2.2.</span> <span class="toc-text">界定问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%A0%E7%B4%A0%E6%8B%86%E8%A7%A3%EF%BC%9A%E5%A6%82%E4%BD%95%E5%BB%BA%E7%AB%8B%E6%8A%80%E8%83%BD%E6%A0%91"><span class="toc-number">3.2.3.</span> <span class="toc-text">因素拆解：如何建立技能树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%A0%E7%B4%A0%E9%AA%8C%E8%AF%81-%E4%B8%BB%E6%AC%A1%E8%AF%84%E4%BC%B0%EF%BC%9A%E5%A6%82%E4%BD%95%E7%82%B9%E4%BA%AE%E6%8A%80%E8%83%BD%E6%A0%91"><span class="toc-number">3.2.4.</span> <span class="toc-text">因素验证+主次评估：如何点亮技能树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%86%E5%8C%96%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98-%E5%85%B7%E4%BD%93%E9%AB%98%E6%95%88%E5%AD%A6%E4%B9%A0"><span class="toc-number">3.2.5.</span> <span class="toc-text">细化解决问题 具体高效学习</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%9C%89%E6%95%88%E7%BB%84%E7%BB%87%E8%AE%BE%E8%AE%A1%E8%BE%93%E5%87%BA"><span class="toc-number">4.</span> <span class="toc-text">如何有效组织设计输出</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/05/31/%E8%AF%BE%E7%A8%8B%E6%B1%87%E6%8A%A5-GIS/" title="GIS集成案例汇报"><img src="https://wallroom.io/img/3840x2160/bg-20bb43a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GIS集成案例汇报"/></a><div class="content"><a class="title" href="/2024/05/31/%E8%AF%BE%E7%A8%8B%E6%B1%87%E6%8A%A5-GIS/" title="GIS集成案例汇报">GIS集成案例汇报</a><time datetime="2024-05-31T01:33:26.000Z" title="发表于 2024-05-31 09:33:26">2024-05-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A2/" title="JavaScript基础知识Ⅲ"><img src="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript基础知识Ⅲ"/></a><div class="content"><a class="title" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A2/" title="JavaScript基础知识Ⅲ">JavaScript基础知识Ⅲ</a><time datetime="2024-03-17T01:33:26.000Z" title="发表于 2024-03-17 09:33:26">2024-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/" title="JavaScript基础知识Ⅱ"><img src="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript基础知识Ⅱ"/></a><div class="content"><a class="title" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/" title="JavaScript基础知识Ⅱ">JavaScript基础知识Ⅱ</a><time datetime="2024-03-17T01:27:26.000Z" title="发表于 2024-03-17 09:27:26">2024-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/10/react+vite%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/" title="react+vite+hexo|项目呈现"><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/15A21438BD46CC6CF21998480FDA2C83.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="react+vite+hexo|项目呈现"/></a><div class="content"><a class="title" href="/2024/03/10/react+vite%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/" title="react+vite+hexo|项目呈现">react+vite+hexo|项目呈现</a><time datetime="2024-03-10T03:51:26.000Z" title="发表于 2024-03-10 11:51:26">2024-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/09/threejs%E5%AE%9E%E6%88%9821/" title="three+react|个人主页实战Ⅱ(补)"><img src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="three+react|个人主页实战Ⅱ(补)"/></a><div class="content"><a class="title" href="/2024/03/09/threejs%E5%AE%9E%E6%88%9821/" title="three+react|个人主页实战Ⅱ(补)">three+react|个人主页实战Ⅱ(补)</a><time datetime="2024-03-09T03:34:05.000Z" title="发表于 2024-03-09 11:34:05">2024-03-09</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/index_img.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By Shealin You</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Training the faculty of mindfulness is like breathing oxygen continuously to remain alive.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'StmwBdb4aXO6LMYWRxjVnufr-gzGzoHsz',
+      appKey: 'V7WavrdJsNE6xxx5YGiygidl',
+      avatar: 'monsterid',
+      serverURLs: 'https://stmwbdb4.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="000EDNt20L3sUT" data-server="tencent" data-type="song" data-fixed="true" data-autoplay="true" data-lrcType="-1"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

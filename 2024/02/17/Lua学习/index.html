@@ -1,0 +1,520 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Lua/XLua学习 | Pale Bule Dot</title><meta name="author" content="Shealin You"><meta name="copyright" content="Shealin You"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Lua入门语法教程：Lua 基本语法 - Lua中文手册 (dba.cn) print(&quot;hello world&quot;) -- note--[[ note]]  执行 $ lua filename.lua 一般约定，以下划线开头连接一串大写字母的名字（比如 _VERSION）被保留用于 Lua 内部全局变量。 在默认情况下，变量总是认为是全局的。 全局变量不需要声明，给一个变量赋值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lua&#x2F;XLua学习">
+<meta property="og:url" content="https://youxt-njnu.github.io/2024/02/17/Lua%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Pale Bule Dot">
+<meta property="og:description" content="Lua入门语法教程：Lua 基本语法 - Lua中文手册 (dba.cn) print(&quot;hello world&quot;) -- note--[[ note]]  执行 $ lua filename.lua 一般约定，以下划线开头连接一串大写字母的名字（比如 _VERSION）被保留用于 Lua 内部全局变量。 在默认情况下，变量总是认为是全局的。 全局变量不需要声明，给一个变量赋值">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wallroom.io/img/1920x1080/bg-f1b246b.jpg">
+<meta property="article:published_time" content="2024-02-17T00:26:05.000Z">
+<meta property="article:modified_time" content="2024-02-20T09:57:55.270Z">
+<meta property="article:author" content="Shealin You">
+<meta property="article:tag" content="软件端AR">
+<meta property="article:tag" content="Lua">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wallroom.io/img/1920x1080/bg-f1b246b.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://youxt-njnu.github.io/2024/02/17/Lua%E5%AD%A6%E4%B9%A0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Lua/XLua学习',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-20 17:57:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Pale Bule Dot" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://wallroom.io/img/1920x1080/bg-f1b246b.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Pale Bule Dot"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/favicon.png"/><span class="site-name">Pale Bule Dot</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Lua/XLua学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-17T00:26:05.000Z" title="发表于 2024-02-17 08:26:05">2024-02-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-20T09:57:55.270Z" title="更新于 2024-02-20 17:57:55">2024-02-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/AR%E5%BC%80%E5%8F%91/">AR开发</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Lua/XLua学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Lua入门"><a href="#Lua入门" class="headerlink" title="Lua入门"></a>Lua入门</h1><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>教程：<a target="_blank" rel="noopener" href="https://www.dba.cn/book/lua/LUAJiaoCheng/LUAJiBenYuFa.html">Lua 基本语法 - Lua中文手册 (dba.cn)</a></p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hello world&quot;</span>) </span><br><span class="line"><span class="comment">-- note</span></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment"> note</span></span><br><span class="line"><span class="comment">]]</span></span><br></pre></td></tr></table></figure>
+
+<p>执行</p>
+<p>$ lua filename.lua</p>
+<p>一般约定，以下划线开头连接一串大写字母的名字（比如 _VERSION）被保留用于 Lua 内部全局变量。</p>
+<p>在默认情况下，变量总是认为是全局的。</p>
+<p>全局变量不需要声明，给一个变量赋值后即创建了这个全局变量，访问一个没有初始化的全局变量也不会出错，只不过得到的结果是：nil。</p>
+<p>如果你想删除一个全局变量，只需要将变量赋值为nil。</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line"><span class="literal">nil</span></span><br><span class="line"></span><br><span class="line">boolean, <span class="literal">true</span>, <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">number</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span>, <span class="string">&quot;&quot;</span>, <span class="string">[[]]</span>, str1 .. str2, #str, </span><br><span class="line"></span><br><span class="line"><span class="built_in">table</span>, &#123;&#125;, <span class="built_in">table</span>[key]=value, key从<span class="number">1</span>开始, </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>, <span class="title">function</span> <span class="title">end</span>, <span class="title">fun2</span>=<span class="title">fun1</span>, </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">type</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+
+<p>匿名函数</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">anonymous</span><span class="params">(tab, fun)</span></span></span><br><span class="line">    <span class="keyword">for</span> k, v <span class="keyword">in</span> <span class="built_in">pairs</span>(tab) <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">print</span>(fun(k, v))</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">tab = &#123; key1 = <span class="string">&quot;val1&quot;</span>, key2 = <span class="string">&quot;val2&quot;</span> &#125;</span><br><span class="line">anonymous(tab, <span class="function"><span class="keyword">function</span><span class="params">(key, val)</span></span></span><br><span class="line">    <span class="keyword">return</span> key .. <span class="string">&quot; = &quot;</span> .. val</span><br><span class="line"><span class="keyword">end</span>)</span><br></pre></td></tr></table></figure>
+
+<p>..是拼接的意思<br>#实现求字符串长度</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">a, b = <span class="number">10</span>, <span class="number">2</span>*x <span class="comment">--多变量同时赋值</span></span><br><span class="line">x, y = y, x <span class="comment">-- swap &#x27;x&#x27; for &#x27;y&#x27;，变量交换</span></span><br><span class="line"><span class="comment">-- 多值赋值经常用来交换变量，或将函数调用返回给变量：</span></span><br><span class="line">a, b = f()</span><br><span class="line"></span><br><span class="line">t = &#123;&#125;</span><br><span class="line">t[<span class="string">&quot;key&quot;</span>] = <span class="string">&quot;www.dba.cn&quot;</span></span><br><span class="line">t[<span class="string">&quot;key&quot;</span>]</span><br><span class="line">t.key  <span class="comment">-- 当索引为字符串类型时的一种简化写法</span></span><br></pre></td></tr></table></figure>
+
+<p>Lua认为false和nil为假，true 和非nil为真。要注意的是Lua中 0 为 true。</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">[<span class="keyword">local</span>] <span class="function"><span class="keyword">function</span> <span class="title">fun1</span><span class="params">(x,y)</span></span> </span><br><span class="line">    x=x+<span class="number">1</span></span><br><span class="line">    y=y*<span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> x,y</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(a&gt;b) <span class="keyword">then</span> t=a</span><br><span class="line"><span class="keyword">else</span> t=b;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>Lua 中我们可以将函数作为参数传递给函数，如下实例：</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">myprint = <span class="function"><span class="keyword">function</span><span class="params">(param)</span></span></span><br><span class="line"> <span class="built_in">print</span>(<span class="string">&quot;这是打印函数 - ##&quot;</span>,param,<span class="string">&quot;##&quot;</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(num1,num2,functionPrint)</span></span></span><br><span class="line"> result = num1 + num2 <span class="comment">-- 调用传递的函数参数</span></span><br><span class="line"> functionPrint(result)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">myprint(<span class="number">10</span>)</span><br><span class="line"><span class="comment">-- myprint 函数作为参数传递</span></span><br><span class="line">add(<span class="number">2</span>,<span class="number">5</span>,myprint)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">s.<span class="built_in">upper</span>()</span><br><span class="line">s.<span class="built_in">lower</span>()</span><br><span class="line">s.<span class="built_in">gsub</span>()</span><br><span class="line">s.<span class="built_in">find</span>()</span><br><span class="line">s.<span class="built_in">reverse</span>()</span><br><span class="line">s.<span class="built_in">format</span>()</span><br><span class="line">s.<span class="built_in">char</span>(), s.<span class="built_in">byte</span>()</span><br><span class="line">s.<span class="built_in">len</span>()</span><br><span class="line">s.<span class="built_in">rep</span>()</span><br></pre></td></tr></table></figure>
+
+<p>数组</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">array=&#123;<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i= <span class="number">-2</span>, <span class="number">2</span> <span class="keyword">do</span> <span class="comment">--这里是直接表示i从-2到2的这个闭区间</span></span><br><span class="line">   array[i] = i *<span class="number">2</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>0</p>
+<p>迭代器</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span><span class="params">(iteratorMaxCount,currentNumber)</span></span></span><br><span class="line">   <span class="keyword">if</span> currentNumber&lt;iteratorMaxCount</span><br><span class="line">   <span class="keyword">then</span></span><br><span class="line">      currentNumber = currentNumber+<span class="number">1</span></span><br><span class="line">   <span class="keyword">return</span> currentNumber, currentNumber*currentNumber</span><br><span class="line">   <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i,n <span class="keyword">in</span> square,<span class="number">3</span>,<span class="number">0</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   <span class="built_in">print</span>(i,n)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>1    1<br>2    4<br>3    9</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line"><span class="built_in">table</span>.<span class="built_in">concat</span>()</span><br><span class="line"></span><br><span class="line"><span class="built_in">table</span>.<span class="built_in">insert</span>()</span><br><span class="line"></span><br><span class="line"><span class="built_in">table</span>.<span class="built_in">maxn</span>()</span><br><span class="line"></span><br><span class="line"><span class="built_in">table</span>.<span class="built_in">remove</span>()</span><br><span class="line"></span><br><span class="line"><span class="built_in">table</span>.<span class="built_in">sort</span>()</span><br></pre></td></tr></table></figure>
+
+<p>模块</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>=&#123;&#125;</span><br><span class="line"><span class="built_in">module</span>.<span class="built_in">open</span>=<span class="literal">true</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">module.fun1</span><span class="params">()</span></span> <span class="keyword">end</span></span><br><span class="line"><span class="keyword">return</span> <span class="built_in">module</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&quot;module&quot;</span>)</span><br><span class="line"><span class="built_in">module</span>.<span class="built_in">open</span></span><br><span class="line"><span class="built_in">module</span>.fun1()</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> m=<span class="built_in">require</span>(<span class="string">&quot;module&quot;</span>)</span><br><span class="line">m.<span class="built_in">open</span></span><br><span class="line">m.fun1()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Lua 的模块是由变量、函数等已知元素组成的 table，因此创建一个模块很简单，就是创建一个 table，然后把需要导出的常量、函数放入其中，最后返回这个 table 就行。以下为创建自定义模块 module.lua<br>Lua包的加载路径，需要注意默认路径和自行添加的路径：对于自定义的模块，模块文件不是放在哪个文件目录都行，函数 require 有它自己的文件路径加载策略，它会尝试从 Lua 文件或 C 程序库中加载模块。<br>也可以用C为Lua写包；</p>
+</blockquote>
+<p>Lua元表Metatable</p>
+<blockquote>
+<p>setmetatable, getmetatable<br>__index, __newindex<br>rawset<br>加减乘除等操作, __sub<br>__call, __tostring</p>
+</blockquote>
+<p>Lua协程coroutine</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.dba.cn/book/lua/LUAJiaoCheng/LUAXieTongChengXuCOROUTINE.html">Lua 协同程序(coroutine) - Lua中文手册 (dba.cn)</a></p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43594278/article/details/116018869">(81条消息) 超级详细的Lua语言的基础教程_G东当的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/126578836">Lua脚本语言的使用笔记 - 知乎 (zhihu.com)</a></p>
+<p>Lua中的冒号、点这些的含义：<a target="_blank" rel="noopener" href="https://blog.csdn.net/wangbin_jxust/article/details/12170233">理解lua 语言中的点、冒号与self_lua语言中两个点什么意思_hello_wangbin的博客-CSDN博客</a></p>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/linxinfa/article/details/109668372">(81条消息) 新发的日常小技巧——Sublime插件安装教程（例：lua开发环境插件安装）_林新发的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yanzi-meng/p/9557379.html">sublime的lua插件 - yanzi_meng - 博客园 (cnblogs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.open-open.com/news/view/26d731">20 个强大的 Sublime Text 插件 - Sublime Text - 软件编程 - 深度开源 (open-open.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013052238/article/details/79740112">(81条消息) sublime Text3：安装相关Lua提示插件_断天涯zzz的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38533963/article/details/120266107">(81条消息) 用sublime，优雅的写lua_sublime 写lua_菜鸟乎的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cheerupforyou/p/6576861.html">华丽的使用sublime写lua~ sublime lua相关必装插件推荐~~ - MorePower - 博客园 (cnblogs.com)</a></p>
+<h1 id="XLua"><a href="#XLua" class="headerlink" title="XLua"></a>XLua</h1><p><a target="_blank" rel="noopener" href="https://tencent.github.io/xLua/public/v1/guide/index.html">介绍 — XLua (tencent.github.io)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Tencent/xLua">Tencent&#x2F;xLua: xLua is a lua programming solution for C# ( Unity, .Net, Mono) , it supports android, ios, windows, linux, osx, etc. (github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/393839438">【XLua】学习笔记 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/159054613">Xlua基础(三) Lua调用C# - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/38322991">Unity热更新框架之xLua - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/BDFFZI/p/17152877.html">Xlua的热更新</a></p>
+<p>实战（俄罗斯方块）：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/59358144">lua的俄罗斯方块</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7069795082135666724">学习 2 天 lua 后开发俄罗斯方块的一些心得（耗时3天） - 掘金</a></p>
+<p><a target="_blank" rel="noopener" href="https://shenjun-coder.github.io/LuaBook/%E7%AC%AC%E4%B8%89%E7%AB%A0%20XLua%E6%95%99%E7%A8%8B/3_15%20Lua%E8%B0%83%E7%94%A8CS.html">3.15 Lua调用CS · GitBook</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/408353700">官方案例教程篇</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/642523728">Lua和C的集成</a></p>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Gz5W0Bo0fVc&list=PL0luF_aDUOooJvtTl7lwlR9xyAyWNZ41p&index=1">链接</a></p>
+<blockquote>
+<p>相关的代码实验在LuaTutorial项目里；</p>
+</blockquote>
+<p>只是Lua的一个插件，可以实现和c#的交互，也可以实现游戏的热更新。这样游戏出现新的功能更新到时候，用户只需要下载小部分内容，就能实现更新内容的体验。<br>lua不需要编译，且跨平台。c#编译成dll，然后打包成安装包。</p>
+<p>导入xlua插件进入unity工程</p>
+<blockquote>
+<p>直接把assets里的内容放到工程里就行；（把XLua的都放进去也行）<br>Xlua和Plugins两个文件夹<br>学习路径：Xlua教程→Examples→<br>空间组织：Scenes文件夹，Xlua的两个文件夹(Plugins, XLua)</p>
+</blockquote>
+<p>Lua输出的会在控制台前面有一个LUA的标识；<br>因为在c#里没办法识别lua的，只会识别文本类型的；所以文件命名需要在.lua后面加上.txt<br>此外，要确定lua文件是放在Resources的文件夹下面的，这样内置的Loader才会找到；</p>
+<p>c#里自定义Loader加载指定目录下的lua脚本：</p>
+<blockquote>
+<p>文件需要放到StreamingAssets里，而这个文件夹需要在根目录下，这样子c#里就可以找得到；</p>
+</blockquote>
+<h3 id="c-里访问Lua的table"><a href="#c-里访问Lua的table" class="headerlink" title="c#里访问Lua的table"></a>c#里访问Lua的table</h3><ul>
+<li><p>通过class访问的话，是值拷贝，修改不会影响lua里的数值，比较耗费性能；</p>
+</li>
+<li><p>映射到一个接口上，此时要注意添加[]，不然会报错为invalidCastException。此外，接口上对于table属性的修改，是引用修改，会同步到table上</p>
+<ul>
+<li>此外，如果报错说&#x3D;&#x3D;LuaException: attemp to perform arithmetric on a table value(local ‘a’)&#x3D;&#x3D; ➡️ 此时是因为在lua里第一个参数指向的是本身，所以在lua里第一个参数应该是arg&#x2F;self这些表示第一个参数, 而c#调用里参数的就是实例化对象p</li>
+<li>也可以不设置第一个参数，但需要用冒号来进行定义</li>
+<li>需要重新generate code，如果还是不能运行，考虑兼容性问题，或者是需要在Xlua配置文档里学习并进行配置</li>
+</ul>
+</li>
+<li><p>轻量级映射：映射到C#的Dictionary或List内</p>
+<ul>
+<li>dictionary只能映射有键值的；</li>
+<li>list只能映射没有键值的数值，c#会根据定义的类型来决定获取到哪些映射值</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<p>如果文件出现了乱码问题，可以把代码文件，在记事本里另存为UTF8的格式。</p>
+<p>如果报错说&#x3D;&#x3D;InvalidOperationException: try to dispose a LuaEnv with C# callback!&#x3D;&#x3D;，是因为c#有变量引用了lua的内容，但lua已经设置了释放，这就产生了冲突，无法释放。</p>
+<p>在使用Action&lt;int,int&gt;的时候，报错说&#x3D;&#x3D;InvalidCastException: This type must add to CSharpCallLua: System.Action&lt;int, int&gt;&#x3D;&#x3D;，一种方式是进行配置，另一种是自己定义一个委托。因为在lua里面函数是function类型的，而c#里面函数可以说是delegate类型的。</p>
+<ul>
+<li>但还是说InvalidCastException: This type must add to CSharpCallLua，也就说还是得添加[CSharpCallLua]，然后需要先clear generate code, 再generate code</li>
+</ul>
+<h3 id="Lua访问C-里的内容"><a href="#Lua访问C-里的内容" class="headerlink" title="Lua访问C#里的内容"></a>Lua访问C#里的内容</h3><p>&#x3D;&#x3D;new c#对象&#x3D;&#x3D;</p>
+<p>在C#这样new一个对象：<br>var newGameObj &#x3D; new UnityEngine.GameObject(“new gameobject”);</p>
+<p>对应到Lua是这样：<br>local newGameObj &#x3D; CS.UnityEngine.GameObject(“new gameobject”)<br>直接CS.命名空间.类名，就可以</p>
+<p>基本类似，除了：<br><strong>lua里头没有new关键字；</strong><br><strong>所有C#相关的都放到CS下，包括构造函数，静态成员属性、方法；</strong><br><strong>如果有多个构造函数呢？放心，xlua支持重载</strong>，比如你要调用GameObject的带一个string参数的构造函数，这么写：</p>
+<p>local newGameObj2 &#x3D; CS.UnityEngine.GameObject(‘helloworld’)</p>
+<p>&#x3D;&#x3D;访问C#静态属性，方法&#x3D;&#x3D;</p>
+<p>读静态属性</p>
+<p>CS.UnityEngine.Time.deltaTime</p>
+<p>写静态属性</p>
+<p>CS.UnityEngine.Time.timeScale &#x3D; 0.5</p>
+<p>调用静态方法</p>
+<p>CS.UnityEngine.GameObject.Find(‘helloworld’)</p>
+<p>小技巧：如果需要经常访问的类，可以先用局部变量引用后访问，除了减少敲代码的时间，还能提高性能：</p>
+<p>local GameObject &#x3D; CS.UnityEngine.GameObject</p>
+<p>GameObject.Find(‘helloworld’)</p>
+<p>&#x3D;&#x3D;访问C#成员属性，方法&#x3D;&#x3D;</p>
+<p>读成员属性<br>testobj.DMF</p>
+<p>写成员属性<br>testobj.DMF &#x3D; 1024</p>
+<p>调用成员方法<br>注意：调用成员方法，<strong>第一个参数需要传该对象，建议用冒号语法糖</strong>，如下：testobj:DMFunc()</p>
+<p>&#x3D;&#x3D;访问父类属性，方法&#x3D;&#x3D;</p>
+<p>xlua支持（通过派生类）访问基类的静态属性，静态方法，（通过派生类实例）访问基类的成员属性，成员方法。</p>
+<p>&#x3D;&#x3D;参数的输入输出属性（out，ref）&#x3D;&#x3D;</p>
+<p>Lua调用测的参数处理规则：C#的普通参数算一个输入形参，ref修饰的算一个输入形参</p>
+<p>out修饰的不算，然后从左往右对应lua 调用测的实参列表；</p>
+<p>Lua调用测的返回值处理规则：C#函数的返回值（如果有的话）算一个返回值，out算一个返回值，ref算一个返回值，然后从左往右对应lua的多返回值。</p>
+<p>&#x3D;&#x3D;重载方法&#x3D;&#x3D;</p>
+<p>直接通过不同的参数类型进行重载函数的访问，例如：</p>
+<p>testobj:TestFunc(100)</p>
+<p>testobj:TestFunc(‘hello’)</p>
+<p>将分别访问整数参数的TestFunc和字符串参数的TestFunc。</p>
+<p>注意：xlua只一定程度上支持重载函数的调用，因为lua的类型远远不如C#丰富，存在一对多的情况，比如C#的int，float，double都对应于lua的number，上面的例子中TestFunc如果有这些重载参数，第一行将无法区分开来，只能调用到其中一个（生成代码</p>
+<p>中排前面的那个）。</p>
+<p>&#x3D;&#x3D;操作符&#x3D;&#x3D;</p>
+<p>支持的操作符有：+，-，*，&#x2F;，&#x3D;&#x3D;，一元 -，&lt;，&lt;&#x3D;， %，[]</p>
+<p>&#x3D;&#x3D;参数带默认值的方法&#x3D;&#x3D;</p>
+<p>和C#调用有默认值参数的函数一样，如果所给的实参少于形参，则会用默认值补上。</p>
+<p>&#x3D;&#x3D;可变参数方法&#x3D;&#x3D;</p>
+<p>对于C#的如下方法：void VariableParamsFunc(int a, params string[] strs)</p>
+<p>可以在lua里头这样调用：testobj:VariableParamsFunc(5, ‘hello’, ‘john’)</p>
+<p>&#x3D;&#x3D;使用Extension methods&#x3D;&#x3D;</p>
+<p>在C#里定义了，lua里就能直接使用。</p>
+<p>&#x3D;&#x3D;泛化（模版）方法&#x3D;&#x3D;</p>
+<p><strong>不直接支持，可以通过Extension methods功能进行封装后调用。</strong></p>
+<p>&#x3D;&#x3D;枚举类型&#x3D;&#x3D;</p>
+<p>枚举值就像枚举类型下的静态属性一样。</p>
+<p>testobj:EnumTestFunc(CS.Tutorial.TestEnum.E1)</p>
+<p>上面的EnumTestFunc函数参数是Tutorial.TestEnum类型的</p>
+<p>另外，如果枚举类加入到生成代码<strong>（就是在c#的枚举之前，添加[LuaCallCSharp]）</strong>的话，枚举类将支持__CastFrom方法，可以实现从一个整数或者字符串到枚举值的转换，例如：</p>
+<p>CS.Tutorial.TestEnum.__CastFrom(1)</p>
+<p>CS.Tutorial.TestEnum.__CastFrom(‘E1’)</p>
+<p>&#x3D;&#x3D;delegate使用（调用，+，-）&#x3D;&#x3D;</p>
+<p>C#的delegate调用：和调用普通lua函数一样</p>
+<p>+操作符：对应C#的+操作符，把两个调用串成一个调用链，右操作数可以是同类型的C#delegate或者是lua函数。</p>
+<p>-操作符：和+相反，把一个delegate从调用链中移除。</p>
+<p>Ps：delegate属性可以用一个luafunction来赋值。</p>
+<p><code>&lt;mark&gt;</code>event <code>&lt;/mark&gt;</code></p>
+<p>比如testobj里头有个事件定义是这样：public event Action TestEvent;</p>
+<p>增加事件回调 testobj:TestEvent(‘+’, lua_event_callback)</p>
+<p>移除事件回调 testobj:TestEvent(‘-‘, lua_event_callback)</p>
+<p><code>&lt;mark&gt;</code>C#复杂类型和table的自动转换 <code>&lt;/mark&gt;</code></p>
+<p>对于一个有无参构造函数的C#复杂类型，在lua侧可以直接用一个table来代替，该table对应复杂类型的public字段有相应字段即可，支持函数参数传递，属性赋值等，例如：</p>
+<p>C#下B结构体（class也支持）定义如下：</p>
+<p>public struct A{ public int a;}</p>
+<p>public struct B{ public A b; public double c;}</p>
+<p>某个类有成员函数如下：void Foo(B b)</p>
+<p>在lua可以这么调用：</p>
+<p>obj:Foo({b &#x3D; {a &#x3D; 100}, c &#x3D; 200})</p>
+<p>获取类型（相当于C#的typeof）</p>
+<p>比如要获取UnityEngine.ParticleSystem类的Type信息，可以这样 typeof(CS.UnityEngine.ParticleSystem)。</p>
+<p><code>&lt;mark&gt;</code>“强”转 <code>&lt;/mark&gt;</code></p>
+<p>lua没类型，所以不会有强类型语言的“强转”，但有个有点像的东西：告诉xlua要用指定的生成代码去调用一个对象，这在什么情况下能用到呢？有的时候第三方库对外暴露的是一个interface或者抽象类，实现类是隐藏的，这样我们无法对实现类进行代码生成。该实现类将会被xlua识别为未生成代码而用反射来访问，如果这个调用是很频繁的话还是很影响性能的，这时我们就可以把这个interface或者抽象类加到生成代码，然后指定用该生成代码来访问：</p>
+<p>cast(calc, typeof(CS.Tutorial.Calc))</p>
+<p>上面就是指定用CS.Tutorial.Calc的生成代码来访问calc对象。</p>
+<p>&#x3D;&#x3D;GetComponent()&#x3D;&#x3D;<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/gouki04/article/details/84784795">xLua下调用GetComponent时返回值不是nil的坑_xlua trygetcomponet-CSDN博客</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ProjectDeveloping/p/10765496.html">XLua 调用 unity 中获取组件的方法 - OldWu - 博客园 (cnblogs.com)</a></p>
+<h3 id="热更新流程"><a href="#热更新流程" class="headerlink" title="热更新流程"></a>热更新流程</h3><p>写的lua代码是关联在AssetBundle上的，然后打包一起更新资源和逻辑到服务器上的项目中。</p>
+<h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ddd2213sss/article/details/126403982">VSCode 如何将 .lua.txt 后缀文件识别为 lua_lua txt后缀-CSDN博客</a></p>
+<h2 id="协程的调整"><a href="#协程的调整" class="headerlink" title="协程的调整"></a>协程的调整</h2><p>参考对ReloadMap.cs的改写</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line"><span class="keyword">local</span> _waitSecond = <span class="literal">nil</span>; </span><br><span class="line">_waitSecond = <span class="number">0.3</span>; </span><br><span class="line"><span class="built_in">coroutine</span>.<span class="built_in">yield</span>(UnityEngine.WaitForSeconds(_waitSecond));</span><br></pre></td></tr></table></figure>
+
+<p>相当于c#里的下面三句话：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">WaitForSeconds _wait; </span><br><span class="line">_wait = <span class="keyword">new</span> WaitForSeconds(<span class="number">.3</span>f); </span><br><span class="line"><span class="keyword">yield</span> <span class="keyword">return</span> _wait;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据类型的变换"><a href="#数据类型的变换" class="headerlink" title="数据类型的变换"></a>数据类型的变换</h2><p>ua脚本语言不像C语言一样，整型除以整型结果为整型。lua得出的结果是浮点型，有时会用到整型，<a target="_blank" rel="noopener" href="https://blog.csdn.net/FightIngWork/article/details/89281084">所以必须进行取整</a>。</p>
+<blockquote>
+<p>直接用lua math库函数<br>math.floor(s）输入参数为浮点型，整型都可</p>
+</blockquote>
+<h2 id="委托、事件"><a href="#委托、事件" class="headerlink" title="委托、事件"></a>委托、事件</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/boyZhenGui/article/details/120956981">【Unity知识点】通俗解释delegate，事件event，Action，Func和UnityAction，UnityEvent_unity delegate-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46044366/article/details/122806863">Unity 事件番外篇：UnityEvent-CSDN博客</a></p>
+<p>XLua的API文档</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/408353700">https://zhuanlan.zhihu.com/p/408353700</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/118d6c421549">Lua实现事件触发机制 - 简书 (jianshu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41995872/article/details/97806978">https://blog.csdn.net/weixin_41995872/article/details/97806978</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yiluxiangbei000/article/details/118723955">使用Lua语言实现简单的事件系统_lua语言互斥实现-CSDN博客</a></p>
+<p>委托delegate</p>
+<blockquote>
+<p>可以被赋值，注册和注销, 多播委托+&#x3D; -&#x3D;. ?的使用表示非空则执行<br>《C#图解教程》<br>委托：持有一个或多个方法，以及一系列预定义操作的，用户定义的类型</p>
+</blockquote>
+<p>事件event</p>
+<blockquote>
+<p>对委托的一个限定，不需要被赋值，也不能被赋值，可以注册和注销方法。也可以注册和注销委托</p>
+</blockquote>
+<p>Action<br>Action和Func可以理解为系统定义好的带泛型的delegate， Action无返回值</p>
+<p>Func<br>Action和Func可以理解为系统定义好的带泛型的delegate, Func有无返回值</p>
+<p>UnityAction<br>Unity对C#中Action的再次封装, 更适合在Unity中使用的一种泛型委托. UnityAction对象可以用于Unity内的.AddListener()</p>
+<p>UnityEvent</p>
+<p>可以在面板中添加监听事件，也可以在代码中添加监听事件或UnityAction, 且这两个模式不会互通</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">event</span> Action OnUpdated = <span class="built_in">delegate</span> &#123; &#125;;</span><br><span class="line">_map.OnUpdated += () =&gt; &#123; _zoomSlider.<span class="keyword">value</span> = _map.Zoom; &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这一句转换不过来，解决(<a target="_blank" rel="noopener" href="https://github.com/Tencent/xLua/blob/master/Assets/XLua/Doc/XLua_Tutorial_EN.md">参考链接</a>)：(注意是单引号）</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">_map:OnUpdated(<span class="string">&#x27;+&#x27;</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span> _zoomSlider.value = _map.Zoom; <span class="keyword">end</span>);</span><br></pre></td></tr></table></figure>
+
+<p>报错：<br>This type must add to CSharpCallLua：typeof(UnityEngine.Events.UnityAction <code>&lt;float&gt;</code>), stack:……（后面还提示了其他路径，但最后查找修改的文件路径主要还是 <code>ExampleConfig.cs, ExampleGenConfig.cs, MessageBox.cs, </code><br>处理：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/X_King_Q/article/details/119376546%EF%BC%8C%E5%8F%82%E8%80%83%E8%BF%99%E4%B8%AA%E9%93%BE%E6%8E%A5%EF%BC%8C%E7%94%A8UnityAction%E5%85%B3%E9%94%AE%E8%AF%8D%E6%9F%A5%E6%89%BE%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%8C%E6%B7%BB%E5%8A%A0%E4%B8%80%E6%9D%A1">https://blog.csdn.net/X_King_Q/article/details/119376546，参考这个链接，用UnityAction关键词查找解决方案，添加一条</a> <code>typeof(UnityEngine.Events.UnityAction&lt;float&gt;),</code>;</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Tencent/xLua/issues/24%EF%BC%8C%E5%8F%82%E8%80%83%E8%BF%99%E4%B8%AA%E9%93%BE%E6%8E%A5%EF%BC%8C%E7%BB%99%E9%A1%B9%E7%9B%AE%E6%B8%85%E9%99%A4%E5%B9%B6%E9%87%8D%E6%96%B0%E7%94%9F%E6%88%90%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%88Clear">https://github.com/Tencent/xLua/issues/24，参考这个链接，给项目清除并重新生成的代码（Clear</a> generate code, generate code)</li>
+<li>经验：中文网站上查查，实现不了就转Google, 有些教程就是错误的，在那里误导我；</li>
+</ol>
+<p>如果报错提示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LuaException: c# exception:Non-static method requires a target.,stack:  at System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0004c] in &lt;695d1cc93cca45069c528c15c9fdd749&gt;:0 </span><br><span class="line">  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in &lt;695d1cc93cca45069c528c15c9fdd749&gt;:0 </span><br><span class="line">  at XLua.OverloadMethodWrap.Call (System.IntPtr L) [0x001ab] in E:\Internship\mapboxText\Assets\Retinar\XLua\Src\MethodWarpsCache.cs:242 </span><br><span class="line">  at XLua.MethodWrap.Call (System.IntPtr L) [0x00029] in E:\Internship\mapboxText\Assets\Retinar\XLua\Src\MethodWarpsCache.cs:297 </span><br><span class="line">stack traceback:</span><br><span class="line">	[C]: in field &#x27;GetUrl&#x27;</span><br><span class="line">	[string &quot;MapOperation.lua&quot;]:84: in function &lt;[string &quot;MapOperation.lua&quot;]:76&gt;</span><br></pre></td></tr></table></figure>
+
+<p>一个是：LuaException: c# exception:Non-static method requires a target.，然后仔细看到最后，提示了[C]: in field ‘GetUrl’	[string “MapOperation.lua”]:84: in function &lt;[string “MapOperation.lua”]:76&gt;，最后发现是_resource.GetUrl()错了，应该是_resource:GetUrl()</p>
+<h3 id="lua调用c-里的泛型"><a href="#lua调用c-里的泛型" class="headerlink" title="lua调用c#里的泛型"></a>lua调用c#里的泛型</h3><p>有一句话转不过来(&#x3D;&#x3D;具体细节可以看问题梳理图示.pptx&#x3D;&#x3D;)，<br>c#:</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">_resource = <span class="keyword">new</span> ForwardGeocodeResource(<span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">MapboxAccess.Instance.Geocoder.Geocode(_resource, HandleGeocoderResponse);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> IAsyncRequest <span class="title">Geocode</span>&lt;<span class="title">T</span>&gt;(<span class="params">GeocodeResource&lt;T&gt; geocode, Action&lt;ReverseGeocodeResponse&gt; callback</span>)</span> &#123; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> IAsyncRequest <span class="title">Geocode</span>(<span class="params"><span class="built_in">string</span> geocodeUrl, Action&lt;ReverseGeocodeResponse&gt; callback</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p>Lua:</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">_resource = Geocoding.ForwardGeocodeResource(<span class="string">&quot;Nanjing&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> geocoder = MapboxAccess.Instance.Geocoder; </span><br><span class="line"></span><br><span class="line">geocoder:Geocode(_resource:GetUrl(), HandleGeocoderResponse);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>应该是数据类型不对，但就是不知道怎么要整才算对的<br>我一级级往上，一直到Deserialize这个函数，我的那个就报错了</p>
+<p>&#x3D;&#x3D;解决方法：&#x3D;&#x3D;<br>重写一遍C#里的泛型：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> IAsyncRequest <span class="title">Geocode</span>&lt;<span class="title">T</span>&gt;(<span class="params">GeocodeResource&lt;T&gt; geocode, Action&lt;ForwardGeocodeResponse&gt; callback</span>)</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.fileSource.Request(</span><br><span class="line">				geocode.GetUrl(),</span><br><span class="line">				(Response response) =&gt;</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">var</span> str = Encoding.UTF8.GetString(response.Data);</span><br><span class="line"></span><br><span class="line">					<span class="keyword">var</span> data = Deserialize&lt;ForwardGeocodeResponse&gt;(str);</span><br><span class="line"></span><br><span class="line">					callback(data);</span><br><span class="line">				&#125;);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> IAsyncRequest <span class="title">Geocode</span>(<span class="params">GeocodeResource&lt;<span class="built_in">string</span>&gt; geocode, Action&lt;ForwardGeocodeResponse&gt; callback</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.fileSource.Request(</span><br><span class="line">                geocode.GetUrl(),</span><br><span class="line">                (Response response) =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">var</span> str = Encoding.UTF8.GetString(response.Data);</span><br><span class="line">                    <span class="keyword">var</span> data = Deserialize&lt;ForwardGeocodeResponse&gt;(str);</span><br><span class="line">                    callback(data);</span><br><span class="line">                &#125;);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv14380732/">简单的重写</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/130860627">对c#泛型方法对应的类，添加扩展</a></p>
+<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42672770/article/details/109669424">未将对象设置到对象实例 Object reference not set to an instance of an object-CSDN博客</a></p>
+<h3 id="不懂的"><a href="#不懂的" class="headerlink" title="不懂的"></a>不懂的</h3><p>c#里添加自定义loader，对于delegate变量的定义；</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    LuaEnv env = <span class="keyword">new</span> LuaEnv();</span><br><span class="line">    env.AddLoader(MyLoader);<span class="comment">//参数为LuaEnv.customLoader loader</span></span><br><span class="line">    <span class="comment">//要求是LuaEnv.customLoader类型的，也就是下面这个类型的byte[]</span></span><br><span class="line">    <span class="comment">//public delegate byte[] CustomLoader(ref string filepath);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">byte</span>[] <span class="title">MyLoader</span>(<span class="params"><span class="keyword">ref</span> <span class="built_in">string</span> filepath</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io">Shealin You</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io/2024/02/17/Lua%E5%AD%A6%E4%B9%A0/">https://youxt-njnu.github.io/2024/02/17/Lua%E5%AD%A6%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://youxt-njnu.github.io" target="_blank">Pale Bule Dot</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E7%AB%AFAR/">软件端AR</a><a class="post-meta__tags" href="/tags/Lua/">Lua</a></div><div class="post_share"><div class="social-share" data-image="https://wallroom.io/img/1920x1080/bg-f1b246b.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/02/17/DOTween%E5%85%A5%E9%97%A8/" title="DOTween学习"><img class="cover" src="https://wallroom.io/img/1920x1080/bg-f1b246b.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">DOTween学习</div></div></a></div><div class="next-post pull-right"><a href="/2024/02/13/%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/" title="源码学习技巧"><img class="cover" src="https://wallroom.io/img/5120x3200/bg-dd198b3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">源码学习技巧</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/10/21/AR%E5%95%86%E4%B8%9A%E5%8C%96%E6%A1%88%E4%BE%8B/" title="AR开发概览"><img class="cover" src="https://4k.wpcoder.cn/wp-content/uploads/2023/10/1_1697344372-1600x1068.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-21</div><div class="title">AR开发概览</div></div></a></div><div><a href="/2023/10/21/GeospatialAPI%E5%AD%A6%E4%B9%A0/" title="Geospatial API学习"><img class="cover" src="https://4k.wpcoder.cn/wp-content/uploads/2023/09/1_1695198805-1600x780.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-21</div><div class="title">Geospatial API学习</div></div></a></div><div><a href="/2024/02/17/ARFoundation%E5%85%A5%E9%97%A8/" title="ARFoundation学习"><img class="cover" src="https://wallroom.io/img/1920x1080/bg-62f5582.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-17</div><div class="title">ARFoundation学习</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Shealin You</div><div class="author-info__description">Be brave, and know yourself</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/youxt-njnu"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:10190208@njnu.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://www.zhihu.com/people/paleYYY" target="_blank" title="zhihu"><i class="fa-brands fa-zhihu" style="color: #24292e;"></i></a><a class="social-icon" href="https://dclef.icu/atom.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">人生苦旅，踽踽独行之</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Lua%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">Lua入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">插件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XLua"><span class="toc-number">2.</span> <span class="toc-text">XLua</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%99%E7%A8%8B"><span class="toc-number">2.1.</span> <span class="toc-text">教程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#c-%E9%87%8C%E8%AE%BF%E9%97%AELua%E7%9A%84table"><span class="toc-number">2.1.1.</span> <span class="toc-text">c#里访问Lua的table</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lua%E8%AE%BF%E9%97%AEC-%E9%87%8C%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">2.1.2.</span> <span class="toc-text">Lua访问C#里的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%83%AD%E6%9B%B4%E6%96%B0%E6%B5%81%E7%A8%8B"><span class="toc-number">2.1.3.</span> <span class="toc-text">热更新流程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">注意点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B0%83%E6%95%B4"><span class="toc-number">3.1.</span> <span class="toc-text">协程的调整</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%98%E6%8D%A2"><span class="toc-number">3.2.</span> <span class="toc-text">数据类型的变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A7%94%E6%89%98%E3%80%81%E4%BA%8B%E4%BB%B6"><span class="toc-number">3.3.</span> <span class="toc-text">委托、事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">3.4.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lua%E8%B0%83%E7%94%A8c-%E9%87%8C%E7%9A%84%E6%B3%9B%E5%9E%8B"><span class="toc-number">3.4.1.</span> <span class="toc-text">lua调用c#里的泛型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A5%E9%94%99"><span class="toc-number">3.4.2.</span> <span class="toc-text">报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E6%87%82%E7%9A%84"><span class="toc-number">3.4.3.</span> <span class="toc-text">不懂的</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/05/31/%E8%AF%BE%E7%A8%8B%E6%B1%87%E6%8A%A5-GIS/" title="GIS集成案例汇报"><img src="https://wallroom.io/img/3840x2160/bg-20bb43a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GIS集成案例汇报"/></a><div class="content"><a class="title" href="/2024/05/31/%E8%AF%BE%E7%A8%8B%E6%B1%87%E6%8A%A5-GIS/" title="GIS集成案例汇报">GIS集成案例汇报</a><time datetime="2024-05-31T01:33:26.000Z" title="发表于 2024-05-31 09:33:26">2024-05-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A2/" title="JavaScript基础知识Ⅲ"><img src="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript基础知识Ⅲ"/></a><div class="content"><a class="title" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A2/" title="JavaScript基础知识Ⅲ">JavaScript基础知识Ⅲ</a><time datetime="2024-03-17T01:33:26.000Z" title="发表于 2024-03-17 09:33:26">2024-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/" title="JavaScript基础知识Ⅱ"><img src="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript基础知识Ⅱ"/></a><div class="content"><a class="title" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/" title="JavaScript基础知识Ⅱ">JavaScript基础知识Ⅱ</a><time datetime="2024-03-17T01:27:26.000Z" title="发表于 2024-03-17 09:27:26">2024-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/10/react+vite%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/" title="react+vite+hexo|项目呈现"><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/15A21438BD46CC6CF21998480FDA2C83.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="react+vite+hexo|项目呈现"/></a><div class="content"><a class="title" href="/2024/03/10/react+vite%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/" title="react+vite+hexo|项目呈现">react+vite+hexo|项目呈现</a><time datetime="2024-03-10T03:51:26.000Z" title="发表于 2024-03-10 11:51:26">2024-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/09/threejs%E5%AE%9E%E6%88%9821/" title="three+react|个人主页实战Ⅱ(补)"><img src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="three+react|个人主页实战Ⅱ(补)"/></a><div class="content"><a class="title" href="/2024/03/09/threejs%E5%AE%9E%E6%88%9821/" title="three+react|个人主页实战Ⅱ(补)">three+react|个人主页实战Ⅱ(补)</a><time datetime="2024-03-09T03:34:05.000Z" title="发表于 2024-03-09 11:34:05">2024-03-09</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/index_img.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By Shealin You</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Training the faculty of mindfulness is like breathing oxygen continuously to remain alive.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'StmwBdb4aXO6LMYWRxjVnufr-gzGzoHsz',
+      appKey: 'V7WavrdJsNE6xxx5YGiygidl',
+      avatar: 'monsterid',
+      serverURLs: 'https://stmwbdb4.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="000EDNt20L3sUT" data-server="tencent" data-type="song" data-fixed="true" data-autoplay="true" data-lrcType="-1"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>threejs API学习 Ⅱ | Pale Bule Dot</title><meta name="author" content="Shealin You"><meta name="copyright" content="Shealin You"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="学习资源AxesHelper – three.js docs (threejs.org) 1. threejs文件包下载和目录简介 | Three.js中文网 (webgl3d.cn) Releases · mrdoob&#x2F;three.js (github.com) 系统课—面向人群_哔哩哔哩_bilibili Group层级模型group、mesh这些都继承自Object3D，所以其实都">
+<meta property="og:type" content="article">
+<meta property="og:title" content="threejs API学习 Ⅱ">
+<meta property="og:url" content="https://youxt-njnu.github.io/2024/01/07/threejs%E4%B8%AD/index.html">
+<meta property="og:site_name" content="Pale Bule Dot">
+<meta property="og:description" content="学习资源AxesHelper – three.js docs (threejs.org) 1. threejs文件包下载和目录简介 | Three.js中文网 (webgl3d.cn) Releases · mrdoob&#x2F;three.js (github.com) 系统课—面向人群_哔哩哔哩_bilibili Group层级模型group、mesh这些都继承自Object3D，所以其实都">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg">
+<meta property="article:published_time" content="2024-01-07T07:56:05.000Z">
+<meta property="article:modified_time" content="2024-01-07T09:07:46.698Z">
+<meta property="article:author" content="Shealin You">
+<meta property="article:tag" content="WebGL">
+<meta property="article:tag" content="3DGIS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://youxt-njnu.github.io/2024/01/07/threejs%E4%B8%AD/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'threejs API学习 Ⅱ',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-07 17:07:46'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Pale Bule Dot" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://wallroom.io/img/3840x2160/bg-81f2d39.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Pale Bule Dot"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/favicon.png"/><span class="site-name">Pale Bule Dot</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">threejs API学习 Ⅱ</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-07T07:56:05.000Z" title="发表于 2024-01-07 15:56:05">2024-01-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-07T09:07:46.698Z" title="更新于 2024-01-07 17:07:46">2024-01-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/3DGIS/">3DGIS</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="threejs API学习 Ⅱ"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="学习资源"><a href="#学习资源" class="headerlink" title="学习资源"></a>学习资源</h1><p><a target="_blank" rel="noopener" href="https://threejs.org/docs/#api/zh/helpers/AxesHelper">AxesHelper – three.js docs (threejs.org)</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.webgl3d.cn/pages/aac9ab/">1. threejs文件包下载和目录简介 | Three.js中文网 (webgl3d.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mrdoob/three.js/releases">Releases · mrdoob&#x2F;three.js (github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14r4y1G7h4/?p=2&spm_id_from=pageDriver&vd_source=5270415d668b21206238403450bb29b5">系统课—面向人群_哔哩哔哩_bilibili</a></p>
+<h1 id="Group层级模型"><a href="#Group层级模型" class="headerlink" title="Group层级模型"></a>Group层级模型</h1><p>group、mesh这些都继承自Object3D，所以其实都可以实现Group的作用，就是进行.add()</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const group=new THREE.Group();</span><br><span class="line">group.add(mesh1);</span><br><span class="line">group.add(mesh2);</span><br><span class="line">// group.add(mesh1,mesh2);</span><br><span class="line">scene.add(group);</span><br><span class="line"></span><br><span class="line">group.children</span><br><span class="line">scene.children</span><br></pre></td></tr></table></figure>
+
+<p>就类似于unity里建父gameobject、拖进一个gameobject里形成子gameobject，这种的形式。同理可以理解下面的：</p>
+<p>group.name，设置了name后，就可以通过.getObjectByName()来获取到这个名字下的物体，更多的方法可以查看基类Object3D</p>
+<p>group.traverse()可以实现递归遍历group的所有子物体，内部还可以添加匿名函数。</p>
+<p>obj.isMesh 类似于obj.type &#x3D;&#x3D;&#x3D; ‘Mesh’</p>
+<p>父对象的位置改变也会影响子对象，所以子对象的本地坐标&#x2F;局部坐标就是它的position，而子对象的世界坐标就是考虑所有他的父物体下的position；</p>
+<p>a.getWorldPosition(b), 读取a的师姐坐标，存到b里面去；</p>
+<p>可视化局部坐标系，可以给a添加一个axesHelper：&#96;a.add(new THREE.AxesHelper(表示大小的参数))</p>
+<p>geometry的中心位置变化，但mesh没变，旋转的时候还是照着mesh的坐标原点来旋转；</p>
+<p>如果想从父物体里面移除子物体，可以使用.remove()，和.add()作用相反，但用法一样。</p>
+<p>可见性的设置：</p>
+<blockquote>
+<p>Object3D基类有属性.visible，通过设置这个的bool值，实现Object3D所有子类的实例的显示隐藏；</p>
+<p>如果一个子类的实例是多个模型共享的（例如多个mesh共享一个material），这个时候设置一个的visible也会作用在其他模型上。</p>
+</blockquote>
+<h1 id="贴图"><a href="#贴图" class="headerlink" title="贴图"></a>贴图</h1><p>texloader &#x3D; new THREE.TextureLoader() —&gt;texture &#x3D; texloader.load(‘.earth.jpg’) —&gt; new THREE.MeshLambertMaterial({ map: texture, }) —or— material.map &#x3D; texture</p>
+<p>颜色纹理贴图map：注意，map属性和color属性不需要都设置，因为两者都是获取RGB赋予到material上，如果都设置会将两者进行混合；</p>
+<h2 id="UV坐标"><a href="#UV坐标" class="headerlink" title="UV坐标"></a>UV坐标</h2><p>颜色纹理贴图在不同的几何体上的渲染效果不同，与UV坐标有关；</p>
+<p>const uvs&#x3D;new Float32Array([]) &#x2F;&#x2F;定义范围</p>
+<p>geometry.attributes.uv &#x3D; new THREE.BufferAttribute(uvs,2) &#x2F;&#x2F; 可以理解为几何体对应的顶点坐标下，对应到uv的的哪个位置；</p>
+<p>针对圆形平面，其UV坐标默认提取的就是一个圆形轮廓，UV坐标会对颜色纹理贴图的.map进行提取；</p>
+<p>如何实现地面瓷砖效果：</p>
+<blockquote>
+<p>Texture有阵列功能，+ 矩形平面几何体</p>
+<p>对texture设置阵列模式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">texture.wrapS=THREE.RepeatWrapping; //设置阵列模式，水平，U</span><br><span class="line">texture.wrapT=THREE.RepeatWrapping; //设置阵列模式，垂直，V</span><br><span class="line">texture.repeat.set(12,12); //设置uv两个方向的纹理重复数量，传入的就是二维向量</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>如何设置透明贴图：</p>
+<blockquote>
+<p>material的transparent属性设置为true，geometry为矩形平面</p>
+</blockquote>
+<p>UV动画实现：</p>
+<blockquote>
+<p>texture的偏移.offset, .x, .y，通过设置这个实现贴图UV顶点坐标的偏移；</p>
+<p>将offset和wrapS&#x2F;wrapT结合，可以把偏移出去的内容接到原来的上面去；</p>
+<p>利用requestAnimationFrame来实现隔帧的偏移和拼接，最后呈现出动画的效果</p>
+<p>再和阵列结合，对原始图像进行重复纹理，这样能进一步减少贴图的像素。但这个时候设置的offset其实是原始贴图的大小的比例，而不是阵列下的大的贴图的比例，所以一般相对上面的需要调大。</p>
+</blockquote>
+<h2 id="PBR材质"><a href="#PBR材质" class="headerlink" title="PBR材质"></a>PBR材质</h2><p>不同的材质，使用的光照模型不同，材质模拟Mesh反射光照的代码算法不同</p>
+<p>整体上来看，渲染表现能力越强，占用的计算机硬件资源更多。</p>
+<p>MeshStandardMaterial和MeshPhysicalMaterial都是PBR材质；</p>
+<p>属性：</p>
+<ul>
+<li>.metalness</li>
+<li>.roughness</li>
+<li>.envMap</li>
+<li>.envMapIntensity</li>
+</ul>
+<p>环境贴图：</p>
+<ul>
+<li>textureCuve&#x3D;new THREE.CubeTextureLoader，一次性加载六张图片，返回一个立方体纹理对象CubeTexture，父类是Texture</li>
+<li>如果希望环境贴图能影响场景scene中所有Mesh，可以直接设置scene.environment&#x3D;textureCube; 也可以对场景中所有OBJ进行遍历，设置material的envmap</li>
+</ul>
+<p>此外，注意设置纹理和渲染器颜色空间要保持一致；</p>
+<p>MeshPhysicalMaterial在继承上面的同时，还进行了进一步扩展：</p>
+<blockquote>
+<p>.clearcoat清漆层，.clearcoatRoughness</p>
+<p>.transmission透光率</p>
+<p>.reflectivity反射率</p>
+<p>.sheen光泽</p>
+<p>.ior折射率，非金属材料的折射率从1.0到2.333。默认值为1.5。不同材质的折射率，你可以百度搜索</p>
+</blockquote>
+<p>一般美术那边导出的时候，gltf模型会带有相关属性；在threejs解析的时候，会先判断是不是MeshStandardMaterial，然后再判断是不是MeshPhysicalMaterial，基本的属性都会自动解析；最后程序员只需要设置环境贴图和环境贴图强度属性即可。</p>
+<h1 id="外部模型"><a href="#外部模型" class="headerlink" title="外部模型"></a>外部模型</h1><p>常见建模语言：Blender, 3dmax, maya, C4D</p>
+<p>3D数据标准：</p>
+<blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/439681342">Universal Scene Description, USD</a>：处理制作数字图形电影和游戏，支持对任意数量的资产进行组装并组织到场景、快照或世界中</li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/443862875">glTF</a>: 以3D场景为根节点组织数据，对场景结构进行描述，会定义网格、材质、相机、动画、皮肤、纹理等节点。</li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/447983314">3D Tiles</a>: 基于glTF和大数据量网络传输的解决方案，针对三维地理空间数据如三维建筑、BIM&#x2F;CAD、点云进行流处理和渲染而开发的数据格式，基于传输可渲染的层级数据结构和瓦片格式集</li>
+</ul>
+</blockquote>
+<p>模型格式：</p>
+<blockquote>
+<p>gltf: .glb&#x2F;.gltf，类似JSON格式内容，通过键值对表达模型的信息；.bin文件是对其中buffers里一些顶点数据等的存储；—&gt; .gltf; .gltf+.bin+贴图; .glb</p>
+<p>obj:</p>
+</blockquote>
+<p>模型的命名（程序和美术的协作）：</p>
+<blockquote>
+<p>命名可以英文、拼音、中文这种形式，中文有时候会乱码；</p>
+<p>通过打印gltf.scene可以查看gltf的模型目录树；</p>
+<p>gltf.scene.traverse(function(obj) { if(obj.isMesh) { console.log(obj.material); } })</p>
+<p>.children, .name</p>
+<p>const obj &#x3D; gltf.scene.getObjectByName()</p>
+<p>obj.children.forEach(function(mesh) { mesh.material.color.set(0xffff00); })</p>
+</blockquote>
+<p>材质共享问题</p>
+<blockquote>
+<p>通过name来标记材质，进行mesh的判断；obj1.material.name&#x3D;’building material’; console.log(obj2.material.name);</p>
+<ol>
+<li>三维建模软件中设置，需要代码改变材质的Mesh不要共享材质，要独享材质。</li>
+<li>代码批量更改：克隆材质对象，重新赋值给mesh的材质属性</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if(obj.isMesh) &#123;</span><br><span class="line">	ojb.material=obj.material.clone();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h2><p>GLTFLoader.js扩展库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const loader=new GLTFLoader();</span><br><span class="line">loader.load(&#x27;tmp.gltf&#x27;,function(gltf) &#123;</span><br><span class="line">	console.log(&#x27;gltf对象场景属性&#x27;,gltf.scene);</span><br><span class="line">	scene.add(gltf.scene);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>尺寸和单位</p>
+<blockquote>
+<p>开发的时候一般不需要具体的值，在blender里可以打开gltf模型来测量尺寸；</p>
+<p>threejs里没有单位，只有数字大小，obj和gltf格式的模型只有尺寸也不包含单位信息；</p>
+<p>在实习项目开发的时候，一般甲方、前端和美术之间需要协调来统一一个单位。</p>
+<p>此外需要设置合适的相机参数。</p>
+</blockquote>
+<p>纹理贴图颜色偏差：</p>
+<blockquote>
+<p>修改webgl渲染器默认的编码方式,renderer.outputColorSpace &#x3D; THREE.SRGBColorSpace; &#x2F;&#x2F;文档里面搜索GLTFLoader</p>
+<p>需要保证颜色贴图.colorSpace和渲染器.outputColorSpace保持一致</p>
+<p>obj.material.map.colorSpace</p>
+</blockquote>
+<p>纹理贴图错位：</p>
+<blockquote>
+<p>texture.flipY</p>
+<p>obj.material.map.flipY</p>
+<p>gltf的flipY默认为false，纹理对象texture默认为true，需要这两个保持一致</p>
+</blockquote>
+<p>加载流程：</p>
+<blockquote>
+<p>导入扩展库；</p>
+<p>加载模型；</p>
+<p>blender内进行基本大小的测量；</p>
+<p>根据目的思考把相机放在哪里，设置camera.position</p>
+<p>把哪个位置放在中间那就设置那个位置为camera.lookAt(), 此外要注意OrbitControls的影响</p>
+<p>此外，相机的近裁截面要尽量小，远裁截面要尽量大。</p>
+<p>可以使用OrbitControls来辅助设置相机的参数，就可以在界面上旋转、平移、缩放，复制camera.position, controls.target的数值，在代码里设置就行</p>
+</blockquote>
+<p>层级模型遍历</p>
+<blockquote>
+<p>.traverse()</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gltf.scene.traverse( function(obj) &#123;&#125;)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>gltf.scene.children[0].geometry.index获取几何体顶点的索引属性</p>
+<p>gltf.scene.children[0].geometry.attributes.position.count获取几何体顶点的数量, .getX(), .getY(), .getZ()获取几何体特定顶点的坐标，.setX(), .setY(), .setZ()</p>
+<h1 id="渲染器和前端UI"><a href="#渲染器和前端UI" class="headerlink" title="渲染器和前端UI"></a>渲染器和前端UI</h1><h2 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h2><p>threejs基于webgl进行的封装，所以也要依赖Canvas，将三维场景渲染到Canvas画布上；</p>
+<p>根据window窗口设置Canvas的宽高；当窗口大小变化的时候，设置Canvas随之变化window.onresize&#x3D;function() { 更新宽高；更新渲染器大小和相机视野；}</p>
+<p>Canvas叠加HTML元素可能遇到的问题：</p>
+<blockquote>
+<p>画布被挤下来：设置画布的绝对定位 <code>renderer.domElement.style., .position, .top, .left</code></p>
+<p>z-index控制谁在上谁在下：默认的定位是position: index,此时设置z值无效，需要p调整为relative；</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">renderer.<span class="property">domElement</span>.<span class="property">style</span>.<span class="property">zIndex</span>=-<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;color: #ff0000; z-index:2; position: relative;&quot;</span>&gt;</span> red <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>或者也可以设置div元素绝对定位，通过设置插入的div元素绝对定位，这样也可以把div元素叠加到canvas画布上</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;color: #ff0000; z-index:2; position: absolute;&quot;</span>&gt;</span> red <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>UI交互按钮和场景交互，例如点击button实现mesh的material的切换；</p>
+<p>如果要将threejs背景设为透明，</p>
+<blockquote>
+<p>1 <code>renderer.setClearAlpha(0.8);</code></p>
+<p>2 <code>renderer.alpha=true;</code></p>
+<p>3 <code>renderer.setClearColor(0f0000,0.4);</code> 第二个参数表示透明度</p>
+</blockquote>
+<p>如果要将threejs渲染结果保存为图片，可以通过超链接元素a来下载文件</p>
+<blockquote>
+<p>1 添加下载按钮，点击实现保存文件saveFile()，里面的实现逻辑就是触发超链接a</p>
+<p>2 配置webgl渲染器，renderer.preserveDrawingBuffer&#x3D;true;</p>
+<p>3 Canvas的.toDataURL()，const canvas&#x3D;renderer.domElement, 可以设置超链接的保存数据link.href&#x3D;canvas.toDataURL(“image&#x2F;png”), or jpeg, or bmp…..</p>
+</blockquote>
+<p><strong>模型闪烁&#x2F;深度冲突&#x2F;z-fighting</strong></p>
+<p>当模型有面重合的时候，电脑GPU不知道哪个在前哪个在后，所以会发生深度冲突。</p>
+<p>可以调整模型之间的距离，但也不能间隙特别小，因为电脑GPU精度有限；mesh.position.z&#x3D;1; 在建模的时候也需要注意，尽量避免两个Mesh完全重合，可以考虑适当偏移一定距离；</p>
+<p>此外，透视投影相机也会产生深度冲突问题：当相机的位置特别远，而两个mesh之间的距离又挺小的情况下，就还是会发生深度冲突问题。</p>
+<blockquote>
+<p>设置对数深度缓冲区，来进行优化；</p>
+<p>renderer.logarithmicDepthBuffer&#x3D;true</p>
+<p>不过这个的作用也是有限的，如果间距还是过小，那还是会发生这个问题。</p>
+</blockquote>
+<p><strong>显示模型的加载进度</strong></p>
+<blockquote>
+<p>loader.load(“模型路径”,加载完成后执行的函数，加载过程中执行的函数)</p>
+</blockquote>
+<h1 id="生成曲线、几何体"><a href="#生成曲线、几何体" class="headerlink" title="生成曲线、几何体"></a>生成曲线、几何体</h1><p>分段连线，构成圆弧；</p>
+<p>构建BufferGeometry()的时候，除了用顶点数据传给geometry.attributes.position外，还可以用geometry.setFromPoints()方法，可以把THREE.Vector3或THREE.Vector2的数组传入进去；</p>
+<h2 id="曲线"><a href="#曲线" class="headerlink" title="曲线"></a>曲线</h2><p>threejs的API：</p>
+<blockquote>
+<p>2D: LineCurve, ArcCurve, EllipseCurve, SplineCurve, QuadraticBezierCurve, CubicBezierCurve</p>
+<p>3D: LineCurve3, CatmullRomCurve3, QuadraticBezierCurve3, CubicBezierCurve3</p>
+</blockquote>
+<p>属性：</p>
+<blockquote>
+<p>.getPoints()</p>
+<p>.setFromPoints()</p>
+<p>.getSpacedPoints()</p>
+</blockquote>
+<p>组合：</p>
+<blockquote>
+<p>new THREE.CurvePath().curves.push()</p>
+<p>要注意push进去的curve的顺序</p>
+</blockquote>
+<p>应用：</p>
+<ul>
+<li>样条函数、贝塞尔曲线：表示飞行曲线轨迹</li>
+</ul>
+<p>基于曲线的其他几何体</p>
+<blockquote>
+<p>THREE.TubeGeometry() 第一个参数就是上面的曲线</p>
+<p>THREE.LatheGeometry() 第一个参数可以就是上面的曲线的.getPoints()</p>
+<p>THREE.Shape() 传入点数组</p>
+<p>THREE.ShapeGeometry() 传入shape</p>
+<p>THREE.ExtrudeGeometry() 传入shape,传入上面的曲线的话就能扫描成型</p>
+</blockquote>
+<p>Path：Shape的父类</p>
+<blockquote>
+<p>相关绘制API：.lineTo(), .arc(), .absarc(), .splineThru(), .bezierCurveTo(), .quadraticCurveTo()</p>
+<p>相关属性：.currentPoint, .moveTo(), .lineTo(), .holes.push()</p>
+</blockquote>
+<p>边线几何体EdgesGeometry</p>
+<blockquote>
+<p>THREE.EdgesGeometry()，传入的是Geometry</p>
+<p>THREE.LineSegments()，传入EdgeGeometry和THREE.LineBasicMaterial类似的material</p>
+<p>应用：针对gltf模型，可以显示里面的geometry对应的边线几何体</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io">Shealin You</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io/2024/01/07/threejs%E4%B8%AD/">https://youxt-njnu.github.io/2024/01/07/threejs%E4%B8%AD/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://youxt-njnu.github.io" target="_blank">Pale Bule Dot</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/WebGL/">WebGL</a><a class="post-meta__tags" href="/tags/3DGIS/">3DGIS</a></div><div class="post_share"><div class="social-share" data-image="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/01/07/threejs%E4%B8%8B/" title="threejs API学习 Ⅲ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">threejs API学习 Ⅲ</div></div></a></div><div class="next-post pull-right"><a href="/2024/01/07/threejs%E5%AE%8C/" title="threejs API学习 Ⅳ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">threejs API学习 Ⅳ</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/12/08/threejs%E4%B8%8A/" title="threejs API学习 Ⅰ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-08</div><div class="title">threejs API学习 Ⅰ</div></div></a></div><div><a href="/2024/01/07/threejs%E4%B8%8B/" title="threejs API学习 Ⅲ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-07</div><div class="title">threejs API学习 Ⅲ</div></div></a></div><div><a href="/2024/03/09/threejs%E5%AE%9E%E6%88%984/" title="three+react|个人主页实战Ⅳ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-09</div><div class="title">three+react|个人主页实战Ⅳ</div></div></a></div><div><a href="/2024/01/07/threejs%E5%AE%8C/" title="threejs API学习 Ⅳ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-07</div><div class="title">threejs API学习 Ⅳ</div></div></a></div><div><a href="/2024/02/25/three%E5%AE%9E%E6%88%982/" title="three+react|个人主页实战Ⅱ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-25</div><div class="title">three+react|个人主页实战Ⅱ</div></div></a></div><div><a href="/2024/02/25/threejs%E5%AE%9E%E6%88%983/" title="three+react|个人主页实战Ⅲ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-25</div><div class="title">three+react|个人主页实战Ⅲ</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Shealin You</div><div class="author-info__description">Be brave, and know yourself</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/youxt-njnu"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:10190208@njnu.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://www.zhihu.com/people/paleYYY" target="_blank" title="zhihu"><i class="fa-brands fa-zhihu" style="color: #24292e;"></i></a><a class="social-icon" href="https://dclef.icu/atom.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">人生苦旅，踽踽独行之</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90"><span class="toc-number">1.</span> <span class="toc-text">学习资源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Group%E5%B1%82%E7%BA%A7%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">Group层级模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B4%B4%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">贴图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#UV%E5%9D%90%E6%A0%87"><span class="toc-number">3.1.</span> <span class="toc-text">UV坐标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PBR%E6%9D%90%E8%B4%A8"><span class="toc-number">3.2.</span> <span class="toc-text">PBR材质</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.</span> <span class="toc-text">外部模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD"><span class="toc-number">4.1.</span> <span class="toc-text">加载</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E5%99%A8%E5%92%8C%E5%89%8D%E7%AB%AFUI"><span class="toc-number">5.</span> <span class="toc-text">渲染器和前端UI</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Canvas"><span class="toc-number">5.1.</span> <span class="toc-text">Canvas</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%9B%B2%E7%BA%BF%E3%80%81%E5%87%A0%E4%BD%95%E4%BD%93"><span class="toc-number">6.</span> <span class="toc-text">生成曲线、几何体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B2%E7%BA%BF"><span class="toc-number">6.1.</span> <span class="toc-text">曲线</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/05/31/%E8%AF%BE%E7%A8%8B%E6%B1%87%E6%8A%A5-GIS/" title="GIS集成案例汇报"><img src="https://wallroom.io/img/3840x2160/bg-20bb43a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GIS集成案例汇报"/></a><div class="content"><a class="title" href="/2024/05/31/%E8%AF%BE%E7%A8%8B%E6%B1%87%E6%8A%A5-GIS/" title="GIS集成案例汇报">GIS集成案例汇报</a><time datetime="2024-05-31T01:33:26.000Z" title="发表于 2024-05-31 09:33:26">2024-05-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A2/" title="JavaScript基础知识Ⅲ"><img src="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript基础知识Ⅲ"/></a><div class="content"><a class="title" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A2/" title="JavaScript基础知识Ⅲ">JavaScript基础知识Ⅲ</a><time datetime="2024-03-17T01:33:26.000Z" title="发表于 2024-03-17 09:33:26">2024-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/" title="JavaScript基础知识Ⅱ"><img src="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript基础知识Ⅱ"/></a><div class="content"><a class="title" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/" title="JavaScript基础知识Ⅱ">JavaScript基础知识Ⅱ</a><time datetime="2024-03-17T01:27:26.000Z" title="发表于 2024-03-17 09:27:26">2024-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/10/react+vite%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/" title="react+vite+hexo|项目呈现"><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/15A21438BD46CC6CF21998480FDA2C83.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="react+vite+hexo|项目呈现"/></a><div class="content"><a class="title" href="/2024/03/10/react+vite%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/" title="react+vite+hexo|项目呈现">react+vite+hexo|项目呈现</a><time datetime="2024-03-10T03:51:26.000Z" title="发表于 2024-03-10 11:51:26">2024-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/09/threejs%E5%AE%9E%E6%88%9821/" title="three+react|个人主页实战Ⅱ(补)"><img src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="three+react|个人主页实战Ⅱ(补)"/></a><div class="content"><a class="title" href="/2024/03/09/threejs%E5%AE%9E%E6%88%9821/" title="three+react|个人主页实战Ⅱ(补)">three+react|个人主页实战Ⅱ(补)</a><time datetime="2024-03-09T03:34:05.000Z" title="发表于 2024-03-09 11:34:05">2024-03-09</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/index_img.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By Shealin You</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Training the faculty of mindfulness is like breathing oxygen continuously to remain alive.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'StmwBdb4aXO6LMYWRxjVnufr-gzGzoHsz',
+      appKey: 'V7WavrdJsNE6xxx5YGiygidl',
+      avatar: 'monsterid',
+      serverURLs: 'https://stmwbdb4.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="000EDNt20L3sUT" data-server="tencent" data-type="song" data-fixed="true" data-autoplay="true" data-lrcType="-1"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

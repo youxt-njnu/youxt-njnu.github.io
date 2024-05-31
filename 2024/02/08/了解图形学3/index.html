@@ -1,0 +1,412 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>初探即退之图形学Ⅲ|Games101 | Pale Bule Dot</title><meta name="author" content="Shealin You"><meta name="copyright" content="Shealin You"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="geometry隐式几何 implicit，满足特定关系的 f(x,y,z)。较方便地判断光线和物体的相交。 显式几何 explicit，直接给出坐标，或者给出对应的参数映射。较方便的采样到所有的点。 implicitconstructive solid geometry CSG 构造实体几何，隐式几何之间进行布尔运算，形成复杂形体。 signed distance function 符号距离函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初探即退之图形学Ⅲ|Games101">
+<meta property="og:url" content="https://youxt-njnu.github.io/2024/02/08/%E4%BA%86%E8%A7%A3%E5%9B%BE%E5%BD%A2%E5%AD%A63/index.html">
+<meta property="og:site_name" content="Pale Bule Dot">
+<meta property="og:description" content="geometry隐式几何 implicit，满足特定关系的 f(x,y,z)。较方便地判断光线和物体的相交。 显式几何 explicit，直接给出坐标，或者给出对应的参数映射。较方便的采样到所有的点。 implicitconstructive solid geometry CSG 构造实体几何，隐式几何之间进行布尔运算，形成复杂形体。 signed distance function 符号距离函数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wallroom.io/img/2880x1620/bg-ccf1116.jpg">
+<meta property="article:published_time" content="2024-02-08T00:58:05.000Z">
+<meta property="article:modified_time" content="2024-02-08T01:34:37.373Z">
+<meta property="article:author" content="Shealin You">
+<meta property="article:tag" content="知识框架">
+<meta property="article:tag" content="图形学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wallroom.io/img/2880x1620/bg-ccf1116.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://youxt-njnu.github.io/2024/02/08/%E4%BA%86%E8%A7%A3%E5%9B%BE%E5%BD%A2%E5%AD%A63/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '初探即退之图形学Ⅲ|Games101',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-08 09:34:37'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Pale Bule Dot" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://wallroom.io/img/2880x1620/bg-ccf1116.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Pale Bule Dot"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/favicon.png"/><span class="site-name">Pale Bule Dot</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">初探即退之图形学Ⅲ|Games101</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-08T00:58:05.000Z" title="发表于 2024-02-08 08:58:05">2024-02-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-08T01:34:37.373Z" title="更新于 2024-02-08 09:34:37">2024-02-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/WebGL/">WebGL</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="初探即退之图形学Ⅲ|Games101"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="geometry"><a href="#geometry" class="headerlink" title="geometry"></a>geometry</h1><p>隐式几何 implicit，满足特定关系的 f(x,y,z)。较方便地判断光线和物体的相交。</p>
+<p>显式几何 explicit，直接给出坐标，或者给出对应的参数映射。较方便的采样到所有的点。</p>
+<h2 id="implicit"><a href="#implicit" class="headerlink" title="implicit"></a>implicit</h2><p>constructive solid geometry CSG 构造实体几何，隐式几何之间进行布尔运算，形成复杂形体。</p>
+<p>signed distance function 符号距离函数，</p>
+<p>level set 水平集，格子的双线性插值，</p>
+<p>fractals 分形</p>
+<p><img src="https://s2.loli.net/2023/12/21/t826aZjvzfcS1WC.png"></p>
+<h2 id="explicit"><a href="#explicit" class="headerlink" title="explicit"></a>explicit</h2><p>point cloud</p>
+<p>polygon mesh</p>
+<p>.obj格式：先定义点，然后定义纹理坐标，再定义面的法线信息，最后定义面的组成</p>
+<h3 id="curve"><a href="#curve" class="headerlink" title="curve"></a>curve</h3><h4 id="贝塞尔曲线"><a href="#贝塞尔曲线" class="headerlink" title="贝塞尔曲线"></a>贝塞尔曲线</h4><p>算法de Casteljau algorithm： 给任意点所在时间 t，找位置，递归思想</p>
+<p>仿射变换下，贝塞尔曲线点画出来的，和变换后的一样。对于投影变换就不行。</p>
+<p>高阶的贝塞尔曲线处理，进行逐段定义。四个点即可形成，也是 PS 里面的钢笔工具原理。共线等距算切线状态，此时大小和方向都一样。</p>
+<h4 id="spline-样条"><a href="#spline-样条" class="headerlink" title="spline 样条"></a>spline 样条</h4><p>B- spline（Basis splines）</p>
+<p><strong>B样条曲线相对于贝塞尔曲线可以更好的进行局部控制</strong> <strong>NURBS曲线可以得到一些B样条曲线无法精准描述的圆锥曲线</strong></p>
+<h3 id="surface"><a href="#surface" class="headerlink" title="surface"></a>surface</h3><p>Bezier Surfaces：贝塞尔曲线到曲面</p>
+<h3 id="mesh-operation-网格操作"><a href="#mesh-operation-网格操作" class="headerlink" title="mesh operation 网格操作"></a>mesh operation 网格操作</h3><h4 id="mesh-subdivision"><a href="#mesh-subdivision" class="headerlink" title="mesh subdivision"></a>mesh subdivision</h4><blockquote>
+<p>提高分辨率，向上采样 upsampling<br>曲面细分</p>
+</blockquote>
+<p>loop subdivision 发明者姓 loop</p>
+<blockquote>
+<p>针对三角形面细分的方式，引入更多的三角形，并使得其位置发生变化</p>
+</blockquote>
+<blockquote>
+<p>n 是顶点的度 u 是和顶点的度有关系的数</p>
+</blockquote>
+<p>cc 细分（Catmull-Clark细分），对于一般格网，不同</p>
+<p>Pixar 做动画很强的</p>
+<h4 id="mesh-simplification"><a href="#mesh-simplification" class="headerlink" title="mesh simplification"></a>mesh simplification</h4><blockquote>
+<p>降低分辨率，向下采样 downsampling<br>曲面简化</p>
+</blockquote>
+<p>在什么场合，使用多少精细度的模型。<br>一种方法，edge collapsing，如何坍缩一条边，或者说坍缩哪一条边能够使得原模型样貌被改变的程度最小，这就是曲面简化的关键所在。因此引入了二次误差度量（点到原有点的二次平方和最小）。<br>测量哪边的坍缩最小，同时其他受到影响的边的变换也要最小。使用最小堆来实现。</p>
+<h4 id="mesh-regularization"><a href="#mesh-regularization" class="headerlink" title="mesh regularization"></a>mesh regularization</h4><p>使得 mesh 的三角形里面不会出现那种很尖的或者很大的或者很小的三角形，而是都比较趋向于相近的正三角形。</p>
+<h2 id="shader-mapping"><a href="#shader-mapping" class="headerlink" title="shader mapping"></a>shader mapping</h2><p>draw shadows using rasterization<br>经典的 shadow mapping 只能处理点光源&#x2F;方向光源。<br>出现误差&#x2F;质量不好的原因：进行数值比较的时候，一方面是数值精度（特别是浮点数）在进行比较的时候的影响，另一方面是 shadow map 的分辨率和整个场景的分辨率之间的差异。</p>
+<h3 id="hard-shadows-amp-soft-shadows"><a href="#hard-shadows-amp-soft-shadows" class="headerlink" title="hard shadows &amp; soft shadows"></a>hard shadows &amp; soft shadows</h3><p>如果出现软阴影，说明不是点光源，光源存在着一定的大小，这样才能看到半影 penumbra</p>
+<h1 id="Ray-tracing"><a href="#Ray-tracing" class="headerlink" title="Ray tracing"></a>Ray tracing</h1><p>光栅化无法很好的处理全局的效果。光栅化普遍比较快，但渲染质量比较差。光线追踪相反，所以经常用来处理动画，录成视频给我们看。</p>
+<h2 id="基本的光线追踪"><a href="#基本的光线追踪" class="headerlink" title="基本的光线追踪"></a>基本的光线追踪</h2><p>光线可逆性，reciprocity<br>eye ray &#x2F; camera ray &#x2F; primary ray<br>Secondary ray<br>Shadow ray</p>
+<h2 id="whitted-style-ray-tracing"><a href="#whitted-style-ray-tracing" class="headerlink" title="whitted- style ray tracing"></a>whitted- style ray tracing</h2><p>递归算法<br>多个点的着色的值都要加到里面<br><img src="https://s2.loli.net/2024/02/07/MwH1nCD3c6ghUXO.png"></p>
+<h2 id="ray-surface-interaction"><a href="#ray-surface-interaction" class="headerlink" title="ray surface interaction"></a>ray surface interaction</h2><p>求交点<br>光线和球存在相离相切相交的问题。</p>
+<p>隐式表面，通过方程组求。<br>显式表面，通过光线和三角形求交。</p>
+<blockquote>
+<p>光线和平面相交<br>求和三角的交点<br>MT 算法：写成用重心坐标形式表示的平面内的点，和光线上的点，解出 t,b1,b2.然后判断解出来的和不合理。是不是正的时间，是不是点在三角形内（b1,b2 大于 0</p>
+</blockquote>
+<p>加速光线和平面求交的效率（已经知道了光线和三角形求交的 方式，最不济就是和所有的三角形进行一一求交，但是很慢）</p>
+<h3 id="bounding-volumes"><a href="#bounding-volumes" class="headerlink" title="bounding volumes"></a>bounding volumes</h3><p>使用包围盒来进行加速。<br>如果光线碰不到包围盒，那肯定碰不到物体。<br>最常见的就是长方体，有三个不同的对面构成的交集 3 pairs of slabs<br>轴对齐包围盒 AABB<br>判断光线和盒子有没有交点</p>
+<blockquote>
+<p>从二维到三维，<br>二维下，两个对面的交集，得到了光线实际进入和移出的 tmin和 tmax<br>光线和盒子有交点，当且仅当进入时间小于出去时间，且出去时间为正。</p>
+</blockquote>
+<h3 id="使用-AABB-来加速光线追踪-acceleration"><a href="#使用-AABB-来加速光线追踪-acceleration" class="headerlink" title="使用 AABB 来加速光线追踪 acceleration"></a>使用 AABB 来加速光线追踪 acceleration</h3><p>uniform spatial partitions，grids</p>
+<blockquote>
+<p>格子分辨率的选择，需要平衡；<br>在部分情况下，格子画了很多，但场景很空，还是得花很长时间才能到达物体所在的格子；</p>
+</blockquote>
+<p>Spatial partitioning examples</p>
+<blockquote>
+<p>oct-Tree，八叉树，在二维的情况下就是四叉树；<br>KD-Tree，为了让划分和维度没有关系，就是比上面的优化一下，提出的 KD 树；<br>BSP-Tree，相对 KD 树来说不是横平竖直的砍；在维度高的时候会越来越难计算；</p>
+</blockquote>
+<p>通过和包围盒进行判断有没有交点，一层一层按照树节点的顺序往下进行遍历判断；<br>kd 树的一个问题是，难以确定一个三角形和划分的 aabb 有交点。另一种划分方法想了出来，就是针对物体进行划分</p>
+<h2 id="object-partitions"><a href="#object-partitions" class="headerlink" title="object partitions"></a>object partitions</h2><p>bounding volume hierarchy，BVH<br>kd 树先划分空间，再考虑和物体的相交情况，BVH 先分物体成两堆，再求包围盒。 这样一个物体只会存在于一个盒子里。<br>但存在的问题就是，BVH 对空间的划分并不能保证划分开，包围盒最后会有相交的部分。</p>
+<h2 id="辐射度量学-basic-radiometry"><a href="#辐射度量学-basic-radiometry" class="headerlink" title="辐射度量学 basic radiometry"></a>辐射度量学 basic radiometry</h2><p>这一块的知识点很像遥感那边的。<br>精确地度量光照的系统和单位，以及光的空间属性。</p>
+<blockquote>
+<p>Radiant energy and flux(power)<br>Radiant intensity<br>radiant flux<br>intensity， solid angle 立体角，单位立体角，微分立体角<br><img src="https://s2.loli.net/2024/02/07/ZNzwnhDedvJpFLI.png"><br>irradiance，垂直投影下单位面积的 power，Lambert cosine law 里的也是这样<br>radiance</p>
+</blockquote>
+<p>bidirectional reflectance distributuion function(BRDF)</p>
+<blockquote>
+<p>可以告诉我们这么多的能量从不同方向进来，反射到不同方向下的能量是多少。<br>也可以理解成光线照射过来，被单位面积吸收，这个单位面积又自己发射能量，这样就能用 radiance 和 irradiance 来进行解释和计算。<br>radiance 除以 irradiance<br>反射方程 reflection equation<br>把 irradiance 乘以 BRDF，就变成了出射的 radiance，然后在所有的方向上进行积分。<br>一个挑战，到达这个物体的光不只是光源到达这个物体之后的反射，也会有其他物体对光源的反射出来的 radiance。所以是一个递归的问题。</p>
+</blockquote>
+<h3 id="render"><a href="#render" class="headerlink" title="render"></a>render</h3><p>渲染方程，物体往一个点发射出来的光，是包括了这个物体自己发射产生出去的光，和通过被人的反射过来或者其他光源照亮的入射 后反射的radiance。<br><img src="https://s2.loli.net/2024/02/07/ZT2O76yj8t3IN9C.png"><br><img src="https://s2.loli.net/2024/02/07/1dkRiFoyqxeAPhN.png"><br>面光源，进行积分<br><img src="https://s2.loli.net/2024/02/07/K98eWC5xswrT4Jl.png"><br>多个物体<br><img src="C:\Users\Xiangting\AppData\Roaming\Typora\typora-user-images\image-20240207084805768.png" alt="image-20240207084805768"><br>渲染方程拆分成不同弹射次数，所有不同的光线弹射次数加起来就是全局光照。<br><img src="https://s2.loli.net/2024/02/07/V6AemFfg9WYD8Ls.png"></p>
+<h2 id="global-illumination"><a href="#global-illumination" class="headerlink" title="global illumination"></a>global illumination</h2><p>是直接和间接光照的集合。<br>光栅化主要做的是自己自发光和光源的部分，也就是零次和一次。<br>后面就是光线追踪Ray Tracing的部分。</p>
+<h3 id="通过概率论来解渲染方程"><a href="#通过概率论来解渲染方程" class="headerlink" title="通过概率论来解渲染方程"></a>通过概率论来解渲染方程</h3><p>概率密度函数 PDF<br><img src="https://s2.loli.net/2024/02/07/TRt6LXp5W7OdniM.png"></p>
+<h2 id="蒙特卡洛路径追踪"><a href="#蒙特卡洛路径追踪" class="headerlink" title="蒙特卡洛路径追踪"></a>蒙特卡洛路径追踪</h2><h3 id="Monte-Carlo-Integration"><a href="#Monte-Carlo-Integration" class="headerlink" title="Monte Carlo Integration"></a>Monte Carlo Integration</h3><p>蒙特卡洛积分，针对复杂的函数，解一个定积分，也就是得到一个数值就行；</p>
+<p>是通过随机采样的方式，通过采样近似成矩形，然后进行累加；</p>
+<p><img src="https://s2.loli.net/2024/02/07/PYhZWupUBlEX8mK.png"></p>
+<p><img src="https://s2.loli.net/2024/02/07/HmJ1Eo6kfKcPIWY.png"></p>
+<p>主要可以采样，并且知道采样的PDF，就可以进行定积分；</p>
+<p>蒙特卡洛积分的要求，在X上采样，就在X上进行积分。</p>
+<h3 id="Path-Tracing"><a href="#Path-Tracing" class="headerlink" title="Path Tracing"></a>Path Tracing</h3><p>镜面反射：specular，Mirror Reflection;</p>
+<p>Glossy Reflection;</p>
+<p>漫反射：diffuse，</p>
+<p>whitted-style ray tacing存在着很多问题；</p>
+<p>尝试用蒙特卡洛来解渲染方程；</p>
+<p><img src="https://s2.loli.net/2024/02/07/kuNwLdBo5WJYvSx.png"></p>
+<p>当N过大的时候，会发生指数爆炸；所以令N&#x3D;1，也就是只有一条光线，这个时候也就是Path Tracing.</p>
+<p><img src="https://s2.loli.net/2024/02/07/hNbMHmvPpUWsqrC.png"></p>
+<p>此外，用多个方向，选取多束；</p>
+<p>同时，递归需要有终止条件，但 现实世界中光线的反射是无限的；这个时候在程序中如何决定终止条件，可以引入Russian Roulette（RR）。</p>
+<p>为了提高光线的利用，减少浪费，可以从光源入手，从光源发射出来，把渲染方程改成对光源面积进行积分；</p>
+<p><img src="https://s2.loli.net/2024/02/07/iRG8ejxzkmbqIZt.png"></p>
+<p><img src="https://s2.loli.net/2024/02/07/AExMNb54p7LaYDl.png"></p>
+<p>路径追踪可以做到照片级真实感Photo-realistic</p>
+<p>一些概念区分和变化：</p>
+<p><img src="https://s2.loli.net/2024/02/07/qjYarOFhdyz1Vc7.png"></p>
+<h1 id="Materials-and-Appearance"><a href="#Materials-and-Appearance" class="headerlink" title="Materials and Appearance"></a>Materials and Appearance</h1><p>BRDF定义反射，等于材质；</p>
+<p>抛光的金属：Glossy Material;</p>
+<p>玻璃和水：Ideal reflective&#x2F;refractive material;</p>
+<blockquote>
+<p>折射定律：Snell’s Law, Snell’s Window&#x2F;Circle</p>
+<p>BSDF: 散射，BRDF+BTDF</p>
+<p>Fresnel Reflection&#x2F;Term 菲涅耳项。</p>
+</blockquote>
+<p>镜面：Specular</p>
+<p>微表面材质：Microfacet Material</p>
+<blockquote>
+<p>物体虽然表面是粗糙的，但从远处来看看成了平的；</p>
+</blockquote>
+<p>各向同性和各项异性材质</p>
+<p><img src="https://s2.loli.net/2024/02/07/YufBe35V9MSP2GF.png"></p>
+<h1 id="相机、透镜和光场"><a href="#相机、透镜和光场" class="headerlink" title="相机、透镜和光场"></a>相机、透镜和光场</h1><h2 id="Camera"><a href="#Camera" class="headerlink" title="Camera"></a>Camera</h2><p>Field of View(FOV): 视场</p>
+<blockquote>
+<p>可以用传感器大小和焦距来表示；</p>
+</blockquote>
+<p>Exposure 曝光</p>
+<p>aperture 光圈，焦距&#x2F;光圈的直径 是F-Number</p>
+<p>shutter speed 快门开放的时间，快门速度</p>
+<p>ISO gain 感光度</p>
+<h2 id="Lenses"><a href="#Lenses" class="headerlink" title="Lenses"></a>Lenses</h2><p>focal point 焦点</p>
+<p>focal length 焦距</p>
+<p>depth of field 景深</p>
+<h2 id="Light-Field-x2F-lumigraph"><a href="#Light-Field-x2F-lumigraph" class="headerlink" title="Light Field&#x2F;lumigraph"></a>Light Field&#x2F;lumigraph</h2><p>the plenoptic function 全光函数</p>
+<p>holographic movie 全息电影</p>
+<h1 id="颜色和感知"><a href="#颜色和感知" class="headerlink" title="颜色和感知"></a>颜色和感知</h1><p>Color and Perception</p>
+<p>光谱，谱功率密度SPD。<br>颜色是人的感知，和实际光的分布无关。<br>metamers 同色异谱<br>color space颜色空间</p>
+<blockquote>
+<p>standard RGB (sRGB)<br>CIE XYZ<br>HSV<br>CIELAB<br>CMYK<br>人脑会自动互补色，颜色也是相对的，</p>
+</blockquote>
+<p>Gamut 色域<br>颜色的伽马校正</p>
+<h1 id="animation-simulation"><a href="#animation-simulation" class="headerlink" title="animation simulation"></a>animation simulation</h1><ol>
+<li>关键帧动画<br>keyframe，keyframe interpolation</li>
+<li>物理模拟&#x2F;仿真<br>模拟的正常的话，就不会发生穿模的现象。<br>流体的模拟，水花的感觉</li>
+</ol>
+<h2 id="质点弹簧系统"><a href="#质点弹簧系统" class="headerlink" title="质点弹簧系统"></a>质点弹簧系统</h2><p>mass spring system<br>一系列相互连接的质点和弹簧</p>
+<h2 id="particle-systems"><a href="#particle-systems" class="headerlink" title="particle systems"></a>particle systems</h2><p>attraction，repulsion，alignment</p>
+<h2 id="运动学"><a href="#运动学" class="headerlink" title="运动学"></a>运动学</h2><p>kinematics<br>forward kinematics<br>inverse kinematics</p>
+<h2 id="rigging"><a href="#rigging" class="headerlink" title="rigging"></a>rigging</h2><p>类似木偶操作，对模型添加控制点。</p>
+<h2 id="motion-capture"><a href="#motion-capture" class="headerlink" title="motion capture"></a>motion capture</h2><p>将真人的动作，应用到模型上去。<br><img src="https://s2.loli.net/2024/02/08/OyR4mWAgEQDHXin.png"><img src="https://s2.loli.net/2024/02/08/OyR4mWAgEQDHXin.png"></p>
+<h2 id="动画模拟补充"><a href="#动画模拟补充" class="headerlink" title="动画模拟补充"></a>动画模拟补充</h2><p>single particle simulation<br>euler’s method</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io">Shealin You</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io/2024/02/08/%E4%BA%86%E8%A7%A3%E5%9B%BE%E5%BD%A2%E5%AD%A63/">https://youxt-njnu.github.io/2024/02/08/%E4%BA%86%E8%A7%A3%E5%9B%BE%E5%BD%A2%E5%AD%A63/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://youxt-njnu.github.io" target="_blank">Pale Bule Dot</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%9F%A5%E8%AF%86%E6%A1%86%E6%9E%B6/">知识框架</a><a class="post-meta__tags" href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">图形学</a></div><div class="post_share"><div class="social-share" data-image="https://wallroom.io/img/2880x1620/bg-ccf1116.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/02/12/MapboxSDKforUnity/" title="Mapbox SDK for Unity | 官方案例Ⅰ"><img class="cover" src="https://wallroom.io/img/2880x1800/bg-983381f.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Mapbox SDK for Unity | 官方案例Ⅰ</div></div></a></div><div class="next-post pull-right"><a href="/2024/02/08/%E4%BA%86%E8%A7%A3%E5%9B%BE%E5%BD%A2%E5%AD%A62/" title="初探即退之图形学Ⅱ|Games101"><img class="cover" src="https://wallroom.io/img/2880x1620/bg-ccf1116.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">初探即退之图形学Ⅱ|Games101</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/02/08/%E4%BA%86%E8%A7%A3%E5%9B%BE%E5%BD%A2%E5%AD%A6/" title="初探即退之图形学Ⅰ|Games101"><img class="cover" src="https://wallroom.io/img/2880x1620/bg-ccf1116.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-08</div><div class="title">初探即退之图形学Ⅰ|Games101</div></div></a></div><div><a href="/2024/02/08/%E4%BA%86%E8%A7%A3%E5%9B%BE%E5%BD%A2%E5%AD%A62/" title="初探即退之图形学Ⅱ|Games101"><img class="cover" src="https://wallroom.io/img/2880x1620/bg-ccf1116.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-08</div><div class="title">初探即退之图形学Ⅱ|Games101</div></div></a></div><div><a href="/2023/05/10/Cpp%E5%B0%8F%E8%AE%A1/" title="Cpp小计"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-10</div><div class="title">Cpp小计</div></div></a></div><div><a href="/2024/01/25/c#%E6%95%99%E7%A8%8B%E6%A2%B3%E7%90%86/" title="C#入门梳理Ⅰ|基本知识和方法"><img class="cover" src="https://wallroom.io/img/2560x1600/bg-9f3ff33.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-25</div><div class="title">C#入门梳理Ⅰ|基本知识和方法</div></div></a></div><div><a href="/2024/02/01/c#%E6%95%99%E7%A8%8B%E6%A2%B3%E7%90%862/" title="C#入门梳理Ⅱ|表达式和语句"><img class="cover" src="https://wallroom.io/img/2560x1600/bg-9f3ff33.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-01</div><div class="title">C#入门梳理Ⅱ|表达式和语句</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Shealin You</div><div class="author-info__description">Be brave, and know yourself</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/youxt-njnu"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:10190208@njnu.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://www.zhihu.com/people/paleYYY" target="_blank" title="zhihu"><i class="fa-brands fa-zhihu" style="color: #24292e;"></i></a><a class="social-icon" href="https://dclef.icu/atom.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">人生苦旅，踽踽独行之</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#geometry"><span class="toc-number">1.</span> <span class="toc-text">geometry</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#implicit"><span class="toc-number">1.1.</span> <span class="toc-text">implicit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#explicit"><span class="toc-number">1.2.</span> <span class="toc-text">explicit</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#curve"><span class="toc-number">1.2.1.</span> <span class="toc-text">curve</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">贝塞尔曲线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spline-%E6%A0%B7%E6%9D%A1"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">spline 样条</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#surface"><span class="toc-number">1.2.2.</span> <span class="toc-text">surface</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mesh-operation-%E7%BD%91%E6%A0%BC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.2.3.</span> <span class="toc-text">mesh operation 网格操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mesh-subdivision"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">mesh subdivision</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mesh-simplification"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">mesh simplification</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mesh-regularization"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">mesh regularization</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shader-mapping"><span class="toc-number">1.3.</span> <span class="toc-text">shader mapping</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hard-shadows-amp-soft-shadows"><span class="toc-number">1.3.1.</span> <span class="toc-text">hard shadows &amp; soft shadows</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ray-tracing"><span class="toc-number">2.</span> <span class="toc-text">Ray tracing</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA"><span class="toc-number">2.1.</span> <span class="toc-text">基本的光线追踪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#whitted-style-ray-tracing"><span class="toc-number">2.2.</span> <span class="toc-text">whitted- style ray tracing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ray-surface-interaction"><span class="toc-number">2.3.</span> <span class="toc-text">ray surface interaction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bounding-volumes"><span class="toc-number">2.3.1.</span> <span class="toc-text">bounding volumes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-AABB-%E6%9D%A5%E5%8A%A0%E9%80%9F%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA-acceleration"><span class="toc-number">2.3.2.</span> <span class="toc-text">使用 AABB 来加速光线追踪 acceleration</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#object-partitions"><span class="toc-number">2.4.</span> <span class="toc-text">object partitions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%90%E5%B0%84%E5%BA%A6%E9%87%8F%E5%AD%A6-basic-radiometry"><span class="toc-number">2.5.</span> <span class="toc-text">辐射度量学 basic radiometry</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#render"><span class="toc-number">2.5.1.</span> <span class="toc-text">render</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#global-illumination"><span class="toc-number">2.6.</span> <span class="toc-text">global illumination</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%A6%82%E7%8E%87%E8%AE%BA%E6%9D%A5%E8%A7%A3%E6%B8%B2%E6%9F%93%E6%96%B9%E7%A8%8B"><span class="toc-number">2.6.1.</span> <span class="toc-text">通过概率论来解渲染方程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E8%B7%AF%E5%BE%84%E8%BF%BD%E8%B8%AA"><span class="toc-number">2.7.</span> <span class="toc-text">蒙特卡洛路径追踪</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Monte-Carlo-Integration"><span class="toc-number">2.7.1.</span> <span class="toc-text">Monte Carlo Integration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Path-Tracing"><span class="toc-number">2.7.2.</span> <span class="toc-text">Path Tracing</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Materials-and-Appearance"><span class="toc-number">3.</span> <span class="toc-text">Materials and Appearance</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B8%E6%9C%BA%E3%80%81%E9%80%8F%E9%95%9C%E5%92%8C%E5%85%89%E5%9C%BA"><span class="toc-number">4.</span> <span class="toc-text">相机、透镜和光场</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Camera"><span class="toc-number">4.1.</span> <span class="toc-text">Camera</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lenses"><span class="toc-number">4.2.</span> <span class="toc-text">Lenses</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Light-Field-x2F-lumigraph"><span class="toc-number">4.3.</span> <span class="toc-text">Light Field&#x2F;lumigraph</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%9C%E8%89%B2%E5%92%8C%E6%84%9F%E7%9F%A5"><span class="toc-number">5.</span> <span class="toc-text">颜色和感知</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#animation-simulation"><span class="toc-number">6.</span> <span class="toc-text">animation simulation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%A8%E7%82%B9%E5%BC%B9%E7%B0%A7%E7%B3%BB%E7%BB%9F"><span class="toc-number">6.1.</span> <span class="toc-text">质点弹簧系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#particle-systems"><span class="toc-number">6.2.</span> <span class="toc-text">particle systems</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E5%8A%A8%E5%AD%A6"><span class="toc-number">6.3.</span> <span class="toc-text">运动学</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rigging"><span class="toc-number">6.4.</span> <span class="toc-text">rigging</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#motion-capture"><span class="toc-number">6.5.</span> <span class="toc-text">motion capture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E7%94%BB%E6%A8%A1%E6%8B%9F%E8%A1%A5%E5%85%85"><span class="toc-number">6.6.</span> <span class="toc-text">动画模拟补充</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/05/31/%E8%AF%BE%E7%A8%8B%E6%B1%87%E6%8A%A5-GIS/" title="GIS集成案例汇报"><img src="https://wallroom.io/img/3840x2160/bg-20bb43a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GIS集成案例汇报"/></a><div class="content"><a class="title" href="/2024/05/31/%E8%AF%BE%E7%A8%8B%E6%B1%87%E6%8A%A5-GIS/" title="GIS集成案例汇报">GIS集成案例汇报</a><time datetime="2024-05-31T01:33:26.000Z" title="发表于 2024-05-31 09:33:26">2024-05-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A2/" title="JavaScript基础知识Ⅲ"><img src="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript基础知识Ⅲ"/></a><div class="content"><a class="title" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A2/" title="JavaScript基础知识Ⅲ">JavaScript基础知识Ⅲ</a><time datetime="2024-03-17T01:33:26.000Z" title="发表于 2024-03-17 09:33:26">2024-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/" title="JavaScript基础知识Ⅱ"><img src="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript基础知识Ⅱ"/></a><div class="content"><a class="title" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/" title="JavaScript基础知识Ⅱ">JavaScript基础知识Ⅱ</a><time datetime="2024-03-17T01:27:26.000Z" title="发表于 2024-03-17 09:27:26">2024-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/10/react+vite%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/" title="react+vite+hexo|项目呈现"><img src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/15A21438BD46CC6CF21998480FDA2C83.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="react+vite+hexo|项目呈现"/></a><div class="content"><a class="title" href="/2024/03/10/react+vite%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/" title="react+vite+hexo|项目呈现">react+vite+hexo|项目呈现</a><time datetime="2024-03-10T03:51:26.000Z" title="发表于 2024-03-10 11:51:26">2024-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/09/threejs%E5%AE%9E%E6%88%9821/" title="three+react|个人主页实战Ⅱ(补)"><img src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="three+react|个人主页实战Ⅱ(补)"/></a><div class="content"><a class="title" href="/2024/03/09/threejs%E5%AE%9E%E6%88%9821/" title="three+react|个人主页实战Ⅱ(补)">three+react|个人主页实战Ⅱ(补)</a><time datetime="2024-03-09T03:34:05.000Z" title="发表于 2024-03-09 11:34:05">2024-03-09</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/index_img.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By Shealin You</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Training the faculty of mindfulness is like breathing oxygen continuously to remain alive.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'StmwBdb4aXO6LMYWRxjVnufr-gzGzoHsz',
+      appKey: 'V7WavrdJsNE6xxx5YGiygidl',
+      avatar: 'monsterid',
+      serverURLs: 'https://stmwbdb4.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="000EDNt20L3sUT" data-server="tencent" data-type="song" data-fixed="true" data-autoplay="true" data-lrcType="-1"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
