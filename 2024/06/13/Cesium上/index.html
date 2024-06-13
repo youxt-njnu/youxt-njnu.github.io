@@ -1,0 +1,566 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Cesium API学习 Ⅰ | Pale Bule Dot</title><meta name="author" content="Shealin You"><meta name="copyright" content="Shealin You"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="初步了解Cesium官网 Cesium: The Platform for 3D Geospatial CesiumJS:CesiumJS Quickstart – Cesium Cesium for Unity:Cesium for Unity – Cesium Hello React Cesium - 知乎 (zhihu.com) React集成Cesium+ThreeJs流程汇总_react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cesium API学习 Ⅰ">
+<meta property="og:url" content="https://youxt-njnu.github.io/2024/06/13/Cesium%E4%B8%8A/index.html">
+<meta property="og:site_name" content="Pale Bule Dot">
+<meta property="og:description" content="初步了解Cesium官网 Cesium: The Platform for 3D Geospatial CesiumJS:CesiumJS Quickstart – Cesium Cesium for Unity:Cesium for Unity – Cesium Hello React Cesium - 知乎 (zhihu.com) React集成Cesium+ThreeJs流程汇总_react">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://youxt-njnu.github.io/img/tit.png">
+<meta property="article:published_time" content="2024-06-13T03:06:05.000Z">
+<meta property="article:modified_time" content="2024-06-13T02:30:26.228Z">
+<meta property="article:author" content="Shealin You">
+<meta property="article:tag" content="Cesium">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://youxt-njnu.github.io/img/tit.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://youxt-njnu.github.io/2024/06/13/Cesium%E4%B8%8A/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Cesium API学习 Ⅰ',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-06-13 10:30:26'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Pale Bule Dot" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">54</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">25</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/index_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Pale Bule Dot"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/favicon.png"/><span class="site-name">Pale Bule Dot</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Cesium API学习 Ⅰ</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-13T03:06:05.000Z" title="发表于 2024-06-13 11:06:05">2024-06-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-13T02:30:26.228Z" title="更新于 2024-06-13 10:30:26">2024-06-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/3DGIS/">3DGIS</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/3DGIS/WebGL/">WebGL</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Cesium API学习 Ⅰ"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="初步了解"><a href="#初步了解" class="headerlink" title="初步了解"></a>初步了解</h1><p><strong>Cesium官网</strong> <a target="_blank" rel="noopener" href="https://cesium.com/">Cesium: The Platform for 3D Geospatial</a></p>
+<p><strong>CesiumJS:</strong><a target="_blank" rel="noopener" href="https://cesium.com/learn/cesiumjs-learn/cesiumjs-quickstart/">CesiumJS Quickstart – Cesium</a></p>
+<p><strong>Cesium for Unity:</strong><a target="_blank" rel="noopener" href="https://cesium.com/learn/unity/">Cesium for Unity – Cesium</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/452345666">Hello React Cesium - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://cuifeng.blog.csdn.net/article/details/122828984?spm=1001.2014.3001.5502">React集成Cesium+ThreeJs流程汇总_react cesium-CSDN博客</a></p>
+<h1 id="基础教程"><a href="#基础教程" class="headerlink" title="基础教程"></a>基础教程</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tiandi/p/16580238.html">Cesium学习资源汇总</a></p>
+<p><a target="_blank" rel="noopener" href="https://sandcastle.cesium.com/">cesium官方案例</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/vtxf/Cesium-Tutorials-Index">Cesium相关资料汇总</a>、<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/557296232">汇总2</a></p>
+<p><a target="_blank" rel="noopener" href="https://pasu.github.io/ExamplesforCesium/examples/examples.html#Primer">cesium项目</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hujiulin/CesiumJS-tutorial/tree/master?tab=readme-ov-file">Cesium中文教程-github</a>, <a target="_blank" rel="noopener" href="http://cesium.xin/wordpress/archives/16.html">cesium中文网</a></p>
+<hr>
+<p><strong>Cesium源码文件夹</strong><a target="_blank" rel="noopener" href="https://sandcastle.cesium.com/">cesium官方案例</a>，<a target="_blank" rel="noopener" href="https://cesium.com/learn/cesiumjs/ref-doc/">官方API文档</a></p>
+<h1 id="Cesium基础知识"><a href="#Cesium基础知识" class="headerlink" title="Cesium基础知识"></a>Cesium基础知识</h1><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/column/c_1317874447190585344">学习链接</a></p>
+<p><strong>Cesium的项目定位：B&#x2F;S架构下的客户端应用层面的三维开发框架</strong></p>
+<p><img src="https://pic1.zhimg.com/v2-d566ed3f3b0bb0f8be5d099fb2393b10_r.jpg" alt="img"></p>
+<p><strong>Cesium的学习路线：</strong></p>
+<p><img src="https://pic4.zhimg.com/v2-7a32e7833314deff496ff31b5f48809f_r.jpg" alt="img"></p>
+<p><strong>Cesium进阶之路：</strong></p>
+<ul>
+<li><strong>Web前端方向：</strong> Cesium与webpack（裁剪以及压缩），Cesium 与vue（框架设计， 嵌入复杂业务系统），Cesium的UI（UI 设计，定制可复用的Cesium交互界面）</li>
+<li><strong>计算机图形学方向：</strong> WebGL深入，基于Cesium 的可视化定制（视阈、水淹、水面、热力图，流场图、飞线图、扫描图）</li>
+<li><strong>数据预处理方向：</strong> 投影变换，空间索引，LOD ，3dtile 生成，数据存储，数据分发服务，解决超大空间数据如何在 Cesium上流畅可视化的问题。</li>
+</ul>
+<h2 id="Viewer"><a href="#Viewer" class="headerlink" title="Viewer"></a>Viewer</h2><p><img src="https://i.loli.net/2018/08/13/5b70f7cbf3693.jpg" alt="img"></p>
+<p><strong>Cesium ion是一个提供瓦片图和3D地理空间数据的平台，Cesium ion支持把数据添加到用户自己的CesiumJS应用中。下面我们将使用Sentinal-2二维贴图和Cesium世界地形，二者都需要ion的支持。</strong></p>
+<p><strong>备注</strong> 在我们使用Cesium的过程中，如果没有申请ion，同时没有自己的数据源用的cesium提供的数据源，viewer的底部常常会提示一行小的英文字母。大意就是需要申请access token.</p>
+<ol>
+<li><strong>打开</strong><a target="_blank" rel="noopener" href="https://cesium.com/ion/">https://cesium.com/ion/</a> 然后注册一个新的账户。</li>
+<li><strong>点击”Access Token”,</strong> 选择<em>Default</em>默认的access token拷贝到contents中。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Cesium.Ion.defaultAccessToken =</span><br><span class="line">        &#x27;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2NDk3OTUzYy01N2RjLTQyNDMtYTE1Zi0yYjgwNTJlZmYwOTAiLCJpZCI6MTk3MzM4LCJpYXQiOjE3MDg2NTc1NTh9.b8_XHsKZtIQVkUyk95dNvHHB4OE5nmebm5e_JFEIIbM&#x27;</span><br><span class="line">const viewer = new Cesium.Viewer(&#x27;cesiumContainer&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Viewer的类组织</strong></p>
+<p><img src="https://img2022.cnblogs.com/blog/237138/202208/237138-20220812154924431-1555328076.png" alt="img"></p>
+<h3 id="参数解释"><a href="#参数解释" class="headerlink" title="参数解释"></a>参数解释</h3><ul>
+<li><strong>infoBox, 点击后弹出的右上方信息</strong></li>
+<li><strong>selectionIndicator: 点击后在原地出现的绿色指示框</strong></li>
+<li><strong>trackedEntity: Gets or sets the Entity instance currently being tracked by the camera.</strong></li>
+<li><strong>orderIndependentTranslucency:</strong></li>
+</ul>
+<h2 id="坐标系"><a href="#坐标系" class="headerlink" title="坐标系"></a>坐标系</h2><ul>
+<li><strong>屏幕坐标，即二维笛卡尔平面坐标系</strong></li>
+<li><strong>笛卡尔空间直角坐标&#x2F;世界坐标</strong>（红X，绿Z，蓝Y；X向前，Y向右，Z向上；</li>
+<li><strong>地理坐标（弧度制），Cesium.Cartographic(lon, lat, height)，其中经纬度都是用弧度表示的</strong></li>
+<li><strong>经纬度坐标，默认WGS84坐标系，</strong></li>
+</ul>
+<p><strong>坐标变换：</strong></p>
+<ul>
+<li>经纬度坐标转世界坐标：Cesium.Cartesian3.fromDegrees(lng, lat, height)</li>
+<li>世界坐标转经纬度坐标：Cesium.Cartographic.fromCartesian(cartesian3)</li>
+<li>地理坐标（弧度制）转经纬度坐标：lng&#x3D;Cesium.Math.toDegrees(cartographic.longitude), lat&#x3D;Cesium.Math.toDegrees(cartographic.latitude), height&#x3D;cartographic.height;</li>
+<li>弧度转经纬度：Cesium.Math.toDegrees(radians)</li>
+<li>经纬度转弧度：Cesium.Math.toRadians(degrees)</li>
+<li>屏幕坐标转世界坐标：scene.globe.pick(viewer.camera.getPickRay(windowPosition), scene) —— 一定要保证屏幕坐标在球上，不然得到的就是undefined</li>
+<li>世界坐标转屏幕坐标：Cesium.SceneTransforms.wgs84ToWindowCoordinates(scene,cartesian3)</li>
+</ul>
+<p><img src="https://s2.loli.net/2024/04/07/QRdUelrvqxNkWHO.png"><img src="https://s2.loli.net/2024/04/07/QRdUelrvqxNkWHO.png"></p>
+<p><strong>空间变换：</strong></p>
+<p><code>只有转换到笛卡尔坐标系后才能运用计算机图形学中的仿射变换知识进行空间位置变换如平移旋转缩放。Cesium为我们提供了如下几种很有用的变换工具类：</code></p>
+<ul>
+<li>Cesium.Cartesian3（相当于Point3D）</li>
+<li>Cesium.Matrix3（3x3矩阵，用于描述旋转变换）</li>
+<li>Cesium.Matrix4（4x4矩阵，用于描述旋转加平移变换）</li>
+<li>Cesium.Quaternion（四元数，用于描述围绕某个向量*旋转一定角度的变换）</li>
+<li>Cesium.Transforms(包含将位置转换为各种参考系的功能)</li>
+</ul>
+<p><strong>Cesium目前支持的坐标系：</strong></p>
+<ul>
+<li><strong>WGS1984， Terrain的TileSceme默认是这个</strong></li>
+<li><strong>墨卡托投影，Imagery的TileSceme默认是这个</strong></li>
+</ul>
+<p><code>viewer.canvas.clientHeight - movement.endPosition.y</code> :</p>
+<p><strong>在 Cesium 和其他 WebGL 应用中，</strong><code>viewer.canvas</code> 元素的坐标系通常遵循 HTML Canvas 元素的常见布局：</p>
+<ol>
+<li><strong>坐标系起点</strong> ：Canvas 坐标系的原点 (0, 0) 位于 Canvas 的左上角。</li>
+<li><strong>X轴方向</strong> ：X轴从左向右增长，即坐标值从 0 增加到 <code>canvas.width</code>。</li>
+<li><strong>Y轴方向</strong> ：Y轴从上向下增长，即坐标值从 0 增加到 <code>canvas.clientHeight</code>。</li>
+</ol>
+<p>针对代码行 <code>viewer.canvas.clientHeight - movement.endPosition.y</code>，这里所表达的含义和坐标参考如下：</p>
+<ul>
+<li><strong><code>viewer.canvas.clientHeight</code></strong> ：这是 Canvas 元素的高度，也就是 Y 轴的最大值。</li>
+<li><strong><code>movement.endPosition.y</code></strong> ：这通常是鼠标事件（如点击或拖动事件）结束时的 Y 坐标位置。在 Cesium 中，这个坐标也遵循 Canvas 的坐标系，即 Y 坐标从上到下增大。</li>
+</ul>
+<h2 id="ImageryProvider"><a href="#ImageryProvider" class="headerlink" title="ImageryProvider"></a>ImageryProvider</h2><p>加载影像底图API: <code>CesiumImagery.vue, ImageryLoading.vue</code></p>
+<blockquote>
+<p><strong>Cesium.: ImageryLayer, IonWorldImageryStyle, SingleTileImageryProvider, GridImageryProvider, TileCoordinateImagery</strong></p>
+<p><strong>viewer:</strong></p>
+<ul>
+<li><strong>.scene.imageryLayers: scene里的，更明确</strong></li>
+<li><strong>.imageryLayers: Gets the collection of image layers that will be rendered on the globe. 更简洁，两者功能一样</strong></li>
+</ul>
+</blockquote>
+<p><strong>两者对比</strong></p>
+<p><strong>Imagery Provider使用特定的服务请求Tiles，而Layer表示来自Imagery Provider的displayed tiles。比如说,</strong></p>
+<p><code>const layer = layers.addImageryProvider(imageryProvider);</code></p>
+<p><strong>是</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const layer = new Cesium.ImageryLayer(imageryProvider);</span><br><span class="line">layers.add(layer);</span><br></pre></td></tr></table></figure>
+
+<p>我们通常构建一个imagery provider只是为了创建一个layer; 然后我们使用layer的属性(如show、 alpha、brightness和contrast)操作该图层以改变其视觉外观。解耦decoupling imagery provider和layer使得编写新的imagery provider变得更加容易。</p>
+<p>与上面示例中的Layer一样，imagery layer collection决定了图层绘制的顺序。layer是根据添加的顺序从底部到顶部绘制的。像Cesium中的任何其他集合一样，使用add, remove and get等函数操作imagery layer collection。此外，layer可以使用 raise、 raiseToTop、 lower 和 lowerTobottom 来重新排序。</p>
+<p>Mapbox影像加载：</p>
+<p>mapbox:&#x2F;&#x2F;styles&#x2F;foxziluliu1121&#x2F;clrzymvix009g01r67bowdcez</p>
+<p><a target="_blank" rel="noopener" href="https://api.mapbox.com/styles/v1/foxziluliu1121/clrzymvix009g01r67bowdcez/wmts?access_token=pk.eyJ1IjoiZm94emlsdWxpdTExMjEiLCJhIjoiY2xyYnJ5MXQ3MHN5ZjJrcHFxcXdwemN3bSJ9.zc_BQ5U2vldx1wROrYM4tg">https://api.mapbox.com/styles/v1/foxziluliu1121/clrzymvix009g01r67bowdcez/wmts?access_token&#x3D;pk.eyJ1IjoiZm94emlsdWxpdTExMjEiLCJhIjoiY2xyYnJ5MXQ3MHN5ZjJrcHFxcXdwemN3bSJ9.zc_BQ5U2vldx1wROrYM4tg</a></p>
+<ul>
+<li><strong>ImageryLayer, ImageryProvider,</strong></li>
+<li>**Vector Tiles API:  **<a target="_blank" rel="noopener" href="https://c.tiles.mapbox.com/v4/foxziluliu1121.66qkqrxn/2/3/0.png?access_token=pk.eyJ1IjoiZm94emlsdWxpdTExMjEiLCJhIjoiY2xyYnJ5MXQ3MHN5ZjJrcHFxcXdwemN3bSJ9.zc_BQ5U2vldx1wROrYM4tg">https://c.tiles.mapbox.com/v4/foxziluliu1121.66qkqrxn/2/3/0.png?access_token&#x3D;pk.eyJ1IjoiZm94emlsdWxpdTExMjEiLCJhIjoiY2xyYnJ5MXQ3MHN5ZjJrcHFxcXdwemN3bSJ9.zc_BQ5U2vldx1wROrYM4tg</a></li>
+<li>**static tiles API:  **<code>https://api.mapbox.com/styles/v1/foxziluliu1121/clrzymvix009g01r67bowdcez/wmts?access_token=pk.eyJ1IjoiZm94emlsdWxpdTExMjEiLCJhIjoiY2xyYnJ5MXQ3MHN5ZjJrcHFxcXdwemN3bSJ9.zc_BQ5U2vldx1wROrYM4tg</code></li>
+<li><strong>Mapbox的数据格式：</strong><ul>
+<li><strong>mapbox.mapbox-streets-v8</strong></li>
+<li><code>foxziluliu1121.9mqo2ps2</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="terrainProvider"><a href="#terrainProvider" class="headerlink" title="terrainProvider"></a>terrainProvider</h2><p>地形图层只能有一个；</p>
+<p>地形类型：</p>
+<ul>
+<li>STK World Terrain</li>
+<li>Small Terrain</li>
+</ul>
+<p>terrainProvider:</p>
+<ul>
+<li>EllipsoidTerrainProvider</li>
+<li>CustomHeightmapTerrainProvider</li>
+</ul>
+<p>Ceisum案例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Cesium.Terrain.fromWorldTerrain(&#123;</span><br><span class="line">    requestWaterMask: true,</span><br><span class="line">    requestVertexNormals: true,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="加载矢量数据"><a href="#加载矢量数据" class="headerlink" title="加载矢量数据"></a>加载矢量数据</h2><ul>
+<li>CustomDataSource</li>
+<li>CzmlDataSource</li>
+<li>GeoJsonDataSource, GeoJson, TopoJson</li>
+<li>KmlDataSource</li>
+<li></li>
+</ul>
+<h2 id="空间数据可视化"><a href="#空间数据可视化" class="headerlink" title="空间数据可视化"></a>空间数据可视化</h2><h3 id="Entity-API"><a href="#Entity-API" class="headerlink" title="Entity API"></a>Entity API</h3><p>以Graphics结尾：</p>
+<ul>
+<li>billboard, box, corridor, cylinder, ellipse, ellipsoid, label</li>
+<li>model, tileset, path, plane,</li>
+<li>point, polygon, polyline, polylineVolume, rectangle, wall,</li>
+</ul>
+<p><strong>使用注意点：</strong></p>
+<p>在Cesium中，<code>Cesium.BoxGraphics</code>是用来定义一个实体（Entity）的盒状几何体的可视化属性的类。这个类本身并不负责将几何体添加到场景中；相反，它被用作描述实体的视觉外观的一部分。为了在Cesium的3D场景中显示一个盒状几何体，你需要将这个几何体与一个实体（Entity）关联，并将该实体添加到Cesium的实体集合中。这就是为什么在实践中，你看到的示例代码通常会使用 <code>viewer.entities.add()</code>来创建和添加带有盒状几何体的实体。</p>
+<p>这里是一个简化的示例，说明如何使用 **<code>Cesium.BoxGraphics</code>通过 <code>viewer.entities.add()</code>添加一个盒状几何体到场景中：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var viewer = new Cesium.Viewer(&#x27;cesiumContainer&#x27;);</span><br><span class="line"></span><br><span class="line">var box = viewer.entities.add(&#123;</span><br><span class="line">    position: Cesium.Cartesian3.fromDegrees(-100.0, 40.0, 200000.0),</span><br><span class="line">    box: &#123;</span><br><span class="line">        dimensions: new Cesium.Cartesian3(400000.0, 300000.0, 500000.0),</span><br><span class="line">        material: Cesium.Color.BLUE.withAlpha(0.5),</span><br><span class="line">        outline: true,</span><br><span class="line">        outlineColor: Cesium.Color.BLACK</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">viewer.zoomTo(viewer.entities);</span><br></pre></td></tr></table></figure>
+
+<p><strong>在这个示例中：</strong></p>
+<ul>
+<li><code>viewer</code>是 <code>Cesium.Viewer</code>的一个实例，它是Cesium应用的主要界面。</li>
+<li><code>viewer.entities.add(&#123;...&#125;)</code>是添加新实体到场景的方法。这个方法的参数是一个对象，描述了实体的各种属性，包括位置（<code>position</code>）、形状（在这个例子中是一个盒子，通过 <code>box</code>属性定义）等。</li>
+<li><code>box</code>属性使用 <code>Cesium.BoxGraphics</code>的一个实例来定义盒状几何体的外观，包括尺寸（<code>dimensions</code>）、材质（<code>material</code>）、轮廓线是否可见（<code>outline</code>）以及轮廓线的颜色（<code>outlineColor</code>）。</li>
+</ul>
+<p><strong>总之，</strong><code>Cesium.BoxGraphics</code>提供了定义盒状几何体视觉外观的方式，而 <code>viewer.entities.add()</code>则是将这样定义的盒状几何体实体添加到Cesium场景中的方法。这种设计允许开发者以灵活的方式创建和管理场景中的对象，同时提供了丰富的API来定义这些对象的视觉外观。</p>
+<p>EntityCluster类+PinBuilder类：实现billboards, points, labels的聚合</p>
+<p>Entity管理：viewer.entities的类型是EntityCollection，包括了EntityCollection类里面的所有属性和方法，如.add(), .contains(), .getById(), .remove(), .removeAll(), .removeById()</p>
+<p>Entity拾取：viewer.scene.pick(), viewer.scene.drillPick()</p>
+<p>Entity固定：heightReference属性值，</p>
+<h3 id="Primitive-API"><a href="#Primitive-API" class="headerlink" title="Primitive API"></a>Primitive API</h3><p>加载数据的性能更好，可以更好的加载3D Tiles数据。</p>
+<p>Cesium.GeometryInstance()</p>
+<p>Cesium.EllipsoidSurfaceAppearance</p>
+<p>Cesium.Primitive()</p>
+<p>scene.primitives.add()</p>
+<h3 id="材质"><a href="#材质" class="headerlink" title="材质"></a>材质</h3><p><img src="https://s2.loli.net/2024/04/04/9bVKQRSEtL6Dnw4.png"></p>
+<p><strong>MaterialProperty:</strong></p>
+<ul>
+<li>Cesium.ColorMaterialProperty</li>
+<li>Cesium.ImageMaterialProperty</li>
+<li></li>
+</ul>
+<h2 id="GLTF格式"><a href="#GLTF格式" class="headerlink" title="GLTF格式"></a>GLTF格式</h2><p><img src="https://pic2.zhimg.com/80/v2-a26039ef8457742c7121e9532289da51_1440w.webp" alt="img"></p>
+<p><strong>Cesium加载gltf:</strong></p>
+<ul>
+<li>viewer.entities.add()</li>
+<li>viewer.scene.primitives.add(), Cesium.Model.fromGltf()</li>
+</ul>
+<h2 id="3D-Tiles格式"><a href="#3D-Tiles格式" class="headerlink" title="3D Tiles格式"></a>3D Tiles格式</h2><p>3D Tiles可以理解为带有LOD的glTF,为流式传输和渲染海量3D数据而设计，例如倾斜摄影、3D建筑、BIM&#x2F;CAD，实例化要素集和点云。3D Tiles定义了一种数据分层结构和一组切片方式。</p>
+<p><strong>组成：</strong></p>
+<ul>
+<li>描述瓦片集Tileset的JSON文件 —— tileset.json</li>
+<li>一组瓦片Tile<ul>
+<li>瓦片对象的格式可以：b3dm, i3dm, pnts, cmpt</li>
+</ul>
+</li>
+</ul>
+<p><strong>常用类：</strong></p>
+<ul>
+<li>Cesium3Dtileset：用于流式传输大量的异构3D地理空间数据集；</li>
+<li>Cesium3DTileStyle：瓦片集样式；</li>
+<li>Cesium3DTile：数据集中的一个瓦片;</li>
+<li>Cesium3DTileContent：瓦片内容；</li>
+<li>Cesium3DTileFeature：瓦片集要素，用于访问Tile中批量表中的属性数据，可通过scene.pick方法来获取一个 BATCH，即三维要素。Cesium3DTileFeature.getPropertyNames() 方法获取批量表中所有属性名，Cesium3DTileFeature.getProperty(string Name) 来获取对应属性名的属性值。</li>
+</ul>
+<p><strong>操作：</strong></p>
+<ol>
+<li>加载：viewer.scene.primitives.add(new Cesium.Cesium3DTileset())</li>
+</ol>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><h4 id="Cesium3DTileset"><a href="#Cesium3DTileset" class="headerlink" title="Cesium3DTileset"></a>Cesium3DTileset</h4><p><a target="_blank" rel="noopener" href="https://cesium.com/learn/cesiumjs/ref-doc/Cesium3DTileset.html?classFilter=Cesium3DTileset">官网链接</a></p>
+<p><code>featureIdLabel</code> 属性在 Cesium 的 <code>Cesium3DTileset</code> 对象中用于指定用于拾取（picking）和样式化（styling）的特征 ID 集合。以下是对这段文档的详细解释和它的作用：</p>
+<ol>
+<li><strong>选择特征 ID 集合</strong>：<ul>
+<li>在 <code>Cesium3DTileset</code> 中，<code>featureIdLabel</code> 用来标识和选择特定的特征 ID 集合。这对于执行拾取操作和应用样式至关重要，尤其是当模型包含多个特征 ID 集合时。</li>
+</ul>
+</li>
+<li><strong>EXT_mesh_features 和 EXT_feature_metadata</strong>：<ul>
+<li>对于遵循 <code>EXT_mesh_features</code> 扩展的数据，<code>featureIdLabel</code> 可以是特征 ID 的 <code>label</code> 属性，如果未指定，则默认为 <code>&quot;featureId_N&quot;</code>（N 是 featureIds 数组中的索引）。</li>
+<li>对于旧的 <code>EXT_feature_metadata</code> 扩展，没有 <code>label</code> 字段，所以特征 ID 集总是以 <code>&quot;featureId_N&quot;</code> 标识，其中 N 是所有特征 ID 列表中的索引，特征 ID 属性在特征 ID 纹理之前列出。</li>
+</ul>
+</li>
+<li><strong>特征 ID 标签的自动转换</strong>：<ul>
+<li>如果 <code>featureIdLabel</code> 被设置为一个整数 N，它将自动转换为字符串 <code>&quot;featureId_N&quot;</code>。这意味着你可以简单地指定一个索引，Cesium 会自动解析为正确的特征 ID 标签。</li>
+</ul>
+</li>
+<li><strong>优先级</strong>：<ul>
+<li>如果同时存在每个基元（per-primitive）和每个实例（per-instance）的特征 IDs，实例特征 IDs 有优先权。这对于决定在冲突时哪组特征 ID 应该被使用是重要的。</li>
+</ul>
+</li>
+</ol>
+<p><strong>作用</strong></p>
+<ul>
+<li><strong>拾取和样式化</strong>：<ul>
+<li>通过指定 <code>featureIdLabel</code>，开发者可以精确控制哪一组特征 ID 被用于交互（如鼠标拾取）和视觉样式化。这在处理包含复杂数据集的大型 3D Tiles 模型时尤其有用。</li>
+</ul>
+</li>
+<li><strong>灵活性和控制</strong>：<ul>
+<li>提供了对模型特征的更精细的控制，允许开发者基于具体的特征 ID 集来应用样式和执行拾取，特别是在模型中嵌入了多种数据层（如不同的物理部分或不同类型的数据标注）时。</li>
+</ul>
+</li>
+<li><strong>实验性特性</strong>：<ul>
+<li><strong>重要的是要注意，</strong><code>featureIdLabel</code> 是一个实验性特性，属于 3D Tiles 规范的一部分，该规范尚未最终确定。因此，使用这个特性时需要谨慎，因为它可能会在没有标准弃用政策的情况下改变。</li>
+</ul>
+</li>
+</ul>
+<p><code>featureIdLabel</code> 是一个强大的工具，用于在复杂的 3D Tiles 数据集中进行精确的交互和视觉表示。它使得开发者可以根据特定的特征 ID 集来定制模型的表现和行为，增强了模型与用户交互的能力和灵活性。但是，由于它的实验性质，使用时需要关注 Cesium 更新和变更。</p>
+<h2 id="Cesium的Property"><a href="#Cesium的Property" class="headerlink" title="Cesium的Property"></a>Cesium的Property</h2><p><strong>基本property</strong></p>
+<ul>
+<li>CompositeProperty</li>
+<li>ConstantProperty</li>
+<li>SampledProperty</li>
+<li>TimeIntervalCollectionProperty</li>
+</ul>
+<p><strong>Material的property</strong></p>
+<p><strong>PositionProperty</strong></p>
+<p><strong>其他</strong></p>
+<p><img src="https://pic4.zhimg.com/80/v2-9cb0b7aa0c14747709a9dc455c7dccf7_720w.webp" alt="img"></p>
+<h2 id="组件重写"><a href="#组件重写" class="headerlink" title="组件重写"></a>组件重写</h2><p>homeButton回到主要页面；</p>
+<p>Geocoder组件通过OSM服务实现；</p>
+<p>自定义BaseLayerPicker:</p>
+<ul>
+<li>viewer.baseLayerPicker.viewModel.imageryProviderViewModels</li>
+<li>viewer.baseLayerPicker.viewModel.terrainProviderViewModels</li>
+</ul>
+<h2 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h2><p>let handler &#x3D; new Cesium.ScreenSpaceEventHandler(viewer.canvas)</p>
+<p>let eventType &#x3D; Cesium.ScreenSpaceEventType.LEFT_CLICK</p>
+<p>handler.setInputAction((event) &#x3D;&gt; {}, eventType)</p>
+<p>Keyboard: camera.moveForward, .moveBackward, .moveUp, .moveDown, .moveLeft, .moveRight</p>
+<p>场景渲染: scene.preUpdate, .postUpdate, .preRender, .postRender</p>
+<h2 id="相机控制"><a href="#相机控制" class="headerlink" title="相机控制"></a>相机控制</h2><p>viewer.flyTo(target, options)</p>
+<p>viewer.zoomTo(target, offset)</p>
+<p>viewer.camera.flyTo(options)</p>
+<p>viewer.camera.flyToBoundingSphere(boundingSphere, options)</p>
+<p>viewer.camera.lookAt(target, offset)</p>
+<p>viewer.camera.lookAtTransform(transform, offset)</p>
+<p>viewer.camera.setView(options)</p>
+<h2 id="测量"><a href="#测量" class="headerlink" title="测量"></a>测量</h2><p>距离</p>
+<p>面积</p>
+<p>handler.setInputAction(func(), Cesium.ScreenSpacEventType.RIGHT_CLICK)</p>
+<h2 id="调试面板"><a href="#调试面板" class="headerlink" title="调试面板"></a>调试面板</h2><p>CesiumInspector</p>
+<blockquote>
+<p>了解Cesium渲染效果以及性能调优</p>
+<p>viewer.extend(Cesium.viewerCesiumInspectorMixin)</p>
+</blockquote>
+<p>Cesium3DTilesInspector</p>
+<blockquote>
+<p>用于监视3D Tiles数据的监视器</p>
+<p>viewer.extend(Cesium.viewerCesium3DTilesInspector)</p>
+</blockquote>
+<h2 id="粒子系统"><a href="#粒子系统" class="headerlink" title="粒子系统"></a>粒子系统</h2><p>new Cesium.ParticleSystem()</p>
+<h2 id="场景后处理"><a href="#场景后处理" class="headerlink" title="场景后处理"></a>场景后处理</h2><p>postProgress类</p>
+<p>postProgressStage</p>
+<p>postProgressStageLibrary</p>
+<p>postProgressStageCollection</p>
+<h2 id="与第三方库集成"><a href="#与第三方库集成" class="headerlink" title="与第三方库集成"></a>与第三方库集成</h2><p>ThreeJS</p>
+<ol>
+<li>初始化两个容器，和各自的渲染器</li>
+<li>调整各自的渲染频率和相机一致</li>
+<li>加入要展示的内容</li>
+</ol>
+<p>ECharts</p>
+<p>Heatmap</p>
+<p>Turf</p>
+<h2 id="源码打包"><a href="#源码打包" class="headerlink" title="源码打包"></a>源码打包</h2><p>gulp, webpack</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io">Shealin You</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io/2024/06/13/Cesium%E4%B8%8A/">https://youxt-njnu.github.io/2024/06/13/Cesium%E4%B8%8A/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://youxt-njnu.github.io" target="_blank">Pale Bule Dot</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Cesium/">Cesium</a></div><div class="post_share"><div class="social-share" data-image="/img/tit.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/06/13/WebAPIs/" title="WebAPIs 知识点梳理"><img class="cover" src="https://static-ali.ihansen.org/app/bg1440/ichB3SM6v7Y.jpg!o" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">WebAPIs 知识点梳理</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Shealin You</div><div class="author-info__description">Be brave, and know yourself</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">54</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">25</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/youxt-njnu"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:10190208@njnu.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://www.zhihu.com/people/paleYYY" target="_blank" title="zhihu"><i class="fa-brands fa-zhihu" style="color: #24292e;"></i></a><a class="social-icon" href="https://dclef.icu/atom.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">人生苦旅，踽踽独行之</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">初步了解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">基础教程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Cesium%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">3.</span> <span class="toc-text">Cesium基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Viewer"><span class="toc-number">3.1.</span> <span class="toc-text">Viewer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%A7%A3%E9%87%8A"><span class="toc-number">3.1.1.</span> <span class="toc-text">参数解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="toc-number">3.2.</span> <span class="toc-text">坐标系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ImageryProvider"><span class="toc-number">3.3.</span> <span class="toc-text">ImageryProvider</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#terrainProvider"><span class="toc-number">3.4.</span> <span class="toc-text">terrainProvider</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E7%9F%A2%E9%87%8F%E6%95%B0%E6%8D%AE"><span class="toc-number">3.5.</span> <span class="toc-text">加载矢量数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">3.6.</span> <span class="toc-text">空间数据可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Entity-API"><span class="toc-number">3.6.1.</span> <span class="toc-text">Entity API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Primitive-API"><span class="toc-number">3.6.2.</span> <span class="toc-text">Primitive API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%90%E8%B4%A8"><span class="toc-number">3.6.3.</span> <span class="toc-text">材质</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GLTF%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.7.</span> <span class="toc-text">GLTF格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3D-Tiles%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.8.</span> <span class="toc-text">3D Tiles格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0"><span class="toc-number">3.8.1.</span> <span class="toc-text">参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cesium3DTileset"><span class="toc-number">3.8.1.1.</span> <span class="toc-text">Cesium3DTileset</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cesium%E7%9A%84Property"><span class="toc-number">3.9.</span> <span class="toc-text">Cesium的Property</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E9%87%8D%E5%86%99"><span class="toc-number">3.10.</span> <span class="toc-text">组件重写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC"><span class="toc-number">3.11.</span> <span class="toc-text">事件监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E6%9C%BA%E6%8E%A7%E5%88%B6"><span class="toc-number">3.12.</span> <span class="toc-text">相机控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E9%87%8F"><span class="toc-number">3.13.</span> <span class="toc-text">测量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E9%9D%A2%E6%9D%BF"><span class="toc-number">3.14.</span> <span class="toc-text">调试面板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.15.</span> <span class="toc-text">粒子系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E5%90%8E%E5%A4%84%E7%90%86"><span class="toc-number">3.16.</span> <span class="toc-text">场景后处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E9%9B%86%E6%88%90"><span class="toc-number">3.17.</span> <span class="toc-text">与第三方库集成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E6%89%93%E5%8C%85"><span class="toc-number">3.18.</span> <span class="toc-text">源码打包</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/13/Cesium%E4%B8%8A/" title="Cesium API学习 Ⅰ">Cesium API学习 Ⅰ</a><time datetime="2024-06-13T03:06:05.000Z" title="发表于 2024-06-13 11:06:05">2024-06-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/13/WebAPIs/" title="WebAPIs 知识点梳理"><img src="https://static-ali.ihansen.org/app/bg1440/ichB3SM6v7Y.jpg!o" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="WebAPIs 知识点梳理"/></a><div class="content"><a class="title" href="/2024/06/13/WebAPIs/" title="WebAPIs 知识点梳理">WebAPIs 知识点梳理</a><time datetime="2024-06-13T01:33:26.000Z" title="发表于 2024-06-13 09:33:26">2024-06-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/31/%E8%AF%BE%E7%A8%8B%E6%B1%87%E6%8A%A5-GIS/" title="GIS集成案例汇报"><img src="https://wallroom.io/img/3840x2160/bg-20bb43a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GIS集成案例汇报"/></a><div class="content"><a class="title" href="/2024/05/31/%E8%AF%BE%E7%A8%8B%E6%B1%87%E6%8A%A5-GIS/" title="GIS集成案例汇报">GIS集成案例汇报</a><time datetime="2024-05-31T01:33:26.000Z" title="发表于 2024-05-31 09:33:26">2024-05-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A2/" title="JavaScript基础知识Ⅲ"><img src="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript基础知识Ⅲ"/></a><div class="content"><a class="title" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A2/" title="JavaScript基础知识Ⅲ">JavaScript基础知识Ⅲ</a><time datetime="2024-03-17T01:33:26.000Z" title="发表于 2024-03-17 09:33:26">2024-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/" title="JavaScript基础知识Ⅱ"><img src="https://wallroom.io/img/2560x1600/bg-6d49cc2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript基础知识Ⅱ"/></a><div class="content"><a class="title" href="/2024/03/17/JS%E5%9F%BA%E7%A1%80%E2%85%A1/" title="JavaScript基础知识Ⅱ">JavaScript基础知识Ⅱ</a><time datetime="2024-03-17T01:27:26.000Z" title="发表于 2024-03-17 09:27:26">2024-03-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/index_img.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By Shealin You</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Training the faculty of mindfulness is like breathing oxygen continuously to remain alive.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'StmwBdb4aXO6LMYWRxjVnufr-gzGzoHsz',
+      appKey: 'V7WavrdJsNE6xxx5YGiygidl',
+      avatar: 'monsterid',
+      serverURLs: 'https://stmwbdb4.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="000EDNt20L3sUT" data-server="tencent" data-type="song" data-fixed="true" data-autoplay="true" data-lrcType="-1"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
