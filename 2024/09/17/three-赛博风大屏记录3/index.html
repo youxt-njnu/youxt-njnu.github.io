@@ -1,0 +1,361 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>three案例实操|赛博风大屏Ⅲ | Pale Bule Dot</title><meta name="author" content="Shealin You"><meta name="copyright" content="Shealin You"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言参考案例：https:&#x2F;&#x2F;dragonir.github.io&#x2F;3d&#x2F;#&#x2F;earthDigital 机甲风head和card新建constant.js，存放一些固定的内容文本数组； export const weekMap &#x3D;&amp;#123;...&amp;#125;;export const tips &#x3D; [...];  设置state存放显示的内容；在 React 中，组件可以是类组件或函数式组件。在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="three案例实操|赛博风大屏Ⅲ">
+<meta property="og:url" content="https://youxt-njnu.github.io/2024/09/17/three-%E8%B5%9B%E5%8D%9A%E9%A3%8E%E5%A4%A7%E5%B1%8F%E8%AE%B0%E5%BD%953/index.html">
+<meta property="og:site_name" content="Pale Bule Dot">
+<meta property="og:description" content="前言参考案例：https:&#x2F;&#x2F;dragonir.github.io&#x2F;3d&#x2F;#&#x2F;earthDigital 机甲风head和card新建constant.js，存放一些固定的内容文本数组； export const weekMap &#x3D;&amp;#123;...&amp;#125;;export const tips &#x3D; [...];  设置state存放显示的内容；在 React 中，组件可以是类组件或函数式组件。在">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg">
+<meta property="article:published_time" content="2024-09-17T10:02:05.000Z">
+<meta property="article:modified_time" content="2024-10-05T12:05:02.997Z">
+<meta property="article:author" content="Shealin You">
+<meta property="article:tag" content="threejs">
+<meta property="article:tag" content="shader">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://youxt-njnu.github.io/2024/09/17/three-%E8%B5%9B%E5%8D%9A%E9%A3%8E%E5%A4%A7%E5%B1%8F%E8%AE%B0%E5%BD%953/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'three案例实操|赛博风大屏Ⅲ',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-05 20:05:02'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Pale Bule Dot" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/tit.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">75</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">56</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">26</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="https://youxt-njnu.github.io/about_portfolio"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://wallroom.io/img/3840x2160/bg-81f2d39.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Pale Bule Dot"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/youxt-njnu/blog-img/favicon.png"/><span class="site-name">Pale Bule Dot</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="https://youxt-njnu.github.io/about_portfolio"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">three案例实操|赛博风大屏Ⅲ</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-09-17T10:02:05.000Z" title="发表于 2024-09-17 18:02:05">2024-09-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-05T12:05:02.997Z" title="更新于 2024-10-05 20:05:02">2024-10-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/WebGL/">WebGL</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="three案例实操|赛博风大屏Ⅲ"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>参考案例：<a target="_blank" rel="noopener" href="https://dragonir.github.io/3d/#/earthDigital">https://dragonir.github.io/3d/#/earthDigital</a></p>
+<h1 id="机甲风head和card"><a href="#机甲风head和card" class="headerlink" title="机甲风head和card"></a>机甲风head和card</h1><p>新建constant.js，存放一些固定的内容文本数组；</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> weekMap =&#123;...&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> tips = [...];</span><br></pre></td></tr></table></figure>
+
+<p>设置state存放显示的内容；<br>在 React 中，组件可以是类组件或函数式组件。在函数式组件中，传统的类组件中的 state 和生命周期方法被 React Hooks 提供的功能所替代。最常用的 Hook 是 useState，它用于在函数式组件中添加状态管理功能。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> [week, setWeek] = <span class="title function_">useState</span>(weekMap[<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getDay</span>()]);</span><br><span class="line"><span class="keyword">const</span> [time, setTime] = <span class="title function_">useState</span>(<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toLocaleTimeString</span>());</span><br><span class="line"><span class="keyword">const</span> [showModal, setShowModal] = <span class="title function_">useState</span>(<span class="literal">false</span>);</span><br><span class="line"><span class="keyword">const</span> [modelText, setModelText] = <span class="title function_">useState</span>(tips[<span class="number">0</span>]);</span><br><span class="line"><span class="keyword">const</span> [renderGlithPass, setRenderGlithPass] = <span class="title function_">useState</span>(<span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<p>header结构</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">header</span> <span class="attr">className</span>=<span class="string">&quot;hud-header&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;left&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;middle&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;right&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;date&quot;</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">span</span> <span class="attr">className</span>=<span class="string">&quot;text&quot;</span>&gt;</span>&#123;`$&#123;week&#125;曜日`&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">span</span> <span class="attr">className</span>=<span class="string">&quot;text&quot;</span>&gt;</span>&#123;time&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">span</span> <span class="attr">className</span>=<span class="string">&quot;text&quot;</span>&gt;</span>Kepler-90 +49°18′18.58″<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>scss里写clip-path</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line">  <span class="variable">$yellow-color</span>: <span class="number">#f9f002</span>;</span><br><span class="line">  <span class="variable">$border-color</span>: <span class="number">#8ae66e</span>;</span><br><span class="line">  <span class="variable">$blue-color</span>: <span class="number">#00e6f6</span>;</span><br><span class="line">  <span class="variable">$header-height</span>: <span class="number">90px</span>;</span><br><span class="line">  <span class="variable">$aside-width</span>: <span class="number">400px</span>;</span><br><span class="line">  <span class="variable">$glitched-duration</span>: <span class="number">0.9s</span>;</span><br><span class="line">  <span class="variable">$clip-height</span>: <span class="number">18px</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.earth-digital</span> &#123;</span><br><span class="line">  <span class="comment">// overflow: hidden; // 这样子就没有了右侧拖动条，多出来的直接消失了</span></span><br><span class="line">  <span class="comment">// user-select: none; // 禁止选中文字</span></span><br><span class="line">  <span class="attribute">filter</span>: <span class="built_in">saturate</span>(<span class="number">0.85</span>); <span class="comment">// 饱和度 体现在哪儿？？</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.hud</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: fixed;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">2</span>;</span><br><span class="line">  &amp;<span class="selector-class">.header</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="variable">$header-height</span>;</span><br><span class="line">    <span class="attribute">color</span>: black; <span class="comment">// 里面的文字颜色</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="variable">$yellow-color</span>; <span class="comment">// header 的背景颜色</span></span><br><span class="line">    <span class="attribute">clip-path</span>: <span class="built_in">polygon</span>(<span class="number">0</span> <span class="number">0</span>, <span class="number">100%</span> <span class="number">0</span>, <span class="number">100%</span> <span class="built_in">calc</span>(<span class="number">100%</span> - #&#123;<span class="variable">$clip-height</span>&#125;),<span class="number">75%</span> <span class="built_in">calc</span>(<span class="number">100%</span> - #&#123;$clip-height&#125;), <span class="number">72.5%</span> <span class="number">100%</span>, <span class="number">27.5%</span> <span class="number">100%</span>, <span class="number">25%</span> <span class="built_in">calc</span>(<span class="number">100%</span> - #&#123;$clip-height&#125;),<span class="number">0</span> <span class="built_in">calc</span>(<span class="number">100%</span> - #&#123;$clip-height&#125;),<span class="number">0</span> <span class="number">0</span>); <span class="comment">// 使用calc的时候，里面操作符前后要有空格</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2024/09/11/ZL9FgtrxEBW2ame.jpg" alt="27e2baa8c3a79d08953b367291a0195.jpg"></p>
+<p>logo和aside部分的结构</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div className=&quot;logo-pic&quot; title=&#x27;Cyberpunk 2077&#x27;&gt;&lt;/div&gt;</span><br><span class="line">&lt;aside className=&quot;hud aside left&quot;&gt;</span><br><span class="line">  &lt;div className=&quot;box inverse&quot;&gt;</span><br><span class="line">    &lt;div className=&quot;cover&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div className=&quot;info&quot;&gt;</span><br><span class="line">      &lt;p&gt;&lt;b&gt;Cyberpunk&lt;/b&gt; is a subgenre of science fiction in a dystopian futuristic setting that tends to focus on a &quot;combination of lowlife and high tech&quot;, featuring futuristic technological and scientific achievements, such as artificial intelligence and cybernetics, juxtaposed with societal collapse or decay. &lt;/p&gt;</span><br><span class="line">      &lt;button&gt;&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div className=&quot;box&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div className=&quot;box inverse dotted&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/aside&gt;</span><br><span class="line">&lt;aside className=&quot;hud aside right&quot;&gt;</span><br><span class="line">  &lt;div className=&quot;box&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div className=&quot;box&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div className=&quot;box inverse dotted&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/aside&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="button点击后出现故障风"><a href="#button点击后出现故障风" class="headerlink" title="button点击后出现故障风"></a>button点击后出现故障风</h1><p>点击触发函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const handleStartButtonClick = () =&gt; &#123;</span><br><span class="line">    setRenderGlithPass(!renderGlithPass);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>动画中更新：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const animate = () =&gt; &#123;</span><br><span class="line"> ......</span><br><span class="line">  renderGlithPass &amp;&amp; composer.render();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="后处理效果"><a href="#后处理效果" class="headerlink" title="后处理效果"></a>后处理效果</h2><p>导入composer和pass</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">EffectComposer</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;three/examples/jsm/postprocessing/EffectComposer.js&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">RenderPass</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;three/examples/jsm/postprocessing/RenderPass.js&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">GlitchPass</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;three/examples/jsm/postprocessing/GlitchPass.js&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>initThree里初始化</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">composer = <span class="keyword">new</span> <span class="title class_">EffectComposer</span>(renderer);</span><br><span class="line">composer.<span class="title function_">addPass</span>(<span class="keyword">new</span> <span class="title class_">RenderPass</span>(scene, camera));</span><br><span class="line">composer.<span class="title function_">addPass</span>(<span class="keyword">new</span> <span class="title class_">GlitchPass</span>());</span><br></pre></td></tr></table></figure>
+<h2 id="btn的样式"><a href="#btn的样式" class="headerlink" title="btn的样式"></a>btn的样式</h2><p>利用linear-gradient，实现了45度方向上，从透明到红色的按钮的突变（5%，5%），这个和《CSS揭秘》里的内容呼应了。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.startBtn</span>,</span><br><span class="line"><span class="selector-class">.startBtn</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">cursor</span>: pointer;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">120px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">40px</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.2rem</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(<span class="number">45deg</span>, transparent <span class="number">5%</span>, <span class="number">#FF013C</span> <span class="number">5%</span>);</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">letter-spacing</span>: <span class="number">0.2em</span>;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">6px</span> <span class="number">0</span> <span class="number">0</span> $blue-color;</span><br><span class="line">  <span class="attribute">outline</span>: transparent;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="echarts"><a href="#echarts" class="headerlink" title="echarts"></a>echarts</h1><p><a target="_blank" rel="noopener" href="https://echarts.apache.org/handbook/zh/basics/import/">https://echarts.apache.org/handbook/zh/basics/import/</a></p>
+<p>按需引入：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> echarts <span class="keyword">from</span> <span class="string">&#x27;echarts/core&#x27;</span>;</span><br><span class="line"><span class="comment">// 引入柱状图图表，图表后缀都为 Chart</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">BarChart</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;echarts/charts&#x27;</span>;</span><br><span class="line"><span class="comment">// 引入标题，提示框，直角坐标系，数据集，内置数据转换器组件，组件后缀都为 Component</span></span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  <span class="title class_">TitleComponent</span>,</span><br><span class="line">  <span class="title class_">TooltipComponent</span>,</span><br><span class="line">  <span class="title class_">GridComponent</span>,</span><br><span class="line">  <span class="title class_">DatasetComponent</span>,</span><br><span class="line">  <span class="title class_">TransformComponent</span></span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&#x27;echarts/components&#x27;</span>;</span><br><span class="line"><span class="comment">// 标签自动布局、全局过渡动画等特性</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">LabelLayout</span>, <span class="title class_">UniversalTransition</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;echarts/features&#x27;</span>;</span><br><span class="line"><span class="comment">// 引入 Canvas 渲染器，注意引入 CanvasRenderer 或者 SVGRenderer 是必须的一步</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">CanvasRenderer</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;echarts/renderers&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册必须的组件</span></span><br><span class="line">echarts.<span class="title function_">use</span>([</span><br><span class="line">  <span class="title class_">TitleComponent</span>,</span><br><span class="line">  <span class="title class_">TooltipComponent</span>,</span><br><span class="line">  <span class="title class_">GridComponent</span>,</span><br><span class="line">  <span class="title class_">DatasetComponent</span>,</span><br><span class="line">  <span class="title class_">TransformComponent</span>,</span><br><span class="line">  <span class="title class_">BarChart</span>,</span><br><span class="line">  <span class="title class_">LabelLayout</span>,</span><br><span class="line">  <span class="title class_">UniversalTransition</span>,</span><br><span class="line">  <span class="title class_">CanvasRenderer</span></span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+
+<p>构建数据 constant.js</p>
+<p>导入：<br><code>import &#123; chart_1_option, chart_2_option, chart_3_option, chart_4_option, chart_5_option, weekMap, tips &#125; from &#39;@/containers/EarthDigital/scripts/config&#39;;</code></p>
+<p>初始化chart</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const chart_1 = echarts.init(document.getElementsByClassName(&#x27;chart_1&#x27;)[0], &#x27;dark&#x27;);</span><br><span class="line">   chart_1 &amp;&amp; chart_1.setOption(chart_1_option);</span><br></pre></td></tr></table></figure>
+
+<p>使用useRef进行简化</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">let chartsRef = Array.from(&#123; length: 5 &#125;).map(() =&gt; useRef(null));</span><br><span class="line">const initChart = () =&gt; &#123;</span><br><span class="line">  const chartsOption = [chart_1_option, chart_2_option, chart_3_option, chart_4_option, chart_5_option];</span><br><span class="line">  const charts = chartsRef.map(ref =&gt; ref.current &amp;&amp; echarts.init(ref.current, &#x27;dark&#x27;));</span><br><span class="line">  charts.forEach((chart, idx) =&gt; &#123;</span><br><span class="line">    chart &amp;&amp; chart.setOption(chartsOption[idx]);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后的aside</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;aside className=&quot;hud aside left&quot;&gt;</span><br><span class="line">  &lt;div className=&quot;box box_0 inverse&quot;&gt;</span><br><span class="line">    &lt;div className=&quot;cover&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div className=&quot;info&quot;&gt;</span><br><span class="line">      &lt;p className=&#x27;text&#x27;&gt;&lt;b&gt;Cyberpunk&lt;/b&gt; is a subgenre of science fiction in a dystopian futuristic setting that tends to focus on a &quot;combination of lowlife and high tech&quot;, featuring futuristic technological and scientific achievements, such as artificial intelligence and cybernetics, juxtaposed with societal collapse or decay. &lt;/p&gt;</span><br><span class="line">      &lt;button className=&quot;startBtn&quot; onClick=&#123;handleStartButtonClick&#125;&gt;START&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div className=&quot;box&quot;&gt;&lt;div className=&quot;chart&quot; ref=&#123;chartsRef[0]&#125;&gt;&lt;/div&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div className=&quot;box inverse dotted&quot;&gt;&lt;div className=&quot;chart&quot; ref=&#123;chartsRef[1]&#125;&gt;&lt;/div&gt;&lt;/div&gt;</span><br><span class="line">&lt;/aside&gt;</span><br><span class="line">&lt;aside className=&quot;hud aside right&quot;&gt;</span><br><span class="line">  &lt;div className=&quot;box&quot;&gt;&lt;div className=&quot;chart&quot; ref=&#123;chartsRef[2]&#125;&gt;&lt;/div&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div className=&quot;box&quot;&gt;&lt;div className=&quot;chart&quot; ref=&#123;chartsRef[3]&#125;&gt;&lt;/div&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div className=&quot;box inverse dotted&quot;&gt;&lt;div className=&quot;chart&quot; ref=&#123;chartsRef[4]&#125;&gt;&lt;/div&gt;&lt;/div&gt;</span><br><span class="line">&lt;/aside&gt;</span><br></pre></td></tr></table></figure>
+
+<p>echarts里的option配置</p>
+<p><img src="https://s2.loli.net/2024/09/26/29DpPhmGLj16kyb.jpg" alt="7d30adb4f9c8155b133b9b7b6a939fa.jpg"></p>
+<p>注意：每一种图表形式的使用，都要按需导入；</p>
+<p>针对areaStyle里的颜色，可以不导入echarts，直接colorStops来实现；</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 原来：</span></span><br><span class="line"><span class="attr">areaStyle</span>: &#123;</span><br><span class="line">  <span class="attr">opacity</span>: <span class="number">0.8</span>,</span><br><span class="line">  <span class="attr">color</span>: <span class="keyword">new</span> echarts.<span class="property">graphic</span>.<span class="title class_">LinearGradient</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, [&#123;</span><br><span class="line">      <span class="attr">offset</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="attr">color</span>: <span class="string">&#x27;rgb(128, 255, 165)&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">offset</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="attr">color</span>: <span class="string">&#x27;rgb(1, 191, 236)&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ])</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改后：</span></span><br><span class="line"><span class="attr">areaStyle</span>: &#123;</span><br><span class="line">  <span class="attr">opacity</span>: <span class="number">0.8</span>,</span><br><span class="line">  <span class="attr">color</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;linear&#x27;</span>, <span class="comment">// 线性渐变</span></span><br><span class="line">    <span class="attr">x</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">y</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">x2</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">y2</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">colorStops</span>: [</span><br><span class="line">      &#123; <span class="attr">offset</span>: <span class="number">0</span>, <span class="attr">color</span>: <span class="string">&#x27;rgb(255, 191, 0)&#x27;</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">offset</span>: <span class="number">1</span>, <span class="attr">color</span>: <span class="string">&#x27;rgb(224, 62, 76)&#x27;</span> &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="css动画"><a href="#css动画" class="headerlink" title="css动画"></a>css动画</h1><p>.。。。。。待更新。。。。。。。</p>
+<h2 id="补充-clip-path属性"><a href="#补充-clip-path属性" class="headerlink" title="补充 | clip-path属性"></a>补充 | clip-path属性</h2><p>CSS 中的 <code>clip-path</code> 属性允许你定义一个元素的可见区域。通过这个属性，你可以指定一个路径，在这个路径内的内容会被显示，而路径外的内容则会被隐藏。这是一个非常强大的工具，因为它可以用来创建各种复杂的形状和动态效果。</p>
+<ol>
+<li><p><strong>创建复杂形状</strong>：使用 <code>clip-path</code>，你可以轻松创建圆形、椭圆、多边形或者自定义路径（使用 SVG 路径语法）等形状。这对于设计先进的用户界面和特殊的图形效果非常有用。</p>
+</li>
+<li><p><strong>交互效果</strong>：你可以结合动画和过渡效果使用 <code>clip-path</code>，以实现视觉上吸引人的交互动画。例如，当用户悬停或点击元素时改变 <code>clip-path</code> 的形状。</p>
+</li>
+<li><p><strong>掩盖和显示内容</strong>：它可以被用来掩盖元素的某部分或只显示某部分，这在创建仪表板、卡片或其他包含隐藏详细信息的界面元素时尤其有用。</p>
+</li>
+</ol>
+<p><strong>基本语法</strong>：<br>  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">clip-path</span>: shape | none;</span><br></pre></td></tr></table></figure><br>  其中 <code>shape</code> 可以是以下几种类型：</p>
+<ul>
+<li><p><strong>圆形</strong>（<code>circle()</code>）：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">circle</span>(<span class="number">50%</span>);</span><br></pre></td></tr></table></figure>
+<p>这会创建一个圆形剪裁区域，其中 <code>50%</code> 是圆的半径。</p>
+</li>
+<li><p><strong>椭圆</strong>（<code>ellipse()</code>）：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">ellipse</span>(<span class="number">50%</span> <span class="number">25%</span>);</span><br></pre></td></tr></table></figure>
+<p>这将创建一个椭圆剪裁区域，其中第一个值是水平半径，第二个值是垂直半径。</p>
+</li>
+<li><p><strong>多边形</strong>（<code>polygon()</code>）：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">polygon</span>(<span class="number">50%</span> <span class="number">0%</span>, <span class="number">100%</span> <span class="number">50%</span>, <span class="number">50%</span> <span class="number">100%</span>, <span class="number">0%</span> <span class="number">50%</span>);</span><br></pre></td></tr></table></figure>
+<p>这将创建一个菱形剪裁区域，每个百分比对是多边形一个顶点的坐标。</p>
+</li>
+<li><p><strong>使用 URL</strong>（SVG 剪裁路径）：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">url</span>(<span class="string">#clip-shape</span>);</span><br></pre></td></tr></table></figure>
+<p>这里 <code>#clip-shape</code> 是 SVG 内的 <code>&lt;clipPath&gt;</code> 元素的 ID，允许你使用 SVG 的复杂路径定义剪裁形状。</p>
+</li>
+</ul>
+<p>通过使用 <code>clip-path</code>，开发者可以在不需要额外图像或 SVG 文件的情况下，直接在 CSS 中创建视觉上吸引人的形状和效果。这使得页面加载更快，也使得动态效果的实现更为简便。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io">Shealin You</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://youxt-njnu.github.io/2024/09/17/three-%E8%B5%9B%E5%8D%9A%E9%A3%8E%E5%A4%A7%E5%B1%8F%E8%AE%B0%E5%BD%953/">https://youxt-njnu.github.io/2024/09/17/three-%E8%B5%9B%E5%8D%9A%E9%A3%8E%E5%A4%A7%E5%B1%8F%E8%AE%B0%E5%BD%953/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://youxt-njnu.github.io" target="_blank">Pale Bule Dot</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/threejs/">threejs</a><a class="post-meta__tags" href="/tags/shader/">shader</a></div><div class="post_share"><div class="social-share" data-image="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/71kgQ3BTsGVqFwW.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/08/28/3EHiwCLGzZtmN7T.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/09/21/three-%E8%B5%9B%E5%8D%9A%E5%A4%A7%E5%B1%8F%E5%A1%AB%E5%9D%911/" title="three案例实操|赛博风大屏坑①"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">three案例实操|赛博风大屏坑①</div></div></a></div><div class="next-post pull-right"><a href="/2024/09/11/three-%E8%B5%9B%E5%8D%9A%E9%A3%8E%E5%A4%A7%E5%B1%8F%E8%AE%B0%E5%BD%952/" title="three案例实操|赛博风大屏Ⅱ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">three案例实操|赛博风大屏Ⅱ</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/09/21/three-%E8%B5%9B%E5%8D%9A%E5%A4%A7%E5%B1%8F%E5%A1%AB%E5%9D%911/" title="three案例实操|赛博风大屏坑①"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-21</div><div class="title">three案例实操|赛博风大屏坑①</div></div></a></div><div><a href="/2024/08/28/three-%E8%B5%9B%E5%8D%9A%E9%A3%8E%E5%A4%A7%E5%B1%8F%E8%AE%B0%E5%BD%951/" title="three案例实操|赛博风大屏Ⅰ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-08-28</div><div class="title">three案例实操|赛博风大屏Ⅰ</div></div></a></div><div><a href="/2024/09/11/three-%E8%B5%9B%E5%8D%9A%E9%A3%8E%E5%A4%A7%E5%B1%8F%E8%AE%B0%E5%BD%952/" title="three案例实操|赛博风大屏Ⅱ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-11</div><div class="title">three案例实操|赛博风大屏Ⅱ</div></div></a></div><div><a href="/2024/01/07/Notes_3d_portfolio_primary/" title="threejs实战笔记"><img class="cover" src="https://wallroom.io/img/1920x1080/bg-e67cc24.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-07</div><div class="title">threejs实战笔记</div></div></a></div><div><a href="/2024/09/02/three-%E5%8A%A0%E8%87%AA%E5%B7%B1%E6%A8%A1%E5%9E%8B/" title="three+react|加自己模型"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-02</div><div class="title">three+react|加自己模型</div></div></a></div><div><a href="/2023/12/08/threejs%E4%B8%8A/" title="threejs API学习 Ⅰ"><img class="cover" src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-08</div><div class="title">threejs API学习 Ⅰ</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/tit.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Shealin You</div><div class="author-info__description">Be brave, and know yourself</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">75</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">56</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">26</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/youxt-njnu"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:10190208@njnu.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://www.zhihu.com/people/paleYYY" target="_blank" title="zhihu"><i class="fa-brands fa-zhihu" style="color: #24292e;"></i></a><a class="social-icon" href="https://dclef.icu/atom.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">人生苦旅，踽踽独行之</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E7%94%B2%E9%A3%8Ehead%E5%92%8Ccard"><span class="toc-number">2.</span> <span class="toc-text">机甲风head和card</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#button%E7%82%B9%E5%87%BB%E5%90%8E%E5%87%BA%E7%8E%B0%E6%95%85%E9%9A%9C%E9%A3%8E"><span class="toc-number">3.</span> <span class="toc-text">button点击后出现故障风</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E5%A4%84%E7%90%86%E6%95%88%E6%9E%9C"><span class="toc-number">3.1.</span> <span class="toc-text">后处理效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#btn%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">btn的样式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#echarts"><span class="toc-number">4.</span> <span class="toc-text">echarts</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#css%E5%8A%A8%E7%94%BB"><span class="toc-number">5.</span> <span class="toc-text">css动画</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85-clip-path%E5%B1%9E%E6%80%A7"><span class="toc-number">5.1.</span> <span class="toc-text">补充 | clip-path属性</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/09/21/three-%E8%B5%9B%E5%8D%9A%E5%A4%A7%E5%B1%8F%E5%A1%AB%E5%9D%911/" title="three案例实操|赛博风大屏坑①"><img src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="three案例实操|赛博风大屏坑①"/></a><div class="content"><a class="title" href="/2024/09/21/three-%E8%B5%9B%E5%8D%9A%E5%A4%A7%E5%B1%8F%E5%A1%AB%E5%9D%911/" title="three案例实操|赛博风大屏坑①">three案例实操|赛博风大屏坑①</a><time datetime="2024-09-21T06:02:05.000Z" title="发表于 2024-09-21 14:02:05">2024-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/17/three-%E8%B5%9B%E5%8D%9A%E9%A3%8E%E5%A4%A7%E5%B1%8F%E8%AE%B0%E5%BD%953/" title="three案例实操|赛博风大屏Ⅲ"><img src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="three案例实操|赛博风大屏Ⅲ"/></a><div class="content"><a class="title" href="/2024/09/17/three-%E8%B5%9B%E5%8D%9A%E9%A3%8E%E5%A4%A7%E5%B1%8F%E8%AE%B0%E5%BD%953/" title="three案例实操|赛博风大屏Ⅲ">three案例实操|赛博风大屏Ⅲ</a><time datetime="2024-09-17T10:02:05.000Z" title="发表于 2024-09-17 18:02:05">2024-09-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/11/three-%E8%B5%9B%E5%8D%9A%E9%A3%8E%E5%A4%A7%E5%B1%8F%E8%AE%B0%E5%BD%952/" title="three案例实操|赛博风大屏Ⅱ"><img src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="three案例实操|赛博风大屏Ⅱ"/></a><div class="content"><a class="title" href="/2024/09/11/three-%E8%B5%9B%E5%8D%9A%E9%A3%8E%E5%A4%A7%E5%B1%8F%E8%AE%B0%E5%BD%952/" title="three案例实操|赛博风大屏Ⅱ">three案例实操|赛博风大屏Ⅱ</a><time datetime="2024-09-11T02:02:05.000Z" title="发表于 2024-09-11 10:02:05">2024-09-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/04/shader-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%955/" title="shader-学习记录Ⅴ"><img src="https://wallroom.io/img/5120x2880/bg-d896c9d.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="shader-学习记录Ⅴ"/></a><div class="content"><a class="title" href="/2024/09/04/shader-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%955/" title="shader-学习记录Ⅴ">shader-学习记录Ⅴ</a><time datetime="2024-09-04T01:40:26.000Z" title="发表于 2024-09-04 09:40:26">2024-09-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/02/three-%E5%8A%A0%E8%87%AA%E5%B7%B1%E6%A8%A1%E5%9E%8B/" title="three+react|加自己模型"><img src="https://wallroom.io/img/3840x2160/bg-81f2d39.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="three+react|加自己模型"/></a><div class="content"><a class="title" href="/2024/09/02/three-%E5%8A%A0%E8%87%AA%E5%B7%B1%E6%A8%A1%E5%9E%8B/" title="three+react|加自己模型">three+react|加自己模型</a><time datetime="2024-09-02T12:37:05.000Z" title="发表于 2024-09-02 20:37:05">2024-09-02</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/index_img.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By Shealin You</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Training the faculty of mindfulness is like breathing oxygen continuously to remain alive.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'StmwBdb4aXO6LMYWRxjVnufr-gzGzoHsz',
+      appKey: 'V7WavrdJsNE6xxx5YGiygidl',
+      avatar: 'monsterid',
+      serverURLs: 'https://stmwbdb4.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="000EDNt20L3sUT" data-server="tencent" data-type="song" data-fixed="true" data-autoplay="true" data-lrcType="-1"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
